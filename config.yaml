@@ -14,9 +14,13 @@
     ~/.zlogin: zprezto/runcoms/zlogin
     ~/.zlogout: zprezto/runcoms/zlogout
     ~/.zpreztorc: zsh/zpreztorc
+    ~/.zprezto: zprezto/
     ~/.zprofile: zsh/zprofile
     ~/.zshenv: zsh/zshenv
     ~/.zshrc: zsh/zshrc
-    ~/.zprezto: zprezto/
-
     zprezto/modules/prompt/functions/prompt_santiaro_setup: zsh/themes/prompt_santiaro_setup
+
+- shell:
+    -
+        - 'mkdir ~/.vim/backup ~/.vim/swap ~/.vim/undo'
+        - 'Creating backup directories for Vim'
