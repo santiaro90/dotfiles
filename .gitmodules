@@ -4,6 +4,7 @@
 [submodule "zprezto"]
 	path = zprezto
 	url = https://github.com/sorin-ionescu/prezto.git
+    ignore = dirty
 [submodule "dotbot"]
 	path = dotbot
 	url = https://github.com/anishathalye/dotbot
