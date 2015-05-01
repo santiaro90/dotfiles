@@ -22,5 +22,8 @@
 
 - shell:
     -
-        - 'mkdir ~/.vim/backup ~/.vim/swap ~/.vim/undo'
+        - 'mkdir -p ~/.vim/backup ~/.vim/swap ~/.vim/undo'
         - 'Creating backup directories for Vim'
+    -
+        - 'vim +PluginInstall +qall'
+        - 'Installing Vim Vundle managed plugins'
