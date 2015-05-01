@@ -1,0 +1,22 @@
+---
+
+- clean: ['~']
+
+- shell:
+    -
+        - 'git submodule update --init --recursive'
+        - 'Updating submodules'
+
+- link:
+    ~/.vim: vim/vim/
+    ~/.vimrc: vim/vimrc
+
+    ~/.zlogin: zprezto/runcoms/zlogin
+    ~/.zlogout: zprezto/runcoms/zlogout
+    ~/.zpreztorc: zsh/zpreztorc
+    ~/.zprofile: zsh/zprofile
+    ~/.zshenv: zsh/zshenv
+    ~/.zshrc: zsh/zshrc
+    ~/.zprezto: zprezto/
+
+    zprezto/modules/prompt/functions/prompt_santiaro_setup: zsh/themes/prompt_santiaro_setup
