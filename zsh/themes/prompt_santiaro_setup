@@ -1,0 +1,37 @@
+function prompt_santiaro_precmd {
+    # Get Git repository information.
+    if (( $+functions[git-info] )); then
+        git-info
+    fi
+}
+
+function prompt_santiaro_setup {
+    setopt LOCAL_OPTIONS
+    unsetopt XTRACE KSH_ARRAYS
+    prompt_opts=(cr percent subst)
+
+    # Make sure 256 colours are enabled
+    export TERM=xterm-256color
+    [ -n "$TMUX" ] && export TERM=screen-256color    # Workaroung for tmux
+
+    # Load required functions.
+    autoload -Uz add-zsh-hook
+    autoload -Uz vcs_info
+
+    # Add a hook for calling info functions before each command.
+    add-zsh-hook precmd prompt_santiaro_precmd
+
+    # Set git-info parameters.
+    zstyle ':prezto:module:git:info:branch' format '%F{79}%b%f'
+    zstyle ':prezto:module:git:info:dirty' format '%F{red}●%f'
+    zstyle ':prezto:module:git:info:clean' format '%F{green}●%f'
+    zstyle ':prezto:module:git:info:keys' format 'prompt' 'on branch %b %D%C'
+
+    # Define prompts.
+    PROMPT=' %B%F{124}%n%f%b %F{white}at%f %B%F{97}%m%f%b %F{white}in%f %B%F{221}[ %~ ]%f%b 
+%B%F{69} ❯%f%F{68}❯%f%F{67}❯%f%b '
+    RPROMPT='%B${git_info[prompt]}%b'
+
+}
+
+prompt_santiaro_setup "$@"
