@@ -10,4 +10,6 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
-# Custom
+# Map kj to ESC in shell 
+bindkey kj vi-cmd-mode
+

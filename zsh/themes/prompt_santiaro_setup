@@ -1,3 +1,4 @@
+# vim: set filetype=zsh:
 function prompt_santiaro_precmd {
     # Get Git repository information.
     if (( $+functions[git-info] )); then
@@ -21,16 +22,20 @@ function prompt_santiaro_setup {
     # Add a hook for calling info functions before each command.
     add-zsh-hook precmd prompt_santiaro_precmd
 
+    # Set editor parameters
+    zstyle ':prezto:module:editor:info:keymap:alternate' format '%B%F{69}❯%f%F{68}❯%f%F{67}❯%f%b'
+    zstyle ':prezto:module:editor:info:keymap:primary' format '%B%F{72}❯%f%F{71}❯%f%F{70}❯%f%b'
+
     # Set git-info parameters.
     zstyle ':prezto:module:git:info' verbose yes
-    zstyle ':prezto:module:git:info:branch' format '%F{68}%b%f'
-    zstyle ':prezto:module:git:info:dirty' format '%F{red}●%f'
+    zstyle ':prezto:module:git:info:branch' format '%F{45}%b%f'
     zstyle ':prezto:module:git:info:clean' format '%F{green}●%f'
+    zstyle ':prezto:module:git:info:dirty' format '%F{red}●%f'
     zstyle ':prezto:module:git:info:keys' format 'prompt' 'on branch %b %D%C'
 
     # Define prompts.
     PROMPT='%B%F{124}%n%f%b %F{245}at%f %B%F{97}%m%f%b %F{245}in%f %B%F{136}[ %~ ]%f%b
-%B%F{69}❯%f%F{68}❯%f%F{67}❯%f%b '
+${editor_info[keymap]} '
     RPROMPT='${git_info[prompt]}'
 }
 
