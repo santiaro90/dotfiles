@@ -1,0 +1,50 @@
+# vim: set filetype=gitconfig:
+[alias]
+    b = branch
+    bv = branch -avv
+    bm = branch -m
+    bd = branch -d
+    bD = branch -D
+
+    cb = checkout -b
+
+    # Pretty log of the last 10 commits
+    l = log -10 --decorate --graph --oneline --pretty=format:'%C(yellow)[%h]%Creset%C(auto)%d%Creset - %C(blue)%cr%Creset by %C(green)<%ae>%Creset%n%s%n' --abbrev-commit
+    
+    s = status -s
+
+[color]
+    ui = auto
+
+[color "branch"]
+    current = blue bold reverse
+    local = blue bold
+    remote = yellow
+
+[color "diff"]
+    meta = magenta bold
+    frag = yellow bold
+    old = red bold
+    new = green bold
+
+[color "status"]
+    added = green bold ul
+    changed = yellow bold ul 
+    untracked = magenta bold
+
+[core]
+    editor = vim
+    excludesfile = ~/.gitignore
+
+[diff]
+    tool = vimdiff
+
+[difftool]
+    prompt = false
+
+[merge]
+    tool = vimdiff
+
+[user]
+    email = santiaro90@gmail.com
+    name = Santiago Alvarez Rodriguez

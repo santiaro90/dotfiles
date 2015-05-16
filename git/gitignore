@@ -1,0 +1,13 @@
+# Vim
+*.swp
+*~
+
+# Bower
+bower_components
+.bower-cache
+.bower-registry
+.bower-tmp
+
+# Node.js
+*.log
+node_modules

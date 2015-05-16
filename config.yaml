@@ -8,6 +8,11 @@
         - 'Updating submodules'
 
 - link:
+    ~/.gitconfig: git/gitconfig
+    ~/.gitignore: git/gitignore
+
+    ~/.tmux.conf: tmux/tmux.conf
+
     ~/.vim: vim/vim/
     ~/.vimrc: vim/vimrc
 
