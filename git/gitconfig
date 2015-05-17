@@ -1,12 +1,22 @@
 # vim: set filetype=gitconfig:
 [alias]
+    a = add
+
+    # Branching
     b = branch
     bv = branch -avv
     bm = branch -m
     bd = branch -d
     bD = branch -D
 
+    # Commit
+    c = commit
+    cm = commit -m
+    cam = commit --amend
+
+    # Checkout
     cb = checkout -b
+    cf = checkout --
 
     # Pretty log of the last 10 commits
     l = log -10 --decorate --graph --oneline --pretty=format:'%C(yellow)[%h]%Creset%C(auto)%d%Creset - %C(blue)%cr%Creset by %C(green)<%ae>%Creset%n%s%n' --abbrev-commit
