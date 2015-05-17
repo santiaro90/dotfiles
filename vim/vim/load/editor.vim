@@ -1,10 +1,14 @@
 set autowrite
+set autoread
+set diffopt+=vertical
 set gdefault
 set hidden
 set hlsearch
 set ignorecase
 set incsearch
+set nowrap
 set ruler
+set showmatch
 set smartcase
 set smarttab
 set splitbelow
@@ -16,12 +20,17 @@ set list
 
 " Indentation
 set autoindent
+set backspace=indent,eol,start
 set expandtab
+set shiftround
 set shiftwidth=4
 set smartindent
 set softtabstop=4
 set tabstop=4
-set backspace=indent,eol,start
+
+" No automatic folding
+set nofoldenable
+set foldmethod=manual
 
 " Highlight current line
 set cursorline

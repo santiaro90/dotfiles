@@ -3,6 +3,9 @@ let mapleader="\<Space>"
 " Deactivate Ex mode
 noremap Q <nop>
 
+" No man mapping
+noremap K <nop>
+
 " Disable arrow keys
 map <LEFT> <nop>
 map <RIGHT> <nop>
