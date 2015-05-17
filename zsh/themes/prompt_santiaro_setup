@@ -34,9 +34,8 @@ function prompt_santiaro_setup {
     zstyle ':prezto:module:git:info:keys' format 'prompt' 'on branch %b %D%C'
 
     # Define prompts.
-    PROMPT='%B%F{124}%n%f%b %F{245}at%f %B%F{97}%m%f%b %F{245}in%f %B%F{136}[ %~ ]%f%b
+    PROMPT='%B%F{136}[ %~ ]%f%b ${git_info[prompt]}
 ${editor_info[keymap]} '
-    RPROMPT='${git_info[prompt]}'
 }
 
 prompt_santiaro_setup "$@"
