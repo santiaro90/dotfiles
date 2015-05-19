@@ -2,6 +2,10 @@
 *.swp
 *~
 
+# OS X
+.DS_Store
+._*
+
 # Bower
 bower_components
 .bower-cache
