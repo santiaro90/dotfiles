@@ -41,3 +41,5 @@ nnoremap <leader>W :wa<CR>
 nnoremap <leader>q :wq<CR>
 nnoremap <leader>Q :wqa<CR>
 
+" Join and restore cursor position
+nnoremap J mjJ`j

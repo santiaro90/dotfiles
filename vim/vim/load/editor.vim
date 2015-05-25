@@ -1,6 +1,8 @@
 set autowrite
 set autoread
 set diffopt+=vertical
+set diffopt+=filler
+set diffopt+=iwhite
 set gdefault
 set hidden
 set hlsearch
@@ -13,6 +15,9 @@ set smartcase
 set smarttab
 set splitbelow
 set splitright
+
+" Omni-completion
+set ofu=syntaxcomplete#Complete
 
 " Show invisible characters
 set lcs=tab:▸\ ,trail:·,eol:¬
@@ -38,6 +43,10 @@ set cursorline
 set number
 " Minimum number of lines shown when scrolling
 set scrolloff=5
+
+" Center search results on screen
+nnoremap n nzz
+nnoremap N Nzz
 
 " Enable file type detection
 filetype plugin indent on

@@ -2,8 +2,9 @@
 
 " iMprove it
 set nocompatible
-" Always show status line
+" Always show status and tab line
 set laststatus=2
+set showtabline=2
 " No beeping
 set visualbell
 " Backup directories
@@ -11,6 +12,7 @@ set backupdir=~/.vim/backup
 set directory=~/.vim/swap
 set undodir=~/.vim/undo
 
+set history=1000
 set modeline
 set noshowmode
 set showcmd
