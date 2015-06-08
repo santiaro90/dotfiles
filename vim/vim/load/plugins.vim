@@ -9,11 +9,16 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'bling/vim-airline'
+Plugin 'editorconfig/editorconfig-vim'
 Plugin 'FelikZ/ctrlp-py-matcher'
+Plugin 'kchmck/vim-coffee-script'
 Plugin 'kien/ctrlp.vim'
 Plugin 'Raimondi/delimitMate'
+Plugin 'rstacruz/sparkup'
 Plugin 'scrooloose/nerdtree'
+Plugin 'terryma/vim-multiple-cursors'
 Plugin 'tomtom/tcomment_vim'
+Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
@@ -29,6 +34,12 @@ let g:airline#extensions#tabline#enabled=1
 let g:ctrlp_match_window='top,order:ttb,min:1,max:10'
 let g:ctrlp_show_hidden=1
 let g:ctrlp_match_func={ 'match': 'pymatcher#PyMatch' }
+
+" Multi-cursor mappings
+let g:multi_cursor_next_key='<C-d>'
+let g:multi_cursor_prev_key='<C-p>'
+let g:multi_cursor_skip_key='<C-u>'
+let g:multi_cursor_quit_key='<C-x>'
 
 " Place cursor properly when hitting enter after braces
 let g:delimitMate_expand_cr=1

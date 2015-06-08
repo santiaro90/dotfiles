@@ -52,5 +52,8 @@ nnoremap N Nzz
 filetype plugin indent on
 
 " Disable autocommenting
-autocmd VimEnter,BufNewFile,BufRead * setlocal formatoptions-=cro
+autocmd BufNewFile,BufRead * setlocal formatoptions-=cro
+
+" When joining commented lines, delete comment character
+set formatoptions+=j
 
