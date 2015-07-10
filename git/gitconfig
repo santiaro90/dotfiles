@@ -1,13 +1,19 @@
 # vim: set filetype=gitconfig:
 [alias]
+    # Add
     a = add
+    aa = add .
+
+    # Diff
+    d = diff --color-words
+    dt = difftool
 
     # Branching
     b = branch
     bv = branch -avv
     bm = branch -m
-    bd = branch -d
-    bD = branch -D
+    br = branch -d
+    bd = branch -D
 
     # Commit
     c = commit
@@ -15,6 +21,7 @@
     cam = commit --amend
 
     # Checkout
+    ck = checkout
     cb = checkout -b
     cf = checkout --
 

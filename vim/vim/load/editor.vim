@@ -29,7 +29,8 @@ set backspace=indent,eol,start
 set expandtab
 set shiftround
 set shiftwidth=4
-set smartindent
+" set smartindent
+set cindent
 set softtabstop=4
 set tabstop=4
 
