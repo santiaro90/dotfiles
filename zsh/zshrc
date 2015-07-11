@@ -13,3 +13,6 @@ fi
 # Map kj to ESC in shell 
 bindkey kj vi-cmd-mode
 
+# To avoid annoying rvm message, complaining about PATH
+[[ -s $HOME/.nvm/nvm.sh ]] && source $HOME/.nvm/nvm.sh && nvm use stable > /dev/null 1>&1
+[[ -s $HOME/.rvm/scripts/rvm ]] && source $HOME/.rvm/scripts/rvm && rvm use default > /dev/null 2>&1

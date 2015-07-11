@@ -74,25 +74,6 @@ fi
 TMPPREFIX="${TMPDIR%/}/zsh"
 
 #
-# Source rvm
-#
-RVM_SCRIPT_PATH=~/.rvm/scripts/rvm
-if [ -f $RVM_SCRIPT_PATH ]; then
-    export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-    source "$RVM_SCRIPT_PATH" 
-fi
-unset RVM_SCRIPT_PATH
-
-#
-# Source nvm
-#
-NVM_SCRIPT_PATH=~/.nvm/nvm.sh
-if [ -f $NVM_SCRIPT_PATH ]; then
-    source "$NVM_SCRIPT_PATH"
-fi
-unset NVM_SCRIPT_PATH
-
-#
 # Tmux auto-start
 #
 if [[ -z "$TMUX" ]]; then
