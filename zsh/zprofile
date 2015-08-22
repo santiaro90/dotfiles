@@ -79,9 +79,9 @@ TMPPREFIX="${TMPDIR%/}/zsh"
 if [[ -z "$TMUX" ]]; then
     tmux start-server
 
-    # Create a 'santiaro' session if no session has been defined in tmux.conf.
+    # Create a 'default-session' session if no session has been defined in tmux.conf.
     if ! tmux has-session 2> /dev/null; then
-        tmux_session='santiaro'
+        tmux_session='default-session'
         tmux -2 \
             new-session -d -s "$tmux_session" \; \
             set-option -t "$tmux_session" destroy-unattached off &> /dev/null
@@ -90,3 +90,4 @@ if [[ -z "$TMUX" ]]; then
     # Attach to the 'santiaro' session or to the last session used.
     exec tmux -2 attach-session
 fi
+
