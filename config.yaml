@@ -17,6 +17,10 @@
     ~/.vimrc: vim/vimrc
 
     ~/.zlogin: zprezto/runcoms/zlogin
+
+    ~/.shell_aliases: zsh/shell_aliases
+    ~/.functions: zsh/functions
+
     ~/.zlogout: zprezto/runcoms/zlogout
     ~/.zpreztorc: zsh/zpreztorc
     ~/.zprezto: zprezto/

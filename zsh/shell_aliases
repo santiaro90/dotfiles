@@ -1,0 +1,54 @@
+# Navigation
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+
+# Apt
+alias apti="sudo apt-get install -y"
+alias aptu="sudo apt-get update -y"
+alias aptp="sudo apt-get purge -y"
+
+# Git
+alias g="git"
+
+# Editor
+alias e="$EDITOR"
+alias ealias="e $HOME/.shell_aliases"
+alias efunc="e $HOME/.functions"
+
+# Misc
+command -v pbcopy > /dev/null 2>&1 || alias pbcopy="xsel -ib"
+command -v pbpaste > /dev/null 2>&1 || alias pbpaste="xsel -ob"
+
+# Rails
+alias b="bundle"
+alias b:i="b install"
+alias b:e="b exec"
+
+alias r:c="rails console"
+alias r:n="rails new"
+alias r:sbox="rails console --sandbox"
+alias r:s="rails server"
+
+alias r:gc="rails generate controller"
+alias r:gm="rails generate model"
+alias r:gs="rails generate scaffold"
+
+alias r:m="be rake db:migrate"
+alias r:t="be rake test"
+
+# Node
+alias npm:i="npm install"
+alias npm:u="npm uninstall"
+alias npm:is="npm install --save"
+alias npm:id="npm install --save-dev"
+alias npm:us="npm uninstall --save"
+alias npm:ud="npm uninstall --save-dev"
+
+# Bower
+alias bo:i="bower install"
+alias bo:u="bower uninstall"
+alias bo:is="bower install --save"
+alias bo:id="bower install --save-dev"
+alias bo:us="bower uninstall --save"
+alias bo:ud="bower uninstall --save-dev"

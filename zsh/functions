@@ -1,0 +1,21 @@
+# vim: set ft=zsh :
+# Create directory and cd into it
+function mk() {
+    mkdir -p "$1" && cd "$1"
+}
+
+# Simple python server
+function serve() {
+    local port=${1:-8000}
+    python -m SimpleHTTPServer $port
+}
+
+# Get user's ssh public key
+function ssh-key() {
+    if [[ ! -f $HOME/.ssh/id_rsa.pub ]]; then
+        echo "This user hasn't got a unique public SSH key"
+        return 1
+    fi
+
+    cat $HOME/.ssh/id_rsa.pub | pbcopy
+}
