@@ -16,17 +16,17 @@
     ~/.vim: vim/vim/
     ~/.vimrc: vim/vimrc
 
-    ~/.zlogin: zprezto/runcoms/zlogin
-
-    ~/.shell_aliases: zsh/shell_aliases
     ~/.functions: zsh/functions
+    ~/.shell_aliases: zsh/shell_aliases
 
+    ~/.zlogin: zprezto/runcoms/zlogin
     ~/.zlogout: zprezto/runcoms/zlogout
     ~/.zpreztorc: zsh/zpreztorc
     ~/.zprezto: zprezto/
     ~/.zprofile: zsh/zprofile
     ~/.zshenv: zsh/zshenv
     ~/.zshrc: zsh/zshrc
+
     zprezto/modules/prompt/functions/prompt_santiaro_setup: zsh/themes/prompt_santiaro_setup
 
 - shell:
