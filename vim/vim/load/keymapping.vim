@@ -43,3 +43,8 @@ nnoremap <leader>Q :wqa<CR>
 
 " Join and restore cursor position
 nnoremap J mjJ`j
+
+" Add blank lines above and below current one
+nnoremap <leader>o o<ESC>
+nnoremap <leader>O O<ESC>
+

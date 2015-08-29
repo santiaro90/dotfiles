@@ -40,8 +40,9 @@ set foldmethod=manual
 
 " Highlight current line
 set cursorline
-" Line numbering on
+" Relative line numbering on
 set number
+set relativenumber
 " Minimum number of lines shown when scrolling
 set scrolloff=5
 
