@@ -2,6 +2,7 @@
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
+alias lsa="ls -alh"
 
 # Apt
 alias apti="sudo apt-get install -y"
@@ -19,6 +20,7 @@ alias efunc="e $HOME/.functions"
 # Misc
 command -v pbcopy > /dev/null 2>&1 || alias pbcopy="xsel -ib"
 command -v pbpaste > /dev/null 2>&1 || alias pbpaste="xsel -ob"
+alias off="sudo shutdown -h now"
 
 # Rails
 alias b="bundle"
