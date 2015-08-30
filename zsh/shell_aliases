@@ -14,8 +14,8 @@ alias g="git"
 
 # Editor
 alias e="$EDITOR"
-alias ealias="e $HOME/.shell_aliases"
-alias efunc="e $HOME/.functions"
+alias ealias="cd $HOME/dotfiles && e zsh/shell_aliases"
+alias efunc="cd $HOME/dotfiles && e zsh/functions"
 
 # Misc
 command -v pbcopy > /dev/null 2>&1 || alias pbcopy="xsel -ib"
@@ -36,21 +36,21 @@ alias r:gc="rails generate controller"
 alias r:gm="rails generate model"
 alias r:gs="rails generate scaffold"
 
-alias r:m="be rake db:migrate"
-alias r:t="be rake test"
+alias r:m="b:e rake db:migrate"
+alias r:t="b:e rake test"
 
 # Node
 alias npm:i="npm install"
 alias npm:u="npm uninstall"
-alias npm:is="npm install --save"
-alias npm:id="npm install --save-dev"
-alias npm:us="npm uninstall --save"
-alias npm:ud="npm uninstall --save-dev"
+alias npm:is="npm:i --save"
+alias npm:id="npm:i --save-dev"
+alias npm:us="npm:u --save"
+alias npm:ud="npm:u --save-dev"
 
 # Bower
 alias bo:i="bower install"
 alias bo:u="bower uninstall"
-alias bo:is="bower install --save"
-alias bo:id="bower install --save-dev"
-alias bo:us="bower uninstall --save"
-alias bo:ud="bower uninstall --save-dev"
+alias bo:is="bo:i --save"
+alias bo:id="bo:i --save-dev"
+alias bo:us="bo:u --save"
+alias bo:ud="bo:u --save-dev"
