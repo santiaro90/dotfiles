@@ -20,10 +20,10 @@ nnoremap <leader>c :set nohls!<CR>
 
 " Easier movement for windows
 " The last <C-W>_ allows maximising space for current window
-map <C-j> <C-W>j<C-W>_
-map <C-k> <C-W>k<C-W>_
-map <C-h> <C-W>h<C-W>_
-map <C-l> <C-W>l<C-W>_
+" map <C-j> <C-W>j<C-W>_
+" map <C-k> <C-W>k<C-W>_
+" map <C-h> <C-W>h<C-W>_
+" map <C-l> <C-W>l<C-W>_
 
 " Changing windows layout
 noremap <leader>J <C-w>J
