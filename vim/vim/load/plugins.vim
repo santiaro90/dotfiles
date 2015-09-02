@@ -12,17 +12,21 @@ Plugin 'bling/vim-airline'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'editorconfig/editorconfig-vim'
 Plugin 'FelikZ/ctrlp-py-matcher'
+Plugin 'jelera/vim-javascript-syntax'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'kien/ctrlp.vim'
+Plugin 'pangloss/vim-javascript'
 Plugin 'Raimondi/delimitMate'
 Plugin 'rstacruz/sparkup'
 Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/syntastic'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
+Plugin 'Valloric/YouCompleteMe'
 
 call vundle#end()
 
@@ -51,6 +55,8 @@ let g:multi_cursor_quit_key='<C-x>'
 
 " Place cursor properly when hitting enter after braces
 let g:delimitMate_expand_cr=1
+
+let g:syntastic_ruby_checkers=['rubocop']
 
 " Open NERDTree
 noremap <C-n> :NERDTreeToggle<CR>
