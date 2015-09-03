@@ -23,6 +23,8 @@ set wildmode=list:longest
 set wildignore+=.git
 set wildignore+=*.sw?,*~
 
+let mapleader="\<Space>"
+
 " ==============================================================================
 
 " Setup vundle and load plugins

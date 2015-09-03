@@ -15,6 +15,7 @@ Plugin 'FelikZ/ctrlp-py-matcher'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'kien/ctrlp.vim'
+Plugin 'marijnh/tern_for_vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'Raimondi/delimitMate'
 Plugin 'rstacruz/sparkup'
@@ -48,7 +49,7 @@ let g:ctrlp_show_hidden=1
 let g:ctrlp_match_func={ 'match': 'pymatcher#PyMatch' }
 
 " Multi-cursor mappings
-let g:multi_cursor_next_key='<C-d>'
+let g:multi_cursor_next_key='<C-n>'
 let g:multi_cursor_prev_key='<C-p>'
 let g:multi_cursor_skip_key='<C-u>'
 let g:multi_cursor_quit_key='<C-x>'
@@ -56,8 +57,9 @@ let g:multi_cursor_quit_key='<C-x>'
 " Place cursor properly when hitting enter after braces
 let g:delimitMate_expand_cr=1
 
+" Ruby linter
 let g:syntastic_ruby_checkers=['rubocop']
 
 " Open NERDTree
-noremap <C-n> :NERDTreeToggle<CR>
+noremap <leader>n :NERDTreeToggle<CR>
 

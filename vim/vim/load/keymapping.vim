@@ -1,5 +1,3 @@
-let mapleader="\<Space>"
-
 " Deactivate Ex mode
 noremap Q <nop>
 
