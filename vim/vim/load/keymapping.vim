@@ -1,7 +1,13 @@
+" Source .vimrc
+nnoremap <leader>r :source $MYVIMRC<CR>
+" Swap : and ; in normal mode
+nnoremap ; :
+nnoremap : ;
+
 " Deactivate Ex mode
 noremap Q <nop>
 
-" No man mapping
+" Disable mapping to redirect to man pages
 noremap K <nop>
 
 " Disable arrow keys
@@ -14,14 +20,7 @@ map <DOWN> <nop>
 inoremap kj <ESC>
 
 " Toggle search highlight
-nnoremap <leader>c :set nohls!<CR>
-
-" Easier movement for windows
-" The last <C-W>_ allows maximising space for current window
-" map <C-j> <C-W>j<C-W>_
-" map <C-k> <C-W>k<C-W>_
-" map <C-h> <C-W>h<C-W>_
-" map <C-l> <C-W>l<C-W>_
+nnoremap <silent> <leader>c :set nohls!<CR>
 
 " Changing windows layout
 noremap <leader>J <C-w>J
@@ -30,14 +29,11 @@ noremap <leader>H <C-w>H
 noremap <leader>L <C-w>L
 
 " Toggle invisible characters
-noremap <leader>l :set list!<CR>
+noremap <silent> <leader>l :set list!<CR>
 
-" Write buffers
-nnoremap <leader>w :w<CR>
-nnoremap <leader>W :wa<CR>
-" Write and close buffers
-nnoremap <leader>q :wq<CR>
-nnoremap <leader>Q :wqa<CR>
+" Save all/Save all and quit
+command! W wa
+command! Q wqa
 
 " Join and restore cursor position
 nnoremap J mjJ`j
