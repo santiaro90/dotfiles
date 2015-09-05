@@ -8,16 +8,18 @@
         - 'Updating submodules'
 
 - link:
+    ~/.ctags: ctags/ctags
+
+    ~/.functions: zsh/functions
+
+    ~/.gemrc: ruby/gemrc
+
     ~/.gitconfig: git/gitconfig
     ~/.gitignore: git/gitignore
 
-    ~/.tmux.conf: tmux/tmux.conf
-
-    ~/.vim: vim/vim/
-    ~/.vimrc: vim/vimrc
-
-    ~/.functions: zsh/functions
     ~/.shell_aliases: zsh/shell_aliases
+
+    ~/.tmux.conf: tmux/tmux.conf
 
     ~/.zlogin: zprezto/runcoms/zlogin
     ~/.zlogout: zprezto/runcoms/zlogout
@@ -28,6 +30,9 @@
     ~/.zshrc: zsh/zshrc
 
     zprezto/modules/prompt/functions/prompt_santiaro_setup: zsh/themes/prompt_santiaro_setup
+
+    ~/.vim: vim/vim/
+    ~/.vimrc: vim/vimrc
 
 - shell:
     -

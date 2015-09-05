@@ -12,10 +12,14 @@ set backupdir=~/.vim/backup
 set directory=~/.vim/swap
 set undodir=~/.vim/undo
 
+set tags=./tags,./.tags,tags,.tags
+
 set history=1000
+set lazyredraw
 set modeline
 set noshowmode
 set showcmd
+set ttyfast
 
 " File completion
 set wildmenu
