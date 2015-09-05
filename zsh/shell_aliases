@@ -2,20 +2,28 @@
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
+alias dotf="[[ -d $HOME/dotfiles ]] && cd $HOME/dotfiles"
 alias lsa="ls -alh"
 
 # Apt
 alias apti="sudo apt-get install -y"
 alias aptu="sudo apt-get update -y"
+alias aptup="aptu && sudo apt-get upgrade -y"
 alias aptp="sudo apt-get purge -y"
+alias aptc="sudo apt-get clean && sudo apt-get autoremove"
 
 # Git
 alias g="git"
 
 # Editor
 alias e="$EDITOR"
-alias ealias="cd $HOME/dotfiles && e zsh/shell_aliases"
-alias efunc="cd $HOME/dotfiles && e zsh/functions"
+
+# Edit config files
+alias ealias="dotf && e zsh/shell_aliases"
+alias efunc="dotf && e zsh/functions"
+alias egitc="dotf && e git/gitconfig"
+alias eprompt="dotf && e zsh/themes/prompt_santiaro_setup"
+alias etmuxc="dotf && e tmux/tmux.conf"
 
 # Misc
 command -v pbcopy > /dev/null 2>&1 || alias pbcopy="xsel -ib"
