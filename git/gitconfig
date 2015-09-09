@@ -62,6 +62,12 @@
 [merge]
     tool = vimdiff
 
+[push]
+    default = simple
+
+[url "https://github.com/"]
+    insteadOf = gh
+
 [user]
     email = santiaro90@gmail.com
     name = Santiago Alvarez Rodriguez
