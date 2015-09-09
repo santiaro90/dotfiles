@@ -1,0 +1,25 @@
+# vim: set ft=zsh :
+
+# Get rbenv and ruby-build repositories if not done yet
+
+# Check if already installed
+if [[ -d $HOME/.rbenv ]] && command -v rbenv > /dev/null 2>&1; then
+    echo "rbenv seems to be already installed in this system"
+    return 1
+else
+    # Check whether installing on Linux or OS X
+    if [[ `uname` == "Darwin" ]]; then
+        # TODO
+    else    # Asume git is installed
+        echo "Fetching rbenv..."
+        git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
+
+        echo "Fetching ruby-build..."
+        git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
+
+        # Set PATH properly
+        export PATH="$HOME/.rbenv/bin:$PATH"
+        eval "$(rbenv init -)"
+    fi
+fi
+

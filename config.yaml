@@ -9,8 +9,6 @@
 - link:
     ~/.ctags: ctags/ctags
 
-    ~/.functions: zsh/functions
-
     ~/.gemrc: ruby/gemrc
 
     ~/.gitconfig: git/gitconfig
@@ -20,6 +18,7 @@
 
     ~/.tmux.conf: tmux/tmux.conf
 
+    ~/.zfunc: zsh/zfunc/
     ~/.zlogin: zprezto/runcoms/zlogin
     ~/.zlogout: zprezto/runcoms/zlogout
     ~/.zpreztorc: zsh/zpreztorc

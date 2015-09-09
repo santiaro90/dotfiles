@@ -20,7 +20,7 @@ alias e="$EDITOR"
 
 # Edit config files
 alias ealias="dotf && e zsh/shell_aliases"
-alias efunc="dotf && e zsh/functions"
+alias efunc="dotf && e zsh/zfunc"
 alias egitc="dotf && e git/gitconfig"
 alias eprompt="dotf && e zsh/themes/prompt_santiaro_setup"
 alias etmuxc="dotf && e tmux/tmux.conf"
@@ -29,6 +29,7 @@ alias etmuxc="dotf && e tmux/tmux.conf"
 command -v pbcopy > /dev/null 2>&1 || alias pbcopy="xsel -ib"
 command -v pbpaste > /dev/null 2>&1 || alias pbpaste="xsel -ob"
 alias off="sudo shutdown -h now"
+alias reboot="sudo reboot"
 
 # Rails
 alias b="bundle"
@@ -62,3 +63,6 @@ alias bo:is="bo:i --save"
 alias bo:id="bo:i --save-dev"
 alias bo:us="bo:u --save"
 alias bo:ud="bo:u --save-dev"
+
+# Disable corrections
+alias rm="nocorrect rm"

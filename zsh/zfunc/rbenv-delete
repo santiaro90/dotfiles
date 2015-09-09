@@ -1,0 +1,17 @@
+# vim: set ft=zsh :
+
+# Delete rbenv
+
+# Check whether deleting on OS X or Linux
+if [[ `uname` == "Darwin" ]]; then
+    # TODO
+else
+    # Check if rbenv directory exists
+    if [[ -d $HOME/.rbenv ]]; then
+        rm -rf $HOME/.rbenv
+    else
+        echo "rbenv is not installed!"
+        return 1
+    fi
+fi
+

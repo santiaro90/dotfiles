@@ -1,0 +1,30 @@
+# vim: set ft=zsh :
+
+# Copy user's public key to the clipboard. If there is not
+# one, prompt the user whether she wants to create one
+
+local key=$HOME/.ssh/id_rsa.pub
+
+if [[ ! -f $key ]]; then
+    echo "This user seems not to have an SSH public key"
+    read -q "?Would you like to create one? [y/n]: "
+
+    if [[ $? -eq 0 ]]; then
+        echo
+        ssh-keygen -t rsa -b 2048 -f ${key:r}
+    else
+        return $?
+    fi
+fi
+
+# Determine which command is available for copying to the clipboard.
+# Either pbcopy or xsel must be available in the system
+local pbcopy=
+if command -v pbcopy > /dev/null 2>&1; then
+    cat "$key" | xsel -ib
+else
+    cat "$key" | pbcopy
+fi
+
+echo "Your SSH public key's been copied to clipboard!"
+
