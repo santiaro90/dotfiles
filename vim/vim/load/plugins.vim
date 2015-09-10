@@ -24,6 +24,7 @@ Plugin 'scrooloose/syntastic'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'tpope/vim-abolish'
+Plugin 'tpope/vim-dispatch'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
@@ -66,3 +67,4 @@ let g:syntastic_ruby_checkers=['rubocop']
 " Open NERDTree
 noremap <leader>n :NERDTreeToggle<CR>
 
+command! -nargs=? Node Dispatch node <args>
