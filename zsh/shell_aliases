@@ -18,9 +18,10 @@ alias g="git"
 # Edit config files
 alias ealias="e $DOTDIR/zsh/shell_aliases +\"cd $DOTDIR/zsh\""
 alias efunc="e $DOTDIR/zsh/zfunc +\"cd $DOTDIR/zsh\""
-alias egitc="e $DOTDIR/git/gitconfig +\"cd $DOTDIR/git\""
+alias egit="e $DOTDIR/git/gitconfig +\"cd $DOTDIR/git\""
 alias eprompt="e $DOTDIR/zsh/themes/prompt_santiaro_setup +\"cd $DOTDIR/zsh\""
-alias etmuxc="e $DOTDIR/tmux/tmux.conf +\"cd $DOTDIR/tmux\""
+alias etmux="e $DOTDIR/tmux/tmux.conf +\"cd $DOTDIR/tmux\""
+alias evim="e $DOTDIR/vim +\"cd $DOTDIR/vim\""
 
 # Misc
 command -v pbcopy > /dev/null 2>&1 || alias pbcopy="xsel -ib"

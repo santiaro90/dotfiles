@@ -64,6 +64,9 @@ let g:delimitMate_expand_cr=1
 " Ruby linter
 let g:syntastic_ruby_checkers=['rubocop']
 
+" To hide preview window after selecting an autocomplete option
+let g:ycm_autoclose_preview_window_after_completion=1
+
 " Open NERDTree
 noremap <leader>n :NERDTreeToggle<CR>
 
