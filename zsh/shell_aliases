@@ -2,7 +2,7 @@
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
-alias dotf="[[ -d $HOME/dotfiles ]] && cd $HOME/dotfiles"
+alias dotf="[[ -d $DOTDIR ]] && cd $DOTDIR"
 alias lsa="ls -alh"
 
 # Apt
@@ -15,15 +15,12 @@ alias aptc="sudo apt-get clean && sudo apt-get autoremove"
 # Git
 alias g="git"
 
-# Editor
-alias e="$EDITOR"
-
 # Edit config files
-alias ealias="dotf && e zsh/shell_aliases"
-alias efunc="dotf && e zsh/zfunc"
-alias egitc="dotf && e git/gitconfig"
-alias eprompt="dotf && e zsh/themes/prompt_santiaro_setup"
-alias etmuxc="dotf && e tmux/tmux.conf"
+alias ealias="e $DOTDIR/zsh/shell_aliases +\"cd $DOTDIR/zsh\""
+alias efunc="e $DOTDIR/zsh/zfunc +\"cd $DOTDIR/zsh\""
+alias egitc="e $DOTDIR/git/gitconfig +\"cd $DOTDIR/git\""
+alias eprompt="e $DOTDIR/zsh/themes/prompt_santiaro_setup +\"cd $DOTDIR/zsh\""
+alias etmuxc="e $DOTDIR/tmux/tmux.conf +\"cd $DOTDIR/tmux\""
 
 # Misc
 command -v pbcopy > /dev/null 2>&1 || alias pbcopy="xsel -ib"
@@ -66,3 +63,7 @@ alias bo:ud="bo:u --save-dev"
 
 # Disable corrections
 alias rm="nocorrect rm"
+
+# Disable e alias (coming from prezto). This will be defined as
+# a function
+unalias e
