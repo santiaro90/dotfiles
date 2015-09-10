@@ -10,14 +10,14 @@ alias apti="sudo apt-get install -y"
 alias aptu="sudo apt-get update -y"
 alias aptup="aptu && sudo apt-get upgrade -y"
 alias aptp="sudo apt-get purge -y"
-alias aptc="sudo apt-get clean && sudo apt-get autoremove"
+alias aptc="sudo apt-get clean && apt-get autoclean && apt-get autoremove"
 
 # Git
 alias g="git"
 
 # Edit config files
 alias ealias="e $DOTDIR/zsh/shell_aliases +\"cd $DOTDIR/zsh\""
-alias efunc="e $DOTDIR/zsh/zfunc +\"cd $DOTDIR/zsh\""
+alias efunc="e $DOTDIR/zsh/zfunc +\"cd $DOTDIR/zsh/zfunc\""
 alias egit="e $DOTDIR/git/gitconfig +\"cd $DOTDIR/git\""
 alias eprompt="e $DOTDIR/zsh/themes/prompt_santiaro_setup +\"cd $DOTDIR/zsh\""
 alias etmux="e $DOTDIR/tmux/tmux.conf +\"cd $DOTDIR/tmux\""
@@ -47,12 +47,12 @@ alias r:m="b:e rake db:migrate"
 alias r:t="b:e rake test"
 
 # Node
-alias npm:i="npm install"
-alias npm:u="npm uninstall"
-alias npm:is="npm:i --save"
-alias npm:id="npm:i --save-dev"
-alias npm:us="npm:u --save"
-alias npm:ud="npm:u --save-dev"
+alias n:i="npm install"
+alias n:u="npm uninstall"
+alias n:is="npm:i --save"
+alias n:id="npm:i --save-dev"
+alias n:us="npm:u --save"
+alias n:ud="npm:u --save-dev"
 
 # Bower
 alias bo:i="bower install"
