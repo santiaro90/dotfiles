@@ -7,4 +7,9 @@ if [[ -z $EDITOR ]]; then
     return 1
 fi
 
-eval $EDITOR ${(q)@}
+if [[ -z $@ ]]; then
+    eval $EDITOR .
+else
+    eval $EDITOR ${(q)@}
+fi
+
