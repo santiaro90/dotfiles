@@ -81,13 +81,14 @@ if [[ -z "$TMUX" ]]; then
 
     # Create a 'default-session' session if no session has been defined in tmux.conf.
     if ! tmux has-session 2> /dev/null; then
-        tmux_session='default-session'
+        read 'tmux_session?Give a name to your tmux session [default: default-session]:'
+        tmux_session=${tmux_session:-default-session}
         tmux -2 \
             new-session -d -s "$tmux_session" \; \
             set-option -t "$tmux_session" destroy-unattached off &> /dev/null
     fi
 
-    # Attach to the 'santiaro' session or to the last session used.
+    # Attach to the default session or to the last session used.
     exec tmux -2 attach-session
 fi
 
