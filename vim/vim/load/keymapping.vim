@@ -39,6 +39,5 @@ command! Q wqa
 nnoremap J mjJ`j
 
 " Add blank lines above and below current one
-nnoremap <leader>o o<ESC>
-nnoremap <leader>O O<ESC>
-
+nnoremap <leader>o @='mzo<C-V><ESC>`z'<CR>
+nnoremap <leader>O @='mzO<C-V><ESC>`z'<CR>
