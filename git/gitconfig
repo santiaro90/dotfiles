@@ -3,22 +3,24 @@
     # Add
     a = add
     aa = add .
+    ap = add -p    # Add file chunks, not its complete contents
 
     # Diff
     d = diff --color-words
     dt = difftool
 
     # Branching
-    b = branch
-    bv = branch -avv
+    b = branch -avv    # Show branches info (verbose)
     bm = branch -m
     br = branch -d
     bd = branch -D
 
     # Commit
+    am = commit --amend
     c = commit
+    ca = commit -a
+    cam = commit -am
     cm = commit -m
-    cam = commit --amend
 
     # Checkout
     ck = checkout
@@ -28,7 +30,9 @@
     # Pretty log of the last 10 commits
     l = log -10 --decorate --graph --oneline --pretty=format:'%C(yellow)[%h]%Creset%C(auto)%d%Creset - %C(blue)%cr%Creset by %C(green)<%ae>%Creset%n%s%n' --abbrev-commit
 
-    s = status -s
+    # Status
+    s = status
+    ss = status -s    # Short status
 
 [color]
     ui = auto
@@ -67,6 +71,9 @@
 
 [url "https://github.com/"]
     insteadOf = gh:
+
+[url "git@github.com:"]
+    insteadOf = gh@
 
 [user]
     email = santiaro90@gmail.com
