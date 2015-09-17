@@ -79,7 +79,7 @@ TMPPREFIX="${TMPDIR%/}/zsh"
 if [[ -z "$TMUX" ]]; then
     tmux start-server
 
-    # Create a 'default-session' session if no session has been defined in tmux.conf.
+    # Create a session if no one has been defined in tmux.conf.
     if ! tmux has-session 2> /dev/null; then
         read 'tmux_session?Give a name to your tmux session [default: default-session]:'
         tmux_session=${tmux_session:-default-session}

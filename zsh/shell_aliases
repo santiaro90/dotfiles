@@ -19,7 +19,7 @@ alias g="git"
 alias ealias="e $DOTDIR/zsh/shell_aliases +\"cd $DOTDIR/zsh\""
 alias efunc="e $DOTDIR/zsh/zfunc +\"cd $DOTDIR/zsh/zfunc\""
 alias egit="e $DOTDIR/git/gitconfig +\"cd $DOTDIR/git\""
-alias eprompt="e $DOTDIR/zsh/themes/prompt_santiaro_setup +\"cd $DOTDIR/zsh\""
+alias eprompt="e $DOTDIR/zsh/themes/prompt_dark_setup +\"cd $DOTDIR/zsh\""
 alias etmux="e $DOTDIR/tmux/tmux.conf +\"cd $DOTDIR/tmux\""
 alias evim="e $DOTDIR/vim +\"cd $DOTDIR/vim\""
 

@@ -27,7 +27,7 @@
     ~/.zshenv: zsh/zshenv
     ~/.zshrc: zsh/zshrc
 
-    zprezto/modules/prompt/functions/prompt_santiaro_setup: zsh/themes/prompt_santiaro_setup
+    zprezto/modules/prompt/functions/prompt_dark_setup: zsh/themes/prompt_dark_setup
 
     ~/.vim: vim/vim/
     ~/.vimrc: vim/vimrc
