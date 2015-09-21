@@ -81,7 +81,7 @@ if [[ -z "$TMUX" ]]; then
 
     # Create a session if no one has been defined in tmux.conf.
     if ! tmux has-session 2> /dev/null; then
-        read 'tmux_session?Give a name to your tmux session [default: default-session]:'
+        read 'tmux_session?Give a name to your tmux session [default: default-session]: '
         tmux_session=${tmux_session:-default-session}
         tmux -2 \
             new-session -d -s "$tmux_session" \; \

@@ -1,4 +1,4 @@
-# vim: set ft=zsh :
+# vim: set ft=sh :
 
 # Open default editor with the given parameters.
 
@@ -7,9 +7,8 @@ if [[ -z $EDITOR ]]; then
     return 1
 fi
 
-if [[ -z $@ ]]; then
-    eval $EDITOR .
+if [[ -z $* ]]; then
+    $EDITOR .
 else
-    eval $EDITOR ${(q)@}
+    $EDITOR $*
 fi
-

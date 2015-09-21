@@ -18,10 +18,11 @@ alias g="git"
 # Edit config files
 alias ealias="e $DOTDIR/zsh/shell_aliases +\"cd $DOTDIR/zsh\""
 alias efunc="e $DOTDIR/zsh/zfunc +\"cd $DOTDIR/zsh/zfunc\""
+alias ezsh="e $DOTDIR/zsh/z* +\"cd $DOTDIR/zsh\" +bfirst"
 alias egit="e $DOTDIR/git/gitconfig +\"cd $DOTDIR/git\""
 alias eprompt="e $DOTDIR/zsh/themes/prompt_dark_setup +\"cd $DOTDIR/zsh\""
 alias etmux="e $DOTDIR/tmux/tmux.conf +\"cd $DOTDIR/tmux\""
-alias evim="e $DOTDIR/vim +\"cd $DOTDIR/vim\""
+alias evim="e $DOTDIR/vim/vimrc +\"cd $DOTDIR/vim\""
 
 # Misc
 command -v pbcopy > /dev/null 2>&1 || alias pbcopy="xsel -ib"
@@ -49,10 +50,10 @@ alias r:t="b:e rake test"
 # Node
 alias n:i="npm install"
 alias n:u="npm uninstall"
-alias n:is="npm:i --save"
-alias n:id="npm:i --save-dev"
-alias n:us="npm:u --save"
-alias n:ud="npm:u --save-dev"
+alias n:is="n:i --save"
+alias n:id="n:i --save-dev"
+alias n:us="n:u --save"
+alias n:ud="n:u --save-dev"
 
 # Bower
 alias bo:i="bower install"
