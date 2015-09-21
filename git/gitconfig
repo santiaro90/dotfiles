@@ -16,7 +16,7 @@
     bd = branch -D
 
     # Commit
-    am = commit --amend
+    amend = commit --amend
     c = commit
     ca = commit -a
     cam = commit -am
