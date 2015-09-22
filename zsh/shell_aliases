@@ -3,14 +3,15 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias dotf="[[ -d $DOTDIR ]] && cd $DOTDIR"
-alias lsa="ls -alh"
+alias lsa="ls -Alh"
 
 # Apt
 alias apti="sudo apt-get install -y"
 alias aptu="sudo apt-get update -y"
 alias aptup="aptu && sudo apt-get upgrade -y"
 alias aptp="sudo apt-get purge -y"
-alias aptc="sudo apt-get clean && apt-get autoclean && apt-get autoremove"
+alias aptc="sudo apt-get clean && sudo apt-get autoclean && sudo apt-get autoremove"
+alias add-repo="sudo apt-add-repository -y"
 
 # Git
 alias g="git"

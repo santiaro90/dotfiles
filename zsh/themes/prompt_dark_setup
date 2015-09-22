@@ -39,10 +39,10 @@ function prompt_dark_setup {
     local host_name='%B'
 
     if [ -z "$TMUX" ]; then
-        host_name=' %B%K{254}%F{16}%n@%M %f%k'
+        host_name=' %B%F{1}%n%f%F{255} at %f%F{5}%M%f%F{255}:%f'
     fi
 
-    PROMPT=${host_name}' %U%F{136}%~%f%u%b ${git_info[prompt]}
+    PROMPT=${host_name}' %U%F{3}%~%f%u%b ${git_info[prompt]}
  ${editor_info[keymap]} '
 }
 

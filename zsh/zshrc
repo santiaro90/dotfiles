@@ -18,8 +18,27 @@ fpath=($HOME/.zfunc $fpath)
 autoload -Uz $HOME/.zfunc/*(:t)
 
 # Source nvm
-[[ -s $HOME/.nvm/nvm.sh ]] && source $HOME/.nvm/nvm.sh && nvm use stable > /dev/null 1>&1
+[ -s $HOME/.nvm/nvm.sh ] && source $HOME/.nvm/nvm.sh && nvm use stable > /dev/null 2>&1
 
 # Load aliases
-[[ -f $HOME/.shell_aliases ]] && source $HOME/.shell_aliases
+[ -f $HOME/.shell_aliases ] && source $HOME/.shell_aliases
+
+#
+# Tmux auto-start
+#
+if [[ -z "$TMUX" ]]; then
+    tmux start-server
+
+    # Create a session if no one has been defined in tmux.conf.
+    if ! tmux has-session 2> /dev/null; then
+        read 'tmux_session?Give a name to your tmux session [default: default-session]: '
+        tmux_session=${tmux_session:-default-session}
+        tmux -2 \
+            new-session -d -s "$tmux_session" \; \
+            set-option -t "$tmux_session" destroy-unattached off &> /dev/null
+    fi
+
+    # Attach to the default session or to the last session used.
+    exec tmux -2 attach-session
+fi
 
