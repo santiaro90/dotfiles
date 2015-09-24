@@ -21,9 +21,9 @@ fi
 # Either pbcopy or xsel must be available in the system
 local pbcopy=
 if command -v pbcopy > /dev/null 2>&1; then
-    cat "$key" | xsel -ib
-else
     cat "$key" | pbcopy
+else
+    cat "$key" | xsel -ib
 fi
 
 echo "Your SSH public key's been copied to clipboard!"
