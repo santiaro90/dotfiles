@@ -17,6 +17,9 @@
     ~/.shell_aliases: zsh/shell_aliases
 
     ~/.tmux.conf: tmux/tmux.conf
+    ~/.tmux/battery: 
+        create: true
+        path: tmux/tmux-battery/
 
     ~/.zfunc: zsh/zfunc/
     ~/.zlogin: zprezto/runcoms/zlogin
