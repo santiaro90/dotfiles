@@ -15,9 +15,11 @@ export DOTDIR="$HOME/dotfiles"
 export EDITOR="vim"
 export VISUAL="vim"
 
-export PATH="$HOME/.linuxbrew/bin:$PATH"
-export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
-export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
+if [[ $(uname) != "Darwin" ]]; then
+    export PATH="$HOME/.linuxbrew/bin:$PATH"
+    export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
+    export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
+fi
 
 # Add rbenv to user's path
 if [[ -d $HOME/.rbenv ]]; then
