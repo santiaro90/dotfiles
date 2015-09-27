@@ -1,15 +1,14 @@
 #!/usr/bin/env bash
-
 set -e
 
-CONFIG="config.yaml"
+CONFIG="$(pwd)/config.yaml"
 
 DOTBOT_DIR="dotbot"
 DOTBOT_BIN="bin/dotbot"
 
-BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+BASEDIR="$(cd .. && pwd)"
 
 cd "${BASEDIR}"
-git submodule update --init --recursive "${DOTBOT_DIR}"
+git submodule update --init --recursive "${DOTBOT_DIR}" > /dev/null 2>&1
 
 "${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -c "${CONFIG}" "${@}"

@@ -3,8 +3,10 @@
 
 - shell:
     -
-        - 'git submodule update --init --recursive --remote'
-        - 'Updating submodules'
+        # WATCH OUT: ./scripts/update executes with $PWD equals to this dotfiles repo's root directory;
+        #            in this case, it is $HOME/dotfiles/
+        command: 'git submodule update --init --recursive --remote && ./scripts/update'
+        description: 'Fetching and updating submodules'
 
 - link:
     ~/.ctags: ctags/ctags
@@ -37,8 +39,8 @@
 
 - shell:
     -
-        - 'mkdir -p ~/.vim/backup ~/.vim/swap ~/.vim/undo'
-        - 'Creating backup directories for Vim'
+        command: 'mkdir -p ~/.vim/backup ~/.vim/swap ~/.vim/undo'
+        description: 'Creating backup directories for Vim'
     -
-        - 'vim +PluginClean +PluginInstall +qall'
-        - 'Installing Vim Vundle managed plugins'
+        command: 'vim +PluginClean +PluginInstall +qall'
+        description: 'Installing Vim Vundle managed plugins'

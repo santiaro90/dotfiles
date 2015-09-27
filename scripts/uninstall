@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+set -e
+
+read -r -p "dotfiles: are you sure you want to uninstall your dotfiles? [y/N]: " response
+
+if [[ $response =~ ^[yY]$ ]]; then
+    if command -v ruby > /dev/null 2>&1; then
+        ruby ./uninstall.rb
+    else
+        # TODO: parse config.yaml with bash
+        echo "dotfiles: you need a ruby installation in order to remove your dotfiles"
+    fi
+fi
