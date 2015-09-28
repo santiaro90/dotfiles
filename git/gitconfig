@@ -10,7 +10,8 @@
     dt = difftool
 
     # Branching
-    b = branch -avv    # Show branches info (verbose)
+    b = branch
+    bv = branch -avv    # Show branches info (verbose)
     bm = branch -m
     br = branch -d
     bd = branch -D
