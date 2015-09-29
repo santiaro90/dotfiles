@@ -38,8 +38,10 @@ set tabstop=4
 set nofoldenable
 set foldmethod=manual
 
-" Highlight current line
+" Highlight current line (except when diffing files)
 set cursorline
+autocmd BufAdd,BufEnter * if &diff | setlocal nocursorline | endif
+
 " Relative line numbering on
 set number
 set relativenumber
