@@ -38,13 +38,17 @@ let g:airline_theme='powerlineish'
 let g:airline#extensions#tabline#enabled=1
 
 " CtrlP settings
-let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
-    \ --ignore .git
-    \ --ignore .svn
-    \ --ignore .hg
-    \ --ignore .DS_Store
-    \ --ignore "**/*.pyc"
-    \ -g ""'
+if executable('ag')
+    let g:ctrlp_user_command='ag %s -i --nocolor --nogroup --hidden
+        \ --ignore .git
+        \ --ignore .svn
+        \ --ignore .hg
+        \ --ignore .DS_Store
+        \ --ignore "**/*.pyc"
+        \ -g ""'
+    let g:ctrlp_use_caching=0
+endif
+
 let g:ctrlp_match_window='top,order:ttb,min:1,max:10'
 let g:ctrlp_show_hidden=1
 let g:ctrlp_match_func={ 'match': 'pymatcher#PyMatch' }
