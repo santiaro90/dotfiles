@@ -3,7 +3,8 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias dotf="[[ -d $DOTDIR ]] && cd $DOTDIR"
-alias lsa="ls -Alh"
+alias la="ls -Alh"
+alias l="ls -A1"
 
 # Apt
 alias apti="sudo apt-get install -y"

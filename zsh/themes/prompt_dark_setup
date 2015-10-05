@@ -42,7 +42,7 @@ function prompt_dark_setup {
         host_name=' %B%F{1}%n%f%F{255} at %f%F{5}%M%f%F{255}:%f'
     fi
 
-    PROMPT=${host_name}' %U%F{3}%~%f%u%b ${git_info[prompt]}
+    PROMPT=${host_name}' %U%F{3}%3~%f%u%b ${git_info[prompt]}
  ${editor_info[keymap]} '
 }
 
