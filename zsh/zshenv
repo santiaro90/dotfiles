@@ -10,13 +10,13 @@ if [[ "$SHLVL" -eq 1 && ! -o LOGIN && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprofile"
 fi
 
-export DOTDIR="$HOME/dotfiles"
+export DOTDIR="$HOME/.dotfiles"
 
 export EDITOR="vim"
 export VISUAL="vim"
 
 # Export these only if not in OS X
-if [[ $(uname) != "Darwin" ]]; then
+if [ $(uname) != "Darwin" ]; then
     export PATH="$HOME/.linuxbrew/bin:$PATH"
     export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
     export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
@@ -25,6 +25,9 @@ fi
 # Add rbenv to user's path
 if [ -d $HOME/.rbenv ]; then
     export PATH="$HOME/.rbenv/bin:$PATH"
-    eval "$(rbenv init -)"
 fi
 
+# Init rbenv
+if command -v rbenv > /dev/null 2>&1; then
+    eval "$(rbenv init -)"
+fi
