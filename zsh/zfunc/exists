@@ -1,0 +1,11 @@
+# vim: set ft=sh :
+
+# Check if a command exists
+
+if [ -z "$1" ]; then
+    echo "exists: you must provide a command to test"
+    return 1
+fi
+
+command -v "$1" > /dev/null 2>&1
+return $?
