@@ -5,26 +5,32 @@
 
 local key=$HOME/.ssh/id_rsa.pub
 
-if [[ ! -f $key ]]; then
+if [ ! -f $key ]; then
     echo "This user seems not to have an SSH public key"
     read -q "?Would you like to create one? [y/n]: "
 
-    if [[ $? -eq 0 ]]; then
+    if [ $? -eq 0 ]; then
         echo
-        ssh-keygen -t rsa -b 2048 -f ${key:r}
+        ssh-keygen -t rsa -b 4096 -f ${key:r}
     else
         return $?
     fi
 fi
 
 # Determine which command is available for copying to the clipboard.
-# Either pbcopy or xsel must be available in the system
-local pbcopy=
-if command -v pbcopy > /dev/null 2>&1; then
+# If there's none, the key will be echoed to stdout
+if exists pbcopy > /dev/null 2>&1; then
     cat "$key" | pbcopy
-else
+elif exists xsel; then
     cat "$key" | xsel -ib
+else
+    echo -n "ssh-key: you don't have any utility which you can access the clipboard from. "
+    echo "Your key will be echoed to stdout..."
+    echo
+
+    cat "$key"
+
+    return 0
 fi
 
 echo "Your SSH public key's been copied to clipboard!"
-
