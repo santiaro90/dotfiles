@@ -23,6 +23,11 @@ autoload -Uz $HOME/.zfunc/*(:t)
 # Load aliases
 [ -f $HOME/.shell_aliases ] && source $HOME/.shell_aliases
 
+# Init rbenv
+if command -v rbenv > /dev/null 2>&1; then
+    eval "$(rbenv init -)"
+fi
+
 #
 # Tmux auto-start
 #
