@@ -2,12 +2,12 @@
 
 # Open default editor with the given parameters.
 
-if [[ -z $EDITOR ]]; then
+if [ -z "$EDITOR" ]; then
     echo "e: you don't have a default editor. Set one in the \$EDITOR variable"
     return 1
 fi
 
-if [[ -z $* ]]; then
+if [ -z "$*" ]; then
     $EDITOR .
 else
     $EDITOR $*

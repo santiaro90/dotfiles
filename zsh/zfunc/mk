@@ -1,9 +1,9 @@
-# vim: set ft=zsh :
+# vim: set ft=sh :
 
 # Create directory and cd into it
 
 # Check if a parameter was given
-if [[ -z "$1" ]]; then
+if [ -z "$1" ]; then
     echo "mk: you must provide a name for the new directory"
     return 1
 fi
