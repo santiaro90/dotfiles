@@ -26,11 +26,13 @@ set list
 " Indentation
 set autoindent
 set backspace=indent,eol,start
+" set smartindent
+" set cindent
+
+" Tab behaviour
 set expandtab
 set shiftround
 set shiftwidth=4
-" set smartindent
-set cindent
 set softtabstop=4
 set tabstop=4
 
