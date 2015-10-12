@@ -11,6 +11,8 @@
 - link:
     ~/.ctags: ctags/ctags
 
+    ~/.editorconfig: editorconfig/editorconfig
+
     ~/.gemrc: ruby/gemrc
 
     ~/.gitconfig: git/gitconfig
@@ -19,7 +21,7 @@
     ~/.shell_aliases: zsh/shell_aliases
 
     ~/.tmux.conf: tmux/tmux.conf
-    ~/.tmux/battery: 
+    ~/.tmux/battery:
         create: true
         path: tmux/tmux-battery/
 
