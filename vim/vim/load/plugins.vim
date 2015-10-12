@@ -21,14 +21,17 @@ Plugin 'Raimondi/delimitMate'
 Plugin 'rstacruz/sparkup'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
+Plugin 'SirVer/ultisnips'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-dispatch'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-repeat'
+Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-surround'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'vim-ruby/vim-ruby'
 
 call vundle#end()
 
