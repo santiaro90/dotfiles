@@ -16,6 +16,9 @@
     br = branch -d
     bd = branch -D
 
+    # Clone
+    cl = clone -v
+
     # Commit
     amend = commit --amend
     c = commit
@@ -51,7 +54,7 @@
 
 [color "status"]
     added = green bold ul
-    changed = yellow bold ul 
+    changed = yellow bold ul
     untracked = magenta bold
 
 [core]
@@ -71,10 +74,10 @@
     default = simple
 
 [url "https://github.com/"]
-    insteadOf = gh:
+    insteadOf = ghh:
 
 [url "git@github.com:"]
-    insteadOf = gh@
+    insteadOf = ghs:
 
 [user]
     email = santiaro90@gmail.com
