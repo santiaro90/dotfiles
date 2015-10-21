@@ -18,6 +18,7 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'marijnh/tern_for_vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'Raimondi/delimitMate'
+Plugin 'rking/ag.vim'
 Plugin 'rstacruz/sparkup'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
@@ -32,6 +33,7 @@ Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-surround'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'vim-ruby/vim-ruby'
+Plugin 'wavded/vim-stylus'
 
 call vundle#end()
 
