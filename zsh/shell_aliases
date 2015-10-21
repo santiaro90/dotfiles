@@ -71,3 +71,6 @@ alias rm="nocorrect rm"
 # Disable e alias (coming from prezto). This will be defined as
 # a function
 unalias e
+
+# Source local alias definitions, if there's any
+[ -f ~/.alias.local ] && source ~/.alias.local
