@@ -1,12 +1,12 @@
 # vim: set filetype=zsh:
-function prompt_dark_precmd {
+function prompt_light_precmd {
     # Get Git repository information.
     if (( $+functions[git-info] )); then
         git-info
     fi
 }
 
-function prompt_dark_setup {
+function prompt_light_setup {
     setopt LOCAL_OPTIONS
     unsetopt XTRACE KSH_ARRAYS
     prompt_opts=(cr percent subst)
@@ -20,15 +20,15 @@ function prompt_dark_setup {
     autoload -Uz vcs_info
 
     # Add a hook for calling info functions before each command.
-    add-zsh-hook precmd prompt_dark_precmd
+    add-zsh-hook precmd prompt_light_precmd
 
     # Set editor parameters
-    zstyle ':prezto:module:editor:info:keymap:alternate' format '%B%F{69}➤%f%b'
-    zstyle ':prezto:module:editor:info:keymap:primary' format '%B%F{70}➤%f%b'
+    zstyle ':prezto:module:editor:info:keymap:alternate' format '%B%F{243}➤%f%b'
+    zstyle ':prezto:module:editor:info:keymap:primary' format '%B%F{130}➤%f%b'
 
     # Set git-info parameters.
     zstyle ':prezto:module:git:info' verbose yes
-    zstyle ':prezto:module:git:info:branch' format '%F{45}%b%f'
+    zstyle ':prezto:module:git:info:branch' format '%F{55}%b%f'
     zstyle ':prezto:module:git:info:clean' format '%F{34}✔︎%f'
     zstyle ':prezto:module:git:info:dirty' format '%F{red}✘%f'
     zstyle ':prezto:module:git:info:keys' format 'prompt' ' %b %D%C'
@@ -37,11 +37,11 @@ function prompt_dark_setup {
     local host_name='%B'
 
     if [ -z "$TMUX" ]; then
-        host_name=' %B%F{1}%n%f%F{255} at %f%F{5}%M%f%F{255}:%f'
+        host_name=' %B%F{124}%n%f%F{8} at %f%F{32}%M%f%F{8}:%f'
     fi
 
-    PROMPT=${host_name}' %U%F{3}%3~%f%u%b ${git_info[prompt]}
+    PROMPT=${host_name}' %U%F{22}%3~%f%u%b ${git_info[prompt]}
  ${editor_info[keymap]} '
 }
 
-prompt_dark_setup "$@"
+prompt_light_setup "$@"

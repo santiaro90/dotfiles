@@ -23,6 +23,7 @@ alias efunc="e $DOTDIR/zsh/zfunc +\"cd $DOTDIR/zsh/zfunc\""
 alias ezsh="e $DOTDIR/zsh/z* +\"cd $DOTDIR/zsh\" +bfirst"
 alias egit="e $DOTDIR/git/gitconfig +\"cd $DOTDIR/git\""
 alias eprompt="e $DOTDIR/zsh/themes/prompt_dark_setup +\"cd $DOTDIR/zsh\""
+# alias eprompt="e $DOTDIR/zsh/themes/prompt_light_setup +\"cd $DOTDIR/zsh\""
 alias etmux="e $DOTDIR/tmux/tmux.conf +\"cd $DOTDIR/tmux\""
 alias evim="e $DOTDIR/vim/vimrc +\"cd $DOTDIR/vim\""
 

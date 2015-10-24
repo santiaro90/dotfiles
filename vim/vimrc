@@ -34,7 +34,7 @@ let mapleader="\<Space>"
 " Setup vundle and load plugins
 source ~/.vim/load/plugins.vim
 
-" Use Tomorrow Night theme
+" Colour scheme
 set background=dark
 set t_Co=256
 colorscheme Tomorrow-Night-Eighties
