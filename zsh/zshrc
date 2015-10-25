@@ -10,7 +10,7 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
-# Map kj to ESC in shell 
+# Map kj to ESC in shell
 bindkey kj vi-cmd-mode
 
 # Adjust fpath to load custom functions
@@ -31,19 +31,19 @@ fi
 #
 # Tmux auto-start
 #
-if [[ -z "$TMUX" ]]; then
-    tmux start-server
-
-    # Create a session if no one has been defined in tmux.conf.
-    if ! tmux has-session 2> /dev/null; then
-        read 'tmux_session?Give a name to your tmux session [default: default-session]: '
-        tmux_session=${tmux_session:-default-session}
-        tmux -2 \
-            new-session -d -s "$tmux_session" \; \
-            set-option -t "$tmux_session" destroy-unattached off &> /dev/null
-    fi
-
-    # Attach to the default session or to the last session used.
-    exec tmux -2 attach-session
-fi
-
+# if [[ -z "$TMUX" ]]; then
+#     tmux start-server
+#
+#     # Create a session if no one has been defined in tmux.conf.
+#     if ! tmux has-session 2> /dev/null; then
+#         read 'tmux_session?Give a name to your tmux session [default: default-session]: '
+#         tmux_session=${tmux_session:-default-session}
+#         tmux -2 \
+#             new-session -d -s "$tmux_session" \; \
+#             set-option -t "$tmux_session" destroy-unattached off &> /dev/null
+#     fi
+#
+#     # Attach to the default session or to the last session used.
+#     exec tmux -2 attach-session
+# fi
+#
