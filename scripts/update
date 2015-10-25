@@ -4,3 +4,4 @@ set -e
 # Traverse each submodule to pull and checkout origin/master
 git submodule foreach --recursive git checkout master
 git submodule foreach --recursive git pull origin master
+git submodule update
