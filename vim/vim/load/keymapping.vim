@@ -1,8 +1,10 @@
 " Source .vimrc
 nnoremap <leader>r :source $MYVIMRC<CR>
-" Swap : and ; in normal mode
+" Swap : and ; in normal/visual mode
 nnoremap ; :
 nnoremap : ;
+vnoremap ; :
+vnoremap : ;
 
 " Deactivate Ex mode
 noremap Q <nop>
