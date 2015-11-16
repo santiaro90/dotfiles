@@ -34,6 +34,17 @@
     # Pretty log of the last 10 commits
     l = log -10 --decorate --graph --oneline --pretty=format:'%C(yellow)[%h]%Creset%C(auto)%d%Creset - %C(blue)%cd%Creset by %C(green)<%ae>%Creset%n%s%n' --abbrev-commit
 
+    # Init
+    i = init
+    ib = init --bare
+
+    # Stash
+    st = stash
+    stu = stash -u
+    sta = stash apply
+    stl = stash list
+    stp = stash pop
+
     # Status
     s = status
     ss = status -s    # Short status
