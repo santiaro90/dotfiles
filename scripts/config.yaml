@@ -42,7 +42,7 @@
 
 - shell:
     -
-        command: 'mkdir -p ~/.vim/backup ~/.vim/swap ~/.vim/undo'
+        command: 'mkdir -p ~/.vim/undo'
         description: 'Creating backup directories for Vim'
     -
         command: 'vim +PluginClean +PluginInstall +qall'
