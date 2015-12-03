@@ -15,7 +15,7 @@ Plugin 'FelikZ/ctrlp-py-matcher'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'kien/ctrlp.vim'
-Plugin 'marijnh/tern_for_vim'
+" Plugin 'marijnh/tern_for_vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'Raimondi/delimitMate'
 Plugin 'rking/ag.vim'
@@ -31,15 +31,15 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-surround'
-Plugin 'Valloric/YouCompleteMe'
+" Plugin 'Valloric/YouCompleteMe'
 Plugin 'vim-ruby/vim-ruby'
-Plugin 'wavded/vim-stylus'
+" Plugin 'wavded/vim-stylus'
 
 call vundle#end()
 
 " Airline settings
 let g:airline_powerline_fonts=1
-let g:airline_theme='bubblegum'
+let g:airline_theme='wombat'
 let g:airline#extensions#tabline#enabled=1
 
 " CtrlP settings

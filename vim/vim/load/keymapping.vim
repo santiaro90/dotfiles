@@ -22,7 +22,7 @@ map <DOWN> <nop>
 inoremap kj <ESC>
 
 " Toggle search highlight
-nnoremap <silent> <leader>c :set nohls!<CR>
+nnoremap <silent> <leader>c :let @/=''<CR>
 
 " Changing windows layout
 noremap <leader>J <C-w>J
