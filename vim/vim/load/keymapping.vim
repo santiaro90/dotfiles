@@ -1,8 +1,10 @@
 " Source .vimrc
 nnoremap <leader>r :source $MYVIMRC<CR>
-" Swap : and ; in normal mode
+" Swap : and ; in normal/visual mode
 nnoremap ; :
 nnoremap : ;
+vnoremap ; :
+vnoremap : ;
 
 " Deactivate Ex mode
 noremap Q <nop>
@@ -21,6 +23,12 @@ inoremap kj <ESC>
 
 " Toggle search highlight
 nnoremap <silent> <leader>c :let @/=''<CR>
+
+" Moving between tabs/buffers
+nnoremap <leader>t :tabn<CR>
+nnoremap <leader>T :tabp<CR>
+nnoremap <leader>b :bn<CR>
+nnoremap <leader>B :bp<CR>
 
 " Changing windows layout
 noremap <leader>J <C-w>J
