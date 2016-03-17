@@ -3,8 +3,8 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias dotf="[[ -d $DOTDIR ]] && cd $DOTDIR"
-alias l="ls -A1"
-alias la="ls -Alh"
+alias l="ls -A1p"
+alias la="ls -Alhp"
 alias lt="tree -L 3"
 
 # Apt
