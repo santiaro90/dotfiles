@@ -38,6 +38,11 @@
     i = init
     ib = init --bare
 
+    # Remote
+    ra = remote add origin
+    rs = remote set-url origin
+    rv = remote -v
+
     # Stash
     st = stash
     stu = stash -u
