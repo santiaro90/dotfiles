@@ -1,0 +1,30 @@
+# vim: set ft=zsh :
+
+# Search for documentation in Dash
+
+local docset=
+while getopts :d: option; do
+    case "$option" in
+        d)
+            docset="$OPTARG:"
+            ;;
+        \?)
+            echo "dash: invalid option -$OPTARG"
+            return 1
+            ;;
+        :)
+            echo "dash: option -$OPTARG requires an argument"
+            echo "usage: dash [-d <docset>] <term>"
+            return 1
+            ;;
+    esac
+done
+
+local term=${(P)OPTIND}
+if [ -z $term ]; then
+    echo "dash: you must enter a term to search"
+    echo "usage: dash [-d <docset>] <term>"
+    return 1
+fi
+
+open "dash://${docset}$term"

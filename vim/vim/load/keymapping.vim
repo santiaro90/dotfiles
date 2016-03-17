@@ -9,8 +9,9 @@ vnoremap : ;
 " Deactivate Ex mode
 noremap Q <nop>
 
-" Disable mapping to redirect to man pages
-noremap K <nop>
+" Search with Dash
+nnoremap K :Dash <C-R><C-W><SPACE>
+vnoremap K y:Dash <C-R>0<SPACE>
 
 " Disable arrow keys
 map <LEFT> <nop>
