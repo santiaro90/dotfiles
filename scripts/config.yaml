@@ -18,7 +18,7 @@
     ~/.gitconfig: git/gitconfig
     ~/.gitignore: git/gitignore
 
-    ~/.shell_aliases: zsh/shell_aliases
+    ~/.alias: zsh/alias
 
     ~/.tmux.conf: tmux/tmux.conf
     ~/.tmux/battery:

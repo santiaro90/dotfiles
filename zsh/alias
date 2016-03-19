@@ -1,3 +1,5 @@
+# vim: set ft=zsh :
+
 # Navigation
 alias ..="cd .."
 alias ...="cd ../.."
@@ -19,7 +21,7 @@ alias add-repo="sudo apt-add-repository -y"
 alias g="git"
 
 # Edit config files
-alias ealias="e $DOTDIR/zsh/shell_aliases +\"cd $DOTDIR/zsh\""
+alias ealias="e $DOTDIR/zsh/alias +\"cd $DOTDIR/zsh\""
 alias efunc="e $DOTDIR/zsh/zfunc +\"cd $DOTDIR/zsh/zfunc\""
 alias ezsh="e $DOTDIR/zsh/z* +\"cd $DOTDIR/zsh\" +bfirst"
 alias egit="e $DOTDIR/git/gitconfig +\"cd $DOTDIR/git\""

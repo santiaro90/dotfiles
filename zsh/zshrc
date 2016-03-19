@@ -21,7 +21,7 @@ autoload -Uz $HOME/.zfunc/*(:t)
 [ -s $HOME/.nvm/nvm.sh ] && source $HOME/.nvm/nvm.sh && nvm use stable > /dev/null 2>&1
 
 # Load aliases
-[ -f $HOME/.shell_aliases ] && source $HOME/.shell_aliases
+[ -f $HOME/.alias ] && source $HOME/.alias
 
 # Init rbenv
 if command -v rbenv > /dev/null 2>&1; then
