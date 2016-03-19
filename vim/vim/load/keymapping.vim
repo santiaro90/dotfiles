@@ -50,3 +50,8 @@ nnoremap J mjJ`j
 " Add blank lines above and below current one
 nnoremap <leader>o @='mzo<C-V><ESC>`z'<CR>
 nnoremap <leader>O @='mzO<C-V><ESC>`z'<CR>
+
+" Add local mappings if any
+if filereadable(glob('~/.vim/load/keymapping.local.vim'))
+    source ~/.vim/load/keymapping.local.vim
+endif

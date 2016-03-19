@@ -15,12 +15,10 @@ Plugin 'editorconfig/editorconfig-vim'
 Plugin 'FelikZ/ctrlp-py-matcher'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'hail2u/vim-css3-syntax'
-Plugin 'kchmck/vim-coffee-script'
 Plugin 'kien/ctrlp.vim'
 " Plugin 'marijnh/tern_for_vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'Raimondi/delimitMate'
-Plugin 'rizzatti/dash.vim'
 Plugin 'rking/ag.vim'
 Plugin 'rstacruz/sparkup'
 Plugin 'scrooloose/nerdtree'
@@ -32,11 +30,13 @@ Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-dispatch'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-surround'
 " Plugin 'Valloric/YouCompleteMe'
-Plugin 'vim-ruby/vim-ruby'
-" Plugin 'wavded/vim-stylus'
+
+" Allow adding different plugins per machine
+if filereadable(glob('~/.vim/load/plugins.local.vim'))
+    source ~/.vim/load/plugins.local.vim
+endif
 
 call vundle#end()
 
