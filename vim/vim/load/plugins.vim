@@ -15,7 +15,7 @@ Plugin 'editorconfig/editorconfig-vim'
 Plugin 'FelikZ/ctrlp-py-matcher'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'hail2u/vim-css3-syntax'
-Plugin 'kien/ctrlp.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 " Plugin 'marijnh/tern_for_vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'Raimondi/delimitMate'
@@ -58,6 +58,7 @@ if executable('ag')
         \ --ignore .svn
         \ --ignore .hg
         \ --ignore .DS_Store
+        \ --ignore node_modules
         \ --ignore "**/*.pyc"
         \ -g ""'
     let g:ctrlp_use_caching=0
@@ -66,7 +67,7 @@ endif
 let g:ctrlp_match_window='top,order:ttb,min:1,max:10'
 let g:ctrlp_show_hidden=1
 let g:ctrlp_match_func={ 'match': 'pymatcher#PyMatch' }
-let g:ctrlp_working_path_mode=0
+let g:ctrlp_working_path_mode='ra'
 
 
 " Multi-cursor mappings
