@@ -23,7 +23,7 @@
     amend = commit --amend
     c = commit
     ca = commit -a
-    cam = commit -am
+    cam = !git add . && git commit -am
     cm = commit -m
 
     # Checkout
@@ -31,8 +31,9 @@
     cb = checkout -b
     cf = checkout --
 
-    # Pretty log of the last 10 commits
-    l = log -10 --decorate --graph --oneline --pretty=format:'%C(yellow)[%h]%Creset%C(auto)%d%Creset - %C(blue)%cd%Creset by %C(green)<%ae>%Creset%n%s%n' --abbrev-commit
+    # Log
+    ll = "!fn() { git log -${1:-10} --decorate --graph --pretty=format:'%C(yellow)[%h]%Creset%C(auto)%d%Creset - %C(blue)%cd%Creset by %C(green)<%ae>%Creset%n%s%n' --abbrev-commit; }; fn"
+    ls = "!fn() { git log -${1:-10} --decorate --oneline; }; fn"
 
     # Init
     i = init
