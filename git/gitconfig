@@ -32,8 +32,8 @@
     cf = checkout --
 
     # Log
-    ll = "!fn() { git log -${1:-10} --decorate --graph --pretty=format:'%C(yellow)[%h]%Creset%C(auto)%d%Creset - %C(blue)%cd%Creset by %C(green)<%ae>%Creset%n%s%n' --abbrev-commit; }; fn"
-    ls = "!fn() { git log -${1:-10} --decorate --oneline; }; fn"
+    ll = log --decorate --graph --pretty=format:'%C(yellow)[%h]%Creset%C(auto)%d%Creset - %C(blue)%cd%Creset by %C(green)<%ae>%Creset%n%s%n' --abbrev-commit
+    ls = log --decorate --oneline
 
     # Init
     i = init
