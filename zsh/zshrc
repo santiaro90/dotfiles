@@ -10,12 +10,24 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
-# Map kj to ESC in shell
-bindkey kj vi-cmd-mode
+# Command line keymappings
+bindkey -M viins 'kj' vi-cmd-mode
+
+bindkey -M viins '^u' backward-kill-line
+bindkey -M viins '^w' backward-kill-word
+
+bindkey -M viins '^[[1;9D' backward-word
+bindkey -M viins '^[[1;9C' forward-word
+
+bindkey -M viins '^b' end-of-line
+bindkey -M viins '^e' beginning-of-line
 
 # Adjust fpath to load custom functions
 fpath=($HOME/.zfunc $fpath)
 autoload -Uz $HOME/.zfunc/*(:t)
+
+# Load zmv
+autoload -U zmv
 
 # Source nvm
 [ -s $HOME/.nvm/nvm.sh ] && source $HOME/.nvm/nvm.sh && nvm use stable > /dev/null 2>&1
@@ -27,23 +39,3 @@ autoload -Uz $HOME/.zfunc/*(:t)
 if command -v rbenv > /dev/null 2>&1; then
     eval "$(rbenv init -)"
 fi
-
-#
-# Tmux auto-start
-#
-# if [[ -z "$TMUX" ]]; then
-#     tmux start-server
-#
-#     # Create a session if no one has been defined in tmux.conf.
-#     if ! tmux has-session 2> /dev/null; then
-#         read 'tmux_session?Give a name to your tmux session [default: default-session]: '
-#         tmux_session=${tmux_session:-default-session}
-#         tmux -2 \
-#             new-session -d -s "$tmux_session" \; \
-#             set-option -t "$tmux_session" destroy-unattached off &> /dev/null
-#     fi
-#
-#     # Attach to the default session or to the last session used.
-#     exec tmux -2 attach-session
-# fi
-#
