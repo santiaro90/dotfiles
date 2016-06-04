@@ -64,11 +64,14 @@ if executable('ag')
     let g:ctrlp_use_caching=0
 endif
 
+" CtrlP
 let g:ctrlp_match_window='top,order:ttb,min:1,max:10'
 let g:ctrlp_show_hidden=1
 let g:ctrlp_match_func={ 'match': 'pymatcher#PyMatch' }
 let g:ctrlp_working_path_mode='ra'
 
+" Sparkup filetypes
+autocmd FileType javascript runtime! ftplugin/html/sparkup.vim
 
 " Multi-cursor mappings
 let g:multi_cursor_next_key='<C-n>'
@@ -86,7 +89,7 @@ let g:delimitMate_expand_cr=1
 let g:syntastic_ruby_checkers=['rubocop']
 
 " To hide preview window after selecting an autocomplete option
-let g:ycm_autoclose_preview_window_after_completion=1
+autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
 " Open NERDTree
 noremap <leader>n :NERDTreeToggle<CR>
