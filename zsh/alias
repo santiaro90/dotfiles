@@ -43,14 +43,16 @@ alias b:e="b exec"
 
 alias r:c="rails console"
 alias r:n="rails new"
-alias r:sbox="rails console --sandbox"
+alias r:cs="rails console --sandbox"
 alias r:s="rails server"
 
 alias r:gc="rails generate controller"
 alias r:gm="rails generate model"
+alias r:gr="rails generate resource"
 alias r:gs="rails generate scaffold"
 
-alias r:m="b:e rake db:migrate"
+alias r:dc="b:e rake db:create"
+alias r:dm="b:e rake db:migrate"
 alias r:t="b:e rake test"
 
 # Node
@@ -60,14 +62,6 @@ alias n:is="n:i --save"
 alias n:id="n:i --save-dev"
 alias n:us="n:u --save"
 alias n:ud="n:u --save-dev"
-
-# Bower
-alias bo:i="bower install"
-alias bo:u="bower uninstall"
-alias bo:is="bo:i --save"
-alias bo:id="bo:i --save-dev"
-alias bo:us="bo:u --save"
-alias bo:ud="bo:u --save-dev"
 
 # Disable corrections
 alias rm="nocorrect rm"
