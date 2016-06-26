@@ -1,5 +1,5 @@
 " Source .vimrc
-nnoremap <leader>r :source $MYVIMRC<CR>
+nnoremap <leader>s :source $MYVIMRC<CR>
 " Swap : and ; in normal/visual mode
 nnoremap ; :
 nnoremap : ;
@@ -26,10 +26,13 @@ inoremap kj <ESC>
 nnoremap <silent> <leader>c :let @/=''<CR>
 
 " Moving between tabs/buffers
-nnoremap <leader>t :tabn<CR>
-nnoremap <leader>T :tabp<CR>
-nnoremap <leader>b :bn<CR>
-nnoremap <leader>B :bp<CR>
+nnoremap <leader>N :tabn<CR>
+nnoremap <leader>P :tabp<CR>
+nnoremap <leader>n :bn<CR>
+nnoremap <leader>p :bp<CR>
+
+" Toggle NERDTree
+noremap <leader>. :NERDTreeToggle<CR>
 
 " Changing windows layout
 noremap <leader>J <C-w>J

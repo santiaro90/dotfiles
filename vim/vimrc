@@ -44,4 +44,3 @@ source ~/.vim/load/editor.vim
 
 " Load custom key mappings
 source ~/.vim/load/keymapping.vim
-

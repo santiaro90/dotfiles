@@ -91,7 +91,4 @@ let g:syntastic_ruby_checkers=['rubocop']
 " To hide preview window after selecting an autocomplete option
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
-" Open NERDTree
-noremap <leader>n :NERDTreeToggle<CR>
-
 command! -nargs=? Node Dispatch node <args>
