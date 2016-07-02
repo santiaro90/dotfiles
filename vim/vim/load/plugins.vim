@@ -12,7 +12,6 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'editorconfig/editorconfig-vim'
-Plugin 'ervandew/supertab'
 Plugin 'FelikZ/ctrlp-py-matcher'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'hail2u/vim-css3-syntax'
@@ -40,7 +39,7 @@ endif
 
 call vundle#end()
 
-" Airline settings
+" Airline
 let g:airline_powerline_fonts=1
 let g:airline_left_sep=''
 let g:airline_right_sep=''
@@ -73,7 +72,7 @@ let g:ctrlp_working_path_mode='ra'
 " Sparkup filetypes
 autocmd FileType javascript runtime! ftplugin/html/sparkup.vim
 
-" NERDTree settings
+" NERDTree
 let NERDTreeShowHidden=1
 
 " Place cursor properly when hitting enter after braces
@@ -85,4 +84,5 @@ let g:syntastic_ruby_checkers=['rubocop']
 " To hide preview window after selecting an autocomplete option
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 
+" Execute JS code withing Vim and show results in quickfix
 command! -nargs=? Node Dispatch node <args>
