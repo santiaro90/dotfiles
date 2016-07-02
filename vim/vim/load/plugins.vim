@@ -50,7 +50,12 @@ let g:airline#extensions#tabline#right_sep = ''
 let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline#extensions#tabline#right_alt_sep = '|'
 
-" CtrlP settings
+" CtrlP
+let g:ctrlp_match_window='top,order:ttb,min:1,max:10'
+let g:ctrlp_show_hidden=1
+let g:ctrlp_match_func={ 'match': 'pymatcher#PyMatch' }
+let g:ctrlp_working_path_mode='ra'
+
 if executable('ag')
     let g:ctrlp_user_command='ag %s -i --nocolor --nogroup --hidden
         \ --ignore .git
@@ -63,17 +68,15 @@ if executable('ag')
     let g:ctrlp_use_caching=0
 endif
 
-" CtrlP
-let g:ctrlp_match_window='top,order:ttb,min:1,max:10'
-let g:ctrlp_show_hidden=1
-let g:ctrlp_match_func={ 'match': 'pymatcher#PyMatch' }
-let g:ctrlp_working_path_mode='ra'
-
-" Sparkup filetypes
+" Zencoding for JSX react components
 autocmd FileType javascript runtime! ftplugin/html/sparkup.vim
 
 " NERDTree
 let NERDTreeShowHidden=1
+
+" UltiSnips
+let g:UltiSnipsEditSplit='vertical'
+let g:UltiSnipsSnippetDirectories=["load/snippets"]
 
 " Place cursor properly when hitting enter after braces
 let g:delimitMate_expand_cr=1
