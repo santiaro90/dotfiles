@@ -17,7 +17,6 @@ Plugin 'FelikZ/ctrlp-py-matcher'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'hail2u/vim-css3-syntax'
 Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'marijnh/tern_for_vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'Raimondi/delimitMate'
 Plugin 'rking/ag.vim'
@@ -73,12 +72,6 @@ let g:ctrlp_working_path_mode='ra'
 
 " Sparkup filetypes
 autocmd FileType javascript runtime! ftplugin/html/sparkup.vim
-
-" Multi-cursor mappings
-let g:multi_cursor_next_key='<C-n>'
-let g:multi_cursor_prev_key='<C-p>'
-let g:multi_cursor_skip_key='<C-u>'
-let g:multi_cursor_quit_key='<C-x>'
 
 " NERDTree settings
 let NERDTreeShowHidden=1

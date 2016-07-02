@@ -54,6 +54,12 @@ nnoremap J mjJ`j
 nnoremap <leader>o @='mzo<C-V><ESC>`z'<CR>
 nnoremap <leader>O @='mzO<C-V><ESC>`z'<CR>
 
+" Multi-cursor mappings
+let g:multi_cursor_next_key='<C-n>'
+let g:multi_cursor_prev_key='<C-p>'
+let g:multi_cursor_skip_key='<C-u>'
+let g:multi_cursor_quit_key='<C-x>'
+
 " Make UltiSnips work along with YCM
 let g:ycm_key_list_select_completion=['<C-n>']
 let g:ycm_key_list_previous_completion=['<C-p>']
