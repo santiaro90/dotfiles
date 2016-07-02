@@ -54,6 +54,11 @@ nnoremap J mjJ`j
 nnoremap <leader>o @='mzo<C-V><ESC>`z'<CR>
 nnoremap <leader>O @='mzO<C-V><ESC>`z'<CR>
 
+" Make UltiSnips work along with YCM
+let g:ycm_key_list_select_completion=['<C-n>']
+let g:ycm_key_list_previous_completion=['<C-p>']
+let g:SuperTabDefaultCompletionType='<C-n>'
+
 " Add local mappings if any
 if filereadable(glob('~/.vim/load/keymapping.local.vim'))
     source ~/.vim/load/keymapping.local.vim
