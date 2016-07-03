@@ -79,7 +79,6 @@ let NERDTreeShowHidden=1
 
 " UltiSnips
 let g:UltiSnipsEditSplit='vertical'
-let g:UltiSnipsSnippetDirectories=["load/snippets"]
 
 " Place cursor properly when hitting enter after braces
 let g:delimitMate_expand_cr=1

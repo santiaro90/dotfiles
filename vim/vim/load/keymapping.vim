@@ -61,7 +61,8 @@ let g:multi_cursor_skip_key='<C-u>'
 let g:multi_cursor_quit_key='<C-x>'
 
 " Make UltiSnips work along with YCM
-let g:UltiSnipsExpandTrigger='<C-space>'
+let g:ycm_key_list_select_completion=[]
+let g:ycm_key_list_previous_completion=[]
 
 " Add local mappings if any
 if filereadable(glob('~/.vim/load/keymapping.local.vim'))
