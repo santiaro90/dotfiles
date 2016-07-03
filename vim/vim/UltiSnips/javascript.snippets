@@ -26,7 +26,7 @@ function ${1:myFn}($2) {
 }
 endsnippet
 
-snippet class "class <className> [extends <super>] { [...class definition] }" b
+snippet class "" b
 class ${1:myClass} ${2:extends ${3:mySuper }}{
     $0
 }
@@ -37,20 +37,20 @@ endsnippet
 ########################################
 # Logs
 ########################################
-snippet con:group "console.groupCollapsed([groupName]); [...code|visual selection] console.groupEnd();" b
+snippet "log|warn|error|info|table" "" wr
+console.`!p snip.rv = match.group(0)`($0);
+endsnippet
+
+snippet group "" b
 console.groupCollapsed($1);
-
 ${0:${VISUAL}}
-
 console.groupEnd();
 endsnippet
 
-snippet con:time "console.time([groupName]); [...code|visual selection] console.timeEnd();" b
-console.time();
-
+snippet time "" b
+console.time($1);
 ${0:${VISUAL}}
-
-console.timeEnd();
+console.timeEnd($1);
 endsnippet
 ########################################
 
