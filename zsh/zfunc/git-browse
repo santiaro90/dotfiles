@@ -1,0 +1,32 @@
+#!/usr/bin/env zsh
+# vim: set ft=zsh :
+
+# Open a Git remote in the browser
+
+local tool=
+
+if command -v xdg-open > /dev/null 2>&1; then
+    tool='xdg-open'
+elif command -v open > /dev/null 2>&1; then
+    tool='open'
+else
+    echo "fatal: you must have either 'open' or 'xdg-open' installed"
+    return 1
+fi
+
+local remote_name="${1:-origin}"
+local remote_info=$(git remote -v | grep -E "^$remote_name\s.*\(fetch\)$")
+local remote_url=$(echo "$remote_info" | awk '{print $2}' | sed -E 's/.git$//')
+
+if [[ -z "$remote_url" ]]; then
+    echo "fatal: no remote with name '${remote_name}' was found"
+    return 1
+fi
+
+remote_url=$(echo "$remote_url" | \
+             sed -E 's#^git@#https://#' | \
+             sed -E 's#^(https://.*):(.*)#\1/\2#')
+
+eval "$tool $remote_url"
+
+unset remote_info remote_name remote_url tool

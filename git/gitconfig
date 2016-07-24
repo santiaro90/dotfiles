@@ -40,8 +40,9 @@
     ib = init --bare
 
     # Remote
-    ra = remote add origin
-    rs = remote set-url origin
+    ra = remote add
+    rb = browse
+    rs = remote set-url
     rv = remote -v
 
     # Stash
