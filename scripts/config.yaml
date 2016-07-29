@@ -15,6 +15,7 @@
 
     ~/.gemrc: ruby/gemrc
 
+    ~/.gitcmd: git/commands/
     ~/.gitconfig: git/gitconfig
     ~/.gitignore: git/gitignore
 

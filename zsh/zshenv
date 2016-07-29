@@ -15,6 +15,9 @@ export DOTDIR="$HOME/.dotfiles"
 export EDITOR="vim"
 export VISUAL="vim"
 
+# Expose git custom commands
+export PATH="$HOME/.gitcmd:$PATH"
+
 # Add rbenv to user's path
 if [ -d $HOME/.rbenv ]; then
     export PATH="$HOME/.rbenv/bin:$PATH"
