@@ -31,6 +31,10 @@ nnoremap <leader>P :tabp<CR>
 nnoremap <leader>n :bn<CR>
 nnoremap <leader>p :bp<CR>
 
+" CtrlP Bookmarks
+noremap <leader>ba :CtrlPBookmarkDirAdd <C-R>=expand('%:p:h')<CR>
+noremap <leader>bo :CtrlPBookmarkDir<CR>
+
 " Toggle NERDTree
 noremap <leader>. :NERDTreeToggle<CR>
 
