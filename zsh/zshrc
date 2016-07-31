@@ -26,8 +26,9 @@ bindkey -M viins '^n' history-substring-search-down
 bindkey -M viins '^p' history-substring-search-up
 
 # Adjust fpath to load custom functions
-fpath=($HOME/.zfunc $fpath)
-autoload -Uz $HOME/.zfunc/*(:t)
+fpath=($HOME/.zfunc $HOME/.zcomp $fpath)
+autoload -Uz $HOME/.zfunc/*(:t); autoload -Uz $HOME/.zcomp/*(:t)
+autoload -U compinit; compinit
 
 # Load zmv
 autoload -U zmv

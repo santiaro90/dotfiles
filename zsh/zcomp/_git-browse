@@ -1,0 +1,22 @@
+#compdef git-browse
+# vim: set ft=zsh :
+
+local state=
+local remote_list=$(git remote -v | sort -t' ' -k1,1 -u)
+local parsed_remotes=(
+    "${(f)$(echo $remote_list | \
+    awk '{printf ("%s %s\n", $1, $2)}' | \
+    sed -E \
+        -e 's# (.*@|https://)# #' \
+        -e 's#\.(org|com)(:|/)#/#' \
+        -e 's#^(.*) (.*)$#\1:\2#' \
+        -e 's#\.git$##')}"
+)
+
+_arguments -C ':remote:->select_remote'
+
+case $state in
+    (select_remote)
+        _describe -t remotes 'remote' parsed_remotes
+        ;;
+esac
