@@ -3,8 +3,9 @@
 
 - shell:
     -
-        # WATCH OUT: ./scripts/update executes with $PWD equals to this dotfiles repo's root directory;
-        #            in this case, it is $HOME/dotfiles/
+        # WATCH OUT: ./scripts/update executes with $PWD equals to this
+        #            dotfiles repo's root directory; in this case, it is
+        #            $HOME/dotfiles/
         command: 'git submodule update --init --recursive --remote && ./scripts/update'
         description: 'Fetching and updating submodules'
 
@@ -27,6 +28,7 @@
         path: tmux/tmux-battery/
 
     ~/.zfunc: zsh/zfunc/
+    ~/.zcomp: zsh/zcomp/
     ~/.zlogin: zprezto/runcoms/zlogin
     ~/.zlogout: zprezto/runcoms/zlogout
     ~/.zpreztorc: zsh/zpreztorc
