@@ -24,7 +24,7 @@ alias g="git"
 alias ealias="e $DOTDIR/zsh/alias +\"cd $DOTDIR/zsh\""
 alias efunc="e $DOTDIR/zsh/zfunc +\"cd $DOTDIR/zsh/zfunc\""
 alias ecomp="e $DOTDIR/zsh/zcomp +\"cd $DOTDIR/zsh/zcomp\""
-alias ezsh="e $DOTDIR/zsh/{zshrc,zshenv,zprestorc,zprofile} +\"cd $DOTDIR/zsh\" +bfirst"
+alias ezsh="e $DOTDIR/zsh/{zshrc,zshenv,zpreztorc,zprofile} +\"cd $DOTDIR/zsh\" +bfirst"
 alias egit="e $DOTDIR/git +\"cd $DOTDIR/git\""
 alias eprompt="e $DOTDIR/zsh/themes/prompt_dark_setup +\"cd $DOTDIR/zsh\""
 # alias eprompt="e $DOTDIR/zsh/themes/prompt_light_setup +\"cd $DOTDIR/zsh\""
@@ -37,32 +37,17 @@ command -v pbpaste > /dev/null 2>&1 || alias pbpaste="xsel -ob"
 alias off="sudo shutdown -h now"
 alias reboot="sudo reboot"
 
-# Rails
-alias b="bundle"
-alias b:i="b install"
-alias b:e="b exec"
-
-alias r:c="rails console"
-alias r:n="rails new"
-alias r:cs="rails console --sandbox"
-alias r:s="rails server"
-
-alias r:gc="rails generate controller"
-alias r:gm="rails generate model"
-alias r:gr="rails generate resource"
-alias r:gs="rails generate scaffold"
-
-alias r:dc="b:e rake db:create"
-alias r:dm="b:e rake db:migrate"
-alias r:t="b:e rake test"
-
 # Node
 alias n:i="npm install"
 alias n:u="npm uninstall"
-alias n:is="n:i --save"
 alias n:id="n:i --save-dev"
-alias n:us="n:u --save"
+alias n:ig="n:i --global"
+alias n:is="n:i --save"
 alias n:ud="n:u --save-dev"
+alias n:us="n:u --save"
+
+# Tmux
+alias t:n="tmux-new"
 
 # Disable corrections
 alias rm="nocorrect rm"
