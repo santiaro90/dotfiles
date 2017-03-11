@@ -106,6 +106,9 @@
 [difftool]
     prompt = false
 
+[github]
+    user = santiaro90
+
 [merge]
     tool = vimdiff
 

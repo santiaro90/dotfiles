@@ -3,15 +3,15 @@
 ########################################
 snippet if "if (<condition>) { [...code] }" b
 if ($1) {
-    ${0:${VISUAL}}
+  ${0:${VISUAL}}
 }
 endsnippet
 
 snippet ife "if (<condition>) { [...code] } else { [...code] }" b
 if ($1) {
-    ${2:${VISUAL}}
+  ${2:${VISUAL}}
 } else {
-    $0
+  $0
 }
 endsnippet
 ########################################
@@ -22,13 +22,13 @@ endsnippet
 ########################################
 snippet fn "function [fn]([...args]) { [...code] }" w
 function ${1:myFn}($2) {
-    $0
+  $0
 }
 endsnippet
 
 snippet class "" b
-class ${1:myClass} ${2:extends ${3:mySuper }}{
-    $0
+class ${1:myClass} {
+  $0
 }
 endsnippet
 ########################################
@@ -38,19 +38,19 @@ endsnippet
 # Logs
 ########################################
 snippet "log|warn|error|info|table" "" wr
-console.`!p snip.rv = match.group(0)`($0);
+console.`!p snip.rv = match.group(0)`($0)
 endsnippet
 
 snippet group "" b
-console.groupCollapsed($1);
+console.groupCollapsed($1)
 ${0:${VISUAL}}
-console.groupEnd();
+console.groupEnd()
 endsnippet
 
 snippet time "" b
-console.time($1);
+console.time($1)
 ${0:${VISUAL}}
-console.timeEnd($1);
+console.timeEnd($1)
 endsnippet
 ########################################
 
@@ -58,23 +58,59 @@ endsnippet
 ########################################
 # React
 ########################################
-snippet react:cc "Define a new ES6 React component" w
+snippet react:c "Define a React component" b
+import React, { PropTypes } from 'react'
+import ReactDom from 'react-dom'
+
 class ${1:Comp} extends React.Component {
-    render() {
-        return ${0:(
-            <div>$1</div>
-        );}
-    }
+  render() {
+    return ${0:<div>$1</div>}
+  }
 }
+
+$1.propTypes = {}
+
+export default $1
 endsnippet
 
-snippet react:fc "Define a new ES5 React component" w
-var ${1:Comp} = React.createClass({
-    render: function () {
-        return ${0:(
-            <div>$1</div>
-        );}
-    }
-});
+snippet react:cc "Define a React component connected with Redux" b
+import React, { PropTypes } from 'react'
+import ReactDom from 'react-dom'
+import { connect } from 'react-redux'
+
+function mapDispatchToProps() {}
+
+function mapStateToProps() {}
+
+class ${1:Comp} extends React.Component {
+  render() {
+    return ${0:<div>$1</div>}
+  }
+}
+
+$1.propTypes = {}
+
+export default connect(mapStateToProps, mapDispatchToProps)($1)
+endsnippet
+########################################
+
+
+########################################
+# Angular 2
+########################################
+snippet ng2:c "Define an Angular 2 component" b
+import { Component } from '@angular/core'
+
+@Component({
+  templateUrl: './$2.component.html'
+})
+export class $1Component {}
+endsnippet
+
+snippet ng2:s "Define an Angular 2 service" b
+import { Injectable } from '@angular/core'
+
+@Injectable()
+export class $1Service {}
 endsnippet
 ########################################
