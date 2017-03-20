@@ -6,7 +6,7 @@
     ap = add -p    # Add file chunks, not its complete contents
 
     # Diff
-    d = diff --color-words
+    d = diff --color-words --patience
     dt = difftool
 
     # Branching
@@ -28,33 +28,48 @@
 
     # Checkout
     ck = checkout
+    ckb = checkout -
+    ckm = checkout master
     cb = checkout -b
     cf = checkout --
 
     # Log
-    ll = log --decorate --graph --pretty=format:'%C(yellow)[%h]%Creset%C(auto)%d%Creset - %C(blue)%cd%Creset by %C(green)<%ae>%Creset%n%s%n' --abbrev-commit
-    ls = log --decorate --oneline
+    ll = "log --decorate --graph --pretty='%C(yellow)[%H]%Creset%C(auto)%d%Creset%n  %s%n%n\
+    Date: %C(blue)%cd%Creset%n\
+    Author: %C(red)%an%Creset %C(green)<%ae>%Creset%n' --date=format:'%e %B, %Y - %H:%M:%S'"
+    ls = log --decorate --pretty=format:'%C(yellow)[%h]%Creset%C(auto)%d%Creset - %s %C(blue)(%cr)%Creset %C(green)<%ae>%Creset'
 
     # Init
     i = init
     ib = init --bare
 
+    # Pull/Push
+    pl = pull --prune
+    pt = push -u origin
+    pu = push
+
     # Remote
     ra = remote add
     rb = browse
-    rs = remote set-url
+    ru = remote set-url
     rv = remote -v
+
+    # Reset
+    r = reset
+    rh = reset --hard
+    rs = reset --soft
 
     # Stash
     st = stash
-    stu = stash -u
     sta = stash apply
+    stc = stash clear
     stl = stash list
     stp = stash pop
+    stu = stash -u
 
     # Status
     s = status
-    ss = status -s    # Short status
+    ss = status -s --branch    # Short status
 
 [color]
     ui = auto
@@ -122,5 +137,5 @@
     insteadOf = ghs:
 
 [user]
-    email = santiaro90@gmail.com
-    name = Santiago Alvarez Rodriguez
+	email = santiaro90@gmail.com
+	name = Santiago Alvarez Rodriguez
