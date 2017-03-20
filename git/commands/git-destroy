@@ -1,0 +1,32 @@
+#!/usr/bin/env zsh
+# vim: set ft=zsh :
+
+# Remove a branch both locally and from a remote
+function destroy {
+    echo "This action will remove your branch from both your local repository"
+    echo "and the specified remote. Make sure you have saved any previous work."
+    read -q "?Do you want to continue? [y/n]: "
+
+    if [ $? -eq 0 ]; then
+        local branch="$1"
+        local remote="${2:-origin}"
+
+        echo "\n"
+
+        if [ -z "$2" ]; then
+            echo -e "warning: no remote name given. Using origin as default"
+        fi
+
+        if [ -z "$branch" ]; then
+            echo "fatal: no branch to destroy was given"
+            return 1
+        fi
+
+        git push "$remote" :"$branch" || return 1
+        git branch -D "$branch"
+    else
+        return 0
+    fi
+}
+
+destroy "$@"
