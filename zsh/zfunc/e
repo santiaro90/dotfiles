@@ -7,8 +7,4 @@ if [ -z "$EDITOR" ]; then
     return 1
 fi
 
-if [ -z "$*" ]; then
-    $EDITOR .
-else
-    $EDITOR $*
-fi
+$EDITOR $*

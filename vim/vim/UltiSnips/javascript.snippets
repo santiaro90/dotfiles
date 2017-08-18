@@ -96,18 +96,32 @@ endsnippet
 
 
 ########################################
-# Angular 2
+# Angular
 ########################################
-snippet ng2:c "Define an Angular 2 component" b
-import { Component } from '@angular/core'
+snippet ng:c "Define an Angular component" b
+import { Component, Input } from '@angular/core'
 
 @Component({
+  selector: '',
+  styleUrls: ['./$2.component.scss'],
   templateUrl: './$2.component.html'
 })
 export class $1Component {}
 endsnippet
 
-snippet ng2:s "Define an Angular 2 service" b
+snippet ng:m "Define an Angular module" b
+import { NgModule } from '@angular/core'
+
+@NgModule({
+  declarations: [],
+  imports: [],
+  exports: [],
+  providers: []
+})
+export class $1Module {}
+endsnippet
+
+snippet ng:s "Define an Angular service" b
 import { Injectable } from '@angular/core'
 
 @Injectable()
