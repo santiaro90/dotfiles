@@ -1,0 +1,13 @@
+#compdef git-destroy
+
+local state=
+local branches_list=$(git branch | tr -d '* ')
+local parsed_branches=("${(f)$(echo $branches_list)}")
+
+_arguments -C ':branch:->select_branch'
+
+case $state in
+    (select_branch)
+        _describe -t branches 'branch' parsed_branches
+        ;;
+esac
