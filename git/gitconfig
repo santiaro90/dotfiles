@@ -59,6 +59,13 @@
     rh = reset --hard
     rs = reset --soft
 
+    sh = "show --pretty='%C(yellow)[%H]%Creset%C(auto)%d%Creset%n  %s%n%n\
+    Date: %C(blue)%cd%Creset%n\
+    Author: %C(red)%an%Creset %C(green)<%ae>%Creset%n' --date=format:'%e %B, %Y - %H:%M:%S'"
+    shs = "show --stat --pretty='%C(yellow)[%H]%Creset%C(auto)%d%Creset%n  %s%n%n\
+    Date: %C(blue)%cd%Creset%n\
+    Author: %C(red)%an%Creset %C(green)<%ae>%Creset%n' --date=format:'%e %B, %Y - %H:%M:%S'"
+
     # Stash
     st = stash
     sta = stash apply

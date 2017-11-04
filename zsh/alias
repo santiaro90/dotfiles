@@ -1,6 +1,6 @@
 # vim: set ft=zsh :
 
-# Navigation
+# Navigation and listing
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
@@ -38,16 +38,14 @@ alias off="sudo shutdown -h now"
 alias reboot="sudo reboot"
 
 # Node
-alias n:i="npm install"
-alias n:u="npm uninstall"
-alias n:id="n:i --save-dev"
-alias n:ig="n:i --global"
-alias n:is="n:i --save"
-alias n:ud="n:u --save-dev"
-alias n:us="n:u --save"
+alias ni="npm install"
+alias nu="npm uninstall"
+alias nig="npm install --global"
+alias nr="npm run"
 
 # Tmux
-alias t:n="tmux-new"
+alias t="tmux-new"
+alias mux="tmuxinator"
 
 # Disable corrections
 alias rm="nocorrect rm"
