@@ -9,7 +9,6 @@ call vundle#begin()
 Plugin 'gmarik/Vundle.vim'
 Plugin 'AndrewRadev/splitjoin.vim'
 Plugin 'FelikZ/ctrlp-py-matcher'
-Plugin 'Raimondi/delimitMate'
 Plugin 'SirVer/ultisnips'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'airblade/vim-gitgutter'
@@ -19,6 +18,7 @@ Plugin 'editorconfig/editorconfig-vim'
 Plugin 'ervandew/supertab'
 Plugin 'hail2u/vim-css3-syntax'
 Plugin 'jelera/vim-javascript-syntax'
+Plugin 'jiangmiao/auto-pairs'
 Plugin 'mattn/gist-vim'
 Plugin 'mattn/webapi-vim'
 Plugin 'othree/javascript-libraries-syntax.vim'
@@ -31,10 +31,12 @@ Plugin 'tomtom/tcomment_vim'
 Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-dispatch'
 Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'vim-ruby/vim-ruby'
 Plugin 'w0rp/ale'
 
 " Allow adding different plugins per machine
@@ -79,6 +81,9 @@ endif
 " Zencoding for JSX react components
 autocmd FileType javascript runtime! ftplugin/html/sparkup.vim
 
+" Linter
+let g:ale_pattern_options={'\.html$': {'ale_enabled': 0}}
+
 " NERDTree
 let NERDTreeShowHidden=1
 
@@ -92,9 +97,6 @@ let g:UltiSnipsJumpBackwardTrigger='<s-tab>'
 let g:ycm_key_list_select_completion=['<C-n>', 'Down']
 let g:ycm_key_list_previous_completion=['<C-p>', 'Up']
 let g:SuperTabDefaultCompletionType='<C-n>'
-
-" Place cursor properly when hitting enter after braces
-let g:delimitMate_expand_cr=1
 
 " To hide preview window after selecting an autocomplete option
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif
