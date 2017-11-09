@@ -54,6 +54,12 @@ console.timeEnd($1)
 endsnippet
 ########################################
 
+########################################
+# Import
+########################################
+snippet import "Import" b
+import ${2:{ $0 }} from '$1'
+endsnippet
 
 ########################################
 # React
@@ -128,3 +134,18 @@ import { Injectable } from '@angular/core'
 export class $1Service {}
 endsnippet
 ########################################
+
+########################################
+# Testing
+########################################
+snippet "describe|context" "Define a test suit" br
+`!p snip.rv = match.group(0)`('${1:this}', () => {
+  $0
+})
+endsnippet
+
+snippet it "Define a spec" b
+it('${1:works}', () => {
+  $0
+})
+endsnippet

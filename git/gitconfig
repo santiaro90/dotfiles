@@ -38,6 +38,7 @@
     Date: %C(blue)%cd%Creset%n\
     Author: %C(red)%an%Creset %C(green)<%ae>%Creset%n' --date=format:'%e %B, %Y - %H:%M:%S'"
     ls = log --decorate --pretty=format:'%C(yellow)[%h]%Creset%C(auto)%d%Creset - %s %C(blue)(%cr)%Creset %C(green)<%ae>%Creset'
+    lost = !git ls $(git fsck --no-reflog | awk '/dangling commit/ {print $3}')
 
     # Init
     i = init
@@ -59,6 +60,7 @@
     rh = reset --hard
     rs = reset --soft
 
+    # Show
     sh = "show --pretty='%C(yellow)[%H]%Creset%C(auto)%d%Creset%n  %s%n%n\
     Date: %C(blue)%cd%Creset%n\
     Author: %C(red)%an%Creset %C(green)<%ae>%Creset%n' --date=format:'%e %B, %Y - %H:%M:%S'"
@@ -67,12 +69,12 @@
     Author: %C(red)%an%Creset %C(green)<%ae>%Creset%n' --date=format:'%e %B, %Y - %H:%M:%S'"
 
     # Stash
-    st = stash
     sta = stash apply
     stc = stash clear
+    sth = stash show --color-words
     stl = stash list
     stp = stash pop
-    stu = stash -u
+    stu = stash save -u
 
     # Status
     s = status
@@ -121,6 +123,7 @@
 [core]
     editor = vim
     excludesfile = ~/.gitignore
+    pager = less -RFX
 
 [diff]
     tool = vimdiff
