@@ -22,8 +22,13 @@ map <DOWN> <nop>
 " Useful escape mapping
 inoremap kj <ESC>
 
-" Toggle search highlight
+" Clear last search
 nnoremap <silent> <leader>c :let @/=''<CR>
+
+" Movement in command mode
+cnoremap <C-a> <C-b>
+cnoremap <C-b> <C-Left>
+cnoremap <C-f> <C-Right>
 
 " Moving between tabs/buffers
 nnoremap <leader>N :tabn<CR>
