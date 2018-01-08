@@ -39,12 +39,19 @@ alias reboot="sudo reboot"
 
 # Node
 alias ni="npm install"
-alias nu="npm uninstall"
+alias nls="npm ls --depth=0"
+alias nout="npm outdated"
+alias nun="npm uninstall"
+alias nup="npm update"
 alias nig="npm install --global"
 alias nr="npm run"
 
 # Tmux
-alias t="tmux-new"
+alias t="tmux"
+alias tl="tmux ls"
+alias tn="tmux new -s"
+alias ta="tmux attach"
+alias td="tmux detach-client"
 alias mux="tmuxinator"
 
 # Disable corrections

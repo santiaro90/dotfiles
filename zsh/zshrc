@@ -27,12 +27,11 @@ bindkey -M viins '^u' backward-kill-line
 bindkey -M viins '^w' backward-kill-word
 
 # History
-bindkey -M isearch '^M' accept-search
-bindkey -M isearch '^n' history-incremental-search-forward
-bindkey -M isearch '^p' history-incremental-search-backward
 bindkey -M viins '^n' down-history
 bindkey -M viins '^p' up-history
-bindkey -M viins '^r' history-incremental-search-backward
+bindkey -M viins '^g' fzf-cd-widget
+bindkey -M viins '^t' fzf-file-widget
+bindkey -M viins '^r' fzf-history-widget
 
 # Adjust fpath to load custom functions
 fpath=($HOME/.zfunc $HOME/.zcomp $fpath)
@@ -42,11 +41,14 @@ autoload -U compinit; compinit
 # Load zmv
 autoload -U zmv
 
-# Source nvm
+# Load nvm
 [ -s $HOME/.nvm/nvm.sh ] && source $HOME/.nvm/nvm.sh && nvm use stable > /dev/null 2>&1
 
 # Load aliases
-[ -f $HOME/.alias ] && source $HOME/.alias
+[ -s $HOME/.alias ] && source $HOME/.alias
+
+# Load fzf
+[ -s $HOME/.fzf.zsh ] && source $HOME/.fzf.zsh
 
 # Init rbenv
 if command -v rbenv > /dev/null 2>&1; then
