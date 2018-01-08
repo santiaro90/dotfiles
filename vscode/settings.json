@@ -1,0 +1,118 @@
+{
+  "editor.fontFamily": "Input",
+  "editor.fontSize": 16,
+  "editor.lineNumbers": "relative",
+  "editor.minimap.enabled": false,
+  "editor.quickSuggestions": false,
+  "editor.tabSize": "2",
+
+  "explorer.openEditors.visible": 0,
+
+  "files.insertFinalNewLine": false,
+
+  "search.useRipgrep": true,
+
+  "workbench.colorTheme": "One Dark Pro",
+  "workbench.editor.enablePreviewFromQuickOpen": false,
+  "workbench.startupEditor": "newUntitledFile",
+
+  "zenMode.hideTabs": false,
+  "zenMode.hideStatusBar": false,
+  "zenMode.restore": true,
+
+  // VSCode Vim
+  "vim.enableNeovim": true,
+  "vim.foldfix": true,
+  "vim.hlsearch": true,
+  "vim.incsearch": true,
+  "vim.leader": "<space>",
+  "vim.neovimPath": "/usr/local/bin/nvim",
+  "vim.visualstar": true,
+
+  "vim.insertModeKeyBindings": [
+    {
+        "before": ["k", "j"],
+        "after": ["<Esc>"]
+    }
+  ],
+
+  "vim.otherModesKeyBindingsNonRecursive": [
+    {
+      "before": [";"],
+      "after": [":"]
+    },
+    {
+      "before": [":"],
+      "after": [";"]
+    },
+    {
+      "before": ["<leader>", ";"],
+      "after": [],
+      "commands": [
+        { "command": "workbench.action.showCommands" }
+      ]
+    },
+    {
+      "before": ["<leader>", "c"],
+      "after": [],
+      "commands": [
+        { "command": ":nohl" }
+      ]
+    },
+    {
+      "before": ["<leader>", "n"],
+      "after": [],
+      "commands": [
+        { "command": "workbench.action.nextEditorInGroup" }
+      ]
+    },
+    {
+      "before": ["<leader>", "p"],
+      "after": [],
+      "commands": [
+        { "command": "workbench.action.previousEditorInGroup" }
+      ]
+    },
+    {
+      "before": ["<leader>", "o"],
+      "after": ["m", "o", "o", "<Esc>", "`", "o"]
+    },
+    {
+      "before": ["<leader>", "O"],
+      "after": ["m", "o", "O", "<Esc>", "`", "o"]
+    },
+    {
+      "before": ["<C-p>"],
+      "after": [],
+      "commands": [
+        { "command": "workbench.action.quickOpen" }
+      ]
+    },
+    {
+      "before": ["<leader>", "t"],
+      "after": [],
+      "commands": [
+        { "command": "workbench.action.terminal.toggleTerminal" }
+      ]
+    },
+    {
+      "before": ["<leader>", "d"],
+      "after": [],
+      "commands": [
+        { "command": "editor.debug.action.toggleBreakpoint" }
+      ]
+    }
+  ],
+
+  // GitLens
+  "gitlens.advanced.messages": {
+    "suppressCommitHasNoPreviousCommitWarning": false,
+    "suppressCommitNotFoundWarning": false,
+    "suppressFileNotUnderSourceControlWarning": false,
+    "suppressGitVersionWarning": false,
+    "suppressLineUncommittedWarning": false,
+    "suppressNoRepositoryWarning": false,
+    "suppressUpdateNotice": false,
+    "suppressWelcomeNotice": true
+  }
+}
