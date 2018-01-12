@@ -8,8 +8,6 @@
 
   "explorer.openEditors.visible": 0,
 
-  "files.insertFinalNewLine": false,
-
   "search.useRipgrep": true,
 
   "workbench.colorTheme": "One Dark Pro",
@@ -114,5 +112,20 @@
     "suppressNoRepositoryWarning": false,
     "suppressUpdateNotice": false,
     "suppressWelcomeNotice": true
+  },
+
+  "gitlens.annotations.file.gutter.dateFormat": "YYYY-MM-DD HH:mm:ss",
+  "gitlens.annotations.file.gutter.format": "${id} (${author|20?}) ${date|20-}",
+  "gitlens.annotations.file.gutter.compact": false,
+  "gitlens.annotations.file.gutter.heatmap.enabled": false,
+  "gitlens.annotations.file.gutter.separateLines": false,
+
+  "gitlens.blame.line.enabled": false,
+
+  "gitlens.blame.file.annotationType": "gutter",
+  "gitlens.blame.file.lineHighlight.enabled": true,
+  "gitlens.blame.file.lineHighlight.locations": "gutter",
+
+  "gitlens.codeLens.enabled": false,
   }
 }
