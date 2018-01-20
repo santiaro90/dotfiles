@@ -8,17 +8,17 @@ call vundle#begin()
 " Fetched and loaded by Vundle
 Plugin 'gmarik/Vundle.vim'
 Plugin 'AndrewRadev/splitjoin.vim'
-Plugin 'FelikZ/ctrlp-py-matcher'
 Plugin 'SirVer/ultisnips'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'editorconfig/editorconfig-vim'
-Plugin 'ervandew/supertab'
 Plugin 'hail2u/vim-css3-syntax'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'jiangmiao/auto-pairs'
+Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf.vim'
+Plugin 'leafgarland/typescript-vim'
 Plugin 'mattn/gist-vim'
 Plugin 'mattn/webapi-vim'
 Plugin 'othree/javascript-libraries-syntax.vim'
@@ -60,23 +60,8 @@ let g:airline_powerline_fonts=1
 let g:airline_right_sep=''
 let g:airline_theme='bubblegum'
 
-" CtrlP
-let g:ctrlp_match_window='top,order:ttb,min:1,max:10'
-let g:ctrlp_show_hidden=1
-let g:ctrlp_match_func={ 'match': 'pymatcher#PyMatch' }
-let g:ctrlp_working_path_mode='ra'
-
-if executable('ag')
-    let g:ctrlp_user_command='ag %s -i --nocolor --nogroup --hidden
-        \ --ignore .git
-        \ --ignore .svn
-        \ --ignore .hg
-        \ --ignore .DS_Store
-        \ --ignore node_modules
-        \ --ignore "**/*.pyc"
-        \ -g ""'
-    let g:ctrlp_use_caching=0
-endif
+" fzf
+let g:fzf_layout={'up': '~30%'}
 
 " Zencoding for JSX react components
 autocmd FileType javascript runtime! ftplugin/html/sparkup.vim
@@ -89,14 +74,6 @@ let NERDTreeShowHidden=1
 
 " UltiSnips
 let g:UltiSnipsEditSplit='vertical'
-let g:UltiSnipsExpandTrigger='<tab>'
-let g:UltiSnipsJumpForwardTrigger='<tab>'
-let g:UltiSnipsJumpBackwardTrigger='<s-tab>'
-
-" YCM
-let g:ycm_key_list_select_completion=['<C-n>', 'Down']
-let g:ycm_key_list_previous_completion=['<C-p>', 'Up']
-let g:SuperTabDefaultCompletionType='<C-n>'
 
 " To hide preview window after selecting an autocomplete option
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif

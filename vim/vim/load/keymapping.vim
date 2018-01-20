@@ -1,5 +1,5 @@
 " Source .vimrc
-nnoremap <leader>s :source $MYVIMRC<CR>
+nnoremap <leader>r :source $MYVIMRC<CR>
 " Swap : and ; in normal/visual mode
 nnoremap ; :
 nnoremap : ;
@@ -63,11 +63,23 @@ nnoremap J mjJ`j
 nnoremap <leader>o @='mzo<C-V><ESC>`z'<CR>
 nnoremap <leader>O @='mzO<C-V><ESC>`z'<CR>
 
+" Trigger Ag search
+nnoremap <leader>f :Ag!<SPACE>
+vnoremap <leader>f y:Ag!<SPACE><C-R>0<SPACE>
+
+" fzf
+nnoremap <C-p> :Files<CR>
+
 " Multi-cursor mappings
 let g:multi_cursor_next_key='<C-n>'
 let g:multi_cursor_prev_key='<C-p>'
 let g:multi_cursor_skip_key='<C-u>'
 let g:multi_cursor_quit_key='<C-x>'
+
+" UltiSnips
+let g:UltiSnipsExpandTrigger='<tab>'
+let g:UltiSnipsJumpForwardTrigger='<tab>'
+let g:UltiSnipsJumpBackwardTrigger='<s-tab>'
 
 " Make UltiSnips work along with YCM
 let g:ycm_key_list_select_completion=[]

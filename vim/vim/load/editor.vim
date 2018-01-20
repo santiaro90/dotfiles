@@ -62,4 +62,3 @@ autocmd BufNewFile,BufRead * setlocal formatoptions-=cro
 
 " When joining commented lines, delete comment character
 set formatoptions+=j
-
