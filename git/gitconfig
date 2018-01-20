@@ -44,6 +44,11 @@
     i = init
     ib = init --bare
 
+    # Merge
+    m = merge --no-ff --no-edit
+    ma = merge --abort
+    mf = merge --ff
+
     # Pull/Push
     pl = pull --prune
     pt = push -u origin
@@ -135,6 +140,7 @@
     user = santiaro90
 
 [merge]
+    conflictStyle = diff3
     tool = vimdiff
 
 [push]
