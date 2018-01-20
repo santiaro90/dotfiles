@@ -22,26 +22,14 @@ function prompt_dark_setup {
     # Add a hook for calling info functions before each command.
     add-zsh-hook precmd prompt_dark_precmd
 
-    # Set editor parameters
-    zstyle ':prezto:module:editor:info:keymap:alternate' format '%B%F{69}➤%f%b'
-    zstyle ':prezto:module:editor:info:keymap:primary' format '%B%F{70}➤%f%b'
-
     # Set git-info parameters.
     zstyle ':prezto:module:git:info' verbose yes
-    zstyle ':prezto:module:git:info:branch' format '%F{45}%b%f'
-    zstyle ':prezto:module:git:info:clean' format '%F{34}✔︎%f'
-    zstyle ':prezto:module:git:info:dirty' format '%F{red}✘%f'
-    # zstyle ':prezto:module:git:info:keys' format 'prompt' ' %b %D%C'
-    zstyle ':prezto:module:git:info:keys' format 'prompt' ' [%b %D%C]'
+    zstyle ':prezto:module:git:info:branch' format '%F{252}%b%f'
+    zstyle ':prezto:module:git:info:dirty' format '%F{red}*%f'
+    zstyle ':prezto:module:git:info:keys' format 'prompt' ' %b%D%C'
 
-    # Define prompts.
-    local host_name='%B '
-
-    if [ -z "$TMUX" ]; then
-        host_name='%B%F{1}%n%f%F{255}@%f%F{5}%M%f%F{255}:%f '
-    fi
-
-    PROMPT=${host_name}'%U%F{3}%3~%f%u%b${git_info[prompt]} ${editor_info[keymap]} '
+    local cmd_prefix='%B%(?.%F{blue}.%F{red})➤%f%b '
+    PROMPT='%B%F{3}%3~%f%b %B${git_info[prompt]}%b'$'\n'${cmd_prefix}
 }
 
 prompt_dark_setup "$@"
