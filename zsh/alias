@@ -27,7 +27,6 @@ alias ecomp="e $DOTDIR/zsh/zcomp +\"cd $DOTDIR/zsh/zcomp\""
 alias ezsh="e $DOTDIR/zsh/{zshrc,zshenv,zpreztorc,zprofile} +\"cd $DOTDIR/zsh\" +bfirst"
 alias egit="e $DOTDIR/git +\"cd $DOTDIR/git\""
 alias eprompt="e $DOTDIR/zsh/themes/prompt_dark_setup +\"cd $DOTDIR/zsh\""
-# alias eprompt="e $DOTDIR/zsh/themes/prompt_light_setup +\"cd $DOTDIR/zsh\""
 alias etmux="e $DOTDIR/tmux/tmux.conf +\"cd $DOTDIR/tmux\""
 alias evim="e $DOTDIR/vim/vimrc +\"cd $DOTDIR/vim\""
 

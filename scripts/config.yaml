@@ -38,7 +38,6 @@
     ~/.zshrc: zsh/zshrc
 
     zprezto/modules/prompt/functions/prompt_dark_setup: zsh/themes/prompt_dark_setup
-    zprezto/modules/prompt/functions/prompt_light_setup: zsh/themes/prompt_light_setup
 
     ~/.vim: vim/vim/
     ~/.vimrc: vim/vimrc
