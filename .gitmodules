@@ -1,16 +1,16 @@
 [submodule "zprezto"]
+	ignore = all
 	path = zprezto
 	url = https://github.com/sorin-ionescu/prezto.git
-	ignore = dirty
 [submodule "dotbot"]
+	ignore = all
 	path = dotbot
-	ignore = dirty
 	url = https://github.com/anishathalye/dotbot
 [submodule "vim/vim/bundle/Vundle.vim"]
+	ignore = all
 	path = vim/vim/bundle/Vundle.vim
 	url = https://github.com/gmarik/Vundle.vim.git
-	ignore = dirty
 [submodule "tmux/tmux-battery"]
+	ignore = all
 	path = tmux/tmux-battery
 	url = https://github.com/tmux-plugins/tmux-battery
-	ignore = dirty
