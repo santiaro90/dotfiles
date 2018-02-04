@@ -1,32 +1,49 @@
 #!/usr/bin/env zsh
-# vim: set ft=zsh :
+# vim: set ft=zsh ts=4 sw=4 :
 
 # Remove a branch both locally and from a remote
 function destroy {
-    echo "This action will remove your branch from both your local repository"
-    echo "and the specified remote. Make sure you have saved any previous work."
+    local branch="$1"
+    local remote="$2"
+
+    [[ -z "$branch" ]] && echo "fatal: no branch to destroy was given" && return 1
+    [[ -z "$remote" ]] && echo "warning: no remote name given. 'origin' will be used as default"
+
+    local delete_local delete_in_remote
+
+    # Check that the branch exists locally
+    git rev-parse --verify refs/heads/"$branch" > /dev/null 2>&1
+
+    [[ $? -gt 0 ]] \
+        && echo "warning: local branch does not exist. Skipping local removal" \
+        && delete_local=false
+
+    # Check that we've got access to remote and branch exists there
+    git ls-remote --exit-code -h "${remote:-origin}" "$branch" > /dev/null
+
+    # branch not found in remote
+    [[ $? -eq 2 ]] \
+        && echo "warning: branch not found in remote" \
+        && delete_in_remote=false
+
+    ! $delete_local && ! $delete_in_remote \
+        && echo "fatal: nothing to delete" \
+        && return 1
+
+    echo
+
+    echo "This action will remove your branch definitely."
+    echo "Make sure you have saved any previous work"
     read -q "?Do you want to continue? [y/n]: "
 
-    if [ $? -eq 0 ]; then
-        local branch="$1"
-        local remote="${2:-origin}"
+    echo "\n"
 
-        echo "\n"
+    [[ $? -gt 0 ]] && return 0
 
-        if [ -z "$2" ]; then
-            echo -e "warning: no remote name given. Using origin as default"
-        fi
+    $delete_local && git branch -D "$branch"
+    $delete_in_remote && git push "${remote:-origin}" :"$branch"
 
-        if [ -z "$branch" ]; then
-            echo "fatal: no branch to destroy was given"
-            return 1
-        fi
-
-        git push "$remote" :"$branch" || return 1
-        git branch -D "$branch"
-    else
-        return 0
-    fi
+    return 0
 }
 
 destroy "$@"
