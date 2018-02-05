@@ -36,9 +36,9 @@ function destroy {
     echo "Make sure you have saved any previous work"
     read -q "?Do you want to continue? [y/n]: "
 
-    echo "\n"
-
     [[ $? -gt 0 ]] && return 0
+
+    echo "\n"
 
     $delete_local && git branch -D "$branch"
     $delete_in_remote && git push "${remote:-origin}" :"$branch"
