@@ -1,13 +1,13 @@
 ########################################
 # Blocks
 ########################################
-snippet if "if (<condition>) { [...code] }" b
+snippet if "" b
 if ($1) {
   ${0:${VISUAL}}
 }
 endsnippet
 
-snippet ife "if (<condition>) { [...code] } else { [...code] }" b
+snippet ife "" b
 if ($1) {
   ${2:${VISUAL}}
 } else {
@@ -15,7 +15,7 @@ if ($1) {
 }
 endsnippet
 
-snippet try "try { [...code] } catch (err) { [...code] }" b
+snippet try "" b
 try {
   $1
 } catch (err) {
@@ -28,7 +28,7 @@ endsnippet
 ########################################
 # Functions/Classes
 ########################################
-snippet fn "function [fn]([...args]) { [...code] }" w
+snippet fn "" w
 function ${1:myFn}($2) {
   $0
 }
@@ -63,22 +63,26 @@ endsnippet
 ########################################
 
 ########################################
-# Import
+# Import/Require
 ########################################
-snippet import "Import" b
+snippet import "" b
 import ${2:{ $0 }} from '$1'
+endsnippet
+
+snippet require "" b
+${2:const ${3:{ $0 } }= }require('${1:lib}')
 endsnippet
 
 ########################################
 # React
 ########################################
-snippet react:c "Define a React component" b
-import React, { PropTypes } from 'react'
-import ReactDom from 'react-dom'
+snippet r:c "Define a React component" b
+import PropTypes from 'prop-types'
+import React from 'react'
 
 class ${1:Comp} extends React.Component {
   render() {
-    return ${0:<div>$1</div>}
+    $0
   }
 }
 
@@ -87,22 +91,22 @@ $1.propTypes = {}
 export default $1
 endsnippet
 
-snippet react:cc "Define a React component connected with Redux" b
-import React, { PropTypes } from 'react'
-import ReactDom from 'react-dom'
+snippet r:cc "Define a connected React component" b
+import PropTypes from 'prop-types'
+import React from 'react'
 import { connect } from 'react-redux'
-
-function mapDispatchToProps() {}
-
-function mapStateToProps() {}
 
 class ${1:Comp} extends React.Component {
   render() {
-    return ${0:<div>$1</div>}
+    $0
   }
 }
 
 $1.propTypes = {}
+
+function mapDispatchToProps() {}
+
+function mapStateToProps() {}
 
 export default connect(mapStateToProps, mapDispatchToProps)($1)
 endsnippet
