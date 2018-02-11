@@ -1,6 +1,7 @@
 # vim: set ft=zsh :
 
 # Navigation and listing
+alias -- -="cd -"
 alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
@@ -36,7 +37,7 @@ command -v pbpaste > /dev/null 2>&1 || alias pbpaste="xsel -ob"
 alias off="sudo shutdown -h now"
 alias reboot="sudo reboot"
 
-# Node
+# Npm
 alias ni="npm install"
 alias nls="npm ls --depth=0"
 alias nout="npm outdated"
@@ -44,6 +45,8 @@ alias nun="npm uninstall"
 alias nup="npm update"
 alias nig="npm install --global"
 alias nr="npm run"
+alias ns="npm start"
+alias nt="npm test"
 
 # Tmux
 alias t="tmux"
