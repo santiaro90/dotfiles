@@ -10,18 +10,13 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
-# Command line keymappings
-# bindkey -M viins 'kj' vi-cmd-mode
-
 # Movement
-# bindkey -M viins '^[' vi-cmd-mode
 bindkey -M viins '^a' beginning-of-line
 bindkey -M viins '^b' vi-backward-word-end
 bindkey -M viins '^e' end-of-line
 bindkey -M viins '^f' vi-forward-word
 
 # Editing
-bindkey -M viins '^@' list-choices
 bindkey -M viins '^k' kill-line
 bindkey -M viins '^u' backward-kill-line
 bindkey -M viins '^w' backward-kill-word
@@ -41,16 +36,16 @@ autoload -U compinit; compinit
 # Load zmv
 autoload -U zmv
 
-# Load nvm
 [ -s $HOME/.nvm/nvm.sh ] && source $HOME/.nvm/nvm.sh && nvm use stable > /dev/null 2>&1
-
-# Load aliases
 [ -s $HOME/.alias ] && source $HOME/.alias
 
-# Load fzf
-[ -s $HOME/.fzf.zsh ] && source $HOME/.fzf.zsh
+if [ -s $HOME/.fzf.zsh ]; then
+  source $HOME/.fzf.zsh
 
-# Init rbenv
-if command -v rbenv > /dev/null 2>&1; then
-    eval "$(rbenv init -)"
+  # Completion
+  bindkey -M viins '^ ' fzf-completion
+  bindkey -M viins '^i' $fzf_default_completion
 fi
+
+command -v rbenv > /dev/null 2>&1 && eval "$(rbenv init -)"
+command -v fasd > /dev/null 2>&1 && eval "$(fasd --init auto)"

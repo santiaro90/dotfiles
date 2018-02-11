@@ -1,5 +1,4 @@
 #compdef git-browse
-# vim: set ft=zsh :
 
 local state=
 local remote_list=$(git remote -v | sort -t' ' -k1,1 -u)
