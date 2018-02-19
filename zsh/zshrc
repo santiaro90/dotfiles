@@ -29,8 +29,9 @@ bindkey -M viins '^t' fzf-file-widget
 bindkey -M viins '^r' fzf-history-widget
 
 # Adjust fpath to load custom functions
-fpath=($HOME/.zfunc $HOME/.zcomp $fpath)
-autoload -Uz $HOME/.zfunc/*(:t); autoload -Uz $HOME/.zcomp/*(:t)
+fpath=($HOME/.zfunc $HOME/.zcomp $HOME/.zcomp/utils $fpath)
+autoload -Uz $HOME/.zfunc/*(:t)
+autoload -Uz $HOME/.zcomp/**/*(:t)
 autoload -U compinit; compinit
 
 # Load zmv

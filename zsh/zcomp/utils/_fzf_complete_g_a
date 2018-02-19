@@ -1,0 +1,14 @@
+# vim: set ft=zsh ts=4 sw=4 :
+
+# Show file options for the git add {file} command, with possibility of showing
+# diffs.
+
+git -c color.ui=always status --short --untracked-files=all |
+    grep -E '^ |\?\?' | # don't show staged files
+    fzf --multi --reverse --ansi --height '50%' \
+        --header='Select files to be staged' \
+        --bind 'ctrl-d:toggle-preview' \
+        --preview-window right:50% \
+        --preview '(git diff --color=always -- {-1}) | sed 1,4d' |
+    cut -c4- |
+    paste -sd' ' -

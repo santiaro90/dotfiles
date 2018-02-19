@@ -1,0 +1,13 @@
+# vim: set ft=zsh ts=4 sw=4 :
+
+# Show file options for the git checkout -- {file} command, with possibility of
+# showing diffs.
+
+git -c color.ui=always status --short --untracked-files=no |
+    grep '^ ' | # don't show staged files
+    fzf --reverse --ansi --height '50%' \
+        --header 'Select the file you want to restore to its index version' \
+        --bind 'ctrl-d:toggle-preview' \
+        --preview-window right:50% \
+        --preview '(git diff --color=always -- {-1}) | sed 1,4d' |
+    cut -c4-

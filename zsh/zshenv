@@ -22,6 +22,7 @@ export PATH="$HOME/.gitcmd:$PATH"
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git/ -l -g ""'
 export FZF_CTRL_T_COMMAND='ag --hidden --ignore .git/ -l -g ""'
 export FZF_COMPLETION_TRIGGER=''
+export FZF_DEFAULT_OPTS="--bind 'down:preview-page-down,up:preview-page-up'"
 
 # Add rbenv to user's path
 if [ -d $HOME/.rbenv ]; then
