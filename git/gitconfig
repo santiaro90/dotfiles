@@ -3,15 +3,16 @@
     # Add
     a = add
     aa = add .
-    ap = add -p    # Add file chunks, not its complete contents
+    ap = add -p # Add file by chunks
 
     # Diff
     d = diff --color-words --patience
+    dc = diff --cached --color-words --patience
     dt = difftool
 
     # Branching
     b = branch
-    bv = branch -avv    # Show branches info (verbose)
+    bv = branch -avv
     bm = branch -m
     br = branch -d
     bd = branch -D
@@ -48,8 +49,10 @@
     m = merge --no-ff --no-edit
     ma = merge --abort
     mf = merge --ff
+    ms = merge --squash
 
     # Pull/Push
+    pf = push --force-with-lease
     pl = pull --prune
     pt = push -u origin
     pu = push
@@ -62,7 +65,8 @@
 
     # Reset
     r = reset
-    rh = reset --hard
+    rh = reset HEAD
+    rhr = reset --hard
     rs = reset --soft
 
     # Show
@@ -82,48 +86,28 @@
     stu = stash save -u
 
     # Status
-    s = status
-    ss = status -s --branch    # Short status
+    s = status --short --branch --untracked-files=all
+    sl = status --untracked-files=all
 
 [color]
     ui = auto
 
 [color "branch"]
-        # Railscasts dark theme
     current = green bold reverse
     local = green bold
     remote = blue
     upstream = magenta
 
-        # Solarized theme
-    # current = green reverse
-    # local = green
-    # remote = blue
-    # upstream = magenta
-
 [color "diff"]
-        # Railscasts dark theme
     meta = magenta bold
     frag = yellow bold
     old = red bold reverse
     new = green bold reverse
 
-        # Solarized theme
-    # meta = magenta
-    # frag = black
-    # old = red reverse
-    # new = green reverse
-
 [color "status"]
-        # Railscasts dark theme
     added = green bold ul
     changed = yellow bold ul
     untracked = magenta bold
-
-        # Solarized theme
-    # added = green ul
-    # changed = yellow ul
-    # untracked = magenta
 
 [core]
     editor = vim
