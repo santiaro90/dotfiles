@@ -7,37 +7,50 @@ call vundle#begin()
 
 " Fetched and loaded by Vundle
 Plugin 'gmarik/Vundle.vim'
+
+" Git
+Plugin 'airblade/vim-gitgutter'
+Plugin 'tpope/vim-fugitive'
+
+" Dev
 Plugin 'AndrewRadev/splitjoin.vim'
 Plugin 'SirVer/ultisnips'
 Plugin 'Valloric/YouCompleteMe'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'editorconfig/editorconfig-vim'
-Plugin 'hail2u/vim-css3-syntax'
-Plugin 'jelera/vim-javascript-syntax'
+Plugin 'ervandew/supertab'
+Plugin 'rking/ag.vim'
+Plugin 'tomtom/tcomment_vim'
+Plugin 'w0rp/ale'
+
+" Utils
+Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'mattn/gist-vim'
+Plugin 'mattn/webapi-vim'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
-Plugin 'leafgarland/typescript-vim'
-Plugin 'mattn/gist-vim'
-Plugin 'mattn/webapi-vim'
-Plugin 'othree/javascript-libraries-syntax.vim'
-Plugin 'pangloss/vim-javascript'
-Plugin 'rking/ag.vim'
-Plugin 'rstacruz/sparkup'
 Plugin 'scrooloose/nerdtree'
 Plugin 'terryma/vim-multiple-cursors'
-Plugin 'tomtom/tcomment_vim'
 Plugin 'tpope/vim-abolish'
 Plugin 'tpope/vim-dispatch'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-rails'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
+
+" JS/HTML/CSS
+Plugin 'hail2u/vim-css3-syntax'
+Plugin 'jelera/vim-javascript-syntax'
+Plugin 'leafgarland/typescript-vim'
+Plugin 'othree/javascript-libraries-syntax.vim'
+Plugin 'pangloss/vim-javascript'
+Plugin 'rstacruz/sparkup'
+
+" Ruby
+Plugin 'tpope/vim-rails'
+Plugin 'vim-ruby/vim-ruby'
+
+" Other
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'vim-ruby/vim-ruby'
-Plugin 'w0rp/ale'
 
 " Allow adding different plugins per machine
 if filereadable(glob('~/.vim/load/plugins.local.vim'))
@@ -62,12 +75,15 @@ let g:airline_theme='bubblegum'
 
 " fzf
 let g:fzf_layout={'up': '~30%'}
+let g:fzf_history_dir='~/.local/share/fzf-history'
 
 " Zencoding for JSX react components
 autocmd FileType javascript runtime! ftplugin/html/sparkup.vim
 
 " Linter
-let g:ale_pattern_options={'\.html$': {'ale_enabled': 0}}
+let g:ale_pattern_options={'\.html$': {'ale_enabled': 0}, '\.erb$': {'ale_enabled': 0}}
+let g:ale_sign_error='x'
+let g:ale_sign_warning='⚠'
 
 " NERDTree
 let NERDTreeShowHidden=1

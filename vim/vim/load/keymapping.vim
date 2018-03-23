@@ -23,7 +23,8 @@ map <DOWN> <nop>
 inoremap kj <ESC>
 
 " Clear last search
-nnoremap <silent> <leader>c :let @/=''<CR>
+" nnoremap <silent> <leader>c :let @/=''<CR>
+nnoremap <silent> <leader>c :nohl<CR>
 
 " Movement in command mode
 cnoremap <C-a> <C-b>
@@ -37,8 +38,8 @@ nnoremap <leader>n :bn<CR>
 nnoremap <leader>p :bp<CR>
 
 " CtrlP Bookmarks
-noremap <leader>ba :CtrlPBookmarkDirAdd <C-R>=expand('%:p:h')<CR>
-noremap <leader>bo :CtrlPBookmarkDir<CR>
+" noremap <leader>ba :CtrlPBookmarkDirAdd <C-R>=expand('%:p:h')<CR>
+" noremap <leader>bo :CtrlPBookmarkDir<CR>
 
 " Toggle NERDTree
 noremap <leader>. :NERDTreeToggle<CR>
@@ -63,12 +64,17 @@ nnoremap J mjJ`j
 nnoremap <leader>o @='mzo<C-V><ESC>`z'<CR>
 nnoremap <leader>O @='mzO<C-V><ESC>`z'<CR>
 
+" Completion
+inoremap <C-space> <C-x><C-o>
+
 " Trigger Ag search
 nnoremap <leader>f :Ag!<SPACE>
 vnoremap <leader>f y:Ag!<SPACE><C-R>0<SPACE>
 
 " fzf
-nnoremap <C-p> :Files<CR>
+nnoremap <C-p>b :Buffers<CR>
+nnoremap <C-p>f :Files<CR>
+nnoremap <C-p>h :History<CR>
 
 " Multi-cursor mappings
 let g:multi_cursor_next_key='<C-n>'
@@ -82,8 +88,10 @@ let g:UltiSnipsJumpForwardTrigger='<tab>'
 let g:UltiSnipsJumpBackwardTrigger='<s-tab>'
 
 " Make UltiSnips work along with YCM
-let g:ycm_key_list_select_completion=[]
-let g:ycm_key_list_previous_completion=[]
+let g:ycm_key_list_select_completion=['<C-n>', 'Down']
+let g:ycm_key_list_previous_completion=['<C-p>', 'Up']
+
+let g:SuperTabDefaultCompletionType='<C-n>'
 
 " Add local mappings if any
 if filereadable(glob('~/.vim/load/keymapping.local.vim'))
