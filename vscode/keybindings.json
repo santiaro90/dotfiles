@@ -1,5 +1,27 @@
 [
+  // Coding
+  {
+    "key": "ctrl+] p",
+    "command": "editor.action.peekImplementation",
+    "when": "editorHasImplementationProvider && editorTextFocus && !isInEmbeddedEditor"
+  },
+  {
+    "key": "ctrl+] i",
+    "command": "editor.action.goToImplementation",
+    "when": "editorHasImplementationProvider && editorTextFocus && !isInEmbeddedEditor"
+  },
+
   // Move between windows
+  {
+    "key": "ctrl+k",
+    "command": "workbench.action.focusActiveEditorGroup",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "ctrl+j",
+    "command": "workbench.action.terminal.focus",
+    "when": "editorFocus"
+  },
   {
     "key": "ctrl+l",
     "command": "workbench.action.focusNextGroup",
@@ -30,10 +52,16 @@
     "command": "workbench.action.openPreviousEditorFromHistory",
     "when": "vim.mode == 'Normal' && editorFocus"
   },
+
   // Quick open
   {
     "key": "ctrl+p",
     "command": "workbench.action.quickOpen",
+    "when": "vim.mode == 'Normal' && editorFocus"
+  },
+  {
+    "key": "ctrl+shift+p",
+    "command": "workbench.action.showCommands",
     "when": "vim.mode == 'Normal' && editorFocus"
   },
   {
@@ -56,6 +84,7 @@
     "command": "workbench.action.closeQuickOpen",
     "when": "inQuickOpen"
   },
+
   // File explorer
   {
     "key": "ctrl+.",
@@ -97,10 +126,11 @@
     "command": "list.select",
     "when": "filesExplorerFocus && listFocus"
   },
+
   // Search
   {
     "key": "ctrl+f",
-    "command": "workbench.action.findInFilesWithSelectedText",
+    "command": "workbench.action.findInFiles",
     "when": "vim.mode == 'Normal' && !searchViewletVisible"
   },
   {
@@ -173,6 +203,20 @@
     "command": "search.action.clearSearchResults",
     "when": "patternIncludesInputBoxFocus"
   },
+
+  // Git
+  {
+    "key": "ctrl+g b",
+    "command": "gitlens.toggleFileBlame",
+    "when": "editorFocus"
+  },
+
+  {
+    "key": "ctrl+g d",
+    "command": "gitlens.diffWithPrevious",
+    "when": "editorFocus"
+  },
+
   // Others
   {
     "key": "ctrl+[",
@@ -183,6 +227,11 @@
     "key": "ctrl+[",
     "command": "workbench.action.closeMessages",
     "when": "globalMessageVisible"
+  },
+  {
+    "key": "ctrl+[",
+    "command": "notifications.clearAll",
+    "when": "notificationToastsVisible"
   },
   {
     "key": "ctrl+[",

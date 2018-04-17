@@ -3,8 +3,7 @@
   "editor.fontSize": 16,
   "editor.lineNumbers": "relative",
   "editor.minimap.enabled": false,
-  "editor.quickSuggestions": false,
-  "editor.tabSize": "2",
+  "editor.tabSize": 2,
 
   "explorer.openEditors.visible": 0,
 
@@ -94,10 +93,24 @@
       ]
     },
     {
-      "before": ["<leader>", "d"],
+      "before": ["<leader>", "b"],
       "after": [],
       "commands": [
         { "command": "editor.debug.action.toggleBreakpoint" }
+      ]
+    },
+    {
+      "before": ["<leader>", "l"],
+      "after": [],
+      "commands": [
+        { "command": "editor.debug.action.toggleLogPoint" }
+      ]
+    },
+    {
+      "before": ["<leader>", "d"],
+      "after": [],
+      "commands": [
+        { "command": "workbench.action.debug.start", "when": "!inDebugMode" }
       ]
     }
   ],
@@ -126,6 +139,8 @@
   "gitlens.blame.file.lineHighlight.enabled": true,
   "gitlens.blame.file.lineHighlight.locations": "gutter",
 
-  "gitlens.codeLens.enabled": false,
+  "gitlens.codeLens.enabled": true,
+  "gitlens.currentLine.enabled": false,
+  "gitlens.showWhatsNewAfterUpgrades": false
   }
 }
