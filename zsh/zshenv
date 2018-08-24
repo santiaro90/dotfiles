@@ -29,4 +29,5 @@ if [ -d $HOME/.rbenv ]; then
     export PATH="$HOME/.rbenv/bin:$PATH"
 fi
 
+# Local env
 [ -f $HOME/.zshenv.local ] && source $HOME/.zshenv.local
