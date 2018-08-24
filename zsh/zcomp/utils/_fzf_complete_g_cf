@@ -5,9 +5,10 @@
 
 git -c color.ui=always status --short --untracked-files=no |
     grep '^ ' | # don't show staged files
-    fzf --reverse --ansi --height '50%' \
-        --header 'Select the file you want to restore to its index version' \
+    fzf --multi --reverse --ansi --height '50%' \
+        --header 'Select the files you want to restore' \
         --bind 'ctrl-d:toggle-preview' \
         --preview-window right:50% \
         --preview '(git diff --color=always -- {-1}) | sed 1,4d' |
-    cut -c4-
+    cut -c4- |
+    paste -sd' ' -
