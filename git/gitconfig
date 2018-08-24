@@ -12,7 +12,7 @@
 
     # Branching
     b = branch
-    bv = branch -avv
+    bv = branch -vv
     bm = branch -m
     br = branch -d
     bd = branch -D
