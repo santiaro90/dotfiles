@@ -37,6 +37,7 @@ Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-surround'
 
 " JS/HTML/CSS
+Plugin 'Quramy/tsuquyomi'
 Plugin 'hail2u/vim-css3-syntax'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'leafgarland/typescript-vim'
@@ -81,6 +82,9 @@ let g:fzf_history_dir='~/.local/share/fzf-history'
 autocmd FileType javascript runtime! ftplugin/html/sparkup.vim
 
 " Linter
+let g:ale_fix_on_save=1
+let g:ale_fixers={'ruby': ['rubocop'], 'javascript': ['prettier']}
+let g:ale_linters={'ruby': ['rubocop'], 'javascript': ['eslint']}
 let g:ale_pattern_options={'\.html$': {'ale_enabled': 0}, '\.erb$': {'ale_enabled': 0}}
 let g:ale_sign_error='x'
 let g:ale_sign_warning='⚠'
@@ -90,6 +94,7 @@ let NERDTreeShowHidden=1
 
 " UltiSnips
 let g:UltiSnipsEditSplit='vertical'
+let g:UltiSnipsSnippetDirectories=['~/.vim/UltiSnips', 'UltiSnips']
 
 " To hide preview window after selecting an autocomplete option
 autocmd InsertLeave * if pumvisible() == 0|pclose|endif

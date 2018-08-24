@@ -1,4 +1,7 @@
 " ==============================================================================
+if has('python3')
+  silent! python3 1
+endif
 
 " iMprove it
 set nocompatible
