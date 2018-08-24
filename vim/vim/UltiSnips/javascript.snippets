@@ -76,9 +76,9 @@ endsnippet
 ########################################
 # React
 ########################################
-snippet r:c "Define a React component" b
-import PropTypes from 'prop-types'
+snippet r:c "Define a React stateful component" b
 import React from 'react'
+import PropTypes from 'prop-types'
 
 class ${1:Comp} extends React.Component {
   render() {
@@ -91,9 +91,22 @@ $1.propTypes = {}
 export default $1
 endsnippet
 
-snippet r:cc "Define a connected React component" b
-import PropTypes from 'prop-types'
+snippet r:fc "Define a React functional component" b
 import React from 'react'
+import PropTypes from 'prop-types'
+
+const ${1:Comp} = props => ${2:(
+  <div>$1</div>
+)}
+
+$1.propTypes = {}
+
+export default $1
+endsnippet
+
+snippet r:cc "Define a connected React component" b
+import React from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 
 class ${1:Comp} extends React.Component {
