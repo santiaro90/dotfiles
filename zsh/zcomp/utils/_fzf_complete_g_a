@@ -3,8 +3,8 @@
 # Show file options for the git add {file} command, with possibility of showing
 # diffs.
 
-git -c color.ui=always status --short --untracked-files=all |
-    grep -E -e '^ ' -e '\?\?' -e '^..' | # don't show staged files
+git status --short --untracked-files=all |
+    grep -E -e '^ ' -e '\?\?' -e '^\w\w' | # don't show staged files
     fzf --multi --reverse --ansi --height '50%' \
         --header='Select files to be staged' \
         --bind 'ctrl-d:toggle-preview' \
