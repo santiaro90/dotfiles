@@ -30,7 +30,7 @@ brew "testdisk"
 brew "the_silver_searcher"
 brew "tmux"
 brew "tree"
-brew "vim", args: ["with-override-system-vi", "with-ruby", "with-python3"]
+brew "vim", args: ["with-override-system-vi", "with-ruby"]
 brew "yarn"
 brew "zsh"
 
