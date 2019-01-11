@@ -72,6 +72,7 @@ nnoremap <leader>f :Ag!<SPACE>
 vnoremap <leader>f y:Ag!<SPACE><C-R>0<SPACE>
 
 " fzf
+nnoremap <C-p>/ :BLines<CR>
 nnoremap <C-p>b :Buffers<CR>
 nnoremap <C-p>f :Files<CR>
 nnoremap <C-p>h :History<CR>
