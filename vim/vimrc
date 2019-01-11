@@ -5,6 +5,7 @@ endif
 
 " iMprove it
 set nocompatible
+set encoding=utf-8
 " Always show status and tab line
 set laststatus=2
 set showtabline=2
