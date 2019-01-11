@@ -9,6 +9,6 @@ git status --short --untracked-files=all |
         --header='Select files to be staged' \
         --bind 'ctrl-d:toggle-preview' \
         --preview-window right:50% \
-        --preview '(git diff --color=always -- {-1}) | sed 1,4d' |
+        --preview '(git diff --color-words --color=always -- {-1}) | sed 1,4d' |
     cut -c4- |
     paste -sd' ' -
