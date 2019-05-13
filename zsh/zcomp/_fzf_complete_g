@@ -12,6 +12,9 @@ case $cmd in
     (a)
         match=$(_fzf_complete_g_a)
         ;;
+    (rh)
+        match=$(_fzf_complete_g_rh)
+        ;;
 esac
 
 LBUFFER="$lbuf$match"

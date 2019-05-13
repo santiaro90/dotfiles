@@ -8,7 +8,7 @@ git status --short --untracked-files=all |
     fzf --multi --reverse --ansi --height '50%' \
         --header='Select files to be staged' \
         --bind 'ctrl-d:toggle-preview' \
-        --preview-window right:50% \
+        --preview-window down \
         --preview '(git diff --color-words --color=always -- {-1}) | sed 1,4d' |
     cut -c4- |
     paste -sd' ' -

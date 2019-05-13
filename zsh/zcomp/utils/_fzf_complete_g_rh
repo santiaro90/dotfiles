@@ -1,0 +1,12 @@
+# vim: set ft=zsh ts=4 sw=4 :
+
+# Show file options for the git reset --head {file} command, with possibility of
+# showing diffs.
+
+git -c color.ui=always diff --name-only --cached | # only staged files
+    fzf --multi --reverse --ansi --height '50%' \
+        --header 'Select the files you want to reset' \
+        --bind 'ctrl-d:toggle-preview' \
+        --preview-window down \
+        --preview '(git diff --cached --color=always -- {-1}) | sed 1,4d' |
+    paste -sd' ' -
