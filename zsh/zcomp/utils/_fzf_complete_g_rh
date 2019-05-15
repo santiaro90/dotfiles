@@ -3,10 +3,10 @@
 # Show file options for the git reset --head {file} command, with possibility of
 # showing diffs.
 
-git -c color.ui=always diff --name-only --cached | # only staged files
-    fzf --multi --reverse --ansi --height '50%' \
-        --header 'Select the files you want to reset' \
+git -c color.ui=always diff --relative --name-only --cached | # only staged files
+    fzf --multi --reverse --ansi --height '90%' \
+        --header 'Select the files to be unstaged' \
         --bind 'ctrl-d:toggle-preview' \
-        --preview-window down \
+        --preview-window down:20 \
         --preview '(git diff --cached --color=always -- {-1}) | sed 1,4d' |
     paste -sd' ' -
