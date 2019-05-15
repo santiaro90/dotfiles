@@ -8,6 +8,7 @@ tap "homebrew/services"
 
 # CLI
 brew "bash"
+brew "bat"
 brew "cmake"
 brew "coreutils"
 brew "ctags"
@@ -15,7 +16,7 @@ brew "fasd"
 brew "findutils", args: ["with-default-names"]
 brew "fzf"
 brew "gawk"
-brew "git", args: ["without-completions"]
+brew "git"
 brew "gnu-sed"
 brew "heroku"
 brew "htop"
