@@ -1,5 +1,9 @@
 {
-  "editor.fontFamily": "Input",
+  "breadcrumbs.enabled": false,
+
+  "editor.find.seedSearchStringFromSelection": false,
+  "editor.fontFamily": "Fira Code",
+  "editor.fontLigatures": true,
   "editor.fontSize": 16,
   "editor.lineNumbers": "relative",
   "editor.minimap.enabled": false,
@@ -7,113 +11,7 @@
 
   "explorer.openEditors.visible": 0,
 
-  "search.useRipgrep": true,
-
-  "workbench.colorTheme": "One Dark Pro",
-  "workbench.editor.enablePreviewFromQuickOpen": false,
-  "workbench.startupEditor": "newUntitledFile",
-
-  "zenMode.hideTabs": false,
-  "zenMode.hideStatusBar": false,
-  "zenMode.restore": true,
-
-  // VSCode Vim
-  "vim.enableNeovim": true,
-  "vim.foldfix": true,
-  "vim.hlsearch": true,
-  "vim.incsearch": true,
-  "vim.leader": "<space>",
-  "vim.neovimPath": "/usr/local/bin/nvim",
-  "vim.visualstar": true,
-
-  "vim.insertModeKeyBindings": [
-    {
-        "before": ["k", "j"],
-        "after": ["<Esc>"]
-    }
-  ],
-
-  "vim.otherModesKeyBindingsNonRecursive": [
-    {
-      "before": [";"],
-      "after": [":"]
-    },
-    {
-      "before": [":"],
-      "after": [";"]
-    },
-    {
-      "before": ["<leader>", ";"],
-      "after": [],
-      "commands": [
-        { "command": "workbench.action.showCommands" }
-      ]
-    },
-    {
-      "before": ["<leader>", "c"],
-      "after": [],
-      "commands": [
-        { "command": ":nohl" }
-      ]
-    },
-    {
-      "before": ["<leader>", "n"],
-      "after": [],
-      "commands": [
-        { "command": "workbench.action.nextEditorInGroup" }
-      ]
-    },
-    {
-      "before": ["<leader>", "p"],
-      "after": [],
-      "commands": [
-        { "command": "workbench.action.previousEditorInGroup" }
-      ]
-    },
-    {
-      "before": ["<leader>", "o"],
-      "after": ["m", "o", "o", "<Esc>", "`", "o"]
-    },
-    {
-      "before": ["<leader>", "O"],
-      "after": ["m", "o", "O", "<Esc>", "`", "o"]
-    },
-    {
-      "before": ["<C-p>"],
-      "after": [],
-      "commands": [
-        { "command": "workbench.action.quickOpen" }
-      ]
-    },
-    {
-      "before": ["<leader>", "t"],
-      "after": [],
-      "commands": [
-        { "command": "workbench.action.terminal.toggleTerminal" }
-      ]
-    },
-    {
-      "before": ["<leader>", "b"],
-      "after": [],
-      "commands": [
-        { "command": "editor.debug.action.toggleBreakpoint" }
-      ]
-    },
-    {
-      "before": ["<leader>", "l"],
-      "after": [],
-      "commands": [
-        { "command": "editor.debug.action.toggleLogPoint" }
-      ]
-    },
-    {
-      "before": ["<leader>", "d"],
-      "after": [],
-      "commands": [
-        { "command": "workbench.action.debug.start", "when": "!inDebugMode" }
-      ]
-    }
-  ],
+  "git.detectSubmodules": false,
 
   // GitLens
   "gitlens.advanced.messages": {
@@ -127,20 +25,184 @@
     "suppressWelcomeNotice": true
   },
 
-  "gitlens.annotations.file.gutter.dateFormat": "YYYY-MM-DD HH:mm:ss",
-  "gitlens.annotations.file.gutter.format": "${id} (${author|20?}) ${date|20-}",
-  "gitlens.annotations.file.gutter.compact": false,
-  "gitlens.annotations.file.gutter.heatmap.enabled": false,
-  "gitlens.annotations.file.gutter.separateLines": false,
-
-  "gitlens.blame.line.enabled": false,
-
-  "gitlens.blame.file.annotationType": "gutter",
-  "gitlens.blame.file.lineHighlight.enabled": true,
-  "gitlens.blame.file.lineHighlight.locations": "gutter",
+  "gitlens.blame.compact": false,
+  "gitlens.blame.dateFormat": "YYYY-MM-DD HH:mm:ss",
+  "gitlens.blame.format": "${id|12} ${(author|20?)} ${date}",
+  "gitlens.blame.heatmap.enabled": false,
+  "gitlens.blame.highlight.enabled": false,
+  "gitlens.blame.separateLines": false,
 
   "gitlens.codeLens.enabled": true,
   "gitlens.currentLine.enabled": false,
-  "gitlens.showWhatsNewAfterUpgrades": false
-  }
+  "gitlens.keymap": "none",
+  "gitlens.showWhatsNewAfterUpgrades": false,
+
+  "gitlens.views.repositories.autoRefresh": true,
+  "gitlens.views.lineHistory.enabled": false,
+  "gitlens.views.compare.enabled": false,
+
+  // VSCode Vim
+  "vim.debug.loggingLevelForConsole": "debug",
+  "vim.enableNeovim": true,
+  "vim.foldfix": true,
+  "vim.hlsearch": true,
+  "vim.incsearch": true,
+  "vim.leader": "<space>",
+  "vim.neovimPath": "/usr/local/bin/nvim",
+  "vim.substituteGlobalFlag": true,
+  "vim.visualstar": true,
+
+  "vim.insertModeKeyBindings": [
+    {
+      "before": ["k", "j"],
+      "after": ["<Esc>"]
+    }
+  ],
+
+  "vim.normalModeKeyBindingsNonRecursive": [
+    // Sidebar
+    {
+      "before": ["leader", "."],
+      "commands": ["workbench.files.action.focusFilesExplorer"]
+    },
+
+    // Windows
+    {
+      "before": ["leader", "n"],
+      "commands": ["workbench.action.nextEditorInGroup"]
+    },
+    {
+      "before": ["leader", "p"],
+      "commands": ["workbench.action.previousEditorInGroup"]
+    },
+    {
+      "before": ["leader", "z"],
+      "commands": ["workbench.action.toggleZenMode"]
+    },
+    {
+      "before": ["<C-h>"],
+      "after": ["<C-w>", "h"]
+    },
+    {
+      "before": ["<C-l>"],
+      "after": ["<C-w>", "l"]
+    },
+
+    // Editing
+    {
+      "before": ["leader", "o"],
+      "commands": [
+        "editor.action.insertLineAfter",
+        "extension.vim_up"
+      ]
+    },
+    {
+      "before": ["leader", "O"],
+      "commands": [
+        "editor.action.insertLineBefore",
+        "extension.vim_down"
+      ]
+    },
+
+    // Search
+    {
+      "before": ["<C-f>"],
+      "commands": ["actions.find"]
+    },
+
+    // Terminal
+    {
+      "before": ["<C-t>"],
+      "commands": ["workbench.action.terminal.toggleTerminal"]
+    },
+
+    // Git
+    {
+      "before": ["leader", "g", "s"],
+      "commands": [
+        "workbench.action.terminal.toggleTerminal",
+        {
+          "command": "workbench.action.terminal.sendSequence",
+          "args": { "text": "vim ${workspaceFolder} '+Gstatus | only' && exit\u000d" }
+        }
+      ]
+    },
+    {
+      "before": ["leader", "g", "d"],
+      "commands": [
+        "workbench.action.terminal.focus",
+        {
+          "command": "workbench.action.terminal.sendSequence",
+          "args": { "text": "vim ${relativeFile} +Gdiff && exit\u000d" }
+        }
+      ]
+    },
+    {
+      "before": ["leader", "g", "b"],
+      "commands": [
+        "workbench.action.terminal.toggleTerminal",
+        {
+          "command": "workbench.action.terminal.sendSequence",
+          "args": { "text": "vim ${relativeFile} +Gblame && exit\u000d" }
+        }
+      ]
+    },
+    {
+      "before": ["leader", "g", "w"],
+      "commands": ["git.stage"]
+    },
+    {
+      "before": ["leader", "g", "r"],
+      "commands": [
+        "workbench.action.terminal.toggleTerminal",
+        {
+          "command": "workbench.action.terminal.sendSequence",
+          "args": { "text": "vim ${relativeFile} +Gread && exit\u000d" }
+        }
+      ]
+    },
+
+    // Other
+    {
+      "before": [";"],
+      "after": [":"]
+    },
+    {
+      "before": [":"],
+      "after": [";"]
+    },
+    {
+      "before": ["leader", "c"],
+      "commands": [":nohl"]
+    },
+    {
+      "before": ["leader", "r"],
+      "commands": ["workbench.action.reloadWindow"]
+    }
+  ],
+
+  "vim.visualModeKeyBindingsNonRecursive": [
+    {
+      "before": [";"],
+      "after": [":"]
+    }
+  ],
+
+  "terminal.integrated.commandsToSkipShell": [
+    "-workbench.action.quickOpen"
+  ],
+
+  "terminal.integrated.fontSize": 14,
+
+  "window.zoomLevel": 0,
+
+  "workbench.colorTheme": "One Dark Pro",
+  "workbench.editor.enablePreviewFromQuickOpen": false,
+  "workbench.list.automaticKeyboardNavigation": false,
+  "workbench.startupEditor": "newUntitledFile",
+
+  "zenMode.centerLayout": false,
+  "zenMode.hideLineNumbers": false,
+  "zenMode.hideStatusBar": false,
+  "zenMode.hideTabs": false
 }

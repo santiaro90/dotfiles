@@ -1,83 +1,14 @@
 [
-  // Coding
-  {
-    "key": "ctrl+] p",
-    "command": "editor.action.peekImplementation",
-    "when": "editorHasImplementationProvider && editorTextFocus && !isInEmbeddedEditor"
-  },
-  {
-    "key": "ctrl+] i",
-    "command": "editor.action.goToImplementation",
-    "when": "editorHasImplementationProvider && editorTextFocus && !isInEmbeddedEditor"
-  },
-
-  // Move between windows
-  {
-    "key": "ctrl+k",
-    "command": "workbench.action.focusActiveEditorGroup",
-    "when": "terminalFocus"
-  },
-  {
-    "key": "ctrl+j",
-    "command": "workbench.action.terminal.focus",
-    "when": "editorFocus"
-  },
-  {
-    "key": "ctrl+l",
-    "command": "workbench.action.focusNextGroup",
-    "when": "editorFocus"
-  },
-  {
-    "key": "ctrl+l",
-    "command": "workbench.action.focusFirstEditorGroup",
-    "when": "explorerViewletFocus"
-  },
-  {
-    "key": "ctrl+h",
-    "command": "workbench.action.focusPreviousGroup",
-    "when": "editorFocus"
-  },
-  {
-    "key": "ctrl+h",
-    "command": "workbench.action.focusSideBar",
-    "when": "vim.mode == 'Normal' && editorFocus && explorerViewletVisible"
-  },
-  {
-    "key": "ctrl+h",
-    "command": "workbench.action.focusSideBar",
-    "when": "vim.mode == 'Normal' && editorFocus && searchViewletVisible"
-  },
-  {
-    "key": "ctrl+6",
-    "command": "workbench.action.openPreviousEditorFromHistory",
-    "when": "vim.mode == 'Normal' && editorFocus"
-  },
-
   // Quick open
   {
     "key": "ctrl+p",
     "command": "workbench.action.quickOpen",
-    "when": "vim.mode == 'Normal' && editorFocus"
+    "when": "!inQuickOpen && !sideBarFocus && vim.mode !== 'Insert'"
   },
   {
     "key": "ctrl+shift+p",
     "command": "workbench.action.showCommands",
-    "when": "vim.mode == 'Normal' && editorFocus"
-  },
-  {
-    "key": "ctrl+n",
-    "command": "workbench.action.quickOpenSelectNext",
-    "when": "inQuickOpen"
-  },
-  {
-    "key": "ctrl+p",
-    "command": "workbench.action.quickOpenSelectPrevious",
-    "when": "inQuickOpen"
-  },
-  {
-    "key": "ctrl+c",
-    "command": "workbench.action.closeQuickOpen",
-    "when": "inQuickOpen"
+    "when": "!inQuickOpen && vim.mode !== 'Insert'"
   },
   {
     "key": "ctrl+[",
@@ -85,172 +16,65 @@
     "when": "inQuickOpen"
   },
 
-  // File explorer
+  // Windows
   {
-    "key": "ctrl+.",
-    "command": "workbench.view.explorer",
-    "when": "vim.mode == 'Normal' && !explorerViewletVisible"
-  },
-  {
-    "key": "ctrl+.",
-    "command": "workbench.action.toggleSidebarVisibility",
-    "when": "vim.mode == 'Normal' && explorerViewletVisible"
-  },
-  {
-    "key": "s",
-    "command": "explorer.openToSide",
-    "when": "filesExplorerFocus && !inputFocus"
-  },
-  {
-    "key": "r",
-    "command": "renameFile",
-    "when": "filesExplorerFocus && !inputFocus"
-  },
-  {
-    "key": "n",
-    "command": "explorer.newFile",
-    "when": "filesExplorerFocus && !inputFocus"
-  },
-  {
-    "key": "shift+n",
-    "command": "explorer.newFolder",
-    "when": "filesExplorerFocus && !inputFocus"
-  },
-  {
-    "key": "d",
-    "command": "deleteFile",
-    "when": "filesExplorerFocus && !inputFocus"
-  },
-  {
-    "key": "enter",
-    "command": "list.select",
-    "when": "filesExplorerFocus && listFocus"
+    "key": "ctrl+6",
+    "command": "workbench.action.openPreviousEditorFromHistory",
+    "when": "editorFocus && vim.mode == 'Normal'"
   },
 
-  // Search
+  // Sidebar
   {
-    "key": "ctrl+f",
-    "command": "workbench.action.findInFiles",
-    "when": "vim.mode == 'Normal' && !searchViewletVisible"
+    "key": "ctrl+l",
+    "command": "workbench.action.focusFirstEditorGroup",
+    "when": "sideBarFocus"
   },
+    // Files explorer
   {
-    "key": "ctrl+f",
-    "command": "workbench.action.toggleSidebarVisibility",
-    "when": "vim.mode == 'Normal' && searchViewletVisible"
-  },
-  {
-    "key": "ctrl+j",
-    "command": "search.focus.nextInputBox",
-    "when": "searchViewletVisible && inputBoxFocus"
-  },
-  {
-    "key": "ctrl+j",
-    "command": "list.focusDown",
-    "when": "searchViewletVisible && listFocus"
-  },
-  {
-    "key": "ctrl+k",
-    "command": "search.focus.previousInputBox",
-    "when": "searchViewletVisible && inputBoxFocus"
-  },
-  {
-    "key": "k",
-    "command": "search.action.focusSearchFromResults",
-    "when": "searchViewletVisible && firstMatchFocus"
-  },
-  {
-    "key": "ctrl+k",
-    "command": "list.focusUp",
-    "when": "searchViewletVisible && listFocus"
-  },
-  {
-    "key": "ctrl+i",
-    "command": "toggleSearchCaseSensitive",
-    "when": "searchViewletVisible && inputFocus"
-  },
-  {
-    "key": "ctrl+r",
-    "command": "toggleSearchRegex",
-    "when": "searchViewletVisible && inputFocus"
-  },
-  {
-    "key": "ctrl+p",
-    "command": "search.history.showPrevious",
-    "when": "searchInputBoxFocus"
-  },
-  {
-    "key": "ctrl+n",
-    "command": "search.history.showNext",
-    "when": "searchInputBoxFocus"
-  },
-  {
-    "key": "ctrl+c",
-    "command": "search.action.clearSearchResults",
-    "when": "fileMatchOrMatchFocus"
-  },
-  {
-    "key": "ctrl+c",
-    "command": "search.action.clearSearchResults",
-    "when": "searchInputBoxFocus"
-  },
-  {
-    "key": "ctrl+c",
-    "command": "search.action.clearSearchResults",
-    "when": "patternExcludesInputBoxFocus"
-  },
-  {
-    "key": "ctrl+c",
-    "command": "search.action.clearSearchResults",
-    "when": "patternIncludesInputBoxFocus"
-  },
-
-  // Git
-  {
-    "key": "ctrl+g b",
-    "command": "gitlens.toggleFileBlame",
-    "when": "editorFocus"
-  },
-
-  {
-    "key": "ctrl+g d",
-    "command": "gitlens.diffWithPrevious",
-    "when": "editorFocus"
-  },
-
-  // Others
-  {
-    "key": "ctrl+[",
-    "command": "extension.vim_escape",
-    "when": "editorFocus"
-  },
-  {
-    "key": "ctrl+[",
-    "command": "workbench.action.closeMessages",
-    "when": "globalMessageVisible"
-  },
-  {
-    "key": "ctrl+[",
-    "command": "notifications.clearAll",
-    "when": "notificationToastsVisible"
-  },
-  {
-    "key": "ctrl+[",
+    "key": "space .",
     "command": "workbench.action.toggleSidebarVisibility",
     "when": "explorerViewletFocus"
   },
   {
-    "key": "ctrl+[",
+    "key": "space .",
     "command": "workbench.action.toggleSidebarVisibility",
-    "when": "searchViewletFocus"
+    "when": "editorFocus && explorerViewletVisible && vim.mode == 'Normal'"
+  },
+
+  // Search in file
+  {
+    "key": "ctrl+n",
+    "command": "editor.action.nextMatchFindAction",
+    "when": "editorFocus && findWidgetVisible"
   },
   {
-    "key": "ctrl+[",
-    "command": "closeParameterHints",
-    "when": "editorFocus && parameterHintsVisible"
+    "key": "ctrl+p",
+    "command": "editor.action.previousMatchFindAction",
+    "when": "editorFocus && findWidgetVisible"
+  },
+  {
+    "key": "ctrl+s",
+    "command": "editor.action.startFindReplaceAction",
+    "when": "editorFocus && findWidgetVisible"
+  },
+  {
+    "key": "ctrl+i",
+    "command": "toggleFindCaseSensitive",
+    "when": "editorFocus && findWidgetVisible"
   },
   {
     "key": "ctrl+e",
-    "command": "workbench.extensions.action.installExtensions",
-    "when": "vim.mode == 'Normal' && editorFocus"
+    "command": "toggleFindWholeWord",
+    "when": "editorFocus && findWidgetVisible"
+  },
+  {
+    "key": "ctrl+r",
+    "command": "toggleFindRegex",
+    "when": "editorFocus && findWidgetVisible"
+  },
+  {
+    "key": "ctrl+[",
+    "command": "closeFindWidget",
+    "when": "editorFocus && findWidgetVisible"
   }
 ]
