@@ -113,6 +113,28 @@
       ]
     },
 
+    // Intellisense
+    {
+      "before": ["g", "d"],
+      "commands": ["editor.action.revealDefinition"]
+    },
+    {
+      "before": ["g", "t"],
+      "commands": ["editor.action.peekTypeDefinition"],
+    },
+    {
+      "before": ["g", "p"],
+      "commands": ["editor.action.peekImplementation"],
+    },
+    {
+      "before": ["g", "i"],
+      "commands": ["editor.action.goToImplementation"],
+    },
+    {
+      "before": ["g", "r"],
+      "commands": ["editor.action.referenceSearch.trigger"],
+    },
+
     // Search
     {
       "before": ["<C-f>"],
