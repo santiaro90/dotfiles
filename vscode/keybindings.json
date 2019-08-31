@@ -3,7 +3,7 @@
   {
     "key": "ctrl+p",
     "command": "workbench.action.quickOpen",
-    "when": "!inQuickOpen && !sideBarFocus && vim.mode !== 'Insert'"
+    "when": "!inQuickOpen && !sideBarFocus && !suggestWidgetVisible && vim.mode !== 'Insert'"
   },
   {
     "key": "ctrl+shift+p",
@@ -14,6 +14,61 @@
     "key": "ctrl+[",
     "command": "workbench.action.closeQuickOpen",
     "when": "inQuickOpen"
+  },
+
+  // Editing
+    // Completion
+  {
+    "key": "tab",
+    "command": "-insertNextSuggestion"
+  },
+  {
+    "key": "tab",
+    "command": "-editor.emmet.action.expandAbbreviation"
+  },
+  {
+    "key": "shift+tab",
+    "command": "-insertPrevSuggestion"
+  },
+  {
+    "key": "ctrl+e",
+    "command": "editor.emmet.action.expandAbbreviation",
+    "when": "resourceExtname =~ /\\.(j|t)sx?/"
+  },
+    // Definitions
+  {
+    "key": "ctrl+[",
+    "command": "closeReferenceSearchEditor",
+    "when": "referenceSearchVisible"
+  },
+  {
+    "key": "g d",
+    "command": "editor.action.revealDefinition",
+    "when": "editorHasDefinitionProvider && editorTextFocus && !isInEmbeddedEditor && vim.mode != 'Insert'"
+  },
+  {
+    "key": "g t",
+    "command": "editor.action.peekTypeDefinition",
+    "when": "editorHasDefinitionProvider && editorTextFocus && !isInEmbeddedEditor && vim.mode != 'Insert'"
+  },
+  {
+    "key": "g p",
+    "command": "editor.action.peekImplementation",
+    "when": "editorHasImplementationProvider && editorTextFocus && !isInEmbeddedEditor && vim.mode != 'Insert'"
+  },
+  {
+    "key": "g i",
+    "command": "editor.action.goToImplementation",
+    "when": "editorHasImplementationProvider && editorTextFocus && !isInEmbeddedEditor && vim.mode != 'Insert'"
+  },
+  { "key": "g r",
+    "command": "editor.action.referenceSearch.trigger",
+    "when": "editorHasReferenceProvider && editorTextFocus && !inReferenceSearchEditor && !isInEmbeddedEditor && vim.mode != 'Insert'"
+  },
+  {
+    "key": "g h",
+    "command": "editor.action.showHover",
+    "when": "editorTextFocus && vim.mode != 'Insert'"
   },
 
   // Windows

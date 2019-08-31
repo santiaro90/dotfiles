@@ -9,6 +9,15 @@
   "editor.minimap.enabled": false,
   "editor.tabSize": 2,
 
+  "emmet.showExpandedAbbreviation": "never",
+
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+  ],
+
   "explorer.openEditors.visible": 0,
 
   "git.detectSubmodules": false,
