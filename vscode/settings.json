@@ -8,6 +8,7 @@
   "editor.formatOnSave": true,
   "editor.lineNumbers": "relative",
   "editor.minimap.enabled": false,
+  "editor.suggestSelection": "first",
   "editor.tabSize": 2,
 
   "emmet.showExpandedAbbreviation": "never",
@@ -52,6 +53,7 @@
   "gitlens.views.compare.enabled": false,
 
   "javascript.updateImportsOnFileMove.enabled": "always",
+
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
@@ -59,6 +61,9 @@
   "[jsonc]": {
     "editor.formatOnSave": false
   },
+
+  "terminal.integrated.commandsToSkipShell": ["-workbench.action.quickOpen"],
+  "terminal.integrated.fontSize": 14,
 
   // VSCode Vim
   "vim.enableNeovim": true,
@@ -224,8 +229,7 @@
     }
   ],
 
-  "terminal.integrated.commandsToSkipShell": ["-workbench.action.quickOpen"],
-  "terminal.integrated.fontSize": 14,
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
 
   "window.zoomLevel": 0,
 

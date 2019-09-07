@@ -55,6 +55,21 @@
     "command": "workbench.action.focusFirstEditorGroup",
     "when": "sideBarFocus"
   },
+  {
+    "key": "enter",
+    "command": "list.select",
+    "when": "sideBarFocus && listFocus && !inputFocus"
+  },
+  {
+    "key": "x",
+    "command": "list.collapse",
+    "when": "listFocus && !inputFocus"
+  },
+  {
+    "key": "ctrl+[",
+    "command": "workbench.action.toggleSidebarVisibility",
+    "when": "sideBarFocus && !explorerViewletFocus"
+  },
     // Files explorer
   {
     "key": "space .",
@@ -67,6 +82,16 @@
     "when": "editorFocus && explorerViewletVisible && vim.mode == 'Normal'"
   },
   {
+    "key": "space .",
+    "command": "workbench.files.action.focusFilesExplorer",
+    "when": "!sideBarFocus && !editorFocus && !inQuickOpen && !terminalFocus && !inKeybindings && vim.mode != 'Insert'"
+  },
+  {
+    "key": "n",
+    "command": "explorer.newFile",
+    "when": "explorerViewletVisible && filesExplorerFocus && !inputFocus"
+  },
+  {
     "key": "r",
     "command": "renameFile",
     "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
@@ -74,7 +99,7 @@
   {
     "key": "d",
     "command": "deleteFile",
-    "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceMoveableToTrash && !explorerResourceReadonly && !inputFocus"
+    "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
   },
 
   // Search in file
@@ -86,11 +111,6 @@
   {
     "key": "ctrl+p",
     "command": "editor.action.previousMatchFindAction",
-    "when": "editorFocus && findWidgetVisible"
-  },
-  {
-    "key": "ctrl+s",
-    "command": "editor.action.startFindReplaceAction",
     "when": "editorFocus && findWidgetVisible"
   },
   {
@@ -112,5 +132,28 @@
     "key": "ctrl+[",
     "command": "closeFindWidget",
     "when": "editorFocus && findWidgetVisible"
+  },
+    // Replace
+  {
+    "key": "ctrl+s",
+    "command": "editor.action.startFindReplaceAction",
+    "when": "editorFocus && findWidgetVisible"
+  },
+  {
+    "key": "enter",
+    "command": "editor.action.replaceOne",
+    "when": "editorFocus && findWidgetVisible && replaceInputFocussed"
+  },
+  {
+    "key": "shift+enter",
+    "command": "editor.action.replaceAll",
+    "when": "editorFocus && findWidgetVisible && replaceInputFocussed"
+  },
+
+  // Terminal
+  {
+    "key": "ctrl+t",
+    "command": "workbench.action.terminal.new",
+    "when": "!sideBarFocus && !editorFocus && !inQuickOpen && !terminalFocus && vim.mode != 'Insert'"
   }
 ]
