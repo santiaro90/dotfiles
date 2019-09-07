@@ -66,6 +66,16 @@
     "command": "workbench.action.toggleSidebarVisibility",
     "when": "editorFocus && explorerViewletVisible && vim.mode == 'Normal'"
   },
+  {
+    "key": "r",
+    "command": "renameFile",
+    "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+  },
+  {
+    "key": "d",
+    "command": "deleteFile",
+    "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceMoveableToTrash && !explorerResourceReadonly && !inputFocus"
+  },
 
   // Search in file
   {

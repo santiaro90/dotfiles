@@ -5,6 +5,7 @@
   "editor.fontFamily": "Fira Code",
   "editor.fontLigatures": true,
   "editor.fontSize": 16,
+  "editor.formatOnSave": true,
   "editor.lineNumbers": "relative",
   "editor.minimap.enabled": false,
   "editor.tabSize": 2,
@@ -15,7 +16,7 @@
     "javascript",
     "javascriptreact",
     "typescript",
-    "typescriptreact",
+    "typescriptreact"
   ],
 
   "explorer.openEditors.visible": 0,
@@ -50,8 +51,16 @@
   "gitlens.views.lineHistory.enabled": false,
   "gitlens.views.compare.enabled": false,
 
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  "[jsonc]": {
+    "editor.formatOnSave": false
+  },
+
   // VSCode Vim
-  "vim.debug.loggingLevelForConsole": "debug",
   "vim.enableNeovim": true,
   "vim.foldfix": true,
   "vim.hlsearch": true,
@@ -100,17 +109,11 @@
     // Editing
     {
       "before": ["leader", "o"],
-      "commands": [
-        "editor.action.insertLineAfter",
-        "extension.vim_up"
-      ]
+      "commands": ["editor.action.insertLineAfter", "extension.vim_up"]
     },
     {
       "before": ["leader", "O"],
-      "commands": [
-        "editor.action.insertLineBefore",
-        "extension.vim_down"
-      ]
+      "commands": ["editor.action.insertLineBefore", "extension.vim_down"]
     },
 
     // Intellisense
@@ -120,48 +123,50 @@
     },
     {
       "before": ["g", "t"],
-      "commands": ["editor.action.peekTypeDefinition"],
+      "commands": ["editor.action.peekTypeDefinition"]
     },
     {
       "before": ["g", "p"],
-      "commands": ["editor.action.peekImplementation"],
+      "commands": ["editor.action.peekImplementation"]
     },
     {
       "before": ["g", "i"],
-      "commands": ["editor.action.goToImplementation"],
+      "commands": ["editor.action.goToImplementation"]
     },
     {
       "before": ["g", "r"],
-      "commands": ["editor.action.referenceSearch.trigger"],
+      "commands": ["editor.action.referenceSearch.trigger"]
     },
 
     // Search
     {
-      "before": ["<C-f>"],
+      "before": ["/"],
       "commands": ["actions.find"]
     },
 
     // Terminal
     {
       "before": ["<C-t>"],
-      "commands": ["workbench.action.terminal.toggleTerminal"]
+      "commands": ["workbench.action.terminal.new"]
     },
 
     // Git
     {
       "before": ["leader", "g", "s"],
       "commands": [
-        "workbench.action.terminal.toggleTerminal",
+        "workbench.action.terminal.new",
         {
           "command": "workbench.action.terminal.sendSequence",
-          "args": { "text": "vim ${workspaceFolder} '+Gstatus | only' && exit\u000d" }
+          "args": {
+            "text": "vim ${workspaceFolder} '+Gstatus | only' && exit\u000d"
+          }
         }
       ]
     },
     {
       "before": ["leader", "g", "d"],
       "commands": [
-        "workbench.action.terminal.focus",
+        "workbench.action.terminal.new",
         {
           "command": "workbench.action.terminal.sendSequence",
           "args": { "text": "vim ${relativeFile} +Gdiff && exit\u000d" }
@@ -171,7 +176,7 @@
     {
       "before": ["leader", "g", "b"],
       "commands": [
-        "workbench.action.terminal.toggleTerminal",
+        "workbench.action.terminal.new",
         {
           "command": "workbench.action.terminal.sendSequence",
           "args": { "text": "vim ${relativeFile} +Gblame && exit\u000d" }
@@ -185,7 +190,7 @@
     {
       "before": ["leader", "g", "r"],
       "commands": [
-        "workbench.action.terminal.toggleTerminal",
+        "workbench.action.terminal.new",
         {
           "command": "workbench.action.terminal.sendSequence",
           "args": { "text": "vim ${relativeFile} +Gread && exit\u000d" }
@@ -219,10 +224,7 @@
     }
   ],
 
-  "terminal.integrated.commandsToSkipShell": [
-    "-workbench.action.quickOpen"
-  ],
-
+  "terminal.integrated.commandsToSkipShell": ["-workbench.action.quickOpen"],
   "terminal.integrated.fontSize": 14,
 
   "window.zoomLevel": 0,
