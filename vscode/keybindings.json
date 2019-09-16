@@ -35,6 +35,11 @@
     "command": "editor.emmet.action.expandAbbreviation",
     "when": "resourceExtname =~ /\\.(j|t)sx?/"
   },
+  {
+    "key": "ctrl+[",
+    "command": "closeParameterHints",
+    "when": "parameterHintsVisible"
+  },
     // Definitions
   {
     "key": "ctrl+[",
@@ -150,10 +155,108 @@
     "when": "editorFocus && findWidgetVisible && replaceInputFocussed"
   },
 
-  // Terminal
+  // Panel
+  {
+    "key": "ctrl+[",
+    "command": "workbench.action.closePanel",
+    "when": "panelFocus"
+  },
+    // Terminal
+  {
+    "key": "ctrl+shift+t",
+    "command": "workbench.action.terminal.new",
+    "when": "!editorIsOpen && !sideBarFocus && !inQuickOpen && !terminalFocus"
+  },
+  {
+    "key": "ctrl+shift+t",
+    "command": "workbench.action.terminal.new",
+    "when": "editorFocus && vim.mode == 'Normal'"
+  },
   {
     "key": "ctrl+t",
-    "command": "workbench.action.terminal.new",
-    "when": "!sideBarFocus && !editorFocus && !inQuickOpen && !terminalFocus && vim.mode != 'Insert'"
+    "command": "workbench.action.terminal.toggleTerminal",
+    "when": "!editorIsOpen && !sideBarFocus && !inQuickOpen && !terminalFocus"
+  },
+  {
+    "key": "ctrl+t",
+    "command": "workbench.action.terminal.toggleTerminal",
+    "when": "editorFocus && vim.mode == 'Normal'"
+  },
+  {
+    "key": "ctrl+t",
+    "command": "workbench.action.togglePanel",
+    "when": "editorFocus && terminalIsOpen && vim.mode == 'Normal'"
+  },
+  {
+    "key": "ctrl+k",
+    "command": "workbench.action.focusActiveEditorGroup",
+    "when": "terminalFocus && editorIsOpen"
+  },
+  {
+    "key": "ctrl+j",
+    "command": "workbench.action.terminal.focus",
+    "when": "editorFocus && terminalIsOpen && vim.mode == 'Normal'"
+  },
+  {
+    "key": "ctrl+j",
+    "command": "workbench.action.terminal.focus",
+    "when": "!editorIsOpen && !sideBarFocus && !inQuickOpen && terminalIsOpen"
+  },
+  {
+    "key": "ctrl+shift+k",
+    "command": "workbench.action.terminal.resizePaneUp",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "ctrl+shift+j",
+    "command": "workbench.action.terminal.resizePaneDown",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "ctrl+shift+h",
+    "command": "workbench.action.terminal.resizePaneLeft",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "ctrl+shift+l",
+    "command": "workbench.action.terminal.resizePaneRight",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "ctrl+\\",
+    "command": "workbench.action.terminal.splitInActiveWorkspace",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "ctrl+l",
+    "command": "workbench.action.terminal.focusNextPane",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "ctrl+h",
+    "command": "workbench.action.terminal.focusPreviousPane",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "cmd+n",
+    "command": "workbench.action.terminal.focusNext",
+    "when": "terminalFocus"
+  },
+  {
+    "key": "cmd+p",
+    "command": "workbench.action.terminal.focusNext",
+    "when": "terminalFocus"
+  },
+
+  // Other
+  {
+    "key": "ctrl+shift+[",
+    "command": "notifications.clearAll",
+    "when": "notificationToastsVisible && editorFocus && vim.mode == 'Normal'"
+  },
+  {
+    "key": "ctrl+shift+[",
+    "command": "notifications.clearAll",
+    "when": "!editorIsOpen && !sideBarFocus && !inQuickOpen && !terminalFocus"
   }
 ]

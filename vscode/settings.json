@@ -1,6 +1,7 @@
 {
   "breadcrumbs.enabled": false,
 
+  "editor.cursorSurroundingLines": 5,
   "editor.find.seedSearchStringFromSelection": false,
   "editor.fontFamily": "Fira Code",
   "editor.fontLigatures": true,
@@ -62,7 +63,11 @@
     "editor.formatOnSave": false
   },
 
-  "terminal.integrated.commandsToSkipShell": ["-workbench.action.quickOpen"],
+  "terminal.integrated.commandsToSkipShell": [
+    "workbench.action.closePanel",
+    "-workbench.action.quickOpen"
+  ],
+
   "terminal.integrated.fontSize": 14,
 
   // VSCode Vim
@@ -149,12 +154,6 @@
       "commands": ["actions.find"]
     },
 
-    // Terminal
-    {
-      "before": ["<C-t>"],
-      "commands": ["workbench.action.terminal.new"]
-    },
-
     // Git
     {
       "before": ["leader", "g", "s"],
@@ -233,8 +232,10 @@
 
   "window.zoomLevel": 0,
 
-  "workbench.colorTheme": "One Dark Pro",
+  "workbench.colorTheme": "Material Theme High Contrast",
+  "workbench.editor.enablePreview": false,
   "workbench.editor.enablePreviewFromQuickOpen": false,
+  "workbench.iconTheme": "material-icon-theme",
   "workbench.list.automaticKeyboardNavigation": false,
   "workbench.startupEditor": "newUntitledFile",
 
