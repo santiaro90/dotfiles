@@ -1,0 +1,46 @@
+setopt appendhistory     # Immediately append history instead of overwriting
+setopt autocd            # if only directory path is entered, cd there.
+setopt correct           # Auto correct mistakes
+setopt correct           # Auto correct mistakes
+setopt extendedglob      # Extended globbing. Allows using regular expressions with *
+setopt histignorealldups # If a new command is a duplicate, remove the older one
+setopt nobeep            # No beep
+setopt nocaseglob        # Case insensitive globbing
+setopt nocheckjobs       # Don't warn about running processes when exiting
+setopt numericglobsort   # Sort filenames numerically when it makes sense
+setopt rcexpandparam     # Array expension with parameters
+
+HISTFILE=~/.zhistory
+HISTSIZE=10000
+SAVEHIST=500
+WORDCHARS=${WORDCHARS//\/[&.;]} # Don't consider certain characters part of the word
+
+# Source manjaro-zsh-configuration
+# if [[ -e /usr/share/zsh/manjaro-zsh-config ]]; then
+#   source /usr/share/zsh/manjaro-zsh-config
+# fi
+# Use manjaro zsh prompt
+# if [[ -e /usr/share/zsh/manjaro-zsh-prompt ]]; then
+#   source /usr/share/zsh/manjaro-zsh-prompt
+# fi
+
+# Load plugins
+source <(antibody init)
+antibody bundle < ~/.config/zsh/plugins
+
+# Load fzf
+if [[ -f /usr/share/fzf/completion.zsh ]]; then
+    source /usr/share/fzf/completion.zsh
+fi
+
+if [[ -f /usr/share/fzf/key-bindings.zsh ]]; then
+    source /usr/share/fzf/key-bindings.zsh
+fi
+
+source ~/.config/zsh/prompt.zsh
+source ~/.config/zsh/keybindings.zsh
+source ~/.config/zsh/aliases.zsh
+
+# Load nvm
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
