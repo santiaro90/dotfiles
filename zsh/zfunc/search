@@ -9,7 +9,7 @@ if [[ $# == 0 ]]; then
 fi
 
 local filetype="$1"
-local highlight_cmd="bat -l $1 --color=always --highlight-line={2} --theme=TwoDark {1}"
+local highlight_cmd="bat -l $filetype --color=always --pager=never {1} --highlight-line={2}"
 
 if [[ $filetype == (js|ts)x ]]; then
   filetype="${filetype:0:-1}"
@@ -17,9 +17,11 @@ fi
 
 local match=$(
   rg --type="$filetype" --color=never --line-number '.*' . |
-  fzf --no-multi --reverse --delimiter : \
+  fzf --no-multi \
+      --reverse \
+      --delimiter : \
       --bind 'ctrl-t:toggle-preview' \
-      --preview-window down:20 \
+      --preview-window 'right,50%,border-left,+{2}+5/5,~5' \
       --preview "$highlight_cmd"
 )
 
@@ -27,5 +29,5 @@ local lineno=$(echo "$match" | cut -d':' -f2)
 local file=$(echo "$match" | cut -d':' -f1)
 
 if [[ -n $file ]]; then
-  $EDITOR $file +$(echo "$match" | cut -d':' -f2)
+  $EDITOR $file +$lineno -c "exec 'normal zz'"
 fi
