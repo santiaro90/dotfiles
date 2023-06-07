@@ -17,7 +17,7 @@ alias efunc="e $DOTDIR/zsh/zfunc +\"cd $DOTDIR/zsh/zfunc\""
 alias ecomp="e $DOTDIR/zsh/zcomp +\"cd $DOTDIR/zsh/zcomp\""
 alias ezshrc="e $DOTDIR/zsh/zshrc +\"cd $DOTDIR/zsh\" +bfirst"
 alias eenv="e $DOTDIR/zsh/zshenv +\"cd $DOTDIR/zsh\" +bfirst"
-alias egit="e $DOTDIR/git +\"cd $DOTDIR/git\""
+alias egit="e $DOTDIR/git/gitconfig +\"cd $DOTDIR/git\""
 alias eprompt="e $DOTDIR/zsh/prompt.zsh +\"cd $DOTDIR/zsh\""
 alias evim="e $DOTDIR/nvim +\"cd $DOTDIR/nvim\""
 
