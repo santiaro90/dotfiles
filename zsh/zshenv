@@ -1,33 +1,29 @@
-#
-# Defines environment variables.
-#
-# Authors:
-#   Sorin Ionescu <sorin.ionescu@gmail.com>
-#
+export XDG_CONFIG_HOME=~/.config
+export DOTDIR=~/.dotfiles
+export EDITOR=nvim
+export LANG=en_GB.UTF-8
 
-# Ensure that a non-login, non-interactive shell has a defined environment.
-if [[ "$SHLVL" -eq 1 && ! -o LOGIN && -s "${ZDOTDIR:-$HOME}/.zprofile" ]]; then
-  source "${ZDOTDIR:-$HOME}/.zprofile"
-fi
+# Color man pages
+export LESS_TERMCAP_mb=$'\E[01;32m'
+export LESS_TERMCAP_md=$'\E[01;32m'
+export LESS_TERMCAP_me=$'\E[0m'
+export LESS_TERMCAP_se=$'\E[0m'
+export LESS_TERMCAP_so=$'\E[01;47;34m'
+export LESS_TERMCAP_ue=$'\E[0m'
+export LESS_TERMCAP_us=$'\E[01;36m'
+export LESS=-r
 
-export DOTDIR="$HOME/.dotfiles"
+# FZF options
+export FZF_COMPLETION_TRIGGER=""
+export FZF_CTRL_T_COMMAND="fd -H --type f"
+export FZF_DEFAULT_COMMAND="fd -HI --type f"
+export FZF_DEFAULT_OPTS="--bind 'ctrl-j:preview-page-down,ctrl-k:preview-page-up'"
+export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
+  --color=bg+:#414559,bg:#303446,spinner:#f2d5cf,hl:#e78284 \
+  --color=fg:#c6d0f5,header:#e78284,info:#ca9ee6,pointer:#f2d5cf \
+  --color=gutter:#303446 \
+  --color=marker:#f2d5cf,fg+:#c6d0f5,prompt:#ca9ee6,hl+:#e78284"
+export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS --border"
 
-export EDITOR="vim"
-export VISUAL="vim"
-
-# Expose git custom commands
-export PATH="$HOME/.gitcmd:$PATH"
-
-# fzf
-export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git/ -l -g ""'
-export FZF_CTRL_T_COMMAND='ag --hidden --ignore .git/ -l -g ""'
-export FZF_COMPLETION_TRIGGER=''
-export FZF_DEFAULT_OPTS="--bind 'down:preview-page-down,up:preview-page-up'"
-
-# Add rbenv to user's path
-if [ -d $HOME/.rbenv ]; then
-    export PATH="$HOME/.rbenv/bin:$PATH"
-fi
-
-# Local env
-[ -f $HOME/.zshenv.local ] && source $HOME/.zshenv.local
+# Bat
+export BAT_THEME="Catppuccin-frappe"

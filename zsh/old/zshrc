@@ -1,0 +1,68 @@
+# Source Prezto.
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+fi
+
+
+##### Keybindings #####
+
+# Movement
+bindkey -M viins '^a' beginning-of-line
+bindkey -M viins '^b' vi-backward-word-end
+bindkey -M viins '^e' end-of-line
+bindkey -M viins '^f' vi-forward-word
+
+# Editing
+bindkey -M viins '^k' kill-line
+bindkey -M viins '^u' backward-kill-line
+bindkey -M viins '^w' backward-kill-word
+
+# History
+bindkey -M viins '^n' down-history
+bindkey -M viins '^p' up-history
+bindkey -M viins '^g' fzf-cd-widget
+bindkey -M viins '^t' fzf-file-widget
+bindkey -M viins '^r' fzf-history-widget
+
+#######################
+
+
+##### Custom functions #####
+
+# Adjust fpath to load custom functions
+fpath=($HOME/.zfunc $HOME/.zcomp $HOME/.zcomp/utils $fpath)
+
+autoload -Uz $HOME/.zfunc/*(:t)
+autoload -Uz $HOME/.zcomp/**/*(:t)
+autoload -U compinit; compinit
+autoload -U zmv
+
+############################
+
+
+##### Aliases and Tools #####
+
+[ -s $HOME/.nvm/nvm.sh ] && source $HOME/.nvm/nvm.sh && nvm use stable > /dev/null 2>&1
+
+if [ -s $HOME/.fzf.zsh ]; then
+  source $HOME/.fzf.zsh
+
+  # Completion
+  bindkey -M viins '^ ' fzf-completion
+  bindkey -M viins '^i' $fzf_default_completion
+fi
+
+# command -v rbenv > /dev/null 2>&1 && eval "$(rbenv init -)"
+command -v fasd > /dev/null 2>&1 && eval "$(fasd --init auto)"
+
+[ -s $HOME/.alias ] && source $HOME/.alias
+
+#############################
+
+
+##### Local overrides #####
+
+[ -s $HOME/.alias.local ] && source $HOME/.alias.local
+[ -s $HOME/.zshrc.local ] && source $HOME/.zshrc.local
+
+###########################

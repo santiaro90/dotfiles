@@ -1,5 +1,3 @@
-# vim: set ft=zsh :
-
 # Navigation and listing
 alias -- -="cd -"
 alias ..="cd .."
@@ -42,7 +40,3 @@ alias nt="npm test"
 
 # Disable corrections
 alias rm="nocorrect rm"
-
-# Disable e alias (coming from prezto). This will be defined as
-# a function
-unalias e

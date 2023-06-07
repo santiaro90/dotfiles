@@ -1,0 +1,5 @@
+zmodule wfxr/forgit
+zmodule zsh-users/zsh-completions --fpath src
+zmodule zsh-users/zsh-syntax-highlighting
+zmodule joke/zim-starship
+zmodule completion
