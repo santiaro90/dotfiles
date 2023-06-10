@@ -1,17 +1,17 @@
 # vim: set filetype=gitconfig:
 [alias]
     # Add
-    a = add
+    a  = forgit add
     aa = add .
     ap = add -p # Add file by chunks
 
     # Diff
-    d = diff --color-words --patience
-    dc = diff --cached --color-words --patience
+    d  = forgit diff
+    dc = diff --cached --patience
     dt = difftool
 
     # Branching
-    b = branch
+    b  = branch
     bv = branch -vv
     bm = branch -m
     br = branch -d
@@ -22,21 +22,21 @@
     cl = clone -v
 
     # Commit
-    amend = commit --amend
+    amend  = commit --amend
     amendr = commit --amend --reuse-message head
-    c = commit
-    ca = commit -a
-    cam = !git add . && git commit -am
-    cm = commit -m
-    cp = cherry-pick
-    cpa = cherry-pick --abort
+    c      = commit
+    ca     = commit -a
+    cam    = !git add . && git commit -am
+    cm     = commit -m
+    cp     = cherry-pick
+    cpa    = cherry-pick --abort
 
     # Checkout
-    ck = checkout
-    ckb = checkout -
-    ckm = checkout master
-    cb = checkout -b
-    cf = checkout --
+    ck     = checkout
+    ckb    = checkout -
+    ckm    = checkout master
+    cb     = checkout -b
+    cf     = checkout --
 
     # Log
     ll = "log --decorate --graph --pretty='%C(yellow)[%H]%Creset%C(auto)%d%Creset%n  %s%n%n\
@@ -50,15 +50,15 @@
     ib = init --bare
 
     # Merge/Rebase
-    rb = rebase
+    rb  = rebase
     rba = rebase --abort
     rbc = rebase --continue
     rbi = rebase -i
     rbo = rebase --onto
-    m = merge --no-ff --no-edit
-    ma = merge --abort
-    mf = merge --ff
-    ms = merge --squash
+    m   = merge --no-ff --no-edit
+    ma  = merge --abort
+    mf  = merge --ff
+    ms  = merge --squash
 
     # Pull/Push
     pf = push --force-with-lease
@@ -72,10 +72,10 @@
     rv = remote -v
 
     # Reset
-    r = reset
-    rh = reset HEAD
+    r   = reset
+    rh  = reset HEAD
     rhr = reset --hard
-    rs = reset --soft
+    rs  = reset --soft
 
     # Show
     sh = "show --pretty='%C(yellow)[%H]%Creset%C(auto)%d%Creset%n  %s%n%n\
@@ -94,23 +94,24 @@
     stu = stash save -u
 
     # Status
-    s = status --short --branch --untracked-files=all
+    s  = status --short --branch --untracked-files=all
     sl = status --untracked-files=all
 
 [color]
     ui = auto
 
 [color "branch"]
-    current = green bold reverse
-    local = green bold
-    remote = blue
+    current  = green bold reverse
+    local    = green bold
+    remote   = blue
     upstream = magenta
 
 [color "diff"]
     meta = magenta bold
-    frag = yellow bold
-    old = red bold reverse
-    new = green bold reverse
+    frag = "#c6d0f5" bold italic "#626880"
+    func = "#c6d0f5" bold italic "#626880"
+    old  = red bold reverse
+    new  = green bold reverse
 
 [color "status"]
     added = green bold ul
@@ -120,10 +121,42 @@
 [core]
     editor = vim
     excludesfile = ~/.gitignore
-    pager = less -RFX
+    pager = delta
+
+[delta]
+    features = theme
+    line-numbers = true
+
+[delta "interactive"]
+    keep-plus-minus-markers = false
+
+[delta "theme"]
+    ; blame-palette                 = "#000000" "#222222" "#444444"
+    commit-style                  = raw
+    file-decoration-style         = normal ol
+    file-style                    = "#e5c890" bold
+    file-transformation           = "s,(.*),  $1  ,"
+    hunk-header-decoration-style  = normal ul ol dim
+    hunk-header-style             = raw
+    line-numbers-left-style       = normal dim
+    line-numbers-minus-style      = "#e78284"
+    line-numbers-plus-style       = "#a6d189"
+    line-numbers-right-style      = normal dim
+    line-numbers-zero-style       = "#51576d"
+    minus-emph-style              = syntax "#901011"
+    minus-empty-line-marker-style = normal "#3f0001"
+    minus-non-emph-style          = syntax "#3f0001"
+    minus-style                   = syntax "#3f0001"
+    plus-emph-style               = syntax "#006000"
+    plus-empty-line-marker-style  = normal "#002800"
+    plus-non-emph-style           = syntax "#002800"
+    plus-style                    = syntax "#002800"
+    syntax-theme                  = Catppuccin-frappe
+    whitespace-error-style        = reverse purple
+    zero-style                    = syntax
 
 [diff]
-    tool = vimdiff
+    tool = nvimdiff
 
 [difftool]
     prompt = false
@@ -131,9 +164,12 @@
 [github]
     user = santiaro90
 
+[interactive]
+    diffFilter = delta --color-only --features=interactive
+
 [merge]
     conflictStyle = diff3
-    tool = vimdiff
+    tool = nvimdiff
 
 [push]
     default = simple
@@ -145,5 +181,5 @@
     insteadOf = ghs:
 
 [user]
-	email = santiaro90@gmail.com
-	name = Santiago Alvarez Rodriguez
+    email = santiaro90@gmail.com
+    name = Santiago Alvarez Rodriguez
