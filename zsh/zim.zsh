@@ -11,3 +11,6 @@ if [[ ! ${ZIM_HOME}/init.zsh -nt ${XDG_CONFIG_HOME}/.zimrc ]]; then
 fi
 
 source ${ZIM_HOME}/init.zsh
+
+# Nicer Git
+export PATH="$PATH:$FORGIT_INSTALL_DIR/bin"
