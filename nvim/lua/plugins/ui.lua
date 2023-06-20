@@ -27,8 +27,8 @@ return {
       },
       default_component_configs = {
         icon = {
-          folder_empty = "󰜌",
-          folder_empty_open = "󰜌",
+          folder_empty = "",
+          folder_empty_open = "󰷏",
         },
       },
       document_symbols = {
@@ -177,16 +177,30 @@ return {
       { "nvim-tree/nvim-web-devicons" },
       { "nvim-treesitter/nvim-treesitter" },
     },
-    opts = {
-      lightbulb = {
-        virtual_text = false,
-      },
-      symbol_in_winbar = {
-        enable = false,
-      },
-      ui = {
-        title = false,
-      },
-    },
+    opts = function()
+      local quit_keys = { '<C-[>', '<ESC>' }
+
+      return {
+        definition = { keys = { quit = quit_keys } },
+        finder = { keys = { quit = quit_keys } },
+        outline = { keys = { quit = quit_keys } },
+        rename = { keys = { quit = quit_keys } },
+        lightbulb = {
+          virtual_text = false,
+        },
+        symbol_in_winbar = {
+          enable = false,
+        },
+        ui = {
+          title = false,
+        },
+      }
+    end,
+  },
+  {
+    "norcalli/nvim-colorizer.lua",
+    config = function()
+      require("colorizer").setup()
+    end,
   },
 }

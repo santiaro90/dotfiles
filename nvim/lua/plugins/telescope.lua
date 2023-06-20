@@ -6,12 +6,23 @@ return {
     dependencies = {
       { "nvim-lua/plenary.nvim" },
     },
+    keys = {
+      { "<C-p>", ":Telescope find_files hidden=true<CR>", desc = "Search Files" }
+    },
     opts = function ()
       local actions = require("telescope.actions")
       local layout_actions = require("telescope.actions.layout")
 
       return {
         defaults = {
+          file_ignore_patterns = {
+            "*-lock*",
+            "*.lock",
+            ".git",
+            "build",
+            "dist",
+            "node_modules",
+          },
           mappings = {
             i = {
               ["<C-j>"] = actions.preview_scrolling_down,
