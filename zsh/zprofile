@@ -1,3 +1,5 @@
+# vim: set ft=zsh ts=4 sw=4 :
+
 export XDG_CONFIG_HOME=~/.config
 export DOTDIR=~/.dotfiles
 export EDITOR=nvim
@@ -25,5 +27,22 @@ export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
   --color=marker:#f2d5cf,fg+:#c6d0f5,prompt:#ca9ee6,hl+:#e78284"
 export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS --border"
 
-# Bat
-export BAT_THEME="Catppuccin-frappe"
+# Pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+export PATH="$PYENV_ROOT/bin:$PATH"
+
+# Forgit
+export FORGIT_NO_ALIASES=true
+export FORGIT_PAGER='delta --config ~/.gitconfig --file-style omit'
+export FORGIT_DIFF_GIT_OPTS="--patience"
+export FORGIT_FZF_DEFAULT_OPTS="\
+  --reverse \
+  --height=80% \
+  --border-label-pos=5 \
+  --bind='ctrl-t:toggle-preview' \
+  --preview-window='right:100,border-left,wrap'"
+export FORGIT_ADD_FZF_OPTS="$FORGIT_FZF_DEFAULT_OPTS \
+  --border-label='Stage files'"
+export FORGIT_DIFF_FZF_OPTS="$FORGIT_FZF_DEFAULT_OPTS \
+  --border-label='Worktree changes'"
