@@ -36,17 +36,17 @@
     ckb    = checkout -
     ckm    = checkout master
     cb     = checkout -b
-    cf     = checkout --
+    cf     = forgit checkout_file
 
     # Log
-    ll = "log --decorate --graph --pretty='%C(yellow)[%H]%Creset%C(auto)%d%Creset%n  %s%n%n\
+    ll   = "log --decorate --graph --pretty='%C(yellow)[%H]%Creset%C(auto)%d%Creset%n  %s%n%n\
     Date: %C(blue)%cd%Creset%n\
     Author: %C(red)%an%Creset %C(green)<%ae>%Creset%n' --date=format:'%e %B, %Y - %H:%M:%S'"
-    ls = log --decorate --pretty=format:'%C(yellow)[%h]%Creset%C(auto)%d%Creset - %s %C(blue)(%cr)%Creset %C(green)<%ae>%Creset'
+    ls   = log --decorate --pretty=format:'%C(yellow)[%h]%Creset%C(auto)%d%Creset - %s %C(blue)(%cr)%Creset %C(green)<%ae>%Creset'
     lost = !git ls $(git fsck --no-reflog | awk '/dangling commit/ {print $3}')
 
     # Init
-    i = init
+    i  = init
     ib = init --bare
 
     # Merge/Rebase
@@ -73,7 +73,7 @@
 
     # Reset
     r   = reset
-    rh  = reset HEAD
+    rh  = forgit reset_head
     rhr = reset --hard
     rs  = reset --soft
 
@@ -103,8 +103,8 @@
 [color "branch"]
     current  = green bold reverse
     local    = green bold
-    remote   = blue
-    upstream = magenta
+    remote   = "#8caaee"
+    upstream = "#ef9f76"
 
 [color "diff"]
     meta = magenta bold
@@ -119,13 +119,14 @@
     untracked = magenta bold
 
 [core]
-    editor = vim
+    editor       = nvim
     excludesfile = ~/.gitignore
-    pager = delta
+    pager        = delta
 
 [delta]
-    features = theme
-    line-numbers = true
+    features       = theme
+    line-numbers   = true
+    wrap-max-lines = unlimited
 
 [delta "interactive"]
     keep-plus-minus-markers = false
@@ -143,14 +144,14 @@
     line-numbers-plus-style       = "#a6d189"
     line-numbers-right-style      = normal dim
     line-numbers-zero-style       = "#51576d"
-    minus-emph-style              = syntax "#901011"
-    minus-empty-line-marker-style = normal "#3f0001"
-    minus-non-emph-style          = syntax "#3f0001"
-    minus-style                   = syntax "#3f0001"
-    plus-emph-style               = syntax "#006000"
-    plus-empty-line-marker-style  = normal "#002800"
-    plus-non-emph-style           = syntax "#002800"
-    plus-style                    = syntax "#002800"
+    minus-emph-style              = white "#ad1113"
+    minus-empty-line-marker-style = normal "#610103"
+    minus-non-emph-style          = syntax "#610103"
+    minus-style                   = syntax "#610103"
+    plus-emph-style               = white "#048204"
+    plus-empty-line-marker-style  = normal "#024f02"
+    plus-non-emph-style           = syntax "#024f02"
+    plus-style                    = syntax "#024f02"
     syntax-theme                  = Catppuccin-frappe
     whitespace-error-style        = reverse purple
     zero-style                    = syntax
@@ -165,11 +166,11 @@
     user = santiaro90
 
 [interactive]
-    diffFilter = delta --color-only --features=interactive
+    diffFilter = delta --color-only --features='interactive theme'
 
 [merge]
     conflictStyle = diff3
-    tool = nvimdiff
+    tool          = nvimdiff
 
 [push]
     default = simple
