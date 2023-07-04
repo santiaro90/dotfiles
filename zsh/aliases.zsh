@@ -52,8 +52,10 @@ alias pys="pyenv shell"
 alias pyu="pyenv uninstall"
 alias pyv="pyenv versions"
 alias pyve="pyenv virtualenv"
+alias pyvea="pyenv activate"
+alias pyved="pyenv deactivate"
+alias pyvex="pyenv virtualenv-delete"
 alias pyves="pyenv virtualenvs"
-alias pyved="pyenv virtualenv-delete"
 
 # Disable corrections
 alias rm="nocorrect rm"
