@@ -3,11 +3,6 @@ return {
     name = "Neotree",
     ['.'] = { ":Neotree toggle filesystem<CR>", "Open File Explorer" },
   },
-  ["<leader>d"] = {
-    name = "Diagnostics",
-    d = { ":Trouble document_diagnostics<CR>", "Open Document Diagnostics" },
-    p = { ":Trouble workspace_diagnostics<CR>", "Open Project Diagnostics" },
-  },
   ["<leader>g"] = {
     name = "Git",
     ["["] = { ":Gitsigns prev_hunk<CR>", "Previous Change" },
@@ -19,6 +14,7 @@ return {
     s = { ":Git<CR>", "Git Status" },
     u = { ":Gitsigns undo_stage_hunk<CR>", "Undo Stage Change" },
     w = { ":Gwrite<CR>", "Git Add File" },
+    x = { ":GDelete<CR>", "Git Remove File" },
   },
   ["<leader>l"] = {
     name = "LSP",
@@ -29,14 +25,16 @@ return {
     s = { ":Lspsaga outline<CR>", "See Document Symbols" },
     t = { ":Lspsaga goto_type_definition<CR>", "Go to Type Definition" },
   },
-  ["<leader>s"] = {
-    d = { ":Telescope buffers<CR>", "Search Buffers" },
-    f = { ":Telescope find_files hidden=true<CR>", "Search Files" },
-    h = { ":Telescope oldfiles<CR>", "Search History Files" },
-    p = { ":Telescope live_grep<CR>", "Search String in Project" },
+  ["<leader>p"] = {
+    name = "Diagnostics",
+    d = { ":Trouble document_diagnostics<CR>", "Open Document Diagnostics" },
+    p = { ":Trouble workspace_diagnostics<CR>", "Open Project Diagnostics" },
   },
-  ["<leader>t"] = {
-    name = "Terminal",
-    t = { ":ToggleTerm<CR>", "Toggle Terminal" },
+  ["<leader>s"] = {
+    name = "FZF",
+    d = { ":FzfLua buffers<CR>", "Search Buffers" },
+    f = { ":FzfLua files<CR>", "Search Files" },
+    h = { ":FzfLua oldfiles<CR>", "Search History Files" },
+    p = { ":FzfLua live_grep<CR>", "Search String in Project" },
   },
 }

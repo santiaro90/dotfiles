@@ -1,43 +1,29 @@
 return {
   {
-    "nvim-telescope/telescope.nvim",
-    cmd = "Telescope",
-    version = false,
+    "ibhagwan/fzf-lua",
     dependencies = {
-      { "nvim-lua/plenary.nvim" },
+      { "nvim-tree/nvim-web-devicons" },
     },
-    keys = {
-      { "<C-p>", ":Telescope find_files hidden=true<CR>", desc = "Search Files" }
-    },
-    opts = function ()
-      local actions = require("telescope.actions")
-      local layout_actions = require("telescope.actions.layout")
+    config = function ()
+      local actions = require("fzf-lua.actions")
 
-      return {
-        defaults = {
-          file_ignore_patterns = {
-            "*-lock*",
-            "*.lock",
-            ".git",
-            "build",
-            "dist",
-            "node_modules",
-          },
-          mappings = {
-            i = {
-              ["<C-j>"] = actions.preview_scrolling_down,
-              ["<C-k>"] = actions.preview_scrolling_up,
-              ["<C-t>"] = layout_actions.toggle_preview,
-              ["<C-u>"] = false,
-              ["<C-[>"] = actions.close,
-            },
+      vim.keymap.set("n", "<C-p>", ":FzfLua files<CR>", { desc = "Search Files", silent = true })
+
+      require("fzf-lua").setup({
+        "fzf-native",
+        actions = {
+          files = {
+            ["default"] = actions.file_edit,
           },
         },
-      }
+        keymap = {
+          fzf = {
+            ["ctrl-j"] = "preview-page-down",
+            ["ctrl-k"] = "preview-page-up",
+            ["ctrl-t"] = "toggle-preview",
+          },
+        },
+      })
     end,
-  },
-  {
-    "nvim-telescope/telescope-fzf-native.nvim",
-    build = "make",
   },
 }
