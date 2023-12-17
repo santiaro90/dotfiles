@@ -36,5 +36,6 @@ return {
     f = { ":FzfLua files<CR>", "Search Files" },
     h = { ":FzfLua oldfiles<CR>", "Search History Files" },
     p = { ":FzfLua live_grep<CR>", "Search String in Project" },
+    r = { ":lua require('spectre').open()<CR>", "Replace in Files" },
   },
 }

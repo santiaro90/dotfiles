@@ -7,7 +7,8 @@ return {
     opts = {},
   },
   {
-    "echasnovski/mini.pairs",
+    "windwp/nvim-autopairs",
+    event = "InsertEnter",
     opts = {},
   },
   {
@@ -29,9 +30,15 @@ return {
     end,
   },
   {
-    "echasnovski/mini.comment",
-    event = "VeryLazy",
+    "numToStr/Comment.nvim",
     opts = {},
+  },
+  {
+    "nvim-pack/nvim-spectre",
+    cmd = "Spectre",
+    opts = {
+      open_cmd = "noswapfile vnew",
+    },
   },
   {
     "echasnovski/mini.splitjoin",
