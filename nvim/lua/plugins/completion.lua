@@ -9,6 +9,7 @@ return {
       "hrsh7th/cmp-path",
       "saadparwaiz1/cmp_luasnip",
       "onsails/lspkind.nvim",
+      "zbirenbaum/copilot-cmp",
     },
     config = function()
       local cmp = require("cmp")
@@ -37,6 +38,7 @@ return {
           end
         },
         sources = cmp.config.sources({
+          { name = "copilot" },
           { name = "nvim_lsp" },
           { name = "luasnip" },
           { name = "buffer" },
@@ -66,7 +68,7 @@ return {
         end,
         expr = true,
         silent = true,
-        mode = 'i',
+        mode = "i",
       },
       {
         "<Tab>",
@@ -83,5 +85,24 @@ return {
         mode = { "i", "s" },
       },
     },
-  }
+  },
+  {
+    "zbirenbaum/copilot-cmp",
+    dependencies = {
+      "zbirenbaum/copilot.lua"
+    },
+    config = function()
+      require("copilot_cmp").setup()
+    end,
+  },
+  {
+    "zbirenbaum/copilot.lua",
+    build = ":Copilot auth",
+    cmd = "Copilot",
+    event = "InsertEnter",
+    opts = {
+      suggestion = { enabled = false },
+      panel = { enabled = false },
+    },
+  },
 }
