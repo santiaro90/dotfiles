@@ -4,6 +4,7 @@ vim.o.autowrite = true
 vim.o.cursorline = true
 vim.o.expandtab = true
 vim.o.gdefault = true
+vim.o.ignorecase = true
 vim.o.hidden = true
 vim.o.laststatus = 2
 vim.o.modeline = true
@@ -38,3 +39,4 @@ vim.opt.list = true
 vim.opt.termguicolors = true
 
 vim.cmd([[autocmd FileType * set formatoptions-=ro formatoptions+=j]])
+vim.cmd([[autocmd FileType tf,tfvars set filetype=terraform]])

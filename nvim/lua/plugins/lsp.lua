@@ -5,6 +5,9 @@ local servers = {
   pyright = {},
   sqlls = {},
   tsserver = {},
+  terraformls = {
+    filetypes = { "terraform", "terraform-vars", "tf", "tfvars" }
+  }
 }
 
 return {
