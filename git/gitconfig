@@ -119,9 +119,11 @@
     untracked = magenta bold
 
 [core]
-    editor       = nvim
-    excludesfile = ~/.gitignore
-    pager        = delta
+    editor         = nvim
+    excludesfile   = ~/.gitignore
+    fsmonitor      = true
+    pager          = delta
+    untrackedCache = true
 
 [delta]
     features       = theme
