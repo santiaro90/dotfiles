@@ -1,0 +1,85 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+command_timeout = 10000
+continuation_prompt = '󰶻 '
+format = '''
+$directory$git_branch$git_status$git_commit
+$python$nodejs$character'''
+add_newline = true
+palette = 'catppuccin_frappe'
+
+[character] # The name of the module we are configuring is 'character'
+error_symbol = '[](bold red)'
+success_symbol = '[](bold green)'
+vimcmd_symbol = '[\[\]](bold blue)'
+
+[directory]
+style = 'bold yellow'
+truncate_to_repo = true
+truncation_length = 10
+# truncation_symbol = '󰇘/'
+
+[git_branch]
+format = '[$symbol$branch(:$remote_branch)]($style)'
+style = 'bold sapphire'
+
+[git_commit]
+format = '[\($hash$tag\)]($style) '
+only_detached = false
+style = 'bold dimmed sapphire'
+tag_disabled = false
+tag_symbol = ' 󰓻 '
+
+[git_status]
+format = '[[(*$all_status)](218) ($ahead_behind )](bold red)'
+ahead = ''
+behind = ''
+conflicted = '​'
+deleted = '​'
+diverged = ''
+modified = '​'
+renamed = '​'
+staged = '​'
+stashed = '​'
+untracked = '​'
+
+[nodejs]
+format = '\[[ $symbol](bold green)[$version ](bold white)\] '
+detect_extensions = []
+detect_files = ['package.json']
+symbol = '󰎙 '
+
+[python]
+format = '\[[ $virtualenv](bold italic dimmed sky) [$symbol$version ](bold green)\] '
+detect_extensions = []
+detect_files = []
+# pyenv_version_name = true
+symbol = ' '
+
+[palettes.catppuccin_frappe]
+base = '#303446'
+blue = '#8caaee'
+crust = '#232634'
+flamingo = '#eebebe'
+green = '#a6d189'
+lavender = '#babbf1'
+mantle = '#292c3c'
+maroon = '#ea999c'
+mauve = '#ca9ee6'
+overlay0 = '#737994'
+overlay1 = '#838ba7'
+overlay2 = '#949cbb'
+peach = '#ef9f76'
+pink = '#f4b8e4'
+red = '#e78284'
+rosewater = '#f2d5cf'
+sapphire = '#85c1dc'
+sky = '#99d1db'
+subtext0 = '#a5adce'
+subtext1 = '#b5bfe2'
+surface0 = '#414559'
+surface1 = '#51576d'
+surface2 = '#626880'
+teal = '#81c8be'
+text = '#c6d0f5'
+yellow = '#e5c890'
