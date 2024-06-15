@@ -1,15 +1,3 @@
-local servers = {
-  dockerls = {},
-  groovyls = {},
-  jsonls = {},
-  pyright = {},
-  sqlls = {},
-  tsserver = {},
-  terraformls = {
-    filetypes = { "terraform", "terraform-vars", "tf", "tfvars" }
-  }
-}
-
 return {
   {
     "neovim/nvim-lspconfig",
@@ -38,7 +26,19 @@ return {
       },
       capabilities = {},
       autoformat = true,
-      servers = servers,
+      servers = {
+        dockerls = {},
+        groovyls = {},
+        jsonls = {},
+        lua_ls = {},
+        pyright = {},
+        sqlls = {},
+        tsserver = {},
+        terraformls = {
+          filetypes = { "terraform", "terraform-vars", "tf", "tfvars" },
+        },
+        yamlls = {},
+      },
       setup = {},
     },
     config = function(_, opts)
@@ -53,8 +53,7 @@ return {
       opts.diagnostics.signs = nil
       vim.diagnostic.config(opts.diagnostics)
       vim.o.updatetime = 250
-      vim.cmd [[autocmd! CursorHold * lua vim.diagnostic.open_float() ]]
-
+      vim.cmd([[autocmd! CursorHold * lua vim.diagnostic.open_float() ]])
 
       local function setup(server)
         local server_opts = servs[server] or {}
@@ -88,61 +87,46 @@ return {
     end,
   },
   {
-    "jose-elias-alvarez/null-ls.nvim",
-    event = { "BufReadPre", "BufNewFile" },
-    dependencies = { "mason.nvim" },
-    opts = function()
-      local nls = require("null-ls")
-      local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
-
-      return {
-        on_attach = function(client, bufnr)
-          if client.supports_method("textDocument/formatting") then
-            vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-            vim.api.nvim_create_autocmd("BufWritePre", {
-              group = augroup,
-              buffer = bufnr,
-              callback = function()
-                vim.lsp.buf.format()
-              end
-            })
-          end
-        end,
-        root_dir = require("null-ls.utils").root_pattern(".null-ls-root", ".neoconf.json", "Makefile", ".git"),
-        sources = {
-          nls.builtins.diagnostics.eslint,
-          nls.builtins.diagnostics.pylint,
-          nls.builtins.formatting.black,
-          nls.builtins.formatting.shfmt,
-          nls.builtins.formatting.prettier,
-        },
-      }
-    end,
-  },
-  {
     "williamboman/mason.nvim",
     cmd = "Mason",
     opts = {
-      ensure_installed = vim.tbl_keys(servers),
+      ensure_installed = {
+        "black",
+        "debugpy",
+        "eslint_d",
+        "prettier",
+        "pylint",
+        "shfmt",
+        -- "sqlfluff",
+        "stylua",
+      },
     },
     config = function(_, opts)
       require("mason").setup(opts)
 
-      local registry = require("mason-registry")
-      local server_mappings = require("mason-lspconfig.mappings.server").lspconfig_to_package
+      local mr = require("mason-registry")
+
+      mr:on("package:install:success", function()
+        vim.defer_fn(function()
+          -- trigger FileType event to possibly load this newly installed LSP server
+          require("lazy.core.handler.event").trigger({
+            event = "FileType",
+            buf = vim.api.nvim_get_current_buf(),
+          })
+        end, 100)
+      end)
 
       local function ensure_installed()
         for _, tool in ipairs(opts.ensure_installed) do
-          local p = registry.get_package(server_mappings[tool])
-
+          local p = mr.get_package(tool)
           if not p:is_installed() then
             p:install()
           end
         end
       end
 
-      if registry.refresh then
-        registry.refresh(ensure_installed)
+      if mr.refresh then
+        mr.refresh(ensure_installed)
       else
         ensure_installed()
       end

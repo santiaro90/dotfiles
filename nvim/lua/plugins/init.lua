@@ -14,12 +14,14 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 
+-- Load plugins specs
 require("lazy").setup({
   spec = {
     { import = "plugins.colourscheme" },
     { import = "plugins.treesitter" },
     { import = "plugins.telescope" },
     { import = "plugins.lsp" },
+    { import = "plugins.code_quality" },
     { import = "plugins.completion" },
     { import = "plugins.git" },
     { import = "plugins.editing" },
@@ -39,6 +41,8 @@ require("lazy").setup({
 
 vim.cmd.colorscheme("catppuccin-frappe")
 
+-- Load plugin mappings and make them available
+-- for which-key to document
 for prefix, mapping in pairs(mappings) do
   for k, def in pairs(mapping) do
     if k ~= "name" then
