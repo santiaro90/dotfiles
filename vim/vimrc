@@ -1,0 +1,50 @@
+" ==============================================================================
+if has('python3')
+  silent! python3 1
+endif
+
+" iMprove it
+set nocompatible
+set encoding=utf-8
+" Always show status and tab line
+set laststatus=2
+set showtabline=2
+" No beeping
+set visualbell
+" Backup directories
+set nobackup
+set noswapfile
+set nowritebackup
+set undodir=~/.vim/undo
+
+set tags=./tags,./.tags,tags,.tags
+
+set history=1000
+set modeline
+set noshowmode
+set showcmd
+
+" File completion
+set wildmenu
+set wildmode=list:longest
+set wildignore+=.git
+set wildignore+=*.sw?,*~
+
+let mapleader="\<Space>"
+
+" ==============================================================================
+
+" Setup vundle and load plugins
+source ~/.vim/load/plugins.vim
+
+" Colour scheme
+set background=dark
+set t_Co=256
+colorscheme Tomorrow-Night-Eighties
+syntax on
+
+" Load editor settings
+source ~/.vim/load/editor.vim
+
+" Load custom key mappings
+source ~/.vim/load/keymapping.vim

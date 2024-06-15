@@ -1,0 +1,40 @@
+########################################
+# Basic layout
+########################################
+snippet ! "Basic HTML5 layout" b
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>$1</title>
+  </head>
+  <body>
+    $0
+  </body>
+</html>
+endsnippet
+########################################
+
+
+########################################
+# Link
+########################################
+snippet link "<link rel=[type] href=[path|url]>" b
+<link rel="${1:stylesheet}" href="$0">
+endsnippet
+########################################
+
+
+########################################
+# Script
+########################################
+snippet si "<script> [...code] </script>" b
+<script>
+  $0
+</script>
+endsnippet
+
+snippet sf "<script src=[path]></script>" b
+<script src="$0"></script>
+endsnippet
+########################################

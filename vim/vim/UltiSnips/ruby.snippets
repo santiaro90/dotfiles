@@ -1,0 +1,46 @@
+########################################
+# Functions/Blocks
+########################################
+snippet def
+def ${1:fn}
+  ${0}
+end
+endsnippet
+
+snippet bi "{ [|...args|] <...code> }" w
+{${1: |${2:args}|} $0 }
+endsnippet
+
+snippet do "do [|...args|] <...code> end" w
+do ${1:|${2:args}|}
+  $0
+end
+endsnippet
+########################################
+
+
+########################################
+# Classes
+########################################
+snippet class
+class ${1:ClassName}${2: < ${3:SuperClass}}
+  ${4:def initialize(${5:args})
+    ${0}
+  end}
+end
+endsnippet
+
+########################################
+# Testing
+########################################
+snippet "describe|context|feature" "defines a test suite" br
+`!p snip.rv = match.group(0)` '${1:description}' do
+  $0
+end
+endsnippet
+
+snippet "it|specify|scenario" "defines a spec" br
+`!p snip.rv = match.group(0)` '${1:description}' do
+  $0
+end
+endsnippet
