@@ -34,6 +34,9 @@ vim.opt.completeopt = { "menu", "menuone", "noselect" }
 vim.opt.diffopt:append("filler")
 vim.opt.diffopt:append("iwhite")
 vim.opt.diffopt:append("vertical")
+vim.opt.foldenable = false
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 vim.opt.listchars = { tab = "▸ ", trail = "⬝", eol = "¬" }
 vim.opt.list = true
 vim.opt.termguicolors = true

@@ -158,15 +158,17 @@ return {
   },
   {
     "folke/trouble.nvim",
+    branch = "dev",
     dependencies = {
       "nvim-tree/nvim-web-devicons",
     },
     opts = {
-      action_keys = {
-        close = "<C-[>",
-        toggle_fold = "zi",
-      },
       auto_close = true,
+      focus = true,
+      keys = {
+        ["<C-["] = "close",
+        ["zi"] = "fold_toggle",
+      },
       use_diagnostic_signs = true,
     },
   },
