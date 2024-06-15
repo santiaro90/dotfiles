@@ -1,7 +1,16 @@
 return {
   ["<leader>."] = {
     name = "Neotree",
-    ['.'] = { ":Neotree toggle filesystem<CR>", "Open File Explorer" },
+    ["."] = { ":Neotree toggle filesystem<CR>", "Open File Explorer" },
+  },
+  ["<leader>f"] = {
+    name = "Format",
+    d = {
+      function()
+        require("conform").format({ async = true, timeout_ms = 10000 })
+      end,
+      "All Buffer",
+    },
   },
   ["<leader>g"] = {
     name = "Git",
@@ -16,10 +25,17 @@ return {
     w = { ":Gwrite<CR>", "Git Add File" },
     x = { ":GDelete<CR>", "Git Remove File" },
   },
+  ["g"] = {
+    name = "Go to",
+    d = { ":Lspsaga goto_definition<CR>", "Definition" },
+    r = { ":Lspsaga finder<CR>", "References" },
+    s = { ":Lspsaga outline<CR>", "Document Symbols" },
+    t = { ":Lspsaga goto_type_definition<CR>", "Type Definition" },
+  },
   ["<leader>l"] = {
     name = "LSP",
-    d = { ":Lspsaga goto_type_definition<CR>", "Go to Definition" },
-    f = { ":Lspsaga lsp_finder<CR>", "See References" },
+    d = { ":Lspsaga goto_definition<CR>", "Go to Definition" },
+    f = { ":Lspsaga finder<CR>", "Find References" },
     k = { ":Lspsaga hover_doc<CR>", "Show Docs" },
     r = { ":Lspsaga rename<CR>", "Rename" },
     s = { ":Lspsaga outline<CR>", "See Document Symbols" },
@@ -27,8 +43,8 @@ return {
   },
   ["<leader>p"] = {
     name = "Diagnostics",
-    d = { ":Trouble document_diagnostics<CR>", "Open Document Diagnostics" },
-    p = { ":Trouble workspace_diagnostics<CR>", "Open Project Diagnostics" },
+    d = { ":Trouble diagnostics filter.buf=0<CR>", "Open Document Diagnostics" },
+    p = { ":Trouble diagnostics<CR>", "Open Project Diagnostics" },
   },
   ["<leader>s"] = {
     name = "FZF",

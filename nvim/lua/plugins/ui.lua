@@ -180,13 +180,20 @@ return {
       { "nvim-treesitter/nvim-treesitter" },
     },
     opts = function()
-      local quit_keys = { '<C-[>', '<ESC>' }
-
       return {
-        definition = { keys = { quit = quit_keys } },
-        finder = { keys = { quit = quit_keys } },
-        outline = { keys = { quit = quit_keys } },
-        rename = { keys = { quit = quit_keys } },
+        definition = {
+          keys = { quit = '<C-[>' },
+        },
+        finder = {
+          keys = { quit = '<C-[>', toggle_or_open = 'o' },
+        },
+        outline = {
+          keys = { jump = '<CR>', quit = '<C-[>', toggle_or_jump = 'o' },
+          layout = "float",
+        },
+        rename = {
+          keys = { quit = '<C-[>' },
+        },
         lightbulb = {
           virtual_text = false,
         },

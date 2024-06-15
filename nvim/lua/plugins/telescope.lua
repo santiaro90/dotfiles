@@ -23,6 +23,18 @@ return {
             ["ctrl-t"] = "toggle-preview",
           },
         },
+        files = {
+          actions = {
+            ["ctrl-s"] = actions.file_split,
+            ["ctrl-v"] = actions.file_vsplit,
+          },
+        },
+        buffers = {
+          actions = {
+            ["ctrl-s"] = actions.buf_split,
+            ["ctrl-v"] = actions.buf_vsplit,
+          },
+        },
       })
     end,
   },
