@@ -120,7 +120,6 @@
 
 [core]
     editor         = nvim
-    excludesfile   = ~/.gitignore
     fsmonitor      = true
     pager          = delta
     untrackedCache = true
