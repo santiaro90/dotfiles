@@ -186,3 +186,6 @@
 [user]
     email = santiaro90@gmail.com
     name = Santiago Alvarez Rodriguez
+
+[include]
+    path = ~/.config/git/config.local
