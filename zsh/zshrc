@@ -32,6 +32,6 @@ autoload -Uz $HOME/.zcomp/**/*(:t)
 autoload -U zmv
 
 # Source local overrides
-[ -s $HOME/.zprofile.local ] && source $HOME/.zprofile.local
-[ -s $HOME/.zshrc.local ] && source $HOME/.zshrc.local
-[ -s $HOME/.aliases.local ] && source $HOME/.aliases.local
+[ -s $XDG_CONFIG_HOME/zsh/.zprofile.local ] && source $XDG_CONFIG_HOME/zsh/.zprofile.local
+[ -s $XDG_CONFIG_HOME/zsh/.zshrc.local ] && source $XDG_CONFIG_HOME/zsh/.zshrc.local
+[ -s $XDG_CONFIG_HOME/zsh/.aliases.local ] && source $XDG_CONFIG_HOME/zsh/.aliases.local

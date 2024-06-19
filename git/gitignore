@@ -9,3 +9,7 @@
 # Node.js
 *.log
 node_modules
+
+# Local overrides
+zsh/*.local
+git/*.local
