@@ -15,7 +15,7 @@ if isdirectory(expand('~/.vim/bundle/Vundle.vim'))
     " Dev
     Plugin 'AndrewRadev/splitjoin.vim'
     Plugin 'SirVer/ultisnips'
-    Plugin 'Valloric/YouCompleteMe'
+    " Plugin 'Valloric/YouCompleteMe'
     Plugin 'chrisbra/NrrwRgn'
     Plugin 'editorconfig/editorconfig-vim'
     Plugin 'ervandew/supertab'
@@ -52,6 +52,7 @@ if isdirectory(expand('~/.vim/bundle/Vundle.vim'))
     Plugin 'vim-ruby/vim-ruby'
 
     " Themes
+    Plugin 'catppuccin/vim', {'as': 'catppuccin'}
     Plugin 'vim-airline/vim-airline'
     Plugin 'vim-airline/vim-airline-themes'
 
@@ -74,7 +75,7 @@ if isdirectory(expand('~/.vim/bundle/Vundle.vim'))
     let g:airline_left_sep=''
     let g:airline_powerline_fonts=1
     let g:airline_right_sep=''
-    " let g:airline_theme='catppuccin_frappe'
+    let g:airline_theme='catppuccin_frappe'
 
     " fzf
     let g:fzf_layout={'up': '~30%'}
