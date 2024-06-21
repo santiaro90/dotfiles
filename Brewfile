@@ -1,6 +1,5 @@
 # Repos
 tap "homebrew/bundle"
-tap "homebrew/core"
 tap "homebrew/services"
 tap "homebrew/cask-fonts"
 
@@ -13,7 +12,6 @@ brew "coreutils"
 brew "curl"
 brew "exa"
 brew "exiftool"
-brew "fasd"
 brew "fd"
 brew "findutils"
 brew "fnm"
