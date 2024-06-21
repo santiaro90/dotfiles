@@ -25,7 +25,7 @@ alias efunc="e $DOTDIR/zsh/zfunc +\"cd $DOTDIR\" && exec $SHELL"
 alias ecomp="e $DOTDIR/zsh/zcomp +\"cd $DOTDIR\" && exec $SHELL"
 alias ezshrc="e $DOTDIR/zsh/zshrc +\"cd $DOTDIR\" +bfirst && exec $SHELL"
 alias eenv="e $DOTDIR/zsh/zprofile +\"cd $DOTDIR\" +bfirst && source $DOTDIR/zsh/zprofile"
-alias egit="e $DOTDIR/git/config +\"cd $DOTDIR\""
+alias egit="e $DOTDIR/git/gitconfig +\"cd $DOTDIR\""
 alias eprompt="e $DOTDIR/zsh/prompt.zsh +\"cd $DOTDIR\" && exec $SHELL"
 alias evim="e $DOTDIR/nvim/init.lua +\"cd $DOTDIR/nvim\""
 
@@ -57,5 +57,4 @@ alias pyved="pyenv deactivate"
 alias pyvex="pyenv virtualenv-delete"
 alias pyves="pyenv virtualenvs"
 
-# Disable corrections
-alias rm="nocorrect rm"
+alias rm="nocorrect rm -r"

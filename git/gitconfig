@@ -187,4 +187,4 @@
     name = Santiago Alvarez Rodriguez
 
 [include]
-    path = ~/.config/git/config.local
+    path = ~/.gitconfig.local

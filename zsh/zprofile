@@ -1,9 +1,11 @@
 # vim: set ft=zsh ts=4 sw=4 :
 
-export XDG_CONFIG_HOME=~/.config
 export DOTDIR=~/.dotfiles
 export EDITOR=nvim
 export LANG=en_GB.UTF-8
+export XDG_CONFIG_HOME=~/.config
+export ZDOTDIR=~/.zsh
+export ZIM_HOME=~/.zsh/.zim
 
 # Color man pages
 export LESS_TERMCAP_mb=$'\E[01;32m'
@@ -46,3 +48,6 @@ export FORGIT_ADD_FZF_OPTS="$FORGIT_FZF_DEFAULT_OPTS \
   --border-label='Stage files'"
 export FORGIT_DIFF_FZF_OPTS="$FORGIT_FZF_DEFAULT_OPTS \
   --border-label='Worktree changes'"
+
+# Prompt config
+export STARSHIP_CONFIG=~/.starship.toml

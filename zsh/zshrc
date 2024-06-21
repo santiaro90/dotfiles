@@ -19,19 +19,19 @@ command -v fasd > /dev/null 2>&1 && eval "$(fasd --init auto)"
 command -v pyenv > /dev/null 2>&1 && eval "$(pyenv init -)"
 command -v pyenv > /dev/null 2>&1 && eval "$(pyenv virtualenv-init -)"
 command -v fnm > /dev/null 2>&1 && eval "$(fnm env --use-on-cd)"
-[ -s $HOME/.fzf.zsh ] && source $HOME/.fzf.zsh
+[ -s ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-source $XDG_CONFIG_HOME/zsh/zim.zsh
-source $XDG_CONFIG_HOME/zsh/keybindings.zsh
-source $XDG_CONFIG_HOME/zsh/aliases.zsh
+source $ZDOTDIR/.zim.zsh
+source $ZDOTDIR/.keybindings.zsh
+source $ZDOTDIR/.aliases.zsh
 
 # Enable loading custom functions
-fpath=($HOME/.zfunc $HOME/.zcomp $HOME/.zcomp/utils $fpath)
-autoload -Uz $HOME/.zfunc/*(:t)
-autoload -Uz $HOME/.zcomp/**/*(:t)
+fpath=($ZDOTDIR/.zfunc $ZDOTDIR/.zcomp $fpath)
+autoload -Uz $ZDOTDIR/.zfunc/*(:t)
+autoload -Uz $ZDOTDIR/.zcomp/**/*(:t)
 autoload -U zmv
 
 # Source local overrides
-[ -s $XDG_CONFIG_HOME/zsh/.zprofile.local ] && source $XDG_CONFIG_HOME/zsh/.zprofile.local
-[ -s $XDG_CONFIG_HOME/zsh/.zshrc.local ] && source $XDG_CONFIG_HOME/zsh/.zshrc.local
-[ -s $XDG_CONFIG_HOME/zsh/.aliases.local ] && source $XDG_CONFIG_HOME/zsh/.aliases.local
+[ -s $ZDOTDIR/.zprofile.local ] && source $ZDOTDIR/.zprofile.local
+[ -s $ZDOTDIR/.zshrc.local ] && source $ZDOTDIR/.zshrc.local
+[ -s $ZDOTDIR/.aliases.local ] && source $ZDOTDIR/.aliases.local

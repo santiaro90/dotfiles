@@ -1,0 +1,11 @@
+# Vim
+*.swp
+*~
+
+# OS X
+.DS_Store
+._*
+
+# Node.js
+*.log
+node_modules

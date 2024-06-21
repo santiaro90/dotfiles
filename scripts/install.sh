@@ -1,6 +1,6 @@
-dotfiles_dir=~/.dotfiles
+dotfiles_dir=$HOME/.dotfiles
 
-# Exit if ~/.dotfiles doesn't exist
+# Exit if $HOME/.dotfiles doesn't exist
 if [ ! -d $dotfiles_dir ]; then
   echo "Error: $dotfiles_dir doesn't exist"
   echo "Please clone the dotfiles repo to $dotfiles_dir"
@@ -8,9 +8,8 @@ if [ ! -d $dotfiles_dir ]; then
 fi
 
 # Install Homebrew
-if ! command -v brew &> /dev/null; then
+command -v brew &> /dev/null || \
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-fi
 
 # Install formulae/casks using Brewfile
 if [ $(/usr/bin/uname -m) = "arm64" ]; then # Apple Silicon macOS
@@ -21,10 +20,15 @@ fi
 
 $HOMEBREW_PREFIX/bin/brew bundle install --file=$dotfiles_dir/Brewfile
 
-# Vim plugins
-if [ ! -d $dotfiles_dir/vim/bundle/Vundle.vim ]; then
-  git clone https://github.com/VundleVim/Vundle.vim.git $dotfiles_dir/vim/bundle/Vundle.vim
-fi
+# Create needed directories and link files
+zsh_dir=${ZDOTDIR:-"$HOME/.zsh"}
+zim_dir=${ZIMHOME:-"$HOME/.zsh/.zim"}
+[ -d $zsh_dir ] || mkdir $zsh_dir
+[ -d $zim_dir ] || mkdir $zim_dir
 
-# Link files
-# /bin/bash $dotfiles_dir/link_config.sh
+/bin/bash $dotfiles_dir/scripts/link_config.sh
+
+# Vim plugins
+[ ! -d $HOME/.vim/bundle/Vundle.vim ] && \
+  git clone https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim && \
+  vim +PluginInstall +qall
