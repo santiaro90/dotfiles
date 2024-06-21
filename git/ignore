@@ -1,6 +1,8 @@
 # Vim
 *.swp
 *~
+vim/bundle/*
+!vim/bundle/.gitkeep
 
 # OS X
 .DS_Store

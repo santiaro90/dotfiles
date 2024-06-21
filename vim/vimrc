@@ -35,16 +35,17 @@ let mapleader="\<Space>"
 " ==============================================================================
 
 " Setup vundle and load plugins
-source ~/.vim/load/plugins.vim
+source ~/.vim/custom/plugins.vim
 
 " Colour scheme
 set background=dark
 set t_Co=256
-colorscheme Tomorrow-Night-Eighties
+set termguicolors
+colorscheme catppuccin_frappe
 syntax on
 
 " Load editor settings
-source ~/.vim/load/editor.vim
+source ~/.vim/custom/editor.vim
 
 " Load custom key mappings
-source ~/.vim/load/keymapping.vim
+source ~/.vim/custom/keymapping.vim

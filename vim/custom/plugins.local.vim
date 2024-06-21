@@ -1,0 +1,1 @@
+Plugin 'rayburgemeestre/phpfolding.vim'
