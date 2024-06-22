@@ -26,6 +26,16 @@ zim_dir=${ZIMHOME:-"$HOME/.zsh/.zim"}
 [ -d $zsh_dir ] || mkdir $zsh_dir
 [ -d $zim_dir ] || mkdir $zim_dir
 
+  # ZSH won't load properly if $ZDOTDIR is being set in .zsh/.zprofile.
+  # Therefore, ~/.zshenv needs to exist and have set the variable, before
+  # everything else is sourced.
+if [ ! -f $HOME/.zshenv ]; then
+  echo "export ZDOTDIR=$zsh_dir" > $HOME/.zshenv
+else
+  grep -q "export ZDOTDIR=$zsh_dir" $HOME/.zshenv || \
+    echo "export ZDOTDIR=$zsh_dir" >> $HOME/.zshenv
+fi
+
 /bin/bash $dotfiles_dir/scripts/link_config.sh
 
 # Vim plugins

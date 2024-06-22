@@ -9,7 +9,7 @@ setopt nocheckjobs       # Don't warn about running processes when exiting
 setopt numericglobsort   # Sort filenames numerically when it makes sense
 setopt rcexpandparam     # Array expension with parameters
 
-HISTFILE=~/.zhistory
+HISTFILE=$ZDOTDIR/.zsh_history
 HISTSIZE=10000
 SAVEHIST=500
 WORDCHARS=${WORDCHARS//\/[&.;]} # Don't consider certain characters part of the word
