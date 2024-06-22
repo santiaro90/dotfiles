@@ -19,6 +19,7 @@ else # Intel macOS
 fi
 
 $HOMEBREW_PREFIX/bin/brew bundle install --file=$dotfiles_dir/Brewfile
+$HOMEBREW_PREFIX/bin/brew cleanup
 
 # Create needed directories and link files
 zsh_dir=${ZDOTDIR:-"$HOME/.zsh"}

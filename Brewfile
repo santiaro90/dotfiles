@@ -1,7 +1,6 @@
 # Repos
 tap "homebrew/bundle"
 tap "homebrew/services"
-tap "homebrew/cask-fonts"
 
 # CLI
 brew "awscli"
