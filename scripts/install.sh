@@ -21,12 +21,6 @@ fi
 $HOMEBREW_PREFIX/bin/brew bundle install --file=$dotfiles_dir/Brewfile
 $HOMEBREW_PREFIX/bin/brew cleanup
 
-# Create needed directories and link files
-zsh_dir=${ZDOTDIR:-"$HOME/.zsh"}
-zim_dir=${ZIMHOME:-"$HOME/.zsh/.zim"}
-[ -d $zsh_dir ] || mkdir $zsh_dir
-[ -d $zim_dir ] || mkdir $zim_dir
-
   # ZSH won't load properly if $ZDOTDIR is being set in .zsh/.zprofile.
   # Therefore, ~/.zshenv needs to exist and have set the variable, before
   # everything else is sourced.
@@ -37,7 +31,7 @@ else
     echo "export ZDOTDIR=$zsh_dir" >> $HOME/.zshenv
 fi
 
-/bin/bash $dotfiles_dir/scripts/link_config.sh
+$HOMEBREW_PREFIX/bin/bash $dotfiles_dir/scripts/link_config.sh
 
 # Vim plugins
 [ ! -d $HOME/.vim/bundle/Vundle.vim ] && \

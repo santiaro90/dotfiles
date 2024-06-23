@@ -1,0 +1,33 @@
+{
+    "workbench.iconTheme": "catppuccin-frappe",
+    "workbench.colorTheme": "Catppuccin Frappé",
+    "files.associations": {
+        "*.sql": "jinja-sql",
+        "*.yml": "jinja-yaml"
+    },
+    "dbt.lineage.defaultExpansion": 2,
+    "dbt.enableNewLineagePanel": true,
+    "editor.fontSize": 18,
+    "files.autoSave": "onWindowChange",
+    "editor.renderWhitespace": "boundary",
+    "workbench.editor.enablePreview": false,
+    "editor.formatOnSave": true,
+    "editor.formatOnPaste": true,
+    "editor.fontFamily": "'FiraCode Nerd Font Mono', Menlo, monospace",
+    "github.gitProtocol": "ssh",
+    "terminal.external.osxExec": "iTerm.app",
+    "terminal.integrated.customGlyphs": false,
+    "terminal.integrated.defaultProfile.osx": "zsh",
+    "terminal.integrated.fontSize": 18,
+    "terminal.integrated.fontWeightBold": "400",
+    "terminal.integrated.fontFamily": "FiraCode Nerd Font",
+    "terminal.integrated.shellIntegration.decorationsEnabled": "never",
+    "terminal.integrated.tabs.description": "${task} ${process} | ${cwdFolder}",
+    "terminal.integrated.tabs.location": "left",
+    "terminal.integrated.tabs.title": "${process}${sequence}",
+    "extensions.experimental.affinity": {
+        "asvetliakov.vscode-neovim": 1
+    },
+    "python.analysis.autoImportCompletions": true,
+    "vscode-neovim.neovimInitVimPaths.darwin": "init.vscode.lua"
+}

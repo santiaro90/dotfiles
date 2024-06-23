@@ -1,43 +1,52 @@
+bat_dir=$HOME/.config/bat
 dotfiles_dir=$HOME/.dotfiles
+vscode_dir="$HOME/Library/Application Support/Code/User"
+zsh_dir=${ZDOTDIR:-"$HOME/.zsh"}
+zim_dir=${ZIMHOME:-"$HOME/.zsh/.zim"}
 
 # Exit if $HOME/.dotfiles doesn't exist
-if [ ! -d $dotfiles_dir ]; then
+if [ ! -d "$dotfiles_dir" ]; then
   echo "Error: $dotfiles_dir doesn't exist"
   echo "Please clone the dotfiles repo to $dotfiles_dir"
   exit 1
 fi
 
-# ZSH
-zsh_dir=${ZDOTDIR:-"$HOME/.zsh"}
+# Create required directories
+[ -d "$bat_dir" ] || mkdir -p "$bat_dir"
+[ -d "$zim_dir" ] || mkdir -p "$zim_dir"
+[ -d "$zsh_dir" ] || mkdir -p "$zsh_dir"
 
-[[ -d $zsh_dir ]] || mkdir $zsh_dir
-[[ -L $zsh_dir/.zshrc && -e $zsh_dir/.zshrc ]] || ln -fs $dotfiles_dir/zsh/zshrc $zsh_dir/.zshrc
-[[ -L $zsh_dir/.zprofile && -e $zsh_dir/.zprofile ]] || ln -fs $dotfiles_dir/zsh/zprofile $zsh_dir/.zprofile
-[[ -L $zsh_dir/.aliases.zsh && -e $zsh_dir/.aliases.zsh ]] || ln -fs $dotfiles_dir/zsh/aliases.zsh $zsh_dir/.aliases.zsh
-[[ -L $zsh_dir/.keybindings.zsh && -e $zsh_dir/.keybindings.zsh ]] || ln -fs $dotfiles_dir/zsh/keybindings.zsh $zsh_dir/.keybindings.zsh
-[[ -L $zsh_dir/.prompt.zsh && -e $zsh_dir/.prompt.zsh ]] || ln -fs $dotfiles_dir/zsh/prompt.zsh $zsh_dir/.prompt.zsh
-[[ -L $zsh_dir/.zcomp && -e $zsh_dir/.zcomp ]] || ln -fs $dotfiles_dir/zsh/zcomp $zsh_dir/.zcomp
-[[ -L $zsh_dir/.zfunc && -e $zsh_dir/.zfunc ]] || ln -fs $dotfiles_dir/zsh/zfunc $zsh_dir/.zfunc
-[[ -L $zsh_dir/.zfunc && -e $zsh_dir/.zfunc ]] || ln -fs $dotfiles_dir/zsh/zfunc $zsh_dir/.zfunc
+# Create a mapping of files to link
+declare -A link_map
 
-# ZIM
-[[ -L $zsh_dir/.zimrc && -e $zsh_dir/.zimrc ]] || ln -fs $dotfiles_dir/zsh/zimrc $zsh_dir/.zimrc
-[[ -L $zsh_dir/.zim.zsh && -e $zsh_dir/.zim.zsh ]] || ln -fs $dotfiles_dir/zsh/zim.zsh $zsh_dir/.zim.zsh
+link_map["$dotfiles_dir/zsh/aliases.zsh"]="$zsh_dir/.aliases.zsh"
+link_map["$dotfiles_dir/zsh/keybindings.zsh"]="$zsh_dir/.keybindings.zsh"
+link_map["$dotfiles_dir/zsh/prompt.zsh"]="$zsh_dir/.prompt.zsh"
+link_map["$dotfiles_dir/zsh/zcomp"]="$zsh_dir/.zcomp"
+link_map["$dotfiles_dir/zsh/zfunc"]="$zsh_dir/.zfunc"
+link_map["$dotfiles_dir/zsh/zim.rc"]="$zsh_dir/.zim.rc"
+link_map["$dotfiles_dir/zsh/zim.zsh"]="$zsh_dir/.zim.zsh"
+link_map["$dotfiles_dir/zsh/zprofile"]="$zsh_dir/.zprofile"
+link_map["$dotfiles_dir/zsh/zshrc"]="$zsh_dir/.zshrc"
 
-# Neovim/Vim
-[[ -L $HOME/.vim && -e $HOME/.vim ]] || ln -fs $dotfiles_dir/vim $HOME/.vim
-[[ -L $HOME/.vimrc && -e $HOME/.vimrc ]] || ln -fs $dotfiles_dir/vim/vimrc $HOME/.vimrc
-[[ -L $HOME/.config/nvim && -e $HOME/.config/nvim ]] || ln -fs $dotfiles_dir/nvim $HOME/.config/nvim
+link_map["$dotfiles_dir/bat/config"]="$bat_dir/config"
+link_map["$dotfiles_dir/bat/themes"]="$bat_dir/themes"
 
-# Tools
-[[ -L $HOME/.ctags && -e $HOME/.ctags ]] || ln -fs $dotfiles_dir/ctags $HOME/.ctags
-[[ -L $HOME/.editorconfig && -e $HOME/.editorconfig ]] || ln -fs $dotfiles_dir/editorconfig $HOME/.editorconfig
-[[ -L $HOME/.gitconfig && -e $HOME/.gitconfig ]] || ln -fs $dotfiles_dir/git/gitconfig $HOME/.gitconfig
-[[ -L $HOME/.gitignore && -e $HOME/.gitignore ]] || ln -fs $dotfiles_dir/git/gitignore $HOME/.gitignore
-[[ -L $HOME/.starship.toml && -e $HOME/.starship.toml ]] || ln -fs $dotfiles_dir/starship.toml $HOME/.starship.toml
+link_map["$dotfiles_dir/git/gitconfig"]="$HOME/.gitconfig"
+link_map["$dotfiles_dir/git/gitignore"]="$HOME/.gitignore"
 
-# Bat
-bat_dir=$HOME/.config/bat
-[ -d $bat_dir ] || mkdir -p $bat_dir
-[[ -L $bat_dir/config && -e $bat_dir/config ]] || ln -fs $dotfiles_dir/bat/config $bat_dir/config
-[[ -L $bat_dir/themes && -e $bat_dir/themes ]] || ln -fs $dotfiles_dir/bat/themes $bat_dir/themes
+link_map["$dotfiles_dir/vim"]="$HOME/.vim"
+link_map["$dotfiles_dir/vim/vimrc"]="$HOME/.vimrc"
+link_map["$dotfiles_dir/nvim"]="$HOME/.config/nvim"
+link_map["$dotfiles_dir/vscode/settings.json"]="$vscode_dir/settings.json"
+link_map["$dotfiles_dir/vscode/keybindings.json"]="$vscode_dir/keybindings.json"
+
+link_map["$dotfiles_dir/ctags"]="$HOME/.ctags"
+link_map["$dotfiles_dir/editorconfig"]="$HOME/.editorconfig"
+link_map["$dotfiles_dir/starship.toml"]="$HOME/.starship.toml"
+
+# Check if the files are already linked. If not, create the symlinks
+for src in "${!link_map[@]}"; do
+  dest=${link_map["$src"]}
+  [[ -L "$dest" && -e "$dest" ]] || ln -fs "$src" "$dest"
+done
