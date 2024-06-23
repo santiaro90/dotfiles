@@ -1,3 +1,4 @@
+#! /bin/bash
 dotfiles_dir=$HOME/.dotfiles
 
 # Exit if $HOME/.dotfiles doesn't exist
