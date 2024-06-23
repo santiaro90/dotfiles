@@ -58,3 +58,4 @@ alias pyvex="pyenv virtualenv-delete"
 alias pyves="pyenv virtualenvs"
 
 alias rm="nocorrect rm -r"
+alias mkdir="mkdir -vp"
