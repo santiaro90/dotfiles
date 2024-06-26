@@ -7,6 +7,12 @@ export XDG_CONFIG_HOME=~/.config
 export ZDOTDIR=~/.zsh
 export ZIM_HOME=~/.zsh/.zim
 
+if [ $(/usr/bin/uname -m) = "arm64" ]; then # Apple Silicon macOS
+  export HOMEBREW_PREFIX="/opt/homebrew"
+else # Intel macOS
+  export HOMEBREW_PREFIX="/usr/local"
+fi
+
 # Color man pages
 export LESS_TERMCAP_mb=$'\E[01;32m'
 export LESS_TERMCAP_md=$'\E[01;32m'
@@ -33,6 +39,7 @@ export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS --border"
 export PYENV_ROOT="$HOME/.pyenv"
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 export PATH="$PYENV_ROOT/bin:$PATH"
+export PATH="$HOMEBREW_PREFIX/bin:$PATH"
 
 # Forgit
 export FORGIT_NO_ALIASES=true
