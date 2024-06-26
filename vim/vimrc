@@ -41,7 +41,14 @@ source ~/.vim/custom/plugins.vim
 set background=dark
 set t_Co=256
 set termguicolors
-colorscheme catppuccin_frappe
+
+try
+  colorscheme catppuccin_frappe
+catch /^Vim\%((\a\+)\)\=:E185/
+  colorscheme default
+  set background=dark
+endtry
+
 syntax on
 
 " Load editor settings
