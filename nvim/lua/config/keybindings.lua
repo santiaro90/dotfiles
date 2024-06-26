@@ -20,6 +20,7 @@ vim.keymap.set("n", "<leader>\\", ":vsplit<CR>", { desc = "Split Vertically", si
 -- File movement
 vim.keymap.set("n", "n", "nzz", { silent = true })
 vim.keymap.set("n", "N", "Nzz", { silent = true })
+vim.keymap.set("n", "G", "Gzz", { silent = true })
 
 -- Window movement
 vim.keymap.set("n", "<C-h>", "<C-w>h")
