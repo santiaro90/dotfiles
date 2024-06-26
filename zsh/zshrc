@@ -19,7 +19,7 @@ command -v fasd > /dev/null 2>&1 && eval "$(fasd --init auto)"
 command -v pyenv > /dev/null 2>&1 && eval "$(pyenv init -)"
 command -v pyenv > /dev/null 2>&1 && eval "$(pyenv virtualenv-init -)"
 command -v fnm > /dev/null 2>&1 && eval "$(fnm env --use-on-cd)"
-[ -s ~/.fzf.zsh ] && source ~/.fzf.zsh
+command -v fzf > /dev/null && source <(fzf --zsh)
 
 source $ZDOTDIR/.zim.zsh
 source $ZDOTDIR/.keybindings.zsh
