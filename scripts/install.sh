@@ -26,10 +26,10 @@ $HOMEBREW_PREFIX/bin/brew cleanup
   # Therefore, ~/.zshenv needs to exist and have set the variable, before
   # everything else is sourced.
 if [ ! -f $HOME/.zshenv ]; then
-  echo "export ZDOTDIR=$zsh_dir" > $HOME/.zshenv
+  echo 'export ZDOTDIR=$HOME/.zshenv' > $HOME/.zshenv
 else
-  grep -q "export ZDOTDIR=$zsh_dir" $HOME/.zshenv || \
-    echo "export ZDOTDIR=$zsh_dir" >> $HOME/.zshenv
+  grep -q 'export ZDOTDIR=$HOME/.zshenv' $HOME/.zshenv || \
+    echo 'export ZDOTDIR=$HOME/.zshenv' >> $HOME/.zshenv
 fi
 
 $HOMEBREW_PREFIX/bin/bash $dotfiles_dir/scripts/link_config.sh
