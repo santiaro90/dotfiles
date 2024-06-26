@@ -16,6 +16,7 @@ vim.o.shiftround = true
 vim.o.shiftwidth = 2
 vim.o.showmode = false
 vim.o.showtabline = 2
+vim.o.signcolumn = "yes"
 vim.o.smartcase = true
 vim.o.softtabstop = 4
 vim.o.splitbelow = true
