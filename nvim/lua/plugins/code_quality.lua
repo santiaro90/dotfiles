@@ -5,7 +5,8 @@ return {
     opts = {
       events = { "BufWritePost", "BufReadPost", "InsertLeave" },
       linters_by_ft = {
-        sql = { "sqlfluff" }
+        python = { "ruff" },
+        sql = { "sqlfluff" },
       },
       linters = {
         sqlfluff = {
@@ -95,7 +96,11 @@ return {
       formatters_by_ft = {
         javascript = { "prettier" },
         lua = { "stylua" },
-        python = { "isort", "black" },
+        python = {
+          "isort",
+          "ruff_fix",
+          "ruff_format",
+        },
         sh = { "shfmt" },
         sql = { "sqlfluff" },
         typescript = { "prettier" },

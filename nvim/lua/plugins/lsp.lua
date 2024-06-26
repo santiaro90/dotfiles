@@ -31,7 +31,20 @@ return {
         groovyls = {},
         jsonls = {},
         lua_ls = {},
-        pyright = {},
+        pyright = {
+          settings = {
+            pyright = {
+              -- Using Ruff's import organizer
+              disableOrganizeImports = true,
+            },
+            python = {
+              analysis = {
+                -- Ignore all files for analysis to exclusively use Ruff for linting
+                ignore = { "*" },
+              },
+            },
+          },
+        },
         sqlls = {},
         tsserver = {},
         terraformls = {
@@ -91,11 +104,12 @@ return {
     cmd = "Mason",
     opts = {
       ensure_installed = {
-        "black",
+        -- "black",
         "debugpy",
         "eslint_d",
         "prettier",
-        "pylint",
+        -- "pylint",
+        "ruff-lsp",
         "shfmt",
         -- "sqlfluff",
         "stylua",
