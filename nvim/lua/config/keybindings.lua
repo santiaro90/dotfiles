@@ -13,6 +13,10 @@ vim.keymap.set("n", "<leader>c", ":noh<CR>", { desc = "Clear Search Term", silen
 vim.keymap.set("n", "<leader>o", "@='mzo<C-V><ESC>`z'<CR>", { desc = "Insert Blank Line Below", silent = true })
 vim.keymap.set("n", "<leader>O", "@='mzO<C-V><ESC>`z'<CR>", { desc = "Insert Blank Line Above", silent = true })
 
+-- Splits
+vim.keymap.set("n", "<leader>-", ":split<CR>", { desc = "Split Horizontally", silent = true })
+vim.keymap.set("n", "<leader>\\", ":vsplit<CR>", { desc = "Split Vertically", silent = true })
+
 -- File movement
 vim.keymap.set("n", "n", "nzz", { silent = true })
 vim.keymap.set("n", "N", "Nzz", { silent = true })
