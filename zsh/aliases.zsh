@@ -5,10 +5,10 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias dotf="[[ -d $DOTDIR ]] && cd $DOTDIR"
 
-if command -v exa > /dev/null 2>&1; then
-  alias ls="exa"
-  alias l="ls -a1 --icons"
-  alias la="ls -alh --icons --git"
+if command -v lsd > /dev/null 2>&1; then
+  alias ls="lsd"
+  alias l="ls -a1 --icon always"
+  alias la="ls -alh --icon always --git"
   alias lt="l -TL 3"
 else
   alias l="ls -A1p"
