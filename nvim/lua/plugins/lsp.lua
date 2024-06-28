@@ -28,7 +28,6 @@ return {
       autoformat = true,
       servers = {
         dockerls = {},
-        groovyls = {},
         jsonls = {},
         lua_ls = {},
         pyright = {
