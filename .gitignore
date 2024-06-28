@@ -12,3 +12,5 @@ vim/undo
 !vim/undo/.gitkeep
 
 zsh/*.local
+
+Brewfile.lock.json
