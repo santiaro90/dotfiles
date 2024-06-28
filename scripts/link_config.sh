@@ -50,3 +50,5 @@ for src in "${!link_map[@]}"; do
   dest=${link_map["$src"]}
   [[ -L "$dest" && -e "$dest" ]] || ln -fs "$src" "$dest"
 done
+
+bat cache --build >/dev/null 2>&1
