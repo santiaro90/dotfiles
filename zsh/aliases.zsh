@@ -26,7 +26,7 @@ alias ecomp="e $DOTDIR/zsh/zcomp +\"cd $DOTDIR\" && exec $SHELL"
 alias ezshrc="e $DOTDIR/zsh/zshrc +\"cd $DOTDIR\" +bfirst && exec $SHELL"
 alias eenv="e $DOTDIR/zsh/zprofile +\"cd $DOTDIR\" +bfirst && source $DOTDIR/zsh/zprofile"
 alias egit="e $DOTDIR/git/gitconfig +\"cd $DOTDIR\""
-alias eprompt="e $DOTDIR/zsh/prompt.zsh +\"cd $DOTDIR\" && exec $SHELL"
+alias eprompt="e $DOTDIR/starship.toml +\"cd $DOTDIR\" && exec $SHELL"
 alias evim="e $DOTDIR/nvim/init.lua +\"cd $DOTDIR/nvim\""
 
 # Misc
