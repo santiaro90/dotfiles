@@ -30,6 +30,7 @@ brew "starship"
 brew "testdisk"
 brew "tmux"
 brew "wget"
+brew "zoxide"
 brew "zsh"
 
 # Apps

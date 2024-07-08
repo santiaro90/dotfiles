@@ -15,7 +15,7 @@ SAVEHIST=500
 WORDCHARS=${WORDCHARS//\/[&.;]} # Don't consider certain characters part of the word
 
 # Init CLI tools that need it
-command -v fasd > /dev/null 2>&1 && eval "$(fasd --init auto)"
+command -v zoxide > /dev/null 2>&1 && eval "$(zoxide init zsh)"
 command -v pyenv > /dev/null 2>&1 && eval "$(pyenv init -)"
 command -v pyenv > /dev/null 2>&1 && eval "$(pyenv virtualenv-init -)"
 command -v fnm > /dev/null 2>&1 && eval "$(fnm env --use-on-cd)"
