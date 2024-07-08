@@ -1,45 +1,45 @@
 {
-    "editor.cursorSurroundingLines": 5,
-    "editor.fontFamily": "'FiraCode Nerd Font Mono', Menlo, monospace",
-    "editor.fontSize": 18,
-    "editor.formatOnPaste": true,
-    "editor.formatOnSave": true,
-    "editor.lineNumbers": "relative",
-    "editor.renderWhitespace": "trailing",
-    "files.associations": {
-        "*.sql": "jinja-sql",
-        "*.yml": "jinja-yaml"
-    },
-    "files.autoSave": "onWindowChange",
-    "git.autofetch": true,
-    "github.gitProtocol": "ssh",
-    "terminal.external.osxExec": "iTerm.app",
-    "terminal.integrated.customGlyphs": false,
-    "terminal.integrated.defaultProfile.osx": "zsh",
-    "terminal.integrated.fontFamily": "FiraCode Nerd Font",
-    "terminal.integrated.fontSize": 18,
-    "terminal.integrated.fontWeightBold": "400",
-    "terminal.integrated.shellIntegration.decorationsEnabled": "never",
-    "terminal.integrated.tabs.description": "${task} ${process} | ${cwdFolder}",
-    "terminal.integrated.tabs.location": "left",
-    "terminal.integrated.tabs.title": "${process}${sequence}",
-    "workbench.colorTheme": "Catppuccin Frappé",
-    "workbench.editor.enablePreview": false,
-    "workbench.iconTheme": "catppuccin-frappe",
-    // ===========//
-    // Extensions //
-    // ===========//
-    "dbt.enableNewLineagePanel": true,
-    "dbt.enableCollaboration": false,
-    "dbt.queryLimit": 150,
-    "dbt.lineage.defaultExpansion": 2,
-    "extensions.experimental.affinity": {
-        "asvetliakov.vscode-neovim": 1
-    },
-    "python.analysis.autoImportCompletions": true,
-    "vscode-neovim.compositeKeys": {
-        "jk": {
-            "command": "vscode-neovim.escape"
-        }
+  "editor.cursorSurroundingLines": 5,
+  "editor.fontFamily": "'FiraCode Nerd Font Mono', Menlo, monospace",
+  "editor.fontSize": 18,
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "editor.lineNumbers": "relative",
+  "editor.renderWhitespace": "trailing",
+  "files.associations": {
+    "*.sql": "jinja-sql",
+    // "*.yml": "jinja-yaml"
+  },
+  "files.autoSave": "onWindowChange",
+  "git.autofetch": true,
+  "github.gitProtocol": "ssh",
+  "terminal.external.osxExec": "iTerm.app",
+  "terminal.integrated.customGlyphs": false,
+  "terminal.integrated.defaultProfile.osx": "zsh",
+  "terminal.integrated.fontFamily": "FiraCode Nerd Font",
+  "terminal.integrated.fontSize": 18,
+  "terminal.integrated.fontWeightBold": "400",
+  "terminal.integrated.shellIntegration.decorationsEnabled": "never",
+  "terminal.integrated.tabs.description": "${task} ${process} | ${cwdFolder}",
+  "terminal.integrated.tabs.location": "left",
+  "terminal.integrated.tabs.title": "${process}${sequence}",
+  "workbench.colorTheme": "Catppuccin Frappé",
+  "workbench.editor.enablePreview": false,
+  "workbench.iconTheme": "catppuccin-frappe",
+  // ===========//
+  // Extensions //
+  // ===========//
+  "dbt.enableNewLineagePanel": true,
+  "dbt.enableCollaboration": false,
+  "dbt.queryLimit": 150,
+  "dbt.lineage.defaultExpansion": 2,
+  "extensions.experimental.affinity": {
+    "asvetliakov.vscode-neovim": 1
+  },
+  "python.analysis.autoImportCompletions": true,
+  "vscode-neovim.compositeKeys": {
+    "jk": {
+      "command": "vscode-neovim.escape"
     }
+  }
 }

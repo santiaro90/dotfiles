@@ -1,2 +1,2 @@
 require("config.vscode.plugins")
-require("config.vscode.keybindings")
+-- require("config.vscode.keybindings")
