@@ -18,9 +18,12 @@ vim.keymap.set("n", "<leader>-", ":split<CR>", { desc = "Split Horizontally", si
 vim.keymap.set("n", "<leader>\\", ":vsplit<CR>", { desc = "Split Vertically", silent = true })
 
 -- File movement
+-- -- Centre screen on search results
 vim.keymap.set("n", "n", "nzz", { silent = true })
 vim.keymap.set("n", "N", "Nzz", { silent = true })
 vim.keymap.set("n", "G", "Gzz", { silent = true })
+vim.keymap.set("n", "*", "*zz", { silent = true })
+vim.keymap.set("n", "#", "#zz", { silent = true })
 
 -- Window movement
 vim.keymap.set("n", "<C-h>", "<C-w>h")
@@ -38,5 +41,5 @@ vim.keymap.set("c", "<C-b>", "<C-Left>")
 vim.keymap.set("c", "<C-f>", "<C-Right>")
 
 -- Buffer movement
-vim.keymap.set("n", "L", ":bnext<CR>", { silent = true })
-vim.keymap.set("n", "H", ":bprev<CR>", { silent = true })
+vim.keymap.set("n", "L", ":bnext<CR>zz", { silent = true })
+vim.keymap.set("n", "H", ":bprev<CR>zz", { silent = true })
