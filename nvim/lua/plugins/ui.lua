@@ -1,3 +1,5 @@
+local mappings = require("config.plugin_mappings")
+
 return {
   {
     "nvim-neo-tree/neo-tree.nvim",
@@ -213,5 +215,21 @@ return {
   },
   {
     "lukas-reineke/indent-blankline.nvim",
+  },
+  {
+    "folke/which-key.nvim",
+    event = "VeryLazy",
+    opts = {
+      plugins = {
+        registers = false,
+        spelling = false,
+        presets = {
+          operators = false,
+          motions = false,
+          text_objects = false,
+        },
+      },
+      spec = mappings,
+    },
   },
 }
