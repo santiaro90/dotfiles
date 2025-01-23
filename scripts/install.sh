@@ -21,9 +21,9 @@ command -v $HOMEBREW_PREFIX/brew &> /dev/null || \
 $HOMEBREW_PREFIX/brew bundle install --file=$dotfiles_dir/Brewfile
 $HOMEBREW_PREFIX/brew cleanup
 
-  # ZSH won't load properly if $ZDOTDIR is being set in .zsh/.zprofile.
-  # Therefore, ~/.zshenv needs to exist and have set the variable, before
-  # everything else is sourced.
+# ZSH won't load properly if $ZDOTDIR is being set in .zsh/.zprofile.
+# Therefore, ~/.zshenv needs to exist and have set the variable, before
+# everything else is sourced.
 if [ ! -f $HOME/.zshenv ]; then
   echo 'export ZDOTDIR=$HOME/.zsh' > $HOME/.zshenv
 else

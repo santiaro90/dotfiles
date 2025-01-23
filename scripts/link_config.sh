@@ -1,6 +1,5 @@
 bat_dir=$HOME/.config/bat
 dotfiles_dir=$HOME/.dotfiles
-vscode_dir="$HOME/Library/Application Support/Code/User"
 zsh_dir=${ZDOTDIR:-"$HOME/.zsh"}
 zim_dir=${ZIMHOME:-"$HOME/.zsh/.zim"}
 
@@ -38,8 +37,6 @@ link_map["$dotfiles_dir/git/gitignore"]="$HOME/.gitignore"
 link_map["$dotfiles_dir/vim"]="$HOME/.vim"
 link_map["$dotfiles_dir/vim/vimrc"]="$HOME/.vimrc"
 link_map["$dotfiles_dir/nvim"]="$HOME/.config/nvim"
-link_map["$dotfiles_dir/vscode/settings.json"]="$vscode_dir/settings.json"
-link_map["$dotfiles_dir/vscode/keybindings.json"]="$vscode_dir/keybindings.json"
 
 link_map["$dotfiles_dir/ctags"]="$HOME/.ctags"
 link_map["$dotfiles_dir/editorconfig"]="$HOME/.editorconfig"
