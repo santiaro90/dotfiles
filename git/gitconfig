@@ -175,6 +175,7 @@
     tool          = nvimdiff
 
 [push]
+    autoSetupRemote = true
     default = simple
 
 [url "https://github.com/"]
