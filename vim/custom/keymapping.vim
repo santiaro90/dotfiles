@@ -9,10 +9,6 @@ vnoremap : ;
 " Deactivate Ex mode
 noremap Q <nop>
 
-" Search with Dash
-nnoremap K :Dash <C-R><C-W><SPACE>
-vnoremap K y:Dash <C-R>0<SPACE>
-
 " Disable arrow keys
 map <LEFT> <nop>
 map <RIGHT> <nop>
@@ -20,7 +16,7 @@ map <UP> <nop>
 map <DOWN> <nop>
 
 " Useful escape mapping
-inoremap kj <ESC>
+inoremap jk <ESC>
 
 " Clear last search
 " nnoremap <silent> <leader>c :let @/=''<CR>
@@ -32,10 +28,10 @@ cnoremap <C-b> <C-Left>
 cnoremap <C-f> <C-Right>
 
 " Moving between tabs/buffers
-nnoremap <leader>N :tabn<CR>
-nnoremap <leader>P :tabp<CR>
-nnoremap <leader>n :bn<CR>
-nnoremap <leader>p :bp<CR>
+" nnoremap <leader>N :tabn<CR>
+" nnoremap <leader>P :tabp<CR>
+nnoremap L :bn<CR>
+nnoremap H :bp<CR>
 
 " CtrlP Bookmarks
 " noremap <leader>ba :CtrlPBookmarkDirAdd <C-R>=expand('%:p:h')<CR>
@@ -72,10 +68,11 @@ nnoremap <leader>f :Ag!<SPACE>
 vnoremap <leader>f y:Ag!<SPACE><C-R>0<SPACE>
 
 " fzf
-nnoremap <C-p>/ :BLines<CR>
-nnoremap <C-p>b :Buffers<CR>
-nnoremap <C-p>f :Files<CR>
-nnoremap <C-p>h :History<CR>
+nnoremap <C-p> :Files<CR>
+" nnoremap <C-p>/ :BLines<CR>
+" nnoremap <C-p>b :Buffers<CR>
+" nnoremap <C-p>f :Files<CR>
+" nnoremap <C-p>h :History<CR>
 
 " Multi-cursor mappings
 let g:multi_cursor_next_key='<C-n>'
