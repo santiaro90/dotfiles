@@ -1,4 +1,4 @@
 require("config.editor")
 require("config.keybindings")
-require("plugins")
+require("config.lazy")
 require("config.colours")
