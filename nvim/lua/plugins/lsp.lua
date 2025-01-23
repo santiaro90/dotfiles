@@ -81,6 +81,7 @@ return {
           vim.diagnostic.open_float({
             border = "single",
             bufnr = event.buf,
+            focus = false,
             source = "if_many",
           })
         end,

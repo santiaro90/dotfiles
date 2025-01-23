@@ -12,6 +12,8 @@ return {
     desc = "All Buffer",
   },
 
+  { "<leader>a", group = "AI" },
+
   { "<leader>g", group = "Git" },
   { "<leader>g[", ":Gitsigns prev_hunk<CR>", desc = "Previous Change" },
   { "<leader>g]", ":Gitsigns next_hunk<CR>", desc = "Next Change" },

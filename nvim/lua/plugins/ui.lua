@@ -50,7 +50,7 @@ return {
           Struct = { icon = "󰌗", hl = "Type" },
           Operator = { icon = "󰆕", hl = "Operator" },
           TypeParameter = { icon = "󰊄", hl = "Type" },
-          StaticMethod = { icon = '󰠄 ', hl = 'Function' },
+          StaticMethod = { icon = "󰠄 ", hl = "Function" },
         },
       },
     },
@@ -88,12 +88,18 @@ return {
           lualine_a = { "mode" },
           lualine_b = { "branch", "diff" },
           lualine_c = { "diagnostics" },
-          lualine_x = {},
+          lualine_x = { "copilot" },
           lualine_y = { "filetype" },
           lualine_z = { "location" },
         },
       }
     end,
+  },
+  {
+    "AndreM222/copilot-lualine",
+    dependencies = {
+      { "nvim-lualine/lualine.nvim" },
+    },
   },
   {
     "akinsho/bufferline.nvim",
@@ -104,7 +110,7 @@ return {
     },
     opts = function()
       local palette = require("catppuccin.palettes").get_palette()
-      local bufferline_hl = require("catppuccin.groups.integrations.bufferline").get {
+      local bufferline_hl = require("catppuccin.groups.integrations.bufferline").get({
         custom = {
           all = {
             buffer = {
@@ -133,9 +139,9 @@ return {
             modified_selected = {
               bg = palette.surface2,
             },
-          }
-        }
-      }
+          },
+        },
+      })
 
       return {
         highlights = bufferline_hl,
@@ -146,7 +152,7 @@ return {
           offsets = {
             {
               filetype = "neo-tree",
-              separator = true
+              separator = true,
             },
           },
           separator_style = "thick",
@@ -154,7 +160,7 @@ return {
           show_buffer_icons = false,
           show_close_icon = false,
           tab_size = 16,
-        }
+        },
       }
     end,
   },
@@ -183,17 +189,17 @@ return {
     opts = function()
       return {
         definition = {
-          keys = { quit = '<C-[>' },
+          keys = { quit = "<C-[>" },
         },
         finder = {
-          keys = { quit = '<C-[>', toggle_or_open = 'o' },
+          keys = { quit = "<C-[>", toggle_or_open = "o" },
         },
         outline = {
-          keys = { jump = '<CR>', quit = '<C-[>', toggle_or_jump = 'o' },
+          keys = { jump = "<CR>", quit = "<C-[>", toggle_or_jump = "o" },
           layout = "float",
         },
         rename = {
-          keys = { quit = '<C-[>' },
+          keys = { quit = "<C-[>" },
         },
         lightbulb = {
           virtual_text = false,
@@ -220,14 +226,17 @@ return {
     "folke/which-key.nvim",
     event = "VeryLazy",
     opts = {
+      icons = {
+        mappings = false,
+      },
       plugins = {
-        registers = false,
-        spelling = false,
         presets = {
           operators = false,
           motions = false,
           text_objects = false,
         },
+        registers = false,
+        spelling = false,
       },
       spec = mappings,
     },
