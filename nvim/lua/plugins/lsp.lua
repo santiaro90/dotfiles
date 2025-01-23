@@ -59,22 +59,39 @@ return {
           --
           -- This may be unwanted, since they displace some of your code
           -- if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
-          --   map("<leader>th", function()
+          -- map("<leader>th", function()
           --     vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
-          --   end, "[T]oggle Inlay [H]ints")
+          -- end, "[T]oggle Inlay [H]ints")
           -- end
         end,
       })
 
-      -- Change diagnostic symbols in the sign column (gutter)
-      -- if vim.g.have_nerd_font then
-      --   local signs = { ERROR = "", WARN = "", INFO = "", HINT = "" }
-      --   local diagnostic_signs = {}
-      --   for type, icon in pairs(signs) do
-      --     diagnostic_signs[vim.diagnostic.severity[type]] = icon
-      --   end
-      --   vim.diagnostic.config { signs = { text = diagnostic_signs } }
-      -- end
+      -- Diagnostics
+      -- Change symbols in the sign column (gutter)
+      local signs = { ERROR = " ", WARN = " ", INFO = " ", HINT = " " }
+      local diagnostic_signs = {}
+
+      for type, icon in pairs(signs) do
+        diagnostic_signs[vim.diagnostic.severity[type]] = icon
+      end
+
+      -- Show diagnostics on hover
+      vim.api.nvim_create_autocmd({ "CursorHold" }, {
+        callback = function(event)
+          vim.diagnostic.open_float({
+            border = "single",
+            bufnr = event.buf,
+            source = "if_many",
+          })
+        end,
+      })
+
+      vim.o.updatetime = 250
+      vim.diagnostic.config({
+        signs = { text = diagnostic_signs },
+        -- underline = false,
+        virtual_text = false,
+      })
 
       local capabilities = vim.lsp.protocol.make_client_capabilities()
       local default_capabilities = require("cmp_nvim_lsp").default_capabilities()
