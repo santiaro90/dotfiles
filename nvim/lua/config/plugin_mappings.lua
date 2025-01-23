@@ -1,11 +1,16 @@
 return {
-  { "<leader>.", group = "Explorer" },
-  { "<leader>..", ":Neotree toggle filesystem<CR>", desc = "File Explorer" },
-  { "<leader>.s", ":Lspsaga outline<CR>", desc = "Symbols" },
+  -- { "<leader>.", group = "Explorer" },
+  { "<leader>.", ":Neotree toggle filesystem<CR>", desc = "File Explorer" },
+  -- { "<leader>.s", ":Lspsaga outline<CR>", desc = "Symbols" },
   { "<leader>/", ":FzfLua live_grep<CR>", desc = "Search in Project" },
-
   { "<leader>f", group = "Format" },
-  { "<leader>ff", function() require("conform").format({ async = true, timeout_ms = 10000 }) end, desc = "All Buffer" },
+  {
+    "<leader>ff",
+    function()
+      require("conform").format({ async = true, lsp_format = "fallback" })
+    end,
+    desc = "All Buffer",
+  },
 
   { "<leader>g", group = "Git" },
   { "<leader>g[", ":Gitsigns prev_hunk<CR>", desc = "Previous Change" },
