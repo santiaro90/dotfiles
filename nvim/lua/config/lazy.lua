@@ -8,7 +8,7 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
     "--filter=blob:none",
     "--branch=stable",
     lazyrepo,
-    lazypath
+    lazypath,
   })
 
   if vim.v.shell_error ~= 0 then
@@ -25,7 +25,9 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 -- Load plugins specs
-require("lazy").setup("plugins")
+require("lazy").setup("plugins", {
+  change_detection = { notify = false },
+})
 
 vim.cmd.colorscheme("catppuccin-frappe")
 
