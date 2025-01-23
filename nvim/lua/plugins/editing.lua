@@ -10,22 +10,10 @@ return {
     opts = {},
   },
   {
-    "echasnovski/mini.surround",
-    opts = {
-      mappings = {
-        add = "ys",
-        delete = "ds",
-        find = "",
-        find_left = "",
-        highlight = "",
-        replace = "cs",
-        update_n_lines = "",
-      },
-    },
-    init = function()
-      vim.keymap.set("n", "yss", "ys_", { remap = true })
-      vim.keymap.set("x", "S", [[:<C-u>lua MiniSurround.add('visual')<CR>]], { silent = true })
-    end,
+    "kylechui/nvim-surround",
+    version = "*",
+    event = "VeryLazy",
+    opts = {},
   },
   {
     "numToStr/Comment.nvim",
@@ -45,7 +33,7 @@ return {
         toggle = "",
         split = "gS",
         join = "gJ",
-      }
+      },
     },
   },
 }
