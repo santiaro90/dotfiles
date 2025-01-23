@@ -1,5 +1,3 @@
-local mappings = require("config.plugin_mappings")
-
 return {
   {
     "echasnovski/mini.ai",
@@ -49,23 +47,5 @@ return {
         join = "gJ",
       }
     },
-  },
-  {
-    "folke/which-key.nvim",
-    event = "VeryLazy",
-    opts = {
-      plugins = {
-        registers = false,
-        spelling = false,
-        presets = {
-          operators = false,
-          motions = false,
-          text_objects = false,
-        },
-      },
-    },
-    init = function()
-      require("which-key").register(mappings)
-    end,
   },
 }

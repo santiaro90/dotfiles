@@ -42,16 +42,15 @@ vim.cmd.colorscheme("catppuccin-frappe")
 
 -- Load plugin mappings and make them available
 -- for which-key to document
-for prefix, mapping in pairs(mappings) do
-  for k, def in pairs(mapping) do
-    if k ~= "name" then
-      local mode = def["mode"] or "n"
+for _, mapping in ipairs(mappings) do
+  if not mapping.group then
+    local keystroke = mapping[1]
+    local cmd = mapping[2]
+    local opts = {
+      desc = mapping.desc or nil,
+      silent = true,
+    }
 
-      ---@diagnostic disable-next-line: param-type-mismatch,deprecated
-      vim.keymap.set(mode, prefix .. k, def[1], {
-        desc = def[2] or nil,
-        silent = true,
-      })
-    end
+    vim.keymap.set("n", keystroke, cmd, opts)
   end
 end
