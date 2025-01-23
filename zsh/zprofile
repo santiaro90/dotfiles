@@ -26,6 +26,10 @@ export LESS=-r
 # FZF options
 export FZF_COMPLETION_TRIGGER=""
 export FZF_CTRL_T_COMMAND="fd -H --type f"
+export FZF_CTRL_T_OPTS="\
+    --preview 'bat --color=always --style=changes,snip,numbers {}' \
+    --preview-window='right:100,border-left,wrap' \
+    --bind 'ctrl-t:toggle-preview'"
 export FZF_DEFAULT_COMMAND="fd -HI --type f"
 export FZF_DEFAULT_OPTS="--bind 'ctrl-j:preview-page-down,ctrl-k:preview-page-up'"
 export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
