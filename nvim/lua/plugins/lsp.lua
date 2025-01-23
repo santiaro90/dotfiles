@@ -1,148 +1,119 @@
 return {
   {
-    "neovim/nvim-lspconfig",
-    event = { "BufReadPre", "BufNewFile" },
-    dependencies = {
-      "mason.nvim",
-      "williamboman/mason-lspconfig.nvim",
-      "hrsh7th/cmp-nvim-lsp",
-    },
+    "folke/lazydev.nvim",
+    ft = "lua",
     opts = {
-      diagnostics = {
-        float = {
-          border = "single",
-          focus = false,
-          source = "if_many",
+      library = {
+        {
+          path = "luvit-meta/library",
+          words = { "vim%.uv" },
         },
-        severity_sort = true,
-        signs = {
-          Error = "",
-          Hint = "",
-          Info = "",
-          Warn = "",
-        },
-        update_in_insert = false,
-        virtual_text = false,
       },
-      capabilities = {},
-      autoformat = true,
-      servers = {
-        dockerls = {},
-        jsonls = {},
-        lua_ls = {},
-        pyright = {
+    },
+  },
+  {
+    "Bilal2453/luvit-meta",
+    lazy = true,
+  },
+  {
+    "neovim/nvim-lspconfig",
+    dependencies = {
+      { "williamboman/mason.nvim", opts = {} },
+      { "williamboman/mason-lspconfig.nvim" },
+      { "WhoIsSethDaniel/mason-tool-installer.nvim" },
+      { "hrsh7th/cmp-nvim-lsp" },
+    },
+    config = function()
+      vim.api.nvim_create_autocmd("LspAttach", {
+        group = vim.api.nvim_create_augroup("custom-lsp-attach", { clear = true }),
+        callback = function(event)
+          local client = vim.lsp.get_client_by_id(event.data.client_id)
+
+          if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
+            local highlight_augroup = vim.api.nvim_create_augroup("custom-lsp-highlight", { clear = false })
+
+            vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+              buffer = event.buf,
+              group = highlight_augroup,
+              callback = vim.lsp.buf.document_highlight,
+            })
+
+            -- When you move your cursor, the highlights will be cleared
+            vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
+              buffer = event.buf,
+              group = highlight_augroup,
+              callback = vim.lsp.buf.clear_references,
+            })
+
+            vim.api.nvim_create_autocmd("LspDetach", {
+              group = vim.api.nvim_create_augroup("custom-lsp-detach", { clear = true }),
+              callback = function(event2)
+                vim.lsp.buf.clear_references()
+                vim.api.nvim_clear_autocmds({ group = "custom-lsp-highlight", buffer = event2.buf })
+              end,
+            })
+          end
+
+          -- The following code creates a keymap to toggle inlay hints in your
+          -- code, if the language server you are using supports them
+          --
+          -- This may be unwanted, since they displace some of your code
+          -- if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
+          --   map("<leader>th", function()
+          --     vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
+          --   end, "[T]oggle Inlay [H]ints")
+          -- end
+        end,
+      })
+
+      -- Change diagnostic symbols in the sign column (gutter)
+      -- if vim.g.have_nerd_font then
+      --   local signs = { ERROR = "", WARN = "", INFO = "", HINT = "" }
+      --   local diagnostic_signs = {}
+      --   for type, icon in pairs(signs) do
+      --     diagnostic_signs[vim.diagnostic.severity[type]] = icon
+      --   end
+      --   vim.diagnostic.config { signs = { text = diagnostic_signs } }
+      -- end
+
+      local capabilities = vim.lsp.protocol.make_client_capabilities()
+      local default_capabilities = require("cmp_nvim_lsp").default_capabilities()
+      capabilities = vim.tbl_deep_extend("force", capabilities, default_capabilities)
+
+      local servers = {
+        lua_ls = {
           settings = {
-            pyright = {
-              -- Using Ruff's import organizer
-              disableOrganizeImports = true,
-            },
-            python = {
-              analysis = {
-                -- Ignore all files for analysis to exclusively use Ruff for linting
-                ignore = { "*" },
+            Lua = {
+              completion = {
+                callSnippet = "Replace",
               },
+              -- You can toggle below to ignore Lua_LS"s noisy `missing-fields` warnings
+              diagnostics = { disable = { "missing-fields" } },
             },
           },
         },
-        sqlls = {},
-        tsserver = {},
-        terraformls = {
-          filetypes = { "terraform", "terraform-vars", "tf", "tfvars" },
-        },
-        yamlls = {},
-      },
-      setup = {},
-    },
-    config = function(_, opts)
-      local servs = opts.servers
+      }
 
-      -- Define diagnostic signs to show next to each line
-      for type, icon in pairs(opts.diagnostics.signs) do
-        local hl = "DiagnosticSign" .. type
-        vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-      end
-
-      opts.diagnostics.signs = nil
-      vim.diagnostic.config(opts.diagnostics)
-      vim.o.updatetime = 250
-      vim.cmd([[autocmd! CursorHold * lua vim.diagnostic.open_float() ]])
-
-      local function setup(server)
-        local server_opts = servs[server] or {}
-
-        if not opts.setup[server] then
-          require("lspconfig")[server].setup(server_opts)
-          return
-        end
-
-        opts.setup[server](server, server_opts)
-      end
-
-      local mlsp = require("mason-lspconfig")
-      local all_mslp_servers = vim.tbl_keys(require("mason-lspconfig.mappings.server").lspconfig_to_package)
-      local ensure_installed = {}
-
-      for server, server_opts in pairs(servs) do
-        if server_opts then
-          server_opts = server_opts == true and {} or server_opts
-
-          if not vim.tbl_contains(all_mslp_servers, server) then
-            setup(server)
-          else
-            ensure_installed[#ensure_installed + 1] = server
-          end
-        end
-      end
-
-      mlsp.setup({ ensure_installed = ensure_installed })
-      mlsp.setup_handlers({ setup })
-    end,
-  },
-  {
-    "williamboman/mason.nvim",
-    cmd = "Mason",
-    opts = {
-      ensure_installed = {
-        -- "black",
-        "debugpy",
-        "eslint_d",
-        "prettier",
-        -- "pylint",
-        "ruff-lsp",
-        "shfmt",
-        -- "sqlfluff",
+      local ensure_installed = vim.tbl_keys(servers or {})
+      vim.list_extend(ensure_installed, {
         "stylua",
-      },
-    },
-    config = function(_, opts)
-      require("mason").setup(opts)
+      })
 
-      local mr = require("mason-registry")
+      require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
+      require("mason-lspconfig").setup({
+        handlers = {
+          function(server_name)
+            local server = servers[server_name] or {}
 
-      mr:on("package:install:success", function()
-        vim.defer_fn(function()
-          -- trigger FileType event to possibly load this newly installed LSP server
-          require("lazy.core.handler.event").trigger({
-            event = "FileType",
-            buf = vim.api.nvim_get_current_buf(),
-          })
-        end, 100)
-      end)
+            -- This handles overriding only values explicitly passed
+            -- by the server configuration above. Useful when disabling
+            -- certain features of an LSP (for example, turning off formatting for ts_ls)
+            server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
 
-      local function ensure_installed()
-        for _, tool in ipairs(opts.ensure_installed) do
-          local p = mr.get_package(tool)
-          if not p:is_installed() then
-            p:install()
-          end
-        end
-      end
-
-      if mr.refresh then
-        mr.refresh(ensure_installed)
-      else
-        ensure_installed()
-      end
+            require("lspconfig")[server_name].setup(server)
+          end,
+        },
+      })
     end,
   },
 }
