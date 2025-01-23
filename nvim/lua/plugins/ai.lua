@@ -22,7 +22,36 @@ return {
       },
     },
     opts = {
-      provider = "copilot",
+      file_selector = {
+        provider = "fzf",
+      },
+      hints = { enabled = false },
+      mappings = {
+        diff = {
+          all_theirs = "doa",
+          both = "dob",
+          cursor = "doc",
+          ours = "doo",
+          theirs = "dot",
+        },
+        submit = {
+          insert = "<CR>",
+        },
+      },
+      provider = "copilot_claude",
+      vendors = {
+        copilot_claude = {
+          __inherited_from = "copilot",
+          api_key_name = "GITHUB_TOKEN",
+          model = "claude-3.5-sonnet",
+          max_tokens = 4096,
+        },
+      },
+      windows = {
+        input = {
+          prefix = " ",
+        },
+      },
     },
   },
   {
