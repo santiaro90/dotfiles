@@ -98,42 +98,12 @@ return {
       local default_capabilities = require("cmp_nvim_lsp").default_capabilities()
       capabilities = vim.tbl_deep_extend("force", capabilities, default_capabilities)
 
-      local servers = {
-        lua_ls = {
-          settings = {
-            Lua = {
-              completion = {
-                callSnippet = "Replace",
-              },
-              -- You can toggle below to ignore Lua_LS"s noisy `missing-fields` warnings
-              diagnostics = { disable = { "missing-fields" } },
-            },
-          },
-        },
-        pyright = {
-          settings = {
-            pyright = {
-              disableOrganizeImports = true,
-            },
-            python = {
-              analysis = {
-                -- Ignore all files for analyisis and let Ruff do the linting
-                ignore = { "*" },
-              },
-            },
-          },
-        },
-        ruff = {
-          server_capabilities = {
-            hoverProvider = false,
-          },
-        },
-      }
-
+      local servers = require("config.lsp")
       local ensure_installed = vim.tbl_keys(servers or {})
+
+      -- Include linters and formatters here for Mason to install
       vim.list_extend(ensure_installed, {
-        "pyright",
-        "ruff",
+        "shfmt",
         "stylua",
       })
 

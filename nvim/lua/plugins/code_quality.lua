@@ -26,6 +26,7 @@ return {
       formatters_by_ft = {
         lua = { "stylua" },
         python = { "ruff", "ruff_organize_imports" },
+        sh = { "shfmt" },
       },
     },
     config = function(_, opts)
