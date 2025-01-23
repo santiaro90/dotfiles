@@ -7,9 +7,9 @@ alias dotf="[[ -d $DOTDIR ]] && cd $DOTDIR"
 
 if command -v lsd > /dev/null 2>&1; then
   alias ls="lsd"
-  alias l="ls -a1 --icon always"
-  alias la="ls -alh --icon always --git"
-  alias lt="l -TL 3"
+  alias l="ls -A1 --icon always"
+  alias la="ls -Alh --icon always --git"
+  alias lt="l --tree --depth 3"
 else
   alias l="ls -A1p"
   alias la="ls -Alhp"
