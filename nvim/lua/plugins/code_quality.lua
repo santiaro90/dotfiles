@@ -25,6 +25,7 @@ return {
       end,
       formatters_by_ft = {
         lua = { "stylua" },
+        python = { "ruff", "ruff_organize_imports" },
       },
     },
     config = function(_, opts)
@@ -37,9 +38,7 @@ return {
     config = function()
       local lint = require("lint")
 
-      lint.linters_by_ft = {
-        python = { "ruff" },
-      }
+      lint.linters_by_ft = {}
 
       -- Create autocommand which carries out the actual linting
       -- on the specified events.

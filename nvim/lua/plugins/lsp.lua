@@ -92,6 +92,24 @@ return {
             },
           },
         },
+        pyright = {
+          settings = {
+            pyright = {
+              disableOrganizeImports = true,
+            },
+            python = {
+              analysis = {
+                -- Ignore all files for analyisis and let Ruff do the linting
+                ignore = { "*" },
+              },
+            },
+          },
+        },
+        ruff = {
+          server_capabilities = {
+            hoverProvider = false,
+          },
+        },
       }
 
       local ensure_installed = vim.tbl_keys(servers or {})
