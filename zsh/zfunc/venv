@@ -1,0 +1,102 @@
+# vim: set ft=sh :
+local subcommand=$1
+shift  # Remove the subcommand from the argument list
+
+case "$subcommand" in
+    new)
+        # Create a new virtual environment via `uv venv`, ensuring
+        # the environment name starts with a dot.
+
+        # Ensure 'uv' command exists
+        if ! command -v uv >/dev/null 2>&1; then
+            echo "Error: 'uv' command not found."
+            return 1
+        fi
+
+        # Determine the new venv name (the first parameter after `new`)
+        local new_venv_name=$1
+        shift  # Remove the venv name from the argument list, leaving the rest for `uv venv`
+
+        if [[ -z "$new_venv_name" ]]; then
+            # Default to ".venv" if none specified
+            new_venv_name=".venv"
+        elif [[ $new_venv_name != .* ]]; then
+            # If the specified name doesn't start with a dot, prepend one
+            new_venv_name=".$new_venv_name"
+        fi
+
+        # Create the virtual environment with any remaining parameters
+        uv venv "$new_venv_name" "$@"
+        ;;
+
+    stop)
+        # Deactivate if a virtual environment is active
+        if [[ -n "$VIRTUAL_ENV" ]]; then
+            deactivate
+            echo "Virtual environment deactivated."
+        else
+            echo "No active virtual environment found."
+        fi
+        ;;
+
+    run)
+        # If no extra parameters, activate .venv in current directory if it exists
+        venv_name=
+        if [[ $# -eq 0 ]]; then
+            venv_name=".venv"
+        else
+            # If there is at least one extra parameter
+            local venv_name="$1"
+        fi
+
+        # If it doesn't start with '.', prepend '.'
+        if [[ $venv_name != .* ]]; then
+            venv_name=".$venv_name"
+        fi
+
+        if [[ -d "$venv_name" ]]; then
+            source "$venv_name/bin/activate"
+            echo "Activated virtual environment in '$venv_name'."
+        else
+            echo "A virtual environament named '$venv_name' could not be found."
+        fi
+        ;;
+
+    rm)
+        # Deactivate if a virtual environment is active
+        if [[ -n "$VIRTUAL_ENV" ]]; then
+            deactivate
+            echo "Virtual environment deactivated."
+        fi
+
+        # Perform the same directory lookup as with `run`
+        local remove_name="$1"
+        if [[ -z "$remove_name" ]]; then
+            # Default to ".venv" if none specified
+            remove_name=".venv"
+        elif [[ $remove_name != .* ]]; then
+            # If it doesn't start with '.', prepend '.'
+            remove_name=".$remove_name"
+        fi
+
+        if [[ -d "$remove_name" ]]; then
+            # Confirm removal
+            echo -n "Are you sure you want to remove '$remove_name'? [y/N] "
+            read -r confirm
+            if [[ "$confirm" == [Yy]* ]]; then
+                rm -rf "$remove_name"
+                echo "Removed '$remove_name'."
+            else
+                echo "Removal cancelled."
+            fi
+        else
+            echo "A virtual environment named '$remove_name' could not be found."
+        fi
+        ;;
+
+    *)
+        # Invalid subcommand usage
+        echo "Usage: venv {new|rm|run|stop} [args...]"
+        return 1
+        ;;
+esac

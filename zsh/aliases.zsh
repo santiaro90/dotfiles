@@ -46,16 +46,9 @@ alias nt="npm test"
 alias nun="npm uninstall"
 alias nup="npm update"
 
-# Pyenv
-alias pyi="pyenv install"
-alias pys="pyenv shell"
-alias pyu="pyenv uninstall"
-alias pyv="pyenv versions"
-alias pyve="pyenv virtualenv"
-alias pyvea="pyenv activate"
-alias pyved="pyenv deactivate"
-alias pyvex="pyenv virtualenv-delete"
-alias pyves="pyenv virtualenvs"
+# Python
+alias pv="uv python list" # Python versions
+alias pip="uv pip"
 
 alias rm="nocorrect rm -r"
 alias mkdir="mkdir -vp"

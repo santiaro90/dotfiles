@@ -17,7 +17,6 @@ vimcmd_symbol = '[\[\]](bold blue)'
 style = 'bold yellow'
 truncate_to_repo = true
 truncation_length = 10
-# truncation_symbol = '󰇘/'
 
 [git_branch]
 format = '[$symbol$branch(:$remote_branch)]($style)'
@@ -50,11 +49,10 @@ detect_files = ['package.json']
 symbol = '󰎙 '
 
 [python]
-format = '\[[ $virtualenv](bold italic dimmed sky) [$symbol$version ](bold green)\] '
+format = '\[[ $virtualenv](bold italic dimmed sky) [$symbol$version ](bold grey)\] '
 detect_extensions = []
 detect_files = []
-# pyenv_version_name = true
-symbol = ' '
+symbol = ' '
 
 [palettes.catppuccin_frappe]
 base = '#303446'

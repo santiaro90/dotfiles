@@ -16,8 +16,6 @@ WORDCHARS=${WORDCHARS//\/[&.;]} # Don't consider certain characters part of the 
 
 # Init CLI tools that need it
 command -v zoxide > /dev/null 2>&1 && eval "$(zoxide init zsh)"
-command -v pyenv > /dev/null 2>&1 && eval "$(pyenv init -)"
-command -v pyenv > /dev/null 2>&1 && eval "$(pyenv virtualenv-init -)"
 command -v fnm > /dev/null 2>&1 && eval "$(fnm env --use-on-cd)"
 command -v fzf > /dev/null && source <(fzf --zsh)
 
