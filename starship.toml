@@ -4,7 +4,8 @@ command_timeout = 10000
 continuation_prompt = '󰶻 '
 format = '''
 $directory$git_branch$git_status
-$python$nodejs$character'''
+$character'''
+right_format = '(\[ $python$nodejs\])'
 add_newline = true
 palette = 'catppuccin_frappe'
 
@@ -36,13 +37,13 @@ stashed = '[󰆺](green)'
 untracked = '​'
 
 [nodejs]
-format = '\[[ $symbol](bold green)[$version ](bold white)\] '
+format = '[$symbol](bold green)[$version](white) '
 detect_extensions = []
 detect_files = ['package.json']
 symbol = '󰎙 '
 
 [python]
-format = '\[[ $virtualenv](bold italic dimmed sky) [$symbol$version ](bold grey)\] '
+format = '[$symbol](bold yellow)[$version](white) [\($virtualenv\)](italic dimmed sky) '
 detect_extensions = []
 detect_files = []
 symbol = ' '
