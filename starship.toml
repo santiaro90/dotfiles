@@ -3,7 +3,7 @@
 command_timeout = 10000
 continuation_prompt = '󰶻 '
 format = '''
-$directory$git_branch$git_status$git_commit
+$directory$git_branch$git_status
 $python$nodejs$character'''
 add_newline = true
 palette = 'catppuccin_frappe'
@@ -19,27 +19,20 @@ truncate_to_repo = true
 truncation_length = 10
 
 [git_branch]
-format = '[$symbol$branch(:$remote_branch)]($style)'
-style = 'bold sapphire'
-
-[git_commit]
-format = '[\($hash$tag\)]($style) '
-only_detached = false
-style = 'bold dimmed sapphire'
-tag_disabled = false
-tag_symbol = ' 󰓻 '
+format = '[$symbol$branch(:$remote_branch)](sapphire)'
+symbol = ' '
 
 [git_status]
-format = '[[(*$all_status)](218) ($ahead_behind )](bold red)'
-ahead = ''
-behind = ''
-conflicted = '​'
+format = '[(󰧞$deleted$modified$renamed$staged$untracked)](218)( \[( $conflicted)( $ahead_behind)( $stashed) \])'
+ahead = '[${count}⇡](yellow)'
+behind = '[${count}⇣](7)'
+conflicted = '[‼](red)'
 deleted = '​'
-diverged = ''
+diverged = '[${behind_count}⇣](7)·[${ahead_count}⇡](yellow)'
 modified = '​'
 renamed = '​'
 staged = '​'
-stashed = '​'
+stashed = '[󰆺](green)'
 untracked = '​'
 
 [nodejs]
