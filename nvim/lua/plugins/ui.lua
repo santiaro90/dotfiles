@@ -86,8 +86,16 @@ return {
         },
         sections = {
           lualine_a = { "mode" },
-          lualine_b = { "branch", "diff" },
-          lualine_c = { "diagnostics" },
+          lualine_b = {
+            { "branch", icon = "" },
+            "diff",
+          },
+          lualine_c = {
+            {
+              "diagnostics",
+              symbols = { error = " ", warn = " ", info = " ", hint = "󰌶 " },
+            },
+          },
           lualine_x = { "copilot" },
           lualine_y = { "filetype" },
           lualine_z = { "location" },
