@@ -53,6 +53,8 @@ cask "xquartz"
 
 # Fonts
 cask "font-anonymice-nerd-font"
+cask "font-fira-code-mono"
 cask "font-fira-code-nerd-font"
-cask "font-inconsolata-go-nerd-font"
+cask "font-jetbrains-mono"
+cask "font-jetbrains-nerd-font"
 cask "font-sauce-code-pro-nerd-font"
