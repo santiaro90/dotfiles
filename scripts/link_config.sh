@@ -5,9 +5,9 @@ zim_dir=${ZIMHOME:-"$HOME/.zsh/.zim"}
 
 # Exit if $HOME/.dotfiles doesn't exist
 if [ ! -d "$dotfiles_dir" ]; then
-  echo "Error: $dotfiles_dir doesn't exist"
-  echo "Please clone the dotfiles repo to $dotfiles_dir"
-  exit 1
+    echo "Error: $dotfiles_dir doesn't exist"
+    echo "Please clone the dotfiles repo to $dotfiles_dir"
+    exit 1
 fi
 
 # Create required directories
@@ -34,6 +34,8 @@ link_map["$dotfiles_dir/bat/themes"]="$bat_dir/themes"
 link_map["$dotfiles_dir/git/gitconfig"]="$HOME/.gitconfig"
 link_map["$dotfiles_dir/git/gitignore"]="$HOME/.gitignore"
 
+link_map["$dotfiles_dir/lsd"]=$HOME/.config/lsd
+
 link_map["$dotfiles_dir/vim"]="$HOME/.vim"
 link_map["$dotfiles_dir/vim/vimrc"]="$HOME/.vimrc"
 link_map["$dotfiles_dir/nvim"]="$HOME/.config/nvim"
@@ -44,8 +46,8 @@ link_map["$dotfiles_dir/starship.toml"]="$HOME/.starship.toml"
 
 # Check if the files are already linked. If not, create the symlinks
 for src in "${!link_map[@]}"; do
-  dest=${link_map["$src"]}
-  [[ -L "$dest" && -e "$dest" ]] || ln -fs "$src" "$dest"
+    dest=${link_map["$src"]}
+    [[ -L "$dest" && -e "$dest" ]] || ln -fs "$src" "$dest"
 done
 
 bat cache --build >/dev/null 2>&1
