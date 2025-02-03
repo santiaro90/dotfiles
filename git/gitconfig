@@ -39,10 +39,12 @@
     cf     = forgit checkout_file
 
     # Log
+    l    = forgit log
     ll   = "log --decorate --graph --pretty='%C(yellow)[%H]%Creset%C(auto)%d%Creset%n  %s%n%n\
     Date: %C(blue)%cd%Creset%n\
     Author: %C(red)%an%Creset %C(green)<%ae>%Creset%n' --date=format:'%e %B, %Y - %H:%M:%S'"
-    ls   = log --decorate --pretty=format:'%C(yellow)[%h]%Creset%C(auto)%d%Creset - %s %C(blue)(%cr)%Creset %C(green)<%ae>%Creset'
+    ls   = "log --decorate --pretty=format:'%C(yellow)[%h]%Creset  %<(80,trunc)%s\
+    %C(blue)(%ci)%Creset %C(#85c1dc)%an%Creset'"
     lost = !git ls $(git fsck --no-reflog | awk '/dangling commit/ {print $3}')
 
     # Init
@@ -78,7 +80,7 @@
     rs  = reset --soft
 
     # Show
-    sh = "show --pretty='%C(yellow)[%H]%Creset%C(auto)%d%Creset%n  %s%n%n\
+    sh = "show --pretty='%C(yellow)[%h]%Creset%C(auto)%d%Creset%n  %s%n%n\
     Date: %C(blue)%cd%Creset%n\
     Author: %C(red)%an%Creset %C(green)<%ae>%Creset%n' --date=format:'%e %B, %Y - %H:%M:%S'"
     shs = "show --stat --pretty='%C(yellow)[%H]%Creset%C(auto)%d%Creset%n  %s%n%n\

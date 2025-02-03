@@ -1,5 +1,4 @@
 # vim: set ft=zsh ts=4 sw=4 :
-
 export DOTDIR=~/.dotfiles
 export EDITOR=nvim
 export LANG=en_GB.UTF-8
@@ -24,41 +23,40 @@ export LESS_TERMCAP_us=$'\E[01;36m'
 export LESS=-r
 
 # FZF options
+export FZF_DEFAULT_COMMAND="fd -HI --type f"
+export FZF_DEFAULT_OPTS="
+    --bind 'ctrl-j:preview-page-down,ctrl-k:preview-page-up'
+    --border
+    --color=bg+:#414559,bg:#303446,spinner:#f2d5cf,hl:#e78284
+    --color=fg:#c6d0f5,header:#e78284,info:#ca9ee6,pointer:#f2d5cf
+    --color=gutter:#303446
+    --color=marker:#f2d5cf,fg+:#c6d0f5,prompt:#ca9ee6,hl+:#e78284"
+
 export FZF_COMPLETION_TRIGGER=""
 export FZF_CTRL_T_COMMAND="fd -H --type f"
-export FZF_CTRL_T_OPTS="\
-    --preview 'bat --color=always --style=changes,snip,numbers {}' \
-    --preview-window='right:100,border-left,wrap' \
+export FZF_CTRL_T_OPTS="
+    --preview 'bat --color=always --style=changes,snip,numbers {}'
+    --preview-window='right:100,border-left,wrap'
     --bind 'ctrl-t:toggle-preview'"
-export FZF_DEFAULT_COMMAND="fd -HI --type f"
-export FZF_DEFAULT_OPTS="--bind 'ctrl-j:preview-page-down,ctrl-k:preview-page-up'"
-export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
-  --color=bg+:#414559,bg:#303446,spinner:#f2d5cf,hl:#e78284 \
-  --color=fg:#c6d0f5,header:#e78284,info:#ca9ee6,pointer:#f2d5cf \
-  --color=gutter:#303446 \
-  --color=marker:#f2d5cf,fg+:#c6d0f5,prompt:#ca9ee6,hl+:#e78284"
-export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS --border"
-
-# Pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-export PYENV_VIRTUALENV_DISABLE_PROMPT=1
-export PATH="$PYENV_ROOT/bin:$PATH"
-export PATH="$HOMEBREW_PREFIX/bin:$PATH"
 
 # Forgit
+export FORGIT_FZF_DEFAULT_OPTS="
+  --reverse
+  --height=80%
+  --border-label-pos=5
+  --bind='ctrl-t:toggle-preview'
+  --preview-window='right:100,border-left,wrap'"
+
+export FORGIT_ADD_FZF_OPTS="$FORGIT_FZF_DEFAULT_OPTS --border-label='Stage files'"
+export FORGIT_DIFF_FZF_OPTS="$FORGIT_FZF_DEFAULT_OPTS --border-label='Worktree changes'"
+export FORGIT_DIFF_GIT_OPTS="--patience"
+export FORGIT_LOG_FORMAT="%C(yellow)[%h]%Creset  %s"
+export FORGIT_LOG_GRAPH_ENABLE="false"
 export FORGIT_NO_ALIASES=true
 export FORGIT_PAGER='delta --config ~/.gitconfig --file-style omit'
-export FORGIT_DIFF_GIT_OPTS="--patience"
-export FORGIT_FZF_DEFAULT_OPTS="\
-  --reverse \
-  --height=80% \
-  --border-label-pos=5 \
-  --bind='ctrl-t:toggle-preview' \
-  --preview-window='right:100,border-left,wrap'"
-export FORGIT_ADD_FZF_OPTS="$FORGIT_FZF_DEFAULT_OPTS \
-  --border-label='Stage files'"
-export FORGIT_DIFF_FZF_OPTS="$FORGIT_FZF_DEFAULT_OPTS \
-  --border-label='Worktree changes'"
 
 # Prompt config
 export STARSHIP_CONFIG=~/.starship.toml
+
+# Make sure Homebrew libs are in the path
+export PATH="$HOMEBREW_PREFIX/bin:$PATH"
