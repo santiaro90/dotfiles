@@ -23,34 +23,38 @@ export LESS_TERMCAP_us=$'\E[01;36m'
 export LESS=-r
 
 # FZF options
-export FZF_DEFAULT_COMMAND="fd -HI --type f"
-export FZF_DEFAULT_OPTS="
-    --bind 'ctrl-j:preview-page-down,ctrl-k:preview-page-up'
-    --border
-    --color=bg+:#414559,bg:#303446,spinner:#f2d5cf,hl:#e78284
-    --color=fg:#c6d0f5,header:#e78284,info:#ca9ee6,pointer:#f2d5cf
-    --color=gutter:#303446
-    --color=marker:#f2d5cf,fg+:#c6d0f5,prompt:#ca9ee6,hl+:#e78284"
-
 export FZF_COMPLETION_TRIGGER=""
-export FZF_CTRL_T_COMMAND="fd -H --type f"
-export FZF_CTRL_T_OPTS="
+export FZF_DEFAULT_COMMAND="fd -HI -E node_modules --type f"
+export FZF_CTRL_T_COMMAND="fd -H -E .git -E node_modules --type f"
+export FZF_DEFAULT_OPTS="
+    --bind 'ctrl-j:preview-page-down'
+    --bind 'ctrl-k:preview-page-up'
+    --bind 'ctrl-t:toggle-preview'
+    --color 'bg+:#414559,bg:#303446,spinner:#f2d5cf,hl:#e78284'
+    --color 'fg:#c6d0f5,header:#e78284,info:#ca9ee6,pointer:#f2d5cf'
+    --color 'gutter:#303446'
+    --color 'marker:#f2d5cf,fg+:#c6d0f5,prompt:#ca9ee6,hl+:#e78284'
+    --height 80%
+    --highlight-line
+    --info 'inline-right'
+    --input-border 'rounded'
+    --list-border 'rounded'
+    --margin 0
+    --no-scrollbar
+    --padding 0
+    --pointer ''
     --preview 'bat --color=always --style=changes,snip,numbers {}'
-    --preview-window='right:100,border-left,wrap'
-    --bind 'ctrl-t:toggle-preview'"
+    --preview-window 'right:50%,wrap,hidden,<50(down)'
+    --prompt ' '
+"
 
 # Forgit
-export FORGIT_FZF_DEFAULT_OPTS="
-  --reverse
-  --height=80%
-  --border-label-pos=5
-  --bind='ctrl-t:toggle-preview'
-  --preview-window='right:100,border-left,wrap'"
-
-export FORGIT_ADD_FZF_OPTS="$FORGIT_FZF_DEFAULT_OPTS --border-label='Stage files'"
-export FORGIT_DIFF_FZF_OPTS="$FORGIT_FZF_DEFAULT_OPTS --border-label='Worktree changes'"
+export FORGIT_FZF_DEFAULT_OPTS="--reverse --border-label-pos=5 --preview-window='nohidden'"
+export FORGIT_ADD_FZF_OPTS="$FORGIT_FZF_DEFAULT_OPTS --input-label='Git Add'"
+export FORGIT_DIFF_FZF_OPTS="$FORGIT_FZF_DEFAULT_OPTS --input-label='Git Diff'"
 export FORGIT_DIFF_GIT_OPTS="--patience"
 export FORGIT_LOG_FORMAT="%C(yellow)[%h]%Creset  %s"
+export FORGIT_LOG_FZF_OPTS="$FORGIT_FZF_DEFAULT_OPTS --input-label='Git Log'"
 export FORGIT_LOG_GRAPH_ENABLE="false"
 export FORGIT_NO_ALIASES=true
 export FORGIT_PAGER='delta --config ~/.gitconfig --file-style omit'
