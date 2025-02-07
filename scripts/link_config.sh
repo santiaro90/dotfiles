@@ -18,31 +18,27 @@ fi
 # Create a mapping of files to link
 declare -A link_map
 
+link_map["$dotfiles_dir/bat/config"]="$bat_dir/config"
+link_map["$dotfiles_dir/bat/themes"]="$bat_dir/themes"
+link_map["$dotfiles_dir/ctags"]="$HOME/.ctags"
+link_map["$dotfiles_dir/editorconfig"]="$HOME/.editorconfig"
+link_map["$dotfiles_dir/git/gitconfig"]="$HOME/.gitconfig"
+link_map["$dotfiles_dir/git/gitignore"]="$HOME/.gitignore"
+link_map["$dotfiles_dir/lsd"]=$HOME/.config/lsd
+link_map["$dotfiles_dir/nvim"]="$HOME/.config/nvim"
+link_map["$dotfiles_dir/starship.toml"]="$HOME/.starship.toml"
+link_map["$dotfiles_dir/vim"]="$HOME/.vim"
+link_map["$dotfiles_dir/vim/vimrc"]="$HOME/.vimrc"
+link_map["$dotfiles_dir/wezterm"]="$HOME/.config/wezterm"
 link_map["$dotfiles_dir/zsh/aliases.zsh"]="$zsh_dir/.aliases.zsh"
 link_map["$dotfiles_dir/zsh/keybindings.zsh"]="$zsh_dir/.keybindings.zsh"
 link_map["$dotfiles_dir/zsh/prompt.zsh"]="$zsh_dir/.prompt.zsh"
 link_map["$dotfiles_dir/zsh/zcomp"]="$zsh_dir/.zcomp"
 link_map["$dotfiles_dir/zsh/zfunc"]="$zsh_dir/.zfunc"
-link_map["$dotfiles_dir/zsh/zimrc"]="$zsh_dir/.zimrc"
 link_map["$dotfiles_dir/zsh/zim.zsh"]="$zsh_dir/.zim.zsh"
+link_map["$dotfiles_dir/zsh/zimrc"]="$zsh_dir/.zimrc"
 link_map["$dotfiles_dir/zsh/zprofile"]="$zsh_dir/.zprofile"
 link_map["$dotfiles_dir/zsh/zshrc"]="$zsh_dir/.zshrc"
-
-link_map["$dotfiles_dir/bat/config"]="$bat_dir/config"
-link_map["$dotfiles_dir/bat/themes"]="$bat_dir/themes"
-
-link_map["$dotfiles_dir/git/gitconfig"]="$HOME/.gitconfig"
-link_map["$dotfiles_dir/git/gitignore"]="$HOME/.gitignore"
-
-link_map["$dotfiles_dir/lsd"]=$HOME/.config/lsd
-
-link_map["$dotfiles_dir/vim"]="$HOME/.vim"
-link_map["$dotfiles_dir/vim/vimrc"]="$HOME/.vimrc"
-link_map["$dotfiles_dir/nvim"]="$HOME/.config/nvim"
-
-link_map["$dotfiles_dir/ctags"]="$HOME/.ctags"
-link_map["$dotfiles_dir/editorconfig"]="$HOME/.editorconfig"
-link_map["$dotfiles_dir/starship.toml"]="$HOME/.starship.toml"
 
 # Check if the files are already linked. If not, create the symlinks
 for src in "${!link_map[@]}"; do
