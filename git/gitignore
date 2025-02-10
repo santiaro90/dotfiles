@@ -1,3 +1,4 @@
+# vim: ft=gitignore :
 # Vim
 *.swp
 *~
@@ -9,3 +10,7 @@
 # Node.js
 *.log
 node_modules
+
+# VSCode
+.vscode/
+*.code-workspace
