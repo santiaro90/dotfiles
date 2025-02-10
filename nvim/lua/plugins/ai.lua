@@ -59,9 +59,11 @@ return {
     build = ":Copilot auth",
     cmd = "Copilot",
     event = "InsertEnter",
-    config = function()
-      require("copilot").setup({})
-    end,
+    opts = {
+      filetypes = {
+        yaml = true,
+      },
+    },
   },
   {
     "zbirenbaum/copilot-cmp",
