@@ -51,4 +51,4 @@ alias pv="uv python list" # Python versions
 alias pip="uv pip"
 
 alias rm="nocorrect rm -r"
-alias mkdir="mkdir -vp"
+alias mk="mkdir -vp"
