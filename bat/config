@@ -1,1 +1,4 @@
+# vim: ft=config :
 --theme="Catppuccin-frappe"
+--map-syntax="**/zsh/**/*:Bourne Again Shell (bash)"
+--map-syntax="editorconfig:INI"

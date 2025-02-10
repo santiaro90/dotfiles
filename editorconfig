@@ -1,3 +1,4 @@
+# vim: set ft=editorconfig :
 root = true
 
 [*]
@@ -8,5 +9,6 @@ indent_style = space
 insert_final_newline = true
 trim_trailing_whitespace = true
 
-[*.{py,sql,ipynb}]
+[*.{py,sql,ipynb,sh}]
 indent_size = 4
+max_line_length = 100
