@@ -140,12 +140,25 @@ return {
               fg = palette.text,
               style = { "italic" },
             },
+            indicator_selected = {
+              bg = palette.surface2,
+              sp = palette.peach,
+            },
             modified = {
               bg = palette.mantle,
               fg = palette.peach,
             },
             modified_selected = {
               bg = palette.surface2,
+            },
+            tab = {
+              bg = palette.mantle,
+              fg = palette.subtext0,
+            },
+            tab_selected = {
+              bg = palette.peach,
+              fg = palette.crust,
+              style = { "bold" },
             },
           },
         },
@@ -155,19 +168,23 @@ return {
         highlights = bufferline_hl,
         options = {
           indicator = {
-            icon = "▐",
+            icon = "▎",
+            style = "icon",
           },
+          modified_icon = "+",
           offsets = {
             {
               filetype = "neo-tree",
-              separator = true,
+              separator = false,
+              text = "File Explorer",
             },
           },
-          separator_style = "thick",
+          separator_style = { "", "" },
           show_buffer_close_icons = false,
           show_buffer_icons = false,
           show_close_icon = false,
           tab_size = 16,
+          truncate_names = false,
         },
       }
     end,
