@@ -4,8 +4,8 @@ local module = {}
 
 module.apply = function(config)
   local keys = {
-    { key = "\\", mods = "LEADER", action = action.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
-    { key = "-", mods = "LEADER", action = action.SplitVertical({ domain = "CurrentPaneDomain" }) },
+    { key = "v", mods = "LEADER", action = action.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
+    { key = "s", mods = "LEADER", action = action.SplitVertical({ domain = "CurrentPaneDomain" }) },
 
     -- Move between panes
     { key = "h", mods = "LEADER", action = action.ActivatePaneDirection("Left") },
@@ -13,12 +13,12 @@ module.apply = function(config)
     { key = "k", mods = "LEADER", action = action.ActivatePaneDirection("Up") },
     { key = "l", mods = "LEADER", action = action.ActivatePaneDirection("Right") },
 
-    -- Enter pane resize mode
+    -- Pane resize mode
     {
       key = "r",
       mods = "LEADER",
       action = action.ActivateKeyTable({
-        name = "resize_pane",
+        name = "resize",
         one_shot = false,
         prevent_fallback = true,
         replace_current = true,
@@ -27,7 +27,7 @@ module.apply = function(config)
   }
 
   local key_tables = {
-    resize_pane = {
+    resize = {
       { key = "h", action = action.AdjustPaneSize({ "Left", 1 }) },
       { key = "j", action = action.AdjustPaneSize({ "Down", 1 }) },
       { key = "k", action = action.AdjustPaneSize({ "Up", 1 }) },
