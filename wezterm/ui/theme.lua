@@ -52,8 +52,6 @@ module.tabs = {
 
 module.apply = function(config)
   config.color_scheme = "Catppuccin Frappe"
-  config.cursor_thickness = 2
-  config.default_cursor_style = "SteadyBar"
   config.font = wezterm.font_with_fallback({
     {
       family = "JetBrains Mono",
@@ -64,7 +62,9 @@ module.apply = function(config)
       scale = 1.4,
     },
   })
-  config.font_size = 20.0
+
+  config.command_palette_font_size = 20
+  config.font_size = 20
 end
 
 return module
