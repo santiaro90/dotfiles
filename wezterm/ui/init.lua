@@ -1,11 +1,14 @@
+local utils = require("utils")
 local module = {}
 
 module.apply = function(config)
-  require("ui.theme").apply(config)
-  require("ui.window").apply(config)
+  utils.apply_modules(config, {
+    "ui.tab",
+    "ui.theme",
+    "ui.window",
+  })
 
-  config.use_fancy_tab_bar = false
-  config.tab_bar_at_bottom = true
+  config.default_cursor_style = "SteadyBlock"
 end
 
 return module

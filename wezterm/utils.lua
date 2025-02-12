@@ -12,4 +12,15 @@ module.append_to_table = function(target, source)
   end
 end
 
+module.apply_module = function(config, module_name)
+  local m = require(module_name)
+  m.apply(config)
+end
+
+module.apply_modules = function(config, modules)
+  for _, module_name in ipairs(modules) do
+    module.apply_module(config, module_name)
+  end
+end
+
 return module
