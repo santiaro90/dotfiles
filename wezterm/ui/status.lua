@@ -1,4 +1,4 @@
-local theme = require("ui.theme")
+local theme = require("ui.theme").status
 local wezterm = require("wezterm")
 
 local module = {}
@@ -11,13 +11,13 @@ local update_left_status = function(window, pane)
   end
 
   window:set_left_status(wezterm.format({
-    { Background = { Color = theme.palette.surface0 } },
-    { Foreground = { Color = theme.palette.yellow } },
+    { Background = { Color = theme.left.background } },
+    { Foreground = { Color = theme.left.foreground } },
     { Attribute = { Intensity = "Bold" } },
     { Text = " " },
     { Text = wezterm.nerdfonts.custom_folder_open },
     { Text = " " .. cwd.file_path:gsub(os.getenv("HOME"), "~") .. " " },
-    { Background = { Color = theme.palette.crust } },
+    { Background = { Color = theme.left_separator.background } },
     { Text = " " },
   }))
 end
@@ -27,8 +27,8 @@ local update_right_status = function(window, pane)
   local separator = #key_table > 0 and " " or ""
 
   window:set_right_status(wezterm.format({
-    { Background = { Color = theme.palette.mauve } },
-    { Foreground = { Color = theme.palette.crust } },
+    { Background = { Color = theme.right.background } },
+    { Foreground = { Color = theme.right.foreground } },
     { Text = separator },
     { Attribute = { Intensity = "Bold" } },
     { Text = key_table:upper() },

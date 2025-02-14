@@ -1,7 +1,7 @@
 local wezterm = require("wezterm")
-local module = {}
 
-local colours = {
+local module = {}
+local palette = {
   base = "#303446",
   blue = "#8caaee",
   crust = "#232634",
@@ -30,23 +30,37 @@ local colours = {
   yellow = "#e5c890",
 }
 
-module.colours = colours
+module.palette = palette
 module.tabs = {
   active_tab = {
-    background = colours.peach,
-    foreground = colours.crust,
+    background = palette.peach,
+    foreground = palette.crust,
   },
   active_tab_separator = {
-    background = colours.crust,
-    foreground = colours.peach,
+    background = palette.crust,
+    foreground = palette.peach,
   },
   tab = {
-    background = colours.surface0,
-    foreground = colours.text,
+    background = palette.surface0,
+    foreground = palette.text,
   },
   tab_separator = {
-    background = colours.crust,
-    foreground = colours.surface0,
+    background = palette.crust,
+    foreground = palette.surface0,
+  },
+}
+
+module.status = {
+  left = {
+    background = palette.surface0,
+    foreground = palette.yellow,
+  },
+  left_separator = {
+    background = palette.crust,
+  },
+  right = {
+    background = palette.mauve,
+    foreground = palette.crust,
   },
 }
 
