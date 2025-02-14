@@ -1,4 +1,5 @@
 local wezterm = require("wezterm")
+
 local module = {}
 
 local get_tab_colours = function(is_active)
@@ -24,38 +25,29 @@ local get_tab_colours = function(is_active)
   }
 end
 
-local format_tab = function(tab, tabs)
-  local is_first = tab.tab_index == 0
-  local is_last = tab.tab_index == #tabs - 1
-  local tab_number = tab.tab_index + 1
-
-  local title = { Text = " " .. tab_number .. ":" .. tab.active_pane.title .. " " }
-
-  local left_separator = { Text = is_first and "" or "" }
-  local rigth_separator = { Text = is_last and "" or "" }
-
+local format_tab_title = function(tab)
   local colours = get_tab_colours(tab.is_active)
   local text_intensity = tab.is_active and "Bold" or "Half"
 
+  local tab_number = tab.tab_index + 1
+  local tab_title = tab.active_pane.title:gsub("Copy mode: ", "")
+
   return {
-    colours.separator_background,
-    colours.separator_foreground,
-    left_separator,
     colours.background,
     colours.foreground,
     { Attribute = { Intensity = text_intensity } },
-    title,
+    { Text = " " .. tab_number .. ":" .. tab_title .. " " },
     colours.separator_background,
     colours.separator_foreground,
-    rigth_separator,
+    { Text = " " },
   }
 end
 
 module.apply = function(config)
-  wezterm.on("format-tab-title", format_tab)
+  wezterm.on("format-tab-title", format_tab_title)
 
   config.use_fancy_tab_bar = false
-  config.tab_bar_at_bottom = true
+  config.tab_bar_at_bottom = false
   config.show_new_tab_button_in_tab_bar = false
 end
 
