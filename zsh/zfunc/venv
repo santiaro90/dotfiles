@@ -1,6 +1,6 @@
 # vim: set ft=sh :
 local subcommand=$1
-shift  # Remove the subcommand from the argument list
+shift # Remove the subcommand from the argument list
 
 case "$subcommand" in
     new)
@@ -15,7 +15,7 @@ case "$subcommand" in
 
         # Determine the new venv name (the first parameter after `new`)
         local new_venv_name=$1
-        shift  # Remove the venv name from the argument list, leaving the rest for `uv venv`
+        shift # Remove the venv name from the argument list, leaving the rest for `uv venv`
 
         if [[ -z "$new_venv_name" ]]; then
             # Default to ".venv" if none specified
@@ -58,17 +58,11 @@ case "$subcommand" in
             source "$venv_name/bin/activate"
             echo "Activated virtual environment in '$venv_name'."
         else
-            echo "A virtual environament named '$venv_name' could not be found."
+            echo "A virtual environment named '$venv_name' could not be found."
         fi
         ;;
 
     rm)
-        # Deactivate if a virtual environment is active
-        if [[ -n "$VIRTUAL_ENV" ]]; then
-            deactivate
-            echo "Virtual environment deactivated."
-        fi
-
         # Perform the same directory lookup as with `run`
         local remove_name="$1"
         if [[ -z "$remove_name" ]]; then
@@ -84,6 +78,12 @@ case "$subcommand" in
             echo -n "Are you sure you want to remove '$remove_name'? [y/N] "
             read -r confirm
             if [[ "$confirm" == [Yy]* ]]; then
+                # Deactivate if a virtual environment is active
+                if [[ -n "$VIRTUAL_ENV" ]]; then
+                    deactivate
+                    echo "Virtual environment deactivated."
+                fi
+
                 rm -rf "$remove_name"
                 echo "Removed '$remove_name'."
             else
