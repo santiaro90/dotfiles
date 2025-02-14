@@ -3,6 +3,7 @@ local module = {}
 
 module.apply = function(config)
   utils.apply_modules(config, {
+    "ui.status",
     "ui.tab",
     "ui.theme",
     "ui.window",
