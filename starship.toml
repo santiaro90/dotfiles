@@ -2,17 +2,15 @@
 
 command_timeout = 10000
 continuation_prompt = '󰶻 '
-format = '''
-$directory$git_branch$git_status
+format = '''($git_branch$git_status ) ($python$nodejs)
 $character'''
-right_format = '(\[ $python$nodejs\])'
 add_newline = true
 palette = 'catppuccin_frappe'
 
 [character] # The name of the module we are configuring is 'character'
-error_symbol = '[](bold red)'
-success_symbol = '[](bold green)'
-vimcmd_symbol = '[\[\]](bold blue)'
+error_symbol = '[⟫](red)'
+success_symbol = '[⟫](green)'
+vimcmd_symbol = '[](mauve) [⟫](green)'
 
 [directory]
 style = 'bold yellow'
@@ -24,7 +22,7 @@ format = '[$symbol$branch(:$remote_branch)](sapphire)'
 symbol = ' '
 
 [git_status]
-format = '[(󰧞$deleted$modified$renamed$staged$untracked)](218)( \[( $conflicted)( $ahead_behind)( $stashed) \])'
+format = '[(*$deleted$modified$renamed$staged$untracked)](218)( ~( $conflicted)( $ahead_behind)( $stashed))'
 ahead = '[${count}⇡](yellow)'
 behind = '[${count}⇣](7)'
 conflicted = '[‼](red)'
@@ -37,13 +35,13 @@ stashed = '[󰆺](green)'
 untracked = '​'
 
 [nodejs]
-format = '[$symbol](bold green)[$version](white) '
+format = '[$symbol](green)[$version](white) '
 detect_extensions = []
 detect_files = ['package.json']
 symbol = '󰎙 '
 
 [python]
-format = '[$symbol](bold yellow)[$version](white) [\($virtualenv\)](italic dimmed sky) '
+format = '[$symbol](yellow)[$version](bold white) [\($virtualenv\)](italic bold sky) '
 detect_extensions = []
 detect_files = []
 symbol = ' '
