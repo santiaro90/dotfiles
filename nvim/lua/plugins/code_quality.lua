@@ -24,6 +24,11 @@ return {
           lsp_format = lsp_format_opt,
         }
       end,
+      formatters = {
+        shfmt = {
+          prepend_args = { "-i", "4", "-ci" },
+        },
+      },
       formatters_by_ft = {
         lua = { "stylua" },
         python = { "ruff_format", "ruff_fix", "ruff_organize_imports" },
