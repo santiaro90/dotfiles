@@ -1,33 +1,30 @@
-# vim: set ft=zsh :
+# vim: set ft=sh ts=4 sw=4 :
 
 # Real-time ripgrep with fzf
 
-if [[ $# == 0 ]]; then
-  echo 'search: File type was not provided.'
-  echo 'search: rg --type-list to see a list of supported file types.'
-  return
+local ft="${1:-}"
+local rg_opts="--trim --color=always --line-number --smart-case"
+
+if [[ -n "$ft" ]]; then
+    # if [[ $ft == (js|ts)x ]]; then
+    #   ft="${ft:0:-1}"
+    # fi
+
+    rg_opts="$rg_opts --type=$ft"
 fi
 
-local filetype="$1"
-local highlight_cmd="bat -l $filetype --color=always --pager=never {1} --highlight-line={2}"
+local search_cmd="reload:rg $rg_opts {q} || :"
+local highlight_cmd="bat --color=always --pager=never {1} --highlight-line={2}"
+local edit_cmd="become:$EDITOR {1} +{2} -c \"exec 'normal zz'\""
 
-if [[ $filetype == (js|ts)x ]]; then
-  filetype="${filetype:0:-1}"
-fi
-
-local match=$(
-  rg --type="$filetype" --color=never --line-number '.*' . |
-  fzf --no-multi \
-      --reverse \
-      --delimiter : \
-      --bind 'ctrl-t:toggle-preview' \
-      --preview-window 'right,50%,border-left,+{2}+5/5,~5' \
-      --preview "$highlight_cmd"
-)
-
-local lineno=$(echo "$match" | cut -d':' -f2)
-local file=$(echo "$match" | cut -d':' -f1)
-
-if [[ -n $file ]]; then
-  $EDITOR $file +$lineno -c "exec 'normal zz'"
-fi
+fzf --disabled \
+    --ansi \
+    --reverse \
+    --delimiter ':' \
+    --bind "start:$search_cmd" \
+    --bind "change:$search_cmd" \
+    --bind "enter:$edit_cmd" \
+    --bind 'ctrl-j:preview-down' \
+    --bind 'ctrl-k:preview-up' \
+    --preview "$highlight_cmd" \
+    --preview-window 'nohidden,+{2}+3/5,~3'
