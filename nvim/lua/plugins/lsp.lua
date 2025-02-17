@@ -68,7 +68,7 @@ return {
 
       -- Diagnostics
       -- Change symbols in the sign column (gutter)
-      local signs = { ERROR = "", WARN = "", INFO = "", HINT = "󰌶" }
+      local signs = { ERROR = "⏺", WARN = "⏺", INFO = "⏺", HINT = "⏺" }
       local diagnostic_signs = {}
 
       for type, icon in pairs(signs) do
@@ -90,7 +90,7 @@ return {
       vim.o.updatetime = 250
       vim.diagnostic.config({
         signs = { text = diagnostic_signs },
-        -- underline = false,
+        underline = true,
         virtual_text = false,
       })
 
