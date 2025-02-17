@@ -26,6 +26,7 @@ return {
             ["ctrl-s"] = actions.file_split,
             ["ctrl-v"] = actions.file_vsplit,
           },
+          cwd_prompt = false,
         },
         buffers = {
           actions = {
