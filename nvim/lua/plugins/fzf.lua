@@ -7,8 +7,6 @@ return {
     config = function()
       local actions = require("fzf-lua.actions")
 
-      vim.keymap.set("n", "<C-p>", ":FzfLua files<CR>", { desc = "Search Files", silent = true })
-
       require("fzf-lua").setup({
         "fzf-native",
         actions = {

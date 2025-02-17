@@ -1,8 +1,44 @@
 return {
-  -- { "<leader>.", group = "Explorer" },
   { "<leader>.", ":Neotree toggle filesystem<CR>", desc = "File Explorer" },
-  -- { "<leader>.s", ":Lspsaga outline<CR>", desc = "Symbols" },
+
+  -- fzf
+  { "<C-p>", ":FzfLua files<CR>", desc = "Open File" },
   { "<leader>/", ":FzfLua live_grep<CR>", desc = "Search in Project" },
+  { "<leader>h", ":FzfLua helptags<CR>", desc = "Show Help" },
+  {
+    "<leader>wv",
+    function()
+      local fzf = require("fzf-lua")
+      local actions = require("fzf-lua.actions")
+
+      fzf.files({
+        actions = { default = actions.file_vsplit },
+        winopts = {
+          preview = { vertical = "down:60%" },
+          split = "belowright vnew",
+        },
+      })
+    end,
+    desc = "Open File in Vertical Split",
+  },
+  {
+    "<leader>ws",
+    function()
+      local fzf = require("fzf-lua")
+      local actions = require("fzf-lua.actions")
+
+      fzf.files({
+        actions = {
+          ["default"] = actions.file_split,
+        },
+        winopts = {
+          split = "belowright new",
+        },
+      })
+    end,
+    desc = "Open File in Horizontal Split",
+  },
+
   { "<leader>f", group = "Format" },
   {
     "<leader>ff",
@@ -25,7 +61,6 @@ return {
   { "<leader>gu", ":Gitsigns undo_stage_hunk<CR>", desc = "Undo Stage Change" },
   { "<leader>gw", ":Gwrite<CR>", desc = "Git Add File" },
   { "<leader>gx", ":GDelete<CR>", desc = "Git Remove File" },
-  { "<leader>h", ":FzfLua oldfiles<CR>", desc = "Open Recent" },
 
   { "<leader>l", group = "LSP" },
   { "<leader>lf", ":Lspsaga finder ref<CR>", desc = "Find References" },

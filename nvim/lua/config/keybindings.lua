@@ -13,10 +13,6 @@ vim.keymap.set("n", "<leader>c", ":noh<CR>", { desc = "Clear Search Term", silen
 vim.keymap.set("n", "<leader>o", "@='mzo<C-V><ESC>`z'<CR>", { desc = "Insert Blank Line Below", silent = true })
 vim.keymap.set("n", "<leader>O", "@='mzO<C-V><ESC>`z'<CR>", { desc = "Insert Blank Line Above", silent = true })
 
--- Splits
-vim.keymap.set("n", "<leader>-", ":split<CR>", { desc = "Split Horizontally", silent = true })
-vim.keymap.set("n", "<leader>\\", ":vsplit<CR>", { desc = "Split Vertically", silent = true })
-
 -- File movement
 -- -- Centre screen on search results
 vim.keymap.set("n", "n", "nzz", { silent = true })
@@ -25,21 +21,29 @@ vim.keymap.set("n", "G", "Gzz", { silent = true })
 vim.keymap.set("n", "*", "*zz", { silent = true })
 vim.keymap.set("n", "#", "#zz", { silent = true })
 
--- Window movement
-vim.keymap.set("n", "<C-h>", "<C-w>h")
-vim.keymap.set("n", "<C-j>", "<C-w>j")
-vim.keymap.set("n", "<C-k>", "<C-w>k")
-vim.keymap.set("n", "<C-l>", "<C-w>l")
-vim.keymap.set("n", "<C-S-h>", "<C-w>H")
-vim.keymap.set("n", "<C-S-j>", "<C-w>J")
-vim.keymap.set("n", "<C-S-k>", "<C-w>K")
-vim.keymap.set("n", "<C-S-l>", "<C-w>L")
+-- Windows
+-- -- Movement
+vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Move Left", silent = true })
+vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Move Down", silent = true })
+vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Move Up", silent = true })
+vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Move Right", silent = true })
+vim.keymap.set("n", "<C-S-h>", "<C-w>H", { desc = "Swap Left", silent = true })
+vim.keymap.set("n", "<C-S-j>", "<C-w>J", { desc = "Swap Down", silent = true })
+vim.keymap.set("n", "<C-S-k>", "<C-w>K", { desc = "Swap Up", silent = true })
+vim.keymap.set("n", "<C-S-l>", "<C-w>L", { desc = "Swap Right", silent = true })
+-- -- Management
+vim.keymap.set("n", "<leader>wo", ":only<CR>", { desc = "Close Other Windows", silent = true })
 
 -- Command line movement
 vim.keymap.set("c", "<C-a>", "<C-b>")
 vim.keymap.set("c", "<C-b>", "<C-Left>")
 vim.keymap.set("c", "<C-f>", "<C-Right>")
 
--- Buffer movement
+-- Buffers
+-- -- Movement
 vim.keymap.set("n", "L", ":bnext<CR>zz", { silent = true })
 vim.keymap.set("n", "H", ":bprev<CR>zz", { silent = true })
+-- -- Management
+vim.keymap.set("n", "<leader>bd", ":bdel<CR>", { desc = "Close Buffer", silent = true })
+vim.keymap.set("n", "<leader>bx", ":%bdel<CR>", { desc = "Close All Buffers", silent = false })
+vim.keymap.set("n", "<leader>ba", "<C-^>", { desc = "Open Alternate Buffer", silent = true })
