@@ -25,14 +25,22 @@ return {
         }
       end,
       formatters = {
+        prettierd = {
+          require_cwd = true,
+        },
         shfmt = {
           prepend_args = { "-i", "4", "-ci" },
         },
       },
       formatters_by_ft = {
+        javascript = { "prettierd" },
+        javascriptreact = { "prettierd" },
         lua = { "stylua" },
         python = { "ruff_format", "ruff_fix", "ruff_organize_imports" },
         sh = { "shfmt" },
+        typescript = { "prettierd" },
+        typescriptreact = { "prettierd" },
+        vue = { "prettierd" },
       },
     },
     config = function(_, opts)

@@ -17,6 +17,7 @@ return {
     },
     ensure_installed = {
       "bash",
+      "css",
       "javascript",
       "json",
       "json5",
@@ -29,6 +30,7 @@ return {
       "typescript",
       "vim",
       "vimdoc",
+      "vue",
       "yaml",
     },
     incremental_selection = {
@@ -38,10 +40,10 @@ return {
         node_incremental = "<C-space>",
         scope_incremental = false,
         node_decremental = "<bs>",
-      }
-    }
+      },
+    },
   },
   config = function(_, opts)
     require("nvim-treesitter.configs").setup(opts)
-  end
+  end,
 }

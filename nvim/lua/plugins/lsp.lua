@@ -99,13 +99,11 @@ return {
       capabilities = vim.tbl_deep_extend("force", capabilities, default_capabilities)
 
       local servers = require("config.lsp")
+      local formatters = require("config.formatters")
       local ensure_installed = vim.tbl_keys(servers or {})
 
       -- Include linters and formatters here for Mason to install
-      vim.list_extend(ensure_installed, {
-        "shfmt",
-        "stylua",
-      })
+      vim.list_extend(ensure_installed, formatters)
 
       require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
       require("mason-lspconfig").setup({

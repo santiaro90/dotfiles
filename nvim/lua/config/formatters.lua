@@ -1,0 +1,5 @@
+return {
+  "shfmt",
+  "stylua",
+  "prettierd",
+}

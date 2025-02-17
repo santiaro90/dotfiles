@@ -1,4 +1,7 @@
-local lua = {
+local mason_root = vim.fn.stdpath("data") .. "/mason/packages"
+
+return {
+  -- Lua - useful for Neovim/Wezterm config
   lua_ls = {
     settings = {
       Lua = {
@@ -10,9 +13,8 @@ local lua = {
       },
     },
   },
-}
 
-local python = {
+  -- Python
   pyright = {
     settings = {
       pyright = {
@@ -26,23 +28,41 @@ local python = {
       },
     },
   },
+
   ruff = {
     server_capabilities = {
       hoverProvider = false,
     },
   },
-}
 
-local typescript = {
-  ts_ls = {},
-}
-
-local sh = {
+  -- Shell scripting
   bashls = {
     settings = {
       filetypes = { "sh", "zsh" },
     },
   },
-}
 
-return vim.tbl_extend("force", lua, python, sh, typescript)
+  -- Web
+  ts_ls = {
+    filetypes = {
+      "javascript",
+      "javascriptreact",
+      "typescript",
+      "typescriptreact",
+      "vue",
+    },
+    init_options = {
+      plugins = {
+        {
+          name = "@vue/typescript-plugin",
+          location = mason_root .. "/vue-language-server/node_modules/@vue/language-server",
+          languages = { "vue" },
+        },
+      },
+    },
+  },
+
+  eslint = {},
+
+  volar = {},
+}
