@@ -252,6 +252,8 @@ return {
     event = "VeryLazy",
     opts = {
       icons = {
+        ellipsis = "...",
+        group = "",
         mappings = false,
       },
       plugins = {
