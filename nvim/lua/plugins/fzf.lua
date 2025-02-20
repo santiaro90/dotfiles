@@ -9,6 +9,12 @@ return {
 
       require("fzf-lua").setup({
         "fzf-native",
+        winopts = {
+          preview = {
+            hidden = true,
+          },
+          -- split = "aboveleft new",
+        },
         actions = {
           files = {
             ["default"] = actions.file_edit,
