@@ -1,4 +1,4 @@
-# vim: set ft=zsh ts=4 sw=4 :
+# vim: set ft=sh ts=4 sw=4 :
 export DOTDIR=~/.dotfiles
 export EDITOR=nvim
 export LANG=en_GB.UTF-8
@@ -7,9 +7,9 @@ export ZDOTDIR=~/.zsh
 export ZIM_HOME=~/.zsh/.zim
 
 if [ $(/usr/bin/uname -m) = "arm64" ]; then # Apple Silicon macOS
-  export HOMEBREW_PREFIX="/opt/homebrew"
+    export HOMEBREW_PREFIX="/opt/homebrew"
 else # Intel macOS
-  export HOMEBREW_PREFIX="/usr/local"
+    export HOMEBREW_PREFIX="/usr/local"
 fi
 
 # Color man pages
