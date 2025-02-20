@@ -3,7 +3,7 @@ return {
 
   -- fzf
   { "<C-p>", ":FzfLua files<CR>", desc = "Open File" },
-  { "<leader>/", ":FzfLua live_grep<CR>", desc = "Search in Project" },
+  { "<C-/>", ":FzfLua live_grep<CR>", desc = "Search in Project" },
   { "<leader>h", ":FzfLua helptags<CR>", desc = "Show Help" },
   {
     "<leader>wv",
