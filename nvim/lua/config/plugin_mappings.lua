@@ -1,5 +1,6 @@
 return {
   { "<leader>.", ":Neotree toggle filesystem<CR>", desc = "File Explorer" },
+  { "<C-.>", ":Oil<CR>", desc = "File Explorer (Oil)" },
 
   -- Labels for mappings defined elsewhere
   { "<leader>a", group = " Copilot" },
