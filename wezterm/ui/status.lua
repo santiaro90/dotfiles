@@ -16,13 +16,14 @@ local update_left_status = function(window, pane)
     { Attribute = { Intensity = "Bold" } },
     { Text = " " },
     { Text = wezterm.nerdfonts.custom_folder_open },
+    { Attribute = { Italic = true } },
     { Text = " " .. cwd.file_path:gsub(os.getenv("HOME"), "~") .. " " },
     { Background = { Color = theme.left_separator.background } },
     { Text = " " },
   }))
 end
 
-local update_right_status = function(window, pane)
+local update_right_status = function(window)
   local key_table = window:active_key_table() or ""
   local separator = #key_table > 0 and " " or ""
 

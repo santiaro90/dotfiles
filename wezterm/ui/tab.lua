@@ -5,23 +5,18 @@ local module = {}
 local get_tab_colours = function(is_active)
   local theme = require("ui.theme").tabs
 
-  local background = theme.tab.background
-  local foreground = theme.tab.foreground
-  local separator_background = theme.tab_separator.background
-  local separator_foreground = theme.tab_separator.foreground
-
   if is_active then
-    background = theme.active_tab.background
-    foreground = theme.active_tab.foreground
-    separator_background = theme.active_tab_separator.background
-    separator_foreground = theme.active_tab_separator.foreground
+    return {
+      title = theme.active_title,
+      separator = theme.active_separator,
+      number = theme.active_number,
+    }
   end
 
   return {
-    background = { Background = { Color = background } },
-    foreground = { Foreground = { Color = foreground } },
-    separator_background = { Background = { Color = separator_background } },
-    separator_foreground = { Foreground = { Color = separator_foreground } },
+    title = theme.title,
+    separator = theme.separator,
+    number = theme.number,
   }
 end
 
@@ -33,13 +28,16 @@ local format_tab_title = function(tab)
   local tab_title = tab.active_pane.title:gsub("Copy mode: ", "")
 
   return {
-    colours.background,
-    colours.foreground,
-    { Attribute = { Intensity = text_intensity } },
-    { Text = " " .. tab_number .. ":" .. tab_title .. " " },
-    colours.separator_background,
-    colours.separator_foreground,
+    { Background = { Color = colours.separator.background } },
+    { Foreground = { Color = colours.separator.foreground } },
     { Text = " " },
+    { Attribute = { Intensity = text_intensity } },
+    { Background = { Color = colours.number.background } },
+    { Foreground = { Color = colours.number.foreground } },
+    { Text = " " .. tostring(tab_number) .. " " },
+    { Background = { Color = colours.title.background } },
+    { Foreground = { Color = colours.title.foreground } },
+    { Text = " " .. tab_title .. " " },
   }
 end
 

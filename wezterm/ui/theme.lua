@@ -32,36 +32,48 @@ local palette = {
 
 module.palette = palette
 module.tabs = {
-  active_tab = {
-    background = palette.peach,
-    foreground = palette.crust,
-  },
-  active_tab_separator = {
-    background = palette.crust,
-    foreground = palette.peach,
-  },
-  tab = {
-    background = palette.surface0,
+  number = {
+    background = palette.surface1,
     foreground = palette.text,
   },
-  tab_separator = {
+  title = {
+    background = palette.base,
+    foreground = palette.subtext1,
+  },
+  separator = {
     background = palette.crust,
     foreground = palette.surface0,
+  },
+  active_number = {
+    background = palette.red,
+    foreground = palette.crust,
+  },
+  active_title = {
+    background = palette.base,
+    foreground = palette.text,
+  },
+  active_separator = {
+    background = palette.crust,
+    foreground = palette.mauve,
   },
 }
 
 module.status = {
   left = {
-    background = palette.surface0,
-    foreground = palette.yellow,
+    background = palette.yellow,
+    foreground = palette.crust,
   },
   left_separator = {
     background = palette.crust,
   },
   right = {
-    background = palette.mauve,
+    background = palette.green,
     foreground = palette.crust,
   },
+}
+
+module.window = {
+  background = palette.base,
 }
 
 module.apply = function(config)
