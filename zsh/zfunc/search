@@ -1,19 +1,33 @@
-# vim: set ft=sh ts=4 sw=4 :
+# vim: set ft=sh :
 
 # Real-time ripgrep with fzf
 
-local ft="${1:-}"
+local file_type=""
+local base_dir="." # Default to current directory
+
+while [[ $# -gt 0 ]]; do
+    case $1 in
+        --file-type | -f)
+            shift
+            file_type="$1"
+            shift
+            ;;
+
+        --dir | -d)
+            shift
+            base_dir="$1"
+            shift
+            ;;
+    esac
+done
+
 local rg_opts="--trim --color=always --line-number --smart-case"
 
-if [[ -n "$ft" ]]; then
-    # if [[ $ft == (js|ts)x ]]; then
-    #   ft="${ft:0:-1}"
-    # fi
-
-    rg_opts="$rg_opts --type=$ft"
+if [[ -n "$file_type" ]]; then
+    rg_opts="$rg_opts --type=$file_type"
 fi
 
-local search_cmd="reload:rg $rg_opts {q} || :"
+local search_cmd="reload:rg $rg_opts {q} $base_dir || :"
 local highlight_cmd="bat --color=always --pager=never {1} --highlight-line={2}"
 local edit_cmd="become:$EDITOR {1} +{2} -c \"exec 'normal zz'\""
 
