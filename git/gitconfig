@@ -16,7 +16,8 @@
     bm = branch -m
     br = branch -d
     bd = branch -D
-    bc = !git rev-parse --abbrev-ref head | pbcopy
+    bn = branch --show-current
+    bc = !git branch --show-current | pbcopy
 
     # Clone
     cl = clone -v
