@@ -3,6 +3,11 @@ vim.o.autowrite = true
 vim.o.autowrite = true
 vim.o.cursorline = true
 vim.o.expandtab = true
+vim.o.foldenable = true
+vim.o.foldlevelstart = 6
+vim.o.foldnestmax = 6
+vim.o.foldmethod = "expr"
+vim.o.foldexpr = "nvim_treesitter#foldexpr()"
 vim.o.gdefault = true
 vim.o.ignorecase = true
 vim.o.hidden = true
@@ -35,11 +40,6 @@ vim.opt.completeopt = { "menu", "menuone", "noselect" }
 vim.opt.diffopt:append("filler")
 vim.opt.diffopt:append("iwhite")
 vim.opt.diffopt:append("vertical")
-vim.opt.foldenable = true
-vim.opt.foldlevelstart = 6
-vim.opt.foldnestmax = 6
-vim.opt.foldmethod = "expr"
-vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 vim.opt.listchars = { tab = "▸ ", trail = "⬝", eol = "¬" }
 vim.opt.list = true
 vim.opt.termguicolors = true
