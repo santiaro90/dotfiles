@@ -38,14 +38,10 @@ return {
           insert = "<CR>",
         },
       },
-      provider = "copilot_claude",
-      vendors = {
-        copilot_claude = {
-          __inherited_from = "copilot",
-          api_key_name = "GITHUB_TOKEN",
-          model = "claude-3.5-sonnet",
-          max_tokens = 4096,
-        },
+      provider = "copilot",
+      copilot = {
+        api_key_name = "GITHUB_TOKEN",
+        model = "claude-3.7-sonnet",
       },
       windows = {
         input = {
