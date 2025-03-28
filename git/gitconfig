@@ -1,4 +1,4 @@
-# vim: set filetype=gitconfig:
+# vim: set ft=gitconfig ts=4 sw=4:
 [alias]
     # Add
     a  = forgit add
@@ -6,8 +6,9 @@
     ap = add -p # Add file by chunks
 
     # Diff
-    d  = forgit diff
-    dc = diff --cached --patience
+    d  = diff # No fancy shit here. Just a good 'ol coloured diff
+    di = forgit diff
+    dc = forgit diff --cached --patience
     dt = difftool
 
     # Branching
@@ -29,18 +30,20 @@
     ca     = commit -a
     cam    = !git add . && git commit -am
     cm     = commit -m
-    cp     = cherry-pick
+    cp     = forgit cherry_pick_from_branch
     cpa    = cherry-pick --abort
+    cpc    = cherry-pick --continue
 
     # Checkout
-    ck     = checkout
-    ckb    = checkout -
-    ckm    = checkout master
-    cb     = checkout -b
-    cf     = forgit checkout_file
+    ck  = checkout
+    ckb = checkout -
+    cb  = checkout -b
+    cf  = forgit checkout_file
+    cfi = forgit checkout_file
 
     # Log
     l    = forgit log
+    lc   = log --pretty=reference
     ll   = "log --decorate --graph --pretty='%C(yellow)[%H]%Creset%C(auto)%d%Creset%n  %s%n%n\
     Date: %C(blue)%cd%Creset%n\
     Author: %C(red)%an%Creset %C(green)<%ae>%Creset%n' --date=format:'%e %B, %Y - %H:%M:%S'"
@@ -62,6 +65,7 @@
     ma  = merge --abort
     mf  = merge --ff
     ms  = merge --squash
+    mt  = mergetool
 
     # Pull/Push
     pf = push --force-with-lease
@@ -75,8 +79,8 @@
     rv = remote -v
 
     # Reset
-    r   = reset
-    rh  = forgit reset_head
+    rh  = reset head
+    rhi = forgit reset_head
     rhr = reset --hard
     rs  = reset --soft
 
@@ -167,6 +171,9 @@
 [difftool]
     prompt = false
 
+[difftool "nvimdiff"]
+    cmd = nvim -d $LOCAL $REMOTE
+
 [github]
     user = santiaro90
 
@@ -176,6 +183,13 @@
 [merge]
     conflictStyle = diff3
     tool          = nvimdiff
+
+[mergetool]
+    prompt = false
+    keepBackup = false
+
+[mergetool "nvimdiff"]
+    layout = "LOCAL,REMOTE / MERGED"
 
 [push]
     autoSetupRemote = true

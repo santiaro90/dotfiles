@@ -61,6 +61,7 @@ return {
   { "<leader>g]", ":Gitsigns next_hunk<CR>", desc = "Next Change" },
   { "<leader>gd", ":Gvdiffsplit<CR>", desc = "Git Diff" },
   { "<leader>gh", ":Gitsigns preview_hunk_inline<CR>", desc = "Preview Change" },
+  { "<leader>gm", ":Gdiff!<CR>", desc = "Git Conflicts" },
   { "<leader>gp", ":Gitsigns stage_hunk<CR>", desc = "Stage Change" },
   { "<leader>gr", ":Gread<CR>", desc = "Git Reset File" },
   { "<leader>gs", ":Git<CR>", desc = "Git Status" },
