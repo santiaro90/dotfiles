@@ -18,8 +18,6 @@ local update_left_status = function(window, pane)
     { Text = wezterm.nerdfonts.custom_folder_open },
     { Attribute = { Italic = true } },
     { Text = " " .. cwd.file_path:gsub(os.getenv("HOME"), "~") .. " " },
-    { Background = { Color = theme.left_separator.background } },
-    { Text = " " },
   }))
 end
 
