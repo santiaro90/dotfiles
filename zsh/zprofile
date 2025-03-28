@@ -27,8 +27,8 @@ export FZF_COMPLETION_TRIGGER=""
 export FZF_DEFAULT_COMMAND="fd -HI -E node_modules --type f"
 export FZF_CTRL_T_COMMAND="fd -H -E .git -E node_modules --type f"
 export FZF_DEFAULT_OPTS="
-    --bind 'ctrl-j:preview-page-down'
-    --bind 'ctrl-k:preview-page-up'
+    --bind 'ctrl-j:preview-half-page-down'
+    --bind 'ctrl-k:preview-half-page-up'
     --bind 'ctrl-t:toggle-preview'
     --color 'bg+:#414559,bg:#303446,spinner:#f2d5cf,hl:#e78284'
     --color 'fg:#c6d0f5,header:#e78284,info:#ca9ee6,pointer:#f2d5cf'

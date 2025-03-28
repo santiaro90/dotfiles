@@ -9,12 +9,6 @@ return {
 
       require("fzf-lua").setup({
         "fzf-native",
-        winopts = {
-          preview = {
-            hidden = true,
-          },
-          -- split = "aboveleft new",
-        },
         actions = {
           files = {
             ["default"] = actions.file_edit,
@@ -39,6 +33,17 @@ return {
             ["ctrl-s"] = actions.buf_split,
             ["ctrl-v"] = actions.buf_vsplit,
           },
+        },
+        blines = {
+          winopts = {
+            split = false,
+          },
+        },
+        winopts = {
+          preview = {
+            hidden = true,
+          },
+          split = "aboveleft new",
         },
       })
     end,
