@@ -4,11 +4,12 @@ return {
     opts = {},
     dependencies = { "nvim-tree/nvim-web-devicons" },
     lazy = false,
-    config = function(opts)
+    config = function(_)
       -- Declare a global function to retrieve the current directory
       function _G.get_oil_winbar()
         local bufnr = vim.api.nvim_win_get_buf(vim.g.statusline_winid)
         local dir = require("oil").get_current_dir(bufnr)
+
         if dir then
           return vim.fn.fnamemodify(dir, ":~")
         else
@@ -30,6 +31,7 @@ return {
           -- Disable these
           ["<C-h>"] = false,
           ["<C-c>"] = false,
+          ["<C-p>"] = false,
           ["g?"] = false,
           ["g."] = false,
           ["_"] = false,
