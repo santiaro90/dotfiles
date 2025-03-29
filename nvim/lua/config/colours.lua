@@ -25,3 +25,5 @@ vim.api.nvim_set_hl(0, "DiagnosticUnderlineError", {
   undercurl = true,
   sp = "#e78284",
 })
+
+vim.api.nvim_set_hl(0, "BlinkCmpGhostText", { link = "Comment" })
