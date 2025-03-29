@@ -5,7 +5,15 @@ return {
     config = function()
       local lint = require("lint")
 
-      lint.linters_by_ft = {}
+      local linters = require("config.linters")
+
+      -- Extend the default linters with the ones defined in linters.lua
+      for name, linter in pairs(linters) do
+        lint.linters[name] = vim.tbl_deep_extend("force", lint.linters[name], linter)
+      end
+      lint.linters_by_ft = {
+        go = { "golangcilint" },
+      }
 
       -- Create autocommand which carries out the actual linting
       -- on the specified events.

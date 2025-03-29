@@ -19,6 +19,10 @@ return {
       ensure_installed = {
         "bash",
         "css",
+        "go",
+        "gomod",
+        "gowork",
+        "gosum",
         "javascript",
         "json",
         "json5",
