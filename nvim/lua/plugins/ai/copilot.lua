@@ -6,32 +6,15 @@ return {
     event = "InsertEnter",
     opts = {
       copilot_model = "gpt-4o-copilot",
-      filetypes = {
-        yaml = true,
-      },
+      filetypes = { yaml = true },
       suggestion = {
         enabled = true,
-        auto_trigger = true,
-        hide_during_completion = true,
+        auto_trigger = false,
         keymap = { accept = "<Tab>" },
       },
     },
-    config = function(_, opts)
-      vim.api.nvim_create_autocmd("User", {
-        pattern = "BlinkCmpMenuOpen",
-        callback = function()
-          vim.b.copilot_suggestion_hidden = true
-        end,
-      })
-
-      vim.api.nvim_create_autocmd("User", {
-        pattern = "BlinkCmpMenuClose",
-        callback = function()
-          vim.b.copilot_suggestion_hidden = false
-        end,
-      })
-
-      require("copilot").setup(opts)
-    end,
+  },
+  {
+    "giuxtaposition/blink-cmp-copilot",
   },
 }
