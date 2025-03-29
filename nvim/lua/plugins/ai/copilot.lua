@@ -10,7 +10,7 @@ return {
       suggestion = {
         enabled = true,
         auto_trigger = false,
-        keymap = { accept = "<Tab>" },
+        keymap = { accept = false },
       },
     },
   },
