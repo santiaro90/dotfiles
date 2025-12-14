@@ -28,7 +28,7 @@ alias eterm="e $DOTDIR/wezterm/wezterm.lua +\"cd $DOTDIR\""
 alias eenv="e $DOTDIR/zsh/zprofile +\"cd $DOTDIR\" +bfirst && source $DOTDIR/zsh/zprofile"
 alias egit="e $DOTDIR/git/gitconfig +\"cd $DOTDIR\""
 alias eprompt="e $DOTDIR/starship.toml +\"cd $DOTDIR\" && exec $SHELL"
-alias evim="e $DOTDIR/nvim/init.lua +\"cd $DOTDIR/nvim\""
+alias evim="e $DOTDIR/nvim +\"cd $DOTDIR/nvim\""
 
 # Misc
 command -v pbcopy > /dev/null 2>&1 || alias pbcopy="xsel -ib"
