@@ -26,9 +26,7 @@ syntax sync minlines=100
 " ============================================================
 
 " Jinja comments {# ... #}
-" Use matchgroup to highlight delimiters separately
 syntax region dbtJinjaComment
-      \ matchgroup=dbtJinjaBrace
       \ start="{#"
       \ end="#}"
       \ contains=@Spell,dbtJinjaTodo
@@ -38,7 +36,7 @@ syntax region dbtJinjaStatement
       \ matchgroup=dbtJinjaBrace
       \ start="{%"
       \ end="%}"
-      \ contains=dbtJinjaKeyword,dbtJinjaString,dbtJinjaNumber,dbtJinjaOperator,dbtJinjaVariable,dbtJinjaFunction
+      \ contains=dbtJinjaKeyword,dbtJinjaFunction,dbtJinjaString,dbtJinjaNumber,dbtJinjaOperator,dbtJinjaVariable
 
 " Jinja expressions {{ ... }}
 syntax region dbtJinjaExpression
@@ -62,9 +60,9 @@ syntax region dbtJinjaString
 
 " Jinja keywords
 syntax keyword dbtJinjaKeyword contained
-      \ if else elif endif
+      \ if else elif endif not
       \ for endfor in
-      \ set do
+      \ set do endset
       \ macro endmacro materialization endmaterialization
       \ test endtest
       \ call endcall
@@ -80,13 +78,16 @@ syntax match dbtJinjaOperator contained /[+\-*/%<>=!|]/
 " Jinja numbers
 syntax match dbtJinjaNumber contained /\<\d\+\>/
 
+" Generic function calls (word followed by opening paren)
+syntax match dbtJinjaFunction contained /\<\w\+\>\ze\s*(/
+
 " dbt-specific functions (ref, source, config, etc.)
-syntax match dbtJinjaFunction contained /\<\%(ref\|source\|config\|var\|env_var\|this\|target\)\>/
+syntax keyword dbtJinjaFunction contained ref source config var env_var this target
 syntax match dbtJinjaFunction contained /\<dbt_utils\.\w\+/
 syntax match dbtJinjaFunction contained /\<adapter\.\w\+/
 
-" Generic identifiers in Jinja
-syntax match dbtJinjaVariable contained /\<\h\w*\>/
+" Generic identifiers in Jinja (must be last, excludes function calls)
+syntax match dbtJinjaVariable contained /\<\h\w*\>\(\s*(\)\@!/
 
 " ============================================================
 " SQL COMMENTS
@@ -128,7 +129,7 @@ syntax keyword dbtSqlKeyword
       \ union intersect except
       \ case when then else end
       \ limit offset fetch rows only
-      \ over partition window
+      \ qualify over partition window
       \ range unbounded preceding following current row
       \ insert into values update set delete merge
       \ create replace alter drop truncate rename
@@ -153,7 +154,7 @@ syntax match dbtSqlFunction /\<\w\+\>\s*(/me=e-1
 " NOTE: 'left', 'right', 'case', 'when', 'then', 'else', 'end' removed
 " because they're SQL keywords that would conflict with JOIN/CASE syntax
 syntax keyword dbtSqlFunction
-      \ count sum avg min max
+      \ count sum avg min max least greatest
       \ coalesce nullif ifnull nvl
       \ cast convert
       \ substring substr length
