@@ -13,7 +13,7 @@ return {
       cmdline = { enabled = false },
       completion = {
         accept = {
-          auto_brackets = { enabled = false },
+          auto_brackets = { enabled = true },
         },
         documentation = { auto_show = false },
         ghost_text = { enabled = true },
