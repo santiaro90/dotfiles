@@ -5,7 +5,7 @@ return {
     cmd = "Copilot",
     event = "InsertEnter",
     opts = {
-      copilot_model = "gpt-4o-copilot",
+      copilot_model = "gpt-41-copilot",
       filetypes = { yaml = true },
       suggestion = {
         enabled = true,
