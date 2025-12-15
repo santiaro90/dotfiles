@@ -69,19 +69,16 @@ return {
   { "<leader>gw", ":Gwrite<CR>", desc = "Git Add File" },
   { "<leader>gx", ":GDelete<CR>", desc = "Git Remove File" },
 
-  { "<leader>l", group = " LSP" },
+  -- LSP
+  { "<leader>l", group = " LSP" },
   { "<leader>lf", ":Lspsaga finder ref<CR>", desc = "Find References" },
-  { "<leader>lk", ":Lspsaga hover_doc<CR>", desc = "Show Docs" },
-  { "<leader>lr", ":Lspsaga rename<CR>", desc = "Rename" },
   { "<leader>ls", ":lua require('spectre').open()<CR>", desc = "Replace in Files" },
 
+  { "<M-CR>", ":Lspsaga code_action<CR>", desc = "Code Actions" },
+  { "gs", ":Lspsaga outline<CR>", desc = "Document Symbols" },
+
+  -- Linting
   { "<leader>p", group = "󰄹 Linter" },
   { "<leader>pd", ":Trouble diagnostics filter.buf=0<CR>", desc = "Open Document Diagnostics" },
   { "<leader>pp", ":Trouble diagnostics<CR>", desc = "Open Project Diagnostics" },
-
-  { "gd", ":Lspsaga goto_definition<CR>", desc = "Definition" },
-  { "gi", ":Lspsaga finder imp<CR>", desc = "Implementation" },
-  { "gr", ":Lspsaga finder ref<CR>", desc = "References" },
-  { "gs", ":Lspsaga outline<CR>", desc = "Document Symbols" },
-  { "gt", ":Lspsaga goto_type_definition<CR>", desc = "Type Definition" },
 }

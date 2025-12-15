@@ -20,6 +20,8 @@ vim.keymap.set("n", "N", "Nzz", { silent = true })
 vim.keymap.set("n", "G", "Gzz", { silent = true })
 vim.keymap.set("n", "*", "*zz", { silent = true })
 vim.keymap.set("n", "#", "#zz", { silent = true })
+-- -- Move line all to the right when going to first non-blank character
+vim.keymap.set("n", "^", "^ze", { silent = true })
 
 -- Windows
 -- -- Movement
@@ -57,3 +59,14 @@ vim.keymap.set("n", "H", ":bprev<CR>zz", { silent = true })
 vim.keymap.set("n", "<leader>bd", ":bdel<CR>", { desc = "Close Buffer", silent = true })
 vim.keymap.set("n", "<leader>bx", ":%bdel<CR>", { desc = "Close All Buffers", silent = false })
 vim.keymap.set("n", "<leader>ba", "<C-^>", { desc = "Open Alternate Buffer", silent = true })
+
+-- LSP
+vim.keymap.set("i", "<C-K>", vim.lsp.buf.signature_help, { desc = "Show Docs" })
+vim.keymap.set("n", "<leader>la", vim.lsp.buf.code_action, { desc = "Code Actions" })
+vim.keymap.set("n", "<leader>lr", vim.lsp.buf.rename, { desc = "Rename" })
+vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Show Docs" })
+vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = "Go to Declaration" })
+vim.keymap.set("n", "gI", vim.lsp.buf.implementation, { desc = "Go to Implementation" })
+vim.keymap.set("n", "gK", vim.lsp.buf.signature_help, { desc = "Show Signature" })
+vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to Definition" })
+vim.keymap.set("n", "gr", vim.lsp.buf.references, { desc = "Go to References" })
