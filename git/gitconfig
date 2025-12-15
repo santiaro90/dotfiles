@@ -19,6 +19,7 @@
     bd = branch -D
     bn = branch --show-current
     bc = !git branch --show-current | pbcopy
+    bu = branch --set-upstream-to
 
     # Clone
     cl = clone -v
