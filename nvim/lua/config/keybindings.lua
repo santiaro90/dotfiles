@@ -27,12 +27,22 @@ vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Move Left", silent = true })
 vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Move Down", silent = true })
 vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Move Up", silent = true })
 vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Move Right", silent = true })
+-- -- Management
+vim.keymap.set("n", "<leader>wo", ":only<CR>", { desc = "Close Other Windows", silent = true })
 vim.keymap.set("n", "<C-S-h>", "<C-w>H", { desc = "Swap Left", silent = true })
 vim.keymap.set("n", "<C-S-j>", "<C-w>J", { desc = "Swap Down", silent = true })
 vim.keymap.set("n", "<C-S-k>", "<C-w>K", { desc = "Swap Up", silent = true })
 vim.keymap.set("n", "<C-S-l>", "<C-w>L", { desc = "Swap Right", silent = true })
--- -- Management
-vim.keymap.set("n", "<leader>wo", ":only<CR>", { desc = "Close Other Windows", silent = true })
+-- -- Floating windows
+vim.keymap.set({ "n", "i" }, "<C-[>", function()
+  for _, win in ipairs(vim.api.nvim_list_wins()) do
+    local config = vim.api.nvim_win_get_config(win)
+
+    if config.relative ~= "" then -- is floating window
+      vim.api.nvim_win_close(win, false)
+    end
+  end
+end, { desc = "Close Floating Windows", silent = true })
 
 -- Command line movement
 vim.keymap.set("c", "<C-a>", "<C-b>")
