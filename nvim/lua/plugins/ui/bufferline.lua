@@ -8,7 +8,7 @@ return {
     },
     opts = function()
       local palette = require("catppuccin.palettes").get_palette()
-      local bufferline_hl = require("catppuccin.groups.integrations.bufferline").get({
+      local bufferline_hl = require("catppuccin.special.bufferline").get_theme({
         custom = {
           all = {
             buffer = {
