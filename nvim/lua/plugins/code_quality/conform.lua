@@ -33,7 +33,6 @@ return {
         },
       },
       formatters_by_ft = {
-        go = { "goimports", "gofumpt" },
         javascript = { "prettierd" },
         javascriptreact = { "prettierd" },
         lua = { "stylua" },

@@ -1,93 +1,81 @@
-return {
-  -- Lua - useful for Neovim/Wezterm config
-  lua_ls = {
-    settings = {
-      Lua = {
-        completion = {
-          callSnippet = "Replace",
-        },
-        -- You can toggle below to ignore Lua_LS"s noisy `missing-fields` warnings
-        diagnostics = { disable = { "missing-fields" } },
-      },
-    },
-  },
+-- Global LSP capabilities for blink.cmp
+vim.lsp.config("*", {
+  capabilities = require("blink.cmp").get_lsp_capabilities({}, true),
+})
 
-  -- Python
-  pyright = {
-    settings = {
-      pyright = {
-        disableOrganizeImports = true,
-      },
-      python = {
-        analysis = {
-          -- Ignore all files for analyisis and let Ruff do the linting
-          ignore = { "*" },
-        },
-      },
-    },
-  },
+-- Enable all configured LSP servers
+vim.lsp.enable({
+  "lua_ls",
+  "pyright",
+  "ruff",
+  "ts_ls",
+  "eslint",
+  "bashls",
+})
 
-  ruff = {
-    server_capabilities = {
-      hoverProvider = false,
-    },
-  },
+-- Diagnostics configuration
+local signs = { ERROR = "⏺", WARN = "⏺", INFO = "⏺", HINT = "⏺" }
+local diagnostic_signs = {}
 
-  -- Go
-  gopls = {
-    settings = {
-      gopls = {
-        gofumpt = true,
-        codelenses = {
-          gc_details = false,
-          generate = true,
-          regenerate_cgo = true,
-          run_govulncheck = true,
-          test = true,
-          tidy = true,
-          upgrade_dependency = true,
-          vendor = true,
-        },
-        hints = {
-          assignVariableTypes = true,
-          compositeLiteralFields = true,
-          compositeLiteralTypes = true,
-          constantValues = true,
-          functionTypeParameters = true,
-          parameterNames = true,
-          rangeVariableTypes = true,
-        },
-        analyses = {
-          nilness = true,
-          unusedparams = true,
-          unusedwrite = true,
-          useany = true,
-        },
-        usePlaceholders = true,
-        completeUnimported = true,
-        staticcheck = true,
-        directoryFilters = { "-.git", "-.vscode", "-.idea", "-.vscode-test", "-node_modules" },
-        semanticTokens = true,
-      },
-    },
-  },
+for type, icon in pairs(signs) do
+  diagnostic_signs[vim.diagnostic.severity[type]] = icon
+end
 
-  -- Shell scripting
-  bashls = {
-    settings = {
-      filetypes = { "sh", "zsh" },
-    },
+vim.diagnostic.config({
+  signs = { text = diagnostic_signs },
+  underline = true,
+  virtual_text = false,
+  float = {
+    border = "single",
+    source = "if_many",
   },
+})
 
-  -- Web
-  ts_ls = {
-    filetypes = {
-      "javascript",
-      "javascriptreact",
-      "typescript",
-      "typescriptreact",
-    },
-  },
+-- Show diagnostics on cursor hold
+vim.api.nvim_create_autocmd("CursorHold", {
+  callback = function(event)
+    vim.diagnostic.open_float({
+      border = "single",
+      bufnr = event.buf,
+      focus = false,
+      source = "if_many",
+    })
+  end,
+})
 
-  eslint = {},
-}
+vim.o.updatetime = 250
+
+-- LSP Attach autocommand for document highlighting
+vim.api.nvim_create_autocmd("LspAttach", {
+  group = vim.api.nvim_create_augroup("custom-lsp-attach", { clear = true }),
+  callback = function(event)
+    local client = vim.lsp.get_client_by_id(event.data.client_id)
+
+    if
+      client and client.supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight)
+    then
+      local highlight_augroup =
+        vim.api.nvim_create_augroup("custom-lsp-highlight", { clear = false })
+
+      vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+        buffer = event.buf,
+        group = highlight_augroup,
+        callback = vim.lsp.buf.document_highlight,
+      })
+
+      vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
+        buffer = event.buf,
+        group = highlight_augroup,
+        callback = vim.lsp.buf.clear_references,
+      })
+
+      vim.api.nvim_create_autocmd("LspDetach", {
+        group = vim.api.nvim_create_augroup("custom-lsp-detach", { clear = true }),
+        callback = function(event2)
+          vim.lsp.buf.clear_references()
+          vim.api.nvim_clear_autocmds({ group = "custom-lsp-highlight", buffer = event2.buf })
+        end,
+      })
+    end
+  end,
+})
