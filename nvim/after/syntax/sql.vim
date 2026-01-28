@@ -94,11 +94,11 @@ syntax match dbtJinjaVariable contained /\<\h\w*\>\(\s*(\)\@!/
 " ============================================================
 
 " Line comments: -- ...
-syntax match dbtSqlLineComment /--.*$/ contains=dbtSqlTodo,@Spell
+syntax match dbtSqlLineComment /^\s*--.*$/ contains=dbtSqlTodo,@Spell
 
 " Block comments: /* ... */
 syntax region dbtSqlBlockComment
-      \ start="/\*"
+      \ start="^\s*/\*"
       \ end="\*/"
       \ contains=dbtSqlTodo,@Spell
 
