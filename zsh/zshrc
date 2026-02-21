@@ -12,12 +12,12 @@ setopt rcexpandparam     # Array expension with parameters
 HISTFILE=$ZDOTDIR/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
-WORDCHARS=${WORDCHARS//\/[&.;]} # Don't consider certain characters part of the word
+WORDCHARS=${WORDCHARS//\/[&.;]/} # Don't consider certain characters part of the word
 
 # Init CLI tools that need it
-command -v zoxide > /dev/null 2>&1 && eval "$(zoxide init zsh)"
-command -v fnm > /dev/null 2>&1 && eval "$(fnm env --use-on-cd)"
-command -v fzf > /dev/null && source <(fzf --zsh)
+command -v zoxide >/dev/null 2>&1 && eval "$(zoxide init zsh)"
+command -v fnm >/dev/null 2>&1 && eval "$(fnm env --use-on-cd)"
+command -v fzf >/dev/null && source <(fzf --zsh)
 
 source $ZDOTDIR/.zim.zsh
 source $ZDOTDIR/.keybindings.zsh
