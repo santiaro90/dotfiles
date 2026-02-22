@@ -19,6 +19,9 @@ return {
       end
 
       require("oil").setup({
+        lsp_file_methods = {
+          autosave_changes = true,
+        },
         keymaps = {
           ["<C-[>"] = { "actions.close", mode = "n" },
           ["<C-s>"] = { "actions.select", mode = "n", opts = { horizontal = true } },

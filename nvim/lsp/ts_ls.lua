@@ -12,5 +12,22 @@ return {
     "jsconfig.json",
     ".git",
   },
-  settings = {},
+  settings = {
+    typescript = {
+      preferences = {
+        importModuleSpecifierPreference = "non-relative",
+      },
+      suggest = {
+        completeFunctionCalls = true,
+      },
+    },
+    javascript = {
+      preferences = {
+        importModuleSpecifierPreference = "non-relative",
+      },
+      suggest = {
+        completeFunctionCalls = true,
+      },
+    },
+  },
 }

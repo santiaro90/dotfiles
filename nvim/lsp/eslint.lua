@@ -18,7 +18,7 @@ return {
     packageManager = nil,
     useESLintClass = false,
     experimental = {
-      useFlatConfig = true,
+      useFlatConfig = false,
     },
     codeActionOnSave = {
       enable = false,
