@@ -3,7 +3,6 @@ return {
   { "<C-.>", ":Oil<CR>", desc = "File Explorer (Oil)" },
 
   -- Labels for mappings defined elsewhere
-  { "<leader>a", group = " Copilot" },
   { "<leader>b", group = " Buffers" },
 
   -- fzf
