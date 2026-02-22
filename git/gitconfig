@@ -12,8 +12,12 @@
     dt = difftool
 
     # Branching
-    b  = branch
-    bv = branch -vv
+    b       = "branch --format='%(if)%(HEAD)%(then)%(else) [3m%(align:left,70)%(color:#a6d189)%(refname:short)%(color:reset)%(end) %(color:#e5c890)[%(objectname:short)]%(color:reset)  %(contents:subject)[0m%(end)'"
+    bv      = "branch --format='%(if)%(HEAD)%(then)%(else)\
+ %(color:#a6d189)%(refname:short)%(color:reset)%(if)%(upstream)%(then)%(color:bold #e5c890) -> %(color:reset)%(color:#e78284)%(upstream:strip=3)%(color:reset)%(end)%0a\
+   %(color:#e5c890)[%(objectname:short)]%(color:reset)  [3m%(contents:subject)[0m%0a\
+               [3mDate: %(color:#a6d189)%(authordate)%(color:reset)[0m%0a\
+               [3mAuthor: %(color:#85c1dc)%(authorname)%(color:reset)%0a%(end)[0m'"
     bm = branch -m
     br = branch -d
     bd = branch -D
@@ -43,10 +47,11 @@
     cfi = forgit checkout_file
 
     # Log
-    l    = forgit log
+    li   = forgit log
     lc   = log --pretty=reference
-    ls   = "log --decorate -20 --pretty=format:'%C(#e5c890)[%h]%C(reset)  %<(60,trunc)%s\
-    %C(#a6d189)(%ci)%C(reset) %C(#85c1dc)%an%C(reset)'"
+    ls   = "log --decorate -20 --pretty=format:'%C(#e5c890)[%h]%C(reset)  %<(50,trunc)[3m%s[0m %C(#a6d189)(%ci)%C(reset) %C(#85c1dc)%an%C(reset)'"
+    lf   = !git ls --follow
+    lt   = !git ls --since='midnight'
     lost = !git ls $(git fsck --no-reflog | awk '/dangling commit/ {print $3}')
 
     # Merge/Rebase
