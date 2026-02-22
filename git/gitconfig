@@ -45,8 +45,8 @@
     # Log
     l    = forgit log
     lc   = log --pretty=reference
-    ls   = "log --decorate --pretty=format:'%C(yellow)[%h]%Creset  %<(80,trunc)%s\
-    %C(blue)(%ci)%Creset %C(#85c1dc)%an%Creset'"
+    ls   = "log --decorate -20 --pretty=format:'%C(#e5c890)[%h]%C(reset)  %<(60,trunc)%s\
+    %C(#a6d189)(%ci)%C(reset) %C(#85c1dc)%an%C(reset)'"
     lost = !git ls $(git fsck --no-reflog | awk '/dangling commit/ {print $3}')
 
     # Merge/Rebase
@@ -78,12 +78,12 @@
     rs  = reset --soft
 
     # Show
-    sh = "show --pretty='%C(yellow)[%h]%Creset%C(auto)%d%Creset%n  %s%n%n\
-    Date: %C(blue)%cd%Creset%n\
-    Author: %C(red)%an%Creset %C(green)<%ae>%Creset%n' --date=format:'%e %B, %Y - %H:%M:%S'"
-    shs = "show --stat --pretty='%C(yellow)[%H]%Creset%C(auto)%d%Creset%n  %s%n%n\
-    Date: %C(blue)%cd%Creset%n\
-    Author: %C(red)%an%Creset %C(green)<%ae>%Creset%n' --date=format:'%e %B, %Y - %H:%M:%S'"
+    sh = "show --pretty='%C(#e5c890)[%h]%C(reset)%C(auto)%d%C(reset)%n  %s%n%n\
+    Date: %C(#a6d189)%cd%C(reset)%n\
+    Author: %C(#ef9f76)%an%C(reset) %C(#85c1dc)<%ae>%C(reset)%n' --date=format:'%e %B, %Y - %H:%M:%S'"
+    shs = "show --stat --pretty='%C(#e5c890)[%H]%C(reset)%C(auto)%d%C(reset)%n  %s%n%n\
+    Date: %C(#a6d189)%cd%C(reset)%n\
+    Author: %C(#ef9f76)%an%C(reset) %C(#85c1dc)<%ae>%C(reset)%n' --date=format:'%e %B, %Y - %H:%M:%S'"
 
     # Stash
     sta = stash apply
@@ -101,22 +101,22 @@
     ui = auto
 
 [color "branch"]
-    current  = green bold reverse
-    local    = green bold
+    current  = "#a6d189" bold reverse
+    local    = "#a6d189" bold
     remote   = "#8caaee"
     upstream = "#ef9f76"
 
 [color "diff"]
-    meta = magenta bold
+    meta = "#ca9ee6" bold
     frag = "#c6d0f5" bold italic "#626880"
     func = "#c6d0f5" bold italic "#626880"
-    old  = red bold reverse
-    new  = green bold reverse
+    old  = "#e78284" bold reverse
+    new  = "#a6d189" bold reverse
 
 [color "status"]
-    added = green bold ul
-    changed = yellow bold ul
-    untracked = magenta bold
+    added     = "#a6d189" bold ul
+    changed   = "#e5c890" bold ul
+    untracked = "#ca9ee6" bold
 
 [core]
     editor         = nvim
