@@ -124,6 +124,10 @@ __snapshots__/
 *.code-workspace
 .history/
 
+# Zed
+zed/prompts
+.zed
+
 # MacOS
 .DS_Store
 .AppleDouble

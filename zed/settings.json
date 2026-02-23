@@ -1,0 +1,103 @@
+// Zed configuration — ported from Neovim/Catppuccin setup
+{
+  // ─── EXTENSIONS ─────────────────────────────────────────────────────────────
+  "auto_install_extensions": {
+    "catppuccin": true,
+    "dockerfile": true,
+    "sql": true,
+    "toml": true
+  },
+
+  // ─── THEME (Catppuccin extension required) ──────────────────────────────────
+  "agent_ui_font_size": 20,
+  "agent_buffer_font_size": 20,
+  "buffer_font_family": "JetBrains Mono",
+  "buffer_font_fallbacks": ["InconsolataGo Nerd Font Mono"],
+  "buffer_font_weight": 400,
+  "buffer_font_size": 20,
+  "ui_font_family": "JetBrains Mono",
+  "ui_font_size": 20,
+  "ui_font_weight": 400,
+
+  "theme": {
+    "mode": "dark",
+    "dark": "Catppuccin Frappé",
+    "light": "Catppuccin Latte"
+  },
+
+  // ─── VIM MODE ───────────────────────────────────────────────────────────────
+  "vim_mode": true,
+  "vim": {
+    "use_smartcase_find": true,
+    "toggle_relative_line_numbers": true,
+    "use_system_clipboard": "always"
+  },
+
+  // ─── EDITOR DISPLAY ─────────────────────────────────────────────────────────
+  "relative_line_numbers": "enabled",
+  "cursor_blink": false,
+  "show_whitespaces": "trailing",
+  "tab_size": 2,
+  "hard_tabs": false,
+  "soft_wrap": "none",
+  "scroll_beyond_last_line": "off",
+  "scrollbar": { "show": "never" },
+  "indent_guides": {
+    "enabled": true,
+    "coloring": "indent_aware"
+  },
+  "gutter": {
+    "line_numbers": true,
+    "folds": true
+  },
+
+  // ─── SPLITS ─────────────────────────────────────────────────────────────────
+  "pane_split_direction_horizontal": "up",
+  "pane_split_direction_vertical": "left",
+
+  // ─── GIT ────────────────────────────────────────────────────────────────────
+  // Mirrors gitsigns.nvim signs + current_line_blame
+  "git": {
+    "git_gutter": "tracked_files",
+    "inline_blame": {
+      "enabled": true,
+      "delay_ms": 600,
+      "show_commit_summary": true,
+      "min_column": 80
+    }
+  },
+
+  // ─── INLAY HINTS ────────────────────────────────────────────────────────────
+  "inlay_hints": {
+    "enabled": false,
+  },
+
+  // ─── AI ASSISTANT — Claude ──────────────────────────────────────────────────
+  // Replaces GitHub Copilot; set ANTHROPIC_API_KEY env var before launching Zed
+  // Open panel: cmd+? or use keybinding space-a-a (defined in keymap.json)
+  "agent": {
+    "default_model": {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-6"
+    }
+  },
+
+  // ─── DIAGNOSTICS ────────────────────────────────────────────────────────────
+  "diagnostics": {
+    "include_warnings": true
+  },
+
+  // ─── FORMAT ON SAVE ─────────────────────────────────────────────────────────
+  // Off by default — use space-f-f to format manually (mirrors <leader>ff)
+  // Python is auto-formatted since ruff is fast and non-intrusive
+  "format_on_save": "off",
+
+  // ─── COMPLETIONS ────────────────────────────────────────────────────────────
+  "show_completions_on_input": true,
+  "show_completion_documentation": true,
+
+  // ─── TERMINAL ───────────────────────────────────────────────────────────────
+  "terminal": {
+    "working_directory": "current_project_directory"
+  },
+}

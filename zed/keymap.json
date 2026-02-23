@@ -1,0 +1,138 @@
+// Zed keymap — ported from Neovim setup
+// Leader key: Space  (same as Neovim mapleader = " ")
+[
+  // ─── INSERT MODE ────────────────────────────────────────────────────────────
+  {
+    "context": "Editor && vim_mode == insert",
+    "bindings": {
+      "j k": "vim::NormalBefore"
+    }
+  },
+
+  // ─── NORMAL MODE ────────────────────────────────────────────────────────────
+  {
+    "context": "Editor && vim_mode == normal && !VimWaiting && !menu",
+    "bindings": {
+      // Buffer / tab navigation
+      // Mirrors: nnoremap H :bprev<CR>zz  /  nnoremap L :bnext<CR>zz
+      "H": "pane::ActivatePreviousItem",
+      "L": "pane::ActivateNextItem",
+
+      // Pane / window navigation
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-j": "workspace::ActivatePaneDown",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-l": "workspace::ActivatePaneRight",
+
+      // File / project search
+      "ctrl-p": "file_finder::Toggle",
+      "ctrl-/": "workspace::NewSearch",
+
+      // Symbol outline
+      // Mirrors: gs → :Lspsaga outline
+      "g s": "outline::Toggle",
+
+      // LSP — declaration (Zed's default gD is "go to type definition"; match neovim)
+      "g D": "editor::GoToDeclaration",
+
+      // ── Leader: editing ───────────────────────────────────────────────────────
+      // Mirrors: <leader>c → :noh (clear search highlights)
+      // Note: Escape in normal mode also clears highlights in Zed
+      "space c": "editor::Cancel",
+
+      // ── Leader: blank lines ───────────────────────────────────────────────────
+      "space o": ["workspace::SendKeystrokes", "o escape k"],
+      "space O": ["workspace::SendKeystrokes", "O escape j"],
+
+      // ── Leader: file/project navigation ──────────────────────────────────────
+      // Mirrors: <leader>. → :Neotree toggle
+      "space .": "project_panel::ToggleFocus",
+
+      // ── Leader: buffer management ─────────────────────────────────────────────
+      // Mirrors: <leader>bd → :bdel  /  <leader>bx → :%bdel
+      "space b d": "pane::CloseActiveItem",
+      "space b x": "pane::CloseAllItems",
+
+      // ── Leader: window management ─────────────────────────────────────────────
+      // Mirrors: <leader>wv (vsplit)  /  <leader>ws (split)  /  <leader>wo (:only)
+      "space w v": "pane::SplitRight",
+      "space w s": "pane::SplitDown",
+      "space w o": "workspace::CloseInactiveTabsAndPanes",
+
+      // ── Leader: format ────────────────────────────────────────────────────────
+      // Mirrors: <leader>ff → conform.nvim format
+      "space f f": "editor::Format",
+
+      // ── Leader: LSP ───────────────────────────────────────────────────────────
+      // Mirrors: <leader>la, <leader>lr, <leader>lf, <leader>ls
+      "space l a": "editor::ToggleCodeActions",
+      "space l r": "editor::Rename",
+      "space l f": "editor::FindAllReferences",
+      "space l s": "workspace::NewSearch",
+
+      // ── Leader: AI assistant ──────────────────────────────────────────────────
+      "space a a": "agent::ToggleFocus",
+      "space a n": "agent::NewThread",
+      "space a i": "assistant::InlineAssist",
+
+      // ── Leader: git ───────────────────────────────────────────────────────────
+      // Mirrors gitsigns.nvim + vim-fugitive bindings
+      "space g [": "editor::GoToPreviousHunk",          // <leader>g[ prev_hunk
+      "space g ]": "editor::GoToHunk",              // <leader>g] next_hunk
+      "space g d": "editor::ToggleSplitDiff",        // <leader>gd diff view
+      "space g h": "editor::ToggleSelectedDiffHunks",        // <leader>gh preview_hunk_inline
+      "space g p": "git::StageAndNext",             // <leader>gp stage_hunk
+      "space g r": "git::RestoreFile",   // <leader>gr :Gread (revert file)
+      "space g s": "git_panel::ToggleFocus",        // <leader>gs :Git status
+      "space g b": "git::Blame",        // blame (was in lualine, now explicit)
+      "space g u": "git::UnstageAndNext",           // <leader>gu undo_stage_hunk
+
+      // ── Leader: diagnostics ───────────────────────────────────────────────────
+      "space p d": "diagnostics::DeployCurrentFile",
+      "space p p": "diagnostics::Deploy"
+    }
+  },
+
+  // ─── VISUAL MODE ────────────────────────────────────────────────────────────
+  {
+    "context": "Editor && vim_mode == visual",
+    "bindings": {
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-j": "workspace::ActivatePaneDown",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-l": "workspace::ActivatePaneRight"
+    }
+  },
+
+  // ─── PANELS ─────────────────────────────────────────────────────────────────
+  {
+    "context": "Workspace > EmptyPane",
+    "bindings": {
+      "ctrl-p": "file_finder::Toggle"
+    }
+  },
+
+  {
+    "context": "ProjectPanel || GitPanel || ProjectSearchBar",
+    "bindings": {
+      "ctrl-[": ["workspace::SendKeystrokes", "cmd-w"]
+    }
+  },
+
+  {
+    "context": "CommandPalette || FileFinder || BufferSearchBar",
+    "bindings": {
+      "ctrl-[": ["workspace::SendKeystrokes", "escape"]
+    },
+  },
+
+  {
+    "context": "Dock || Terminal || ProjectPanel || GitPanel || OutlinePanel",
+    "bindings": {
+      "ctrl-h": "workspace::ActivatePaneLeft",
+      "ctrl-l": "workspace::ActivatePaneRight",
+      "ctrl-k": "workspace::ActivatePaneUp",
+      "ctrl-j": "workspace::ActivatePaneDown"
+    }
+  }
+]

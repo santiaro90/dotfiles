@@ -50,6 +50,7 @@ cask "tableplus"
 cask "vlc"
 cask "whatsapp"
 cask "xquartz"
+cask "zed"
 
 # Fonts
 cask "font-anonymice-nerd-font"

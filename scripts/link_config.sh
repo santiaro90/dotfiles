@@ -1,3 +1,5 @@
+#! /usr/bin/env bash
+
 bat_dir=$HOME/.config/bat
 claude_dir=$HOME/.claude
 dotfiles_dir=$HOME/.dotfiles
@@ -6,9 +8,9 @@ zim_dir=${ZIMHOME:-"$HOME/.zsh/.zim"}
 
 # Exit if $HOME/.dotfiles doesn't exist
 if [ ! -d "$dotfiles_dir" ]; then
-  echo "Error: $dotfiles_dir doesn't exist"
-  echo "Please clone the dotfiles repo to $dotfiles_dir"
-  exit 1
+    echo "Error: $dotfiles_dir doesn't exist"
+    echo "Please clone the dotfiles repo to $dotfiles_dir"
+    exit 1
 fi
 
 # Create required directories
@@ -34,6 +36,9 @@ link_map["$dotfiles_dir/starship.toml"]="$HOME/.starship.toml"
 link_map["$dotfiles_dir/vim"]="$HOME/.vim"
 link_map["$dotfiles_dir/vim/vimrc"]="$HOME/.vimrc"
 link_map["$dotfiles_dir/wezterm"]="$HOME/.config/wezterm"
+link_map["$dotfiles_dir/zed/settings.json"]="$HOME/.config/zed/settings.json"
+link_map["$dotfiles_dir/zed/keymap.json"]="$HOME/.config/zed/keymap.json"
+link_map["$dotfiles_dir/zed/tasks.json"]="$HOME/.config/zed/tasks.json"
 link_map["$dotfiles_dir/zsh/aliases.zsh"]="$zsh_dir/.aliases.zsh"
 link_map["$dotfiles_dir/zsh/keybindings.zsh"]="$zsh_dir/.keybindings.zsh"
 link_map["$dotfiles_dir/zsh/prompt.zsh"]="$zsh_dir/.prompt.zsh"
@@ -46,8 +51,8 @@ link_map["$dotfiles_dir/zsh/zshrc"]="$zsh_dir/.zshrc"
 
 # Check if the files are already linked. If not, create the symlinks
 for src in "${!link_map[@]}"; do
-  dest=${link_map["$src"]}
-  [[ -L "$dest" && -e "$dest" ]] || ln -fs "$src" "$dest"
+    dest=${link_map["$src"]}
+    [[ -L "$dest" && -e "$dest" ]] || ln -fs "$src" "$dest"
 done
 
 bat cache --build >/dev/null 2>&1
