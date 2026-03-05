@@ -50,18 +50,6 @@ fi
 
 status_line="${status_line}[$model] ${context_usage_bar_colour}${context_usage_bar} ${context_usage}%${reset_colour}"
 
-cost_format=$(printf '%.2f' "$session_cost")
-# Color code the cost value
-cost_value_usd=$(echo "$session_cost" | awk '{printf "%.0f", $1}')
-if [ "$cost_value_usd" -lt 10 ]; then
-    cost_colour="$success_colour"
-elif [ "$cost_value_usd" -lt 20 ]; then
-    cost_colour="$warn_colour"
-else
-    cost_colour="$danger_colour"
-fi
-status_line="${status_line} | 💵 Session cost: ${cost_colour}\$${cost_format}${reset_colour}"
-
 if [ -n "$agent_name" ]; then
     status_line="${status_line} | ${agent_colour}${agent_name}${reset_colour}"
 fi
