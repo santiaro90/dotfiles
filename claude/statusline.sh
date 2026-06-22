@@ -12,7 +12,10 @@ fi
 context_usage=$(echo "$input" | jq -r '.context_window.used_percentage // 0' | cut -d. -f1)
 session_cost=$(echo "$input" | jq -r '.cost.total_cost_usd // 0')
 agent_name=$(echo "$input" | jq -r '.agent.name // ""')
-vim_mode=$(echo "$input" | jq -r '.vim.mode // ""')
+
+# Subscription usage (Claude.ai Pro/Max/Team) — populated after first API response
+usage_5h=$(echo "$input" | jq -r '.rate_limits.five_hour.used_percentage // empty' | cut -d. -f1)
+usage_7d=$(echo "$input" | jq -r '.rate_limits.seven_day.used_percentage // empty' | cut -d. -f1)
 
 # Color codes
 agent_colour='\033[38;2;153;209;219m'  # #99d1db
@@ -21,25 +24,35 @@ branch_colour='\033[38;2;133;193;220m' # #85c1dc
 danger_colour='\033[38;2;231;130;132m' # red tone
 reset_colour='\033[0m'
 success_colour='\033[38;2;166;209;137m' # #a6d189 - primary green
-vim_colour='\033[38;2;202;158;230m'     # #ca9ee6
 warn_colour='\033[38;2;229;200;144m'    # #e5c890 - warn/orange
 
-# Build progress bar with color-coded steps
-context_usage_bar_width=10
-context_usage_filled=$((context_usage * context_usage_bar_width / 100))
-context_usage_free=$((context_usage_bar_width - context_usage_filled))
-context_usage_bar=""
-[ "$context_usage_filled" -gt 0 ] && context_usage_bar=$(printf "%${context_usage_filled}s" | tr ' ' '▓')
-[ "$context_usage_free" -gt 0 ] && context_usage_bar="${context_usage_bar}$(printf "%${context_usage_free}s" | tr ' ' '░')"
+bar_width=6
 
-# Choose bar color based on context percentage
-if [ "$context_usage" -le 40 ]; then
-    context_usage_bar_colour="$success_colour"
-elif [ "$context_usage" -le 60 ]; then
-    context_usage_bar_colour="$warn_colour"
-else
-    context_usage_bar_colour="$danger_colour"
-fi
+# Build a color-coded progress bar that fills to 100%
+# $1 = percentage (0-100), $2 = colour
+progress_bar() {
+    local pct=$1 colour=$2 filled free bar
+    [ "$pct" -gt 100 ] && pct=100
+    filled=$((pct * bar_width / 100))
+    free=$((bar_width - filled))
+    bar=""
+    [ "$filled" -gt 0 ] && bar=$(printf "%${filled}s" | tr ' ' '▓')
+    [ "$free" -gt 0 ] && bar="${bar}$(printf "%${free}s" | tr ' ' '░')"
+    printf '%s%s%s' "$colour" "$bar" "$reset_colour"
+}
+
+# Pick colour for a usage percentage (green <=40, orange <=75, red above)
+usage_colour() {
+    if [ "$1" -le 40 ]; then
+        printf '%s' "$success_colour"
+    elif [ "$1" -le 75 ]; then
+        printf '%s' "$warn_colour"
+    else
+        printf '%s' "$danger_colour"
+    fi
+}
+
+context_usage_bar=$(progress_bar "$context_usage" "$(usage_colour "$context_usage")")
 
 # Build status line
 status_line=""
@@ -48,15 +61,25 @@ if [ -n "$branch" ]; then
     status_line="${status_line}${branch_colour} ${branch}${reset_colour} | "
 fi
 
-status_line="${status_line}[$model] ${context_usage_bar_colour}${context_usage_bar} ${context_usage}%${reset_colour}"
+status_line="${status_line}${model} ${context_usage_bar} ${context_usage}%"
 
-if [ -n "$agent_name" ]; then
-    status_line="${status_line} | ${agent_colour}${agent_name}${reset_colour}"
+# Append subscription usage when present (Session = 5-hour, Week = 7-day)
+usage_segs=""
+
+if [ -n "$usage_5h" ]; then
+    usage_5h_bar=$(progress_bar "$usage_5h" "$(usage_colour "$usage_5h")")
+    usage_segs="Session ${usage_5h_bar} ${usage_5h}%"
 fi
 
-if [ -n "$vim_mode" ]; then
-    status_line="${status_line} | ${vim_colour}${vim_mode}${reset_colour}"
+if [ -n "$usage_7d" ]; then
+    usage_7d_bar=$(progress_bar "$usage_7d" "$(usage_colour "$usage_7d")")
+    [ -n "$usage_segs" ] && usage_segs="${usage_segs} · "
+    usage_segs="${usage_segs}Week ${usage_7d_bar} ${usage_7d}%"
 fi
+
+[ -n "$usage_segs" ] && status_line="${status_line} | Usage: ${usage_segs}"
 
 # Apply background color and print
 printf '%b' "${bg_colour}${status_line}${reset_colour}\n"
+
+exit 0
