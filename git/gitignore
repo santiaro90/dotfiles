@@ -154,3 +154,7 @@ Temporary Items
 *.swp
 *.swo
 *~
+
+# Ignore local Claude configurations
+.claude/settings.local.json
+claude/stats.json
