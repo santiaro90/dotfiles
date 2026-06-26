@@ -49,8 +49,7 @@ return {
     client.server_capabilities.documentFormattingProvider = false
     client.server_capabilities.documentRangeFormattingProvider = false
 
-    -- Create ESLint fix all command
-    vim.api.nvim_buf_create_user_command(bufnr, "LspEslintFixAll", function()
+    local function eslint_fix_all()
       client:request_sync("workspace/executeCommand", {
         command = "eslint.applyAllFixes",
         arguments = {
@@ -59,8 +58,16 @@ return {
             version = vim.lsp.util.buf_versions[bufnr],
           },
         },
-      }, nil, bufnr)
-    end, {})
+      }, 2000, bufnr)
+    end
+
+    -- Auto-fix on save (runs before conform formatting)
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      buffer = bufnr,
+      callback = eslint_fix_all,
+    })
+
+    vim.api.nvim_buf_create_user_command(bufnr, "LspEslintFixAll", eslint_fix_all, {})
   end,
   handlers = {
     ["eslint/openDoc"] = function(_, result)
