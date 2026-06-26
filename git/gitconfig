@@ -177,7 +177,10 @@
     zero-style                    = syntax
 
 [diff]
-    tool = nvimdiff
+    algorithm    = histogram
+    colorMoved   = default
+    colorMovedWS = allow-indentation-change
+    tool         = nvimdiff
 
 [difftool]
     prompt = false
@@ -202,9 +205,12 @@
 [mergetool "nvimdiff"]
     layout = "LOCAL,REMOTE / MERGED"
 
+; [pager]
+;     branch = less -s
+
 [push]
     autoSetupRemote = true
-    default = simple
+    default         = simple
 
 [url "https://github.com/"]
     insteadOf = ghh:
@@ -214,7 +220,38 @@
 
 [user]
     email = santiaro90@gmail.com
-    name = Santiago Alvarez Rodriguez
+    name  = Santiago Alvarez Rodriguez
+
+[init]
+    defaultBranch = main
+
+[branch]
+    sort = -committerdate
+
+[rerere]
+    enabled    = true
+    autoUpdate = true
+
+[fetch]
+    prune     = true
+    prunetags = true
+    parallel  = 0
+
+[pull]
+    rebase = true
+
+[maintenance]
+    auto     = true
+    strategy = incremental
+
+[help]
+    autocorrect = prompt
+
+[commit]
+    verbose = true
+
+[tag]
+    sort = -version:refname
 
 [include]
     path = ~/.gitconfig.local
