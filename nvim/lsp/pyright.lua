@@ -16,9 +16,15 @@ return {
     },
     python = {
       analysis = {
-        ignore = { "*" }, -- Using Ruff for linting
         autoSearchPaths = true,
         useLibraryCodeForTypes = true,
+        diagnosticMode = "openFilesOnly",
+        -- Disable lint-like rules — Ruff handles these
+        diagnosticSeverityOverrides = {
+          reportUnusedImport = "none",
+          reportUnusedVariable = "none",
+          reportMissingModuleSource = "none",
+        },
       },
     },
   },
