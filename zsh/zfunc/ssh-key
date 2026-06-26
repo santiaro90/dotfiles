@@ -1,24 +1,44 @@
 # vim: set ft=zsh :
 
-# Copy user's public key to the clipboard. If there is not
-# one, prompt the user whether she wants to create one
+# Copy user's public key to the clipboard, creating it first if needed.
+# Requires -t <rsa|ed25519> to select the key type.
 
-local key=$HOME/.ssh/id_ed25519.pub
+local key_type=""
 
-if [ ! -f $key ]; then
-    echo "This user seems not to have an SSH public key"
-    read -q "?Would you like to create one? [y/n]: "
+while getopts ":t:" opt; do
+    case $opt in
+        t) key_type=$OPTARG ;;
+        \?)
+            echo "ssh-key: invalid option -$OPTARG" >&2
+            echo "Usage: ssh-key -t <rsa|ed25519>" >&2
+            return 1
+            ;;
+        :)
+            echo "ssh-key: option -$OPTARG requires an argument" >&2
+            echo "Usage: ssh-key -t <rsa|ed25519>" >&2
+            return 1
+            ;;
+    esac
+done
 
-    if [ $? -eq 0 ]; then
-        echo
-        ssh-keygen -t ed25519 -f ${key:r}
-    else
-        return $?
-    fi
+if [ -z "$key_type" ]; then
+    echo "ssh-key: -t <rsa|ed25519> is required" >&2
+    echo "Usage: ssh-key -t <rsa|ed25519>" >&2
+    return 1
 fi
 
-# Determine which command is available for copying to the clipboard.
-# If there's none, the key will be echoed to stdout
+if [[ "$key_type" != "rsa" && "$key_type" != "ed25519" ]]; then
+    echo "ssh-key: unsupported key type '$key_type' (expected rsa or ed25519)" >&2
+    return 1
+fi
+
+local key=$HOME/.ssh/id_${key_type}.pub
+
+if [ ! -f $key ]; then
+    echo "No $key_type key found, creating one..."
+    ssh-keygen -t $key_type -f ${key:r} || return $?
+fi
+
 if exists pbcopy > /dev/null 2>&1; then
     cat "$key" | pbcopy
 elif exists xsel; then
@@ -33,4 +53,4 @@ else
     return 0
 fi
 
-echo "Your SSH public key's been copied to clipboard!"
+echo "Your $key_type SSH public key's been copied to clipboard!"
