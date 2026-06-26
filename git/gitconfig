@@ -10,20 +10,25 @@
     di = forgit diff
     dc = forgit diff --cached --patience
     dt = difftool
+    dw = diff --word-diff --color-words
+    dp = diff @{u}...HEAD
 
     # Branching
-    b       = "branch --format='%(if)%(HEAD)%(then)%(else) [3m%(align:left,70)%(color:#a6d189)%(refname:short)%(color:reset)%(end) %(color:#e5c890)[%(objectname:short)]%(color:reset)  %(contents:subject)[0m%(end)'"
+    b       = "branch --list --format='%(if)%(HEAD)%(then)%(else)\
+ [3m%(align:left,75)%(color:#a6d189)%(refname:short)%(color:reset)%(end)%(align:left,6)%(upstream:track)%(end) %(color:#e5c890)[%(objectname:short)]%(color:reset)  %(contents:subject)[0m%(end)'"
     bv      = "branch --format='%(if)%(HEAD)%(then)%(else)\
  %(color:#a6d189)%(refname:short)%(color:reset)%(if)%(upstream)%(then)%(color:bold #e5c890) -> %(color:reset)%(color:#e78284)%(upstream:strip=3)%(color:reset)%(end)%0a\
    %(color:#e5c890)[%(objectname:short)]%(color:reset)  [3m%(contents:subject)[0m%0a\
                [3mDate: %(color:#a6d189)%(authordate)%(color:reset)[0m%0a\
                [3mAuthor: %(color:#85c1dc)%(authorname)%(color:reset)%0a%(end)[0m'"
-    bm = branch -m
-    br = branch -d
-    bd = branch -D
-    bn = branch --show-current
-    bc = !git branch --show-current | pbcopy
-    bu = branch --set-upstream-to
+    bm      = branch -m
+    br      = branch -d
+    bd      = branch -D
+    bn      = branch --show-current
+    bc      = !git branch --show-current | pbcopy
+    bu      = branch --set-upstream-to
+    bl      = "branch --sort=-committerdate --format='%(HEAD) %(color:#e5c890)%(refname:short)%(color:reset) - %(color:#c6d0f5)%(contents:subject)%(color:reset) %(color:#a6d189)(%(committerdate:relative))%(color:reset) %(color:#85c1dc)[%(authorname)]%(color:reset)'"
+    bmerged = "!git for-each-ref --merged=HEAD --format='%(color:#51576d)%(refname:short)%(color:reset) - %(color:#737994)%(contents:subject)%(color:reset)' refs/heads/"
 
     # Clone
     cl = clone -v
@@ -77,10 +82,12 @@
     rv = remote -v
 
     # Reset
-    rh  = reset head
-    rhi = forgit reset_head
-    rhr = reset --hard
-    rs  = reset --soft
+    rh   = reset head
+    rhi  = forgit reset_head
+    rhr  = reset --hard
+    rs   = reset --soft
+    undo = reset --soft HEAD~1
+    rf   = "!f() { git restore --source=\"$1\" \"$2\"; }; f"
 
     # Show
     sh = "show --pretty='%C(#e5c890)[%h]%C(reset)%C(auto)%d%C(reset)%n  %s%n%n\
@@ -101,6 +108,12 @@
     # Status
     s  = status --short --branch --untracked-files=all
     sl = status --untracked-files=all
+    so = status --short --branch --untracked-files=all --show-stash
+
+    # Maintenance
+    cleanup = "!git branch --merged | grep -v '\\*\\|master\\|main\\|develop' | xargs -n 1 git branch -d"
+    find    = "!git log --all --oneline --grep"
+    last    = show HEAD --stat
 
 [color]
     ui = auto
