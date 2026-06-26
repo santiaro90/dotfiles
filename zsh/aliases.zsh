@@ -19,7 +19,7 @@ fi
 # Git
 alias g="git"
 
-# Edit config files
+# Edit global config files
 alias ealias="e $DOTDIR/zsh/aliases.zsh +\"cd $DOTDIR\" && source $DOTDIR/zsh/aliases.zsh"
 alias efunc="e $DOTDIR/zsh/zfunc +\"cd $DOTDIR\" && exec $SHELL"
 alias ecomp="e $DOTDIR/zsh/zcomp +\"cd $DOTDIR\" && exec $SHELL"
@@ -29,6 +29,9 @@ alias eenv="e $DOTDIR/zsh/zprofile +\"cd $DOTDIR\" +bfirst && source $DOTDIR/zsh
 alias egit="e $DOTDIR/git/gitconfig +\"cd $DOTDIR\""
 alias eprompt="e $DOTDIR/starship.toml +\"cd $DOTDIR\" && exec $SHELL"
 alias evim="e $DOTDIR/nvim +\"cd $DOTDIR/nvim\""
+
+# Edit local-only config files
+alias leenv="e $ZDOTDIR/.zprofile.local && exec $SHELL"
 
 # Misc
 command -v pbcopy >/dev/null 2>&1 || alias pbcopy="xsel -ib"
