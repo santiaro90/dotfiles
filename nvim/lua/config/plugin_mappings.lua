@@ -70,10 +70,12 @@ return {
 
   -- LSP
   { "<leader>l", group = " LSP" },
-  { "<leader>lf", ":Lspsaga finder ref<CR>", desc = "Find References" },
-  { "<leader>ls", ":lua require('spectre').open()<CR>", desc = "Replace in Files" },
-
   { "<M-CR>", ":Lspsaga code_action<CR>", desc = "Code Actions" },
+  { "<leader>la", ":Lspsaga code_action<CR>", desc = "Code Actions" },
+  { "<leader>lf", ":Lspsaga finder ref<CR>", desc = "Find References" },
+  { "<leader>lr", ":Lspsaga rename ++project<CR>", desc = "Rename Symbol" },
+  { "<leader>ls", ":lua require('spectre').open()<CR>", desc = "Replace in Files" },
+  { "gr", ":Lspsaga finder ref<CR>", desc = "Find References" },
   { "gs", ":Lspsaga outline<CR>", desc = "Document Symbols" },
 
   -- Linting

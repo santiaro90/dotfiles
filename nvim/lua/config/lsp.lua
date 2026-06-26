@@ -31,19 +31,43 @@ vim.diagnostic.config({
   },
 })
 
--- Show diagnostics on cursor hold
+vim.o.updatetime = 250
+
+-- Show diagnostic float on entering a new line; close on leaving or dismiss
+local _diag_float = { win = nil, line = nil }
+
+local function close_diag_float()
+  if _diag_float.win and vim.api.nvim_win_is_valid(_diag_float.win) then
+    pcall(vim.api.nvim_win_close, _diag_float.win, false)
+  end
+  _diag_float.win = nil
+  _diag_float.line = nil
+end
+
 vim.api.nvim_create_autocmd("CursorHold", {
   callback = function(event)
-    vim.diagnostic.open_float({
+    local line = vim.api.nvim_win_get_cursor(0)[1]
+    if _diag_float.line == line then return end -- already handled this line
+    _diag_float.line = line
+    local _, win = vim.diagnostic.open_float({
       border = "single",
       bufnr = event.buf,
       focus = false,
       source = "if_many",
     })
+    _diag_float.win = win
   end,
 })
 
-vim.o.updatetime = 250
+vim.api.nvim_create_autocmd({ "CursorMoved", "BufLeave", "InsertEnter" }, {
+  callback = function(event)
+    if event.event == "CursorMoved" then
+      local line = vim.api.nvim_win_get_cursor(0)[1]
+      if _diag_float.line == nil or line == _diag_float.line then return end
+    end
+    close_diag_float()
+  end,
+})
 
 -- LSP Attach autocommand for document highlighting
 vim.api.nvim_create_autocmd("LspAttach", {

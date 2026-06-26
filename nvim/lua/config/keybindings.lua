@@ -36,15 +36,16 @@ vim.keymap.set("n", "<C-S-j>", "<C-w>J", { desc = "Swap Down", silent = true })
 vim.keymap.set("n", "<C-S-k>", "<C-w>K", { desc = "Swap Up", silent = true })
 vim.keymap.set("n", "<C-S-l>", "<C-w>L", { desc = "Swap Right", silent = true })
 -- -- Floating windows
-vim.keymap.set({ "n", "i" }, "<C-[>", function()
+local function close_floating_wins()
   for _, win in ipairs(vim.api.nvim_list_wins()) do
     local config = vim.api.nvim_win_get_config(win)
-
-    if config.relative ~= "" then -- is floating window
-      vim.api.nvim_win_close(win, false)
+    if config.relative ~= "" then
+      pcall(vim.api.nvim_win_close, win, false)
     end
   end
-end, { desc = "Close Floating Windows", silent = true })
+end
+vim.keymap.set({ "n", "i" }, "<C-[>", close_floating_wins, { desc = "Close Floating Windows", silent = true })
+vim.keymap.set("n", "<Esc>", close_floating_wins, { desc = "Close Floating Windows", silent = true })
 
 -- Command line movement
 vim.keymap.set("c", "<C-a>", "<C-b>")
@@ -62,11 +63,9 @@ vim.keymap.set("n", "<leader>ba", "<C-^>", { desc = "Open Alternate Buffer", sil
 
 -- LSP
 vim.keymap.set("i", "<C-K>", vim.lsp.buf.signature_help, { desc = "Show Docs" })
-vim.keymap.set("n", "<leader>la", vim.lsp.buf.code_action, { desc = "Code Actions" })
-vim.keymap.set("n", "<leader>lr", vim.lsp.buf.rename, { desc = "Rename" })
 vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "Show Docs" })
 vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { desc = "Go to Declaration" })
 vim.keymap.set("n", "gI", vim.lsp.buf.implementation, { desc = "Go to Implementation" })
 vim.keymap.set("n", "gK", vim.lsp.buf.signature_help, { desc = "Show Signature" })
 vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to Definition" })
-vim.keymap.set("n", "gr", vim.lsp.buf.references, { desc = "Go to References" })
+vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show Diagnostic", silent = true })
