@@ -16,6 +16,12 @@ else
     alias lt="tree -L 3"
 fi
 
+# Modern CLI replacements (guarded; only alias if the tool is installed)
+command -v dust  >/dev/null 2>&1 && alias du="dust"
+command -v duf   >/dev/null 2>&1 && alias df="duf"
+command -v procs >/dev/null 2>&1 && alias ps="procs"
+command -v btop  >/dev/null 2>&1 && alias top="btop"
+
 # Git
 alias g="git"
 

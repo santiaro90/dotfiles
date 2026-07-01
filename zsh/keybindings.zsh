@@ -21,6 +21,5 @@ bindkey -M viins '^p' up-history
 # Completion
 bindkey -M viins '^g' fzf-cd-widget
 bindkey -M viins '^t' fzf-file-widget
-bindkey -M viins '^r' fzf-history-widget
 bindkey -M viins '^ ' fzf-completion
 bindkey -M viins '^i' $fzf_default_completion
