@@ -1,0 +1,29 @@
+# Yazi config. Symlinked to ~/.config/yazi via scripts/link_config.sh.
+#
+# Auto-detected tools (no config needed, work when the binary is present):
+#   ffmpeg  -> video thumbnails
+#   fd      -> filename search  (default `s` binding)
+#   ripgrep -> content search   (default `S` binding)
+#   fzf     -> subtree jump      (default `Z` binding)
+#   zoxide  -> frecency jump     (default `z` binding)
+#   file    -> mime detection
+
+[mgr]
+sort_dir_first = true
+linemode       = "size"
+show_hidden    = false
+show_symlink   = true
+
+[preview]
+image_filter  = "triangle"
+image_quality = 80
+
+[plugin]
+# Previewers built from tools already installed, filling gaps the defaults leave.
+prepend_previewers = [
+	# jq: pretty-print JSON (readable even when the file is minified).
+	{ mime = "application/json", run = "jq" },
+	{ url = "*.json",            run = "jq" },
+	# exiftool: metadata for audio (no visual preview otherwise).
+	{ mime = "audio/*", run = "exif" },
+]
