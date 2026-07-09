@@ -1,10 +1,9 @@
---- @sync peek
--- Pretty-print JSON with jq. Falls back to jq's error on invalid JSON.
+-- Pretty-print JSON with jq (colorized). Falls back to jq's error on invalid JSON.
 local M = {}
 
 function M:peek(job)
 	local output, err = Command("jq")
-		:arg("--monochrome-output")
+		:arg("--color-output")
 		:arg(".")
 		:arg(tostring(job.file.url))
 		:stdout(Command.PIPED)
@@ -30,15 +29,14 @@ function M:peek(job)
 		shown[#shown + 1] = lines[i]
 	end
 
-	ya.preview_widgets(job, {
-		ui.Text(table.concat(shown, "\n")):area(job.area),
-	})
+	-- jq -C emits ANSI escapes; ui.Text.parse turns them into styled spans.
+	ya.preview_widget(job, ui.Text.parse(table.concat(shown, "\n")):area(job.area))
 end
 
 function M:seek(job)
 	local h = cx.active.current.hovered
 	if h and h.url == job.file.url then
-		ya.mgr_emit("peek", {
+		ya.emit("peek", {
 			math.max(0, cx.active.preview.skip + job.units),
 			only_if = job.file.url,
 		})
