@@ -26,4 +26,8 @@ prepend_previewers = [
 	{ url = "*.json",            run = "jq" },
 	# exiftool: metadata for audio (no visual preview otherwise).
 	{ mime = "audio/*", run = "exif" },
+	# glow: render Markdown instead of showing raw source.
+	{ mime = "text/markdown", run = "glow" },
+	{ url = "*.md",          run = "glow" },
+	{ url = "*.markdown",    run = "glow" },
 ]

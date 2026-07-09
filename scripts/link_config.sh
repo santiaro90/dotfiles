@@ -30,6 +30,7 @@ link_map["$dotfiles_dir/ctags"]="$HOME/.ctags"
 link_map["$dotfiles_dir/editorconfig"]="$HOME/.editorconfig"
 link_map["$dotfiles_dir/git/gitconfig"]="$HOME/.gitconfig"
 link_map["$dotfiles_dir/git/gitignore"]="$HOME/.gitignore"
+link_map["$dotfiles_dir/glow"]="$HOME/.config/glow"
 link_map["$dotfiles_dir/lsd"]=$HOME/.config/lsd
 link_map["$dotfiles_dir/nvim"]="$HOME/.config/nvim"
 link_map["$dotfiles_dir/starship.toml"]="$HOME/.starship.toml"

@@ -1,0 +1,14 @@
+# Glow config. Symlinked to ~/.config/glow via scripts/link_config.sh.
+# Standalone CLI defaults; the yazi previewer passes its own flags.
+
+# Built-in dark style (matches the dark terminal theme).
+style: "dark"
+
+# Show a paginated view when rendering a single document.
+pager: true
+
+# Word-wrap column. 0 = use the terminal width.
+width: 0
+
+# Never fetch remote files implicitly; only render what is asked for.
+mouse: false
