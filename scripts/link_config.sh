@@ -5,6 +5,7 @@ claude_dir=$HOME/.claude
 dotfiles_dir=$HOME/.dotfiles
 zsh_dir=${ZDOTDIR:-"$HOME/.zsh"}
 zim_dir=${ZIMHOME:-"$HOME/.zsh/.zim"}
+tmux_dir=$HOME/.config/tmux
 
 # Exit if $HOME/.dotfiles doesn't exist
 if [ ! -d "$dotfiles_dir" ]; then
@@ -18,6 +19,7 @@ fi
 [ -d "$claude_dir" ] || mkdir -p "$claude_dir"
 [ -d "$zim_dir" ] || mkdir -p "$zim_dir"
 [ -d "$zsh_dir" ] || mkdir -p "$zsh_dir"
+[ -d "$tmux_dir" ] || mkdir -p "$tmux_dir"
 
 # Create a mapping of files to link
 declare -A link_map
@@ -34,6 +36,7 @@ link_map["$dotfiles_dir/glow"]="$HOME/.config/glow"
 link_map["$dotfiles_dir/lsd"]=$HOME/.config/lsd
 link_map["$dotfiles_dir/nvim"]="$HOME/.config/nvim"
 link_map["$dotfiles_dir/starship.toml"]="$HOME/.starship.toml"
+link_map["$dotfiles_dir/tmux/tmux.conf"]="$HOME/.config/tmux/tmux.conf"
 link_map["$dotfiles_dir/vim"]="$HOME/.vim"
 link_map["$dotfiles_dir/vim/vimrc"]="$HOME/.vimrc"
 link_map["$dotfiles_dir/wezterm"]="$HOME/.config/wezterm"

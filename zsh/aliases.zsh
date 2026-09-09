@@ -31,6 +31,7 @@ alias efunc="e $DOTDIR/zsh/zfunc +\"cd $DOTDIR\" && exec $SHELL"
 alias ecomp="e $DOTDIR/zsh/zcomp +\"cd $DOTDIR\" && exec $SHELL"
 alias eshell="e $DOTDIR/zsh/zshrc +\"cd $DOTDIR\" +bfirst && exec $SHELL"
 alias eterm="e $DOTDIR/wezterm/wezterm.lua +\"cd $DOTDIR\""
+alias etmux="e $DOTDIR/tmux/tmux.conf +\"cd $DOTDIR\""
 alias eenv="e $DOTDIR/zsh/zprofile +\"cd $DOTDIR\" +bfirst && source $DOTDIR/zsh/zprofile"
 alias egit="e $DOTDIR/git/gitconfig +\"cd $DOTDIR\""
 alias eprompt="e $DOTDIR/starship.toml +\"cd $DOTDIR\" && exec $SHELL"
@@ -38,6 +39,10 @@ alias evim="e $DOTDIR/nvim +\"cd $DOTDIR/nvim\""
 
 # Edit local-only config files
 alias leenv="e $ZDOTDIR/.zprofile.local && exec $SHELL"
+
+# Tmux: create session <name>, or attach if it already exists
+alias ts="tmux new -A -s"
+alias tls="tmux ls"
 
 # Misc
 command -v pbcopy >/dev/null 2>&1 || alias pbcopy="xsel -ib"
