@@ -7,6 +7,9 @@ module.apply = function(config)
   -- has mouse off, so there's nothing useful for it to do with them anyway.
   config.alternate_buffer_wheel_scroll_speed = 0
 
+  -- Don't dim/desaturate unfocused panes; every pane should render identically
+  config.inactive_pane_hsb = { hue = 1.0, saturation = 1.0, brightness = 1.0 }
+
   config.window_decorations = "RESIZE"
   config.window_padding = {
     left = "0.5cell",
