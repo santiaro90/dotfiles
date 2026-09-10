@@ -47,6 +47,8 @@ module.apply = function(config)
   config.use_fancy_tab_bar = false
   config.tab_bar_at_bottom = false
   config.show_new_tab_button_in_tab_bar = false
+  -- Tabs live in tmux now; keep the bar only for the left-status dir display
+  config.show_tabs_in_tab_bar = false
 end
 
 return module

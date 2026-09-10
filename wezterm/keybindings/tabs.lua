@@ -4,8 +4,10 @@ local module = {}
 
 module.apply = function(config)
   local keys = {
-    { key = "]", mods = "SUPER", action = action.ActivateTabRelative(1) },
-    { key = "[", mods = "SUPER", action = action.ActivateTabRelative(-1) },
+    -- Lost to tmux windows now; unbind so the habit dies
+    { key = "]", mods = "SUPER", action = action.DisableDefaultAssignment },
+    { key = "[", mods = "SUPER", action = action.DisableDefaultAssignment },
+    { key = "t", mods = "SUPER", action = action.DisableDefaultAssignment },
   }
 
   utils.append_to_list(config.keys, keys)

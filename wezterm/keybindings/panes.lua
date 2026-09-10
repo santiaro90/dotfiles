@@ -4,40 +4,23 @@ local module = {}
 
 module.apply = function(config)
   local keys = {
-    { key = "v", mods = "LEADER", action = action.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
-    { key = "s", mods = "LEADER", action = action.SplitVertical({ domain = "CurrentPaneDomain" }) },
+    { key = "/", mods = "SUPER", action = action.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
+    { key = "\\", mods = "SUPER", action = action.SplitVertical({ domain = "CurrentPaneDomain" }) },
 
-    -- Move between panes
-    { key = "h", mods = "LEADER", action = action.ActivatePaneDirection("Left") },
-    { key = "j", mods = "LEADER", action = action.ActivatePaneDirection("Down") },
-    { key = "k", mods = "LEADER", action = action.ActivatePaneDirection("Up") },
-    { key = "l", mods = "LEADER", action = action.ActivatePaneDirection("Right") },
+    -- Move between wezterm panes
+    { key = "LeftArrow", mods = "SUPER", action = action.ActivatePaneDirection("Left") },
+    { key = "DownArrow", mods = "SUPER", action = action.ActivatePaneDirection("Down") },
+    { key = "UpArrow", mods = "SUPER", action = action.ActivatePaneDirection("Up") },
+    { key = "RightArrow", mods = "SUPER", action = action.ActivatePaneDirection("Right") },
 
-    -- Pane resize mode
-    {
-      key = "r",
-      mods = "LEADER",
-      action = action.ActivateKeyTable({
-        name = "resize",
-        one_shot = false,
-        prevent_fallback = true,
-        replace_current = true,
-      }),
-    },
-  }
-
-  local key_tables = {
-    resize = {
-      { key = "h", action = action.AdjustPaneSize({ "Left", 1 }) },
-      { key = "j", action = action.AdjustPaneSize({ "Down", 1 }) },
-      { key = "k", action = action.AdjustPaneSize({ "Up", 1 }) },
-      { key = "l", action = action.AdjustPaneSize({ "Right", 1 }) },
-      { key = "Enter", action = "PopKeyTable" },
-    },
+    -- Resize wezterm panes
+    { key = "LeftArrow", mods = "SUPER|SHIFT", action = action.AdjustPaneSize({ "Left", 2 }) },
+    { key = "DownArrow", mods = "SUPER|SHIFT", action = action.AdjustPaneSize({ "Down", 2 }) },
+    { key = "UpArrow", mods = "SUPER|SHIFT", action = action.AdjustPaneSize({ "Up", 2 }) },
+    { key = "RightArrow", mods = "SUPER|SHIFT", action = action.AdjustPaneSize({ "Right", 2 }) },
   }
 
   utils.append_to_list(config.keys, keys)
-  utils.append_to_table(config.key_tables, key_tables)
 end
 
 return module
