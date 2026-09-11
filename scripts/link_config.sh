@@ -2,6 +2,7 @@
 
 bat_dir=$HOME/.config/bat
 claude_dir=$HOME/.claude
+claude_themes_dir=$HOME/.claude/themes
 dotfiles_dir=$HOME/.dotfiles
 zsh_dir=${ZDOTDIR:-"$HOME/.zsh"}
 zim_dir=${ZIMHOME:-"$HOME/.zsh/.zim"}
@@ -17,6 +18,7 @@ fi
 # Create required directories
 [ -d "$bat_dir" ] || mkdir -p "$bat_dir"
 [ -d "$claude_dir" ] || mkdir -p "$claude_dir"
+[ -d "$claude_themes_dir" ] || mkdir -p "$claude_themes_dir"
 [ -d "$zim_dir" ] || mkdir -p "$zim_dir"
 [ -d "$zsh_dir" ] || mkdir -p "$zsh_dir"
 [ -d "$tmux_dir" ] || mkdir -p "$tmux_dir"
@@ -26,8 +28,8 @@ declare -A link_map
 
 link_map["$dotfiles_dir/bat/config"]="$bat_dir/config"
 link_map["$dotfiles_dir/bat/themes"]="$bat_dir/themes"
-link_map["$dotfiles_dir/claude/settings.json"]="$claude_dir/settings.json"
 link_map["$dotfiles_dir/claude/statusline.sh"]="$claude_dir/statusline.sh"
+link_map["$dotfiles_dir/claude/theme.catppuccin.json"]="$claude_themes_dir/catppuccin.json"
 link_map["$dotfiles_dir/ctags"]="$HOME/.ctags"
 link_map["$dotfiles_dir/editorconfig"]="$HOME/.editorconfig"
 link_map["$dotfiles_dir/git/gitconfig"]="$HOME/.gitconfig"

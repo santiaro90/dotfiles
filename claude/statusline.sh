@@ -19,18 +19,20 @@ agent_name=$(echo "$input" | jq -r '.agent.name // ""')
 usage_5h=$(echo "$input" | jq -r '.rate_limits.five_hour.used_percentage // empty' | cut -d. -f1)
 usage_7d=$(echo "$input" | jq -r '.rate_limits.seven_day.used_percentage // empty' | cut -d. -f1)
 
-# Color codes
-agent_colour='\033[38;2;153;209;219m'  # #99d1db
-bg_colour='\033[48;2;48;52;70m'        # #303446 background
-branch_colour='\033[38;2;133;193;220m' # #85c1dc
-repo_colour='\033[38;2;229;200;144m'   # #e5c890 - yellow
-danger_colour='\033[38;2;231;130;132m' # red tone
+# Color codes — catppuccin frappe, matching starship.toml's palette
+agent_colour='\033[38;2;153;209;219m'  # sky #99d1db
+branch_colour='\033[38;2;133;193;220m' # sapphire #85c1dc
+repo_colour='\033[38;2;229;200;144m'   # yellow #e5c890
+danger_colour='\033[38;2;231;130;132m' # red #e78284
 dirty_colour='\033[38;2;255;175;215m'  # color 218 - pink (git_status *)
 grey_colour='\033[38;5;7m'             # color 7 - behind count
+model_colour='\033[38;2;186;187;241m'  # lavender #babbf1
+sep_colour='\033[38;2;115;121;148m'    # overlay0 #737994
+bold='\033[1m'
 italic='\033[3m'
 reset_colour='\033[0m'
-success_colour='\033[38;2;166;209;137m' # #a6d189 - primary green
-warn_colour='\033[38;2;229;200;144m'    # #e5c890 - warn/orange
+success_colour='\033[38;2;166;209;137m' # green #a6d189
+warn_colour='\033[38;2;229;200;144m'    # yellow #e5c890 - warn/orange
 
 bar_width=6
 
@@ -67,12 +69,12 @@ if [ -n "$branch" ]; then
     porcelain=$(git status --porcelain --branch 2>/dev/null)
 
     # dirty indicator: any tracked/untracked change (non-branch line)
-    printf '%s\n' "$porcelain" | grep -qv '^##' \
-        && git_status_seg="${dirty_colour}*${reset_colour}"
+    printf '%s\n' "$porcelain" | grep -qv '^##' &&
+        git_status_seg="${dirty_colour}*${reset_colour}"
 
     conflicts=$(printf '%s\n' "$porcelain" | grep -cE '^(DD|AU|UD|UA|DU|AA|UU)')
     branch_line=$(printf '%s\n' "$porcelain" | head -1)
-    ahead=$(printf '%s' "$branch_line"  | grep -oE 'ahead [0-9]+'  | grep -oE '[0-9]+')
+    ahead=$(printf '%s' "$branch_line" | grep -oE 'ahead [0-9]+' | grep -oE '[0-9]+')
     behind=$(printf '%s' "$branch_line" | grep -oE 'behind [0-9]+' | grep -oE '[0-9]+')
     stashed=$(git rev-list --walk-reflogs --count refs/stash 2>/dev/null || echo 0)
 
@@ -94,14 +96,14 @@ fi
 status_line=""
 
 if [ -n "$repo" ]; then
-    status_line="${status_line}${italic}${repo_colour} ${repo}${reset_colour} "
+    status_line="${status_line}${bold}${italic}${repo_colour} ${repo}${reset_colour} "
 fi
 
 if [ -n "$branch" ]; then
-    status_line="${status_line}${italic}${branch_colour} ${branch}${reset_colour}${git_status_seg} | "
+    status_line="${status_line}${bold}${italic}${branch_colour} ${branch}${reset_colour}${git_status_seg} ${sep_colour}|${reset_colour} "
 fi
 
-status_line="${status_line}${model} ${context_usage_bar} ${context_usage}%"
+status_line="${status_line}${bold}${italic}${model_colour}${model}${reset_colour} ${context_usage_bar} ${context_usage}%"
 
 # Append subscription usage when present (Session = 5-hour, Week = 7-day)
 usage_segs=""
@@ -117,9 +119,8 @@ if [ -n "$usage_7d" ]; then
     usage_segs="${usage_segs}Week ${usage_7d_bar} ${usage_7d}%"
 fi
 
-[ -n "$usage_segs" ] && status_line="${status_line} | Usage: ${usage_segs}"
+[ -n "$usage_segs" ] && status_line="${status_line} ${sep_colour}|${reset_colour} Usage: ${usage_segs}"
 
-# Apply background color and print
-printf '%b' "${bg_colour}${status_line}${reset_colour}\n"
+printf '%b' "${status_line}${reset_colour}\n"
 
 exit 0
