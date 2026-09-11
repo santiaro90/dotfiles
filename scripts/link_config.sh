@@ -2,6 +2,7 @@
 
 bat_dir=$HOME/.config/bat
 claude_dir=$HOME/.claude
+claude_agents_dir=$HOME/.claude/agents
 claude_themes_dir=$HOME/.claude/themes
 dotfiles_dir=$HOME/.dotfiles
 zsh_dir=${ZDOTDIR:-"$HOME/.zsh"}
@@ -18,6 +19,7 @@ fi
 # Create required directories
 [ -d "$bat_dir" ] || mkdir -p "$bat_dir"
 [ -d "$claude_dir" ] || mkdir -p "$claude_dir"
+[ -d "$claude_agents_dir" ] || mkdir -p "$claude_agents_dir"
 [ -d "$claude_themes_dir" ] || mkdir -p "$claude_themes_dir"
 [ -d "$zim_dir" ] || mkdir -p "$zim_dir"
 [ -d "$zsh_dir" ] || mkdir -p "$zsh_dir"
@@ -28,6 +30,13 @@ declare -A link_map
 
 link_map["$dotfiles_dir/bat/config"]="$bat_dir/config"
 link_map["$dotfiles_dir/bat/themes"]="$bat_dir/themes"
+# Claude files are linked one by one, never whole directories: work installs its
+# own agents and skills alongside these. settings.json is deliberately absent —
+# Claude Code rewrites it at runtime (/model, /config, plugin toggles) and it
+# holds work-only plugins and marketplaces.
+link_map["$dotfiles_dir/claude/CLAUDE.md"]="$claude_dir/CLAUDE.md"
+link_map["$dotfiles_dir/claude/RTK.md"]="$claude_dir/RTK.md"
+link_map["$dotfiles_dir/claude/agents/refactorer.md"]="$claude_agents_dir/refactorer.md"
 link_map["$dotfiles_dir/claude/statusline.sh"]="$claude_dir/statusline.sh"
 link_map["$dotfiles_dir/claude/theme.catppuccin.json"]="$claude_themes_dir/catppuccin.json"
 link_map["$dotfiles_dir/editorconfig"]="$HOME/.editorconfig"
