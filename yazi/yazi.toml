@@ -4,8 +4,8 @@
 #   ffmpeg  -> video thumbnails
 #   fd      -> filename search  (default `s` binding)
 #   ripgrep -> content search   (default `S` binding)
-#   fzf     -> subtree jump      (default `Z` binding)
-#   zoxide  -> frecency jump     (default `z` binding)
+#   fzf     -> subtree jump     (default `z` binding)
+#   zoxide  -> frecency jump    (default `Z` binding)
 #   file    -> mime detection
 
 [mgr]

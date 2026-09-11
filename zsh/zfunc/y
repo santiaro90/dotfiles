@@ -5,7 +5,10 @@
 local tmp cwd
 tmp="$(mktemp -t yazi-cwd.XXXXXX)"
 
-yazi "$@" --cwd-file="$tmp"
+# Yazi's fzf plugin (`z`) has no options of its own, it just inherits
+# FZF_DEFAULT_OPTS, so label it here rather than globally.
+FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS --input-label='Fzf Jump'" \
+    yazi "$@" --cwd-file="$tmp"
 
 if IFS= read -r -d '' cwd < "$tmp" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
     builtin cd -- "$cwd"
