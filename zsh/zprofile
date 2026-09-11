@@ -59,8 +59,15 @@ export FORGIT_LOG_GRAPH_ENABLE="false"
 export FORGIT_NO_ALIASES=true
 export FORGIT_PAGER='delta --config ~/.gitconfig --file-style omit'
 
+# Yazi
+# Appended after FZF_DEFAULT_OPTS by yazi's zoxide plugin (`Z`), so it wins.
+export YAZI_ZOXIDE_OPTS="--input-label='Zoxide Jump'"
+
 # Prompt config
 export STARSHIP_CONFIG=~/.starship.toml
+
+# Fix Claude Code colours inside tmux
+export CLAUDE_CODE_TMUX_TRUECOLOR=1
 
 # Make sure Homebrew libs are in the path
 export PATH="$HOMEBREW_PREFIX/bin:$PATH"

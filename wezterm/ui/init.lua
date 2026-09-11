@@ -10,6 +10,7 @@ module.apply = function(config)
   })
 
   config.default_cursor_style = "SteadyBlock"
+  config.term = "xterm-256color"
 end
 
 return module
