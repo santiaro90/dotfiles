@@ -30,7 +30,6 @@ link_map["$dotfiles_dir/bat/config"]="$bat_dir/config"
 link_map["$dotfiles_dir/bat/themes"]="$bat_dir/themes"
 link_map["$dotfiles_dir/claude/statusline.sh"]="$claude_dir/statusline.sh"
 link_map["$dotfiles_dir/claude/theme.catppuccin.json"]="$claude_themes_dir/catppuccin.json"
-link_map["$dotfiles_dir/ctags"]="$HOME/.ctags"
 link_map["$dotfiles_dir/editorconfig"]="$HOME/.editorconfig"
 link_map["$dotfiles_dir/git/gitconfig"]="$HOME/.gitconfig"
 link_map["$dotfiles_dir/git/gitignore"]="$HOME/.gitignore"
@@ -45,17 +44,17 @@ link_map["$dotfiles_dir/wezterm"]="$HOME/.config/wezterm"
 link_map["$dotfiles_dir/yazi"]="$HOME/.config/yazi"
 link_map["$dotfiles_dir/zsh/aliases.zsh"]="$zsh_dir/.aliases.zsh"
 link_map["$dotfiles_dir/zsh/keybindings.zsh"]="$zsh_dir/.keybindings.zsh"
-link_map["$dotfiles_dir/zsh/prompt.zsh"]="$zsh_dir/.prompt.zsh"
 link_map["$dotfiles_dir/zsh/zfunc"]="$zsh_dir/.zfunc"
 link_map["$dotfiles_dir/zsh/zim.zsh"]="$zsh_dir/.zim.zsh"
 link_map["$dotfiles_dir/zsh/zimrc"]="$zsh_dir/.zimrc"
 link_map["$dotfiles_dir/zsh/zprofile"]="$zsh_dir/.zprofile"
 link_map["$dotfiles_dir/zsh/zshrc"]="$zsh_dir/.zshrc"
 
-# Check if the files are already linked. If not, create the symlinks
+# Relink unless the symlink already points at this exact source, so renamed or
+# moved sources heal instead of leaving a stale link in place.
 for src in "${!link_map[@]}"; do
     dest=${link_map["$src"]}
-    [[ -L "$dest" && -e "$dest" ]] || ln -fs "$src" "$dest"
+    [[ "$(readlink "$dest")" == "$src" ]] || ln -fsn "$src" "$dest"
 done
 
 bat cache --build >/dev/null 2>&1
