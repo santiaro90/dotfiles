@@ -22,6 +22,8 @@ return {
         lsp_file_methods = {
           autosave_changes = true,
         },
+        -- Match yazi's `d`, which trashes rather than unlinks.
+        delete_to_trash = true,
         keymaps = {
           ["<C-[>"] = { "actions.close", mode = "n" },
           ["<C-s>"] = { "actions.select", mode = "n", opts = { horizontal = true } },
