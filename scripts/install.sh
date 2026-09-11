@@ -32,8 +32,3 @@ else
 fi
 
 $HOMEBREW_PREFIX/bash $dotfiles_dir/scripts/link_config.sh
-
-# Vim plugins
-[ ! -d $HOME/.vim/bundle/Vundle.vim ] &&
-    git clone https://github.com/VundleVim/Vundle.vim.git $HOME/.vim/bundle/Vundle.vim &&
-    vim +PluginInstall +qall
