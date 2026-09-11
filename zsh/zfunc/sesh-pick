@@ -9,7 +9,7 @@ if ! command -v sesh >/dev/null 2>&1; then
 fi
 
 local session
-session=$(FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS $SESH_FZF_OPTS" sesh list | fzf --ansi)
+session=$(sesh list | FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS $SESH_FZF_OPTS" fzf --ansi)
 
 [[ -z "$session" ]] && return 0
 
