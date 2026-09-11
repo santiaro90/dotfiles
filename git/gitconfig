@@ -30,6 +30,10 @@
     bl      = "branch --sort=-committerdate --format='%(HEAD) %(color:#e5c890)%(refname:short)%(color:reset) - %(color:#c6d0f5)%(contents:subject)%(color:reset) %(color:#a6d189)(%(committerdate:relative))%(color:reset) %(color:#85c1dc)[%(authorname)]%(color:reset)'"
     bmerged = "!git for-each-ref --merged=HEAD --format='%(color:#51576d)%(refname:short)%(color:reset) - %(color:#737994)%(contents:subject)%(color:reset)' refs/heads/"
 
+    wa = worktree add
+    wl = worktree list
+    wr = worktree remove
+
     # Clone
     cl = clone -v
 

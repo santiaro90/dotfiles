@@ -14,3 +14,5 @@ vim/undo
 zsh/*.local
 
 Brewfile.lock.json
+
+worktrees
