@@ -29,9 +29,8 @@ source $ZDOTDIR/.keybindings.zsh
 source $ZDOTDIR/.aliases.zsh
 
 # Enable loading custom functions
-fpath=($ZDOTDIR/.zfunc $ZDOTDIR/.zcomp $fpath)
+fpath=($ZDOTDIR/.zfunc $fpath)
 autoload -Uz $ZDOTDIR/.zfunc/*(:t)
-autoload -Uz $ZDOTDIR/.zcomp/**/*(:t)
 autoload -U zmv
 
 # Source local overrides

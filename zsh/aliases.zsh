@@ -28,7 +28,6 @@ alias g="git"
 # Edit global config files
 alias ealias="e $DOTDIR/zsh/aliases.zsh +\"cd $DOTDIR\" && source $DOTDIR/zsh/aliases.zsh"
 alias efunc="e $DOTDIR/zsh/zfunc +\"cd $DOTDIR\" && exec $SHELL"
-alias ecomp="e $DOTDIR/zsh/zcomp +\"cd $DOTDIR\" && exec $SHELL"
 alias eshell="e $DOTDIR/zsh/zshrc +\"cd $DOTDIR\" +bfirst && exec $SHELL"
 alias eterm="e $DOTDIR/wezterm/wezterm.lua +\"cd $DOTDIR\""
 alias etmux="e $DOTDIR/tmux/tmux.conf +\"cd $DOTDIR\""
