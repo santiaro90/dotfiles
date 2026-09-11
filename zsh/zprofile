@@ -63,6 +63,11 @@ export FORGIT_PAGER='delta --config ~/.gitconfig --file-style omit'
 # Appended after FZF_DEFAULT_OPTS by yazi's zoxide plugin (`Z`), so it wins.
 export YAZI_ZOXIDE_OPTS="--input-label='Zoxide Jump'"
 
+# Sesh
+# Appended after FZF_DEFAULT_OPTS, so it keeps the ctrl-t layout and only swaps
+# the label and the preview (bat can't preview a session name).
+export SESH_FZF_OPTS="--input-label='Sesh' --no-sort --preview 'sesh preview {}'"
+
 # Prompt config
 export STARSHIP_CONFIG=~/.starship.toml
 

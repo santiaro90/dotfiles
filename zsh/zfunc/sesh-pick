@@ -1,0 +1,16 @@
+# vim: set ft=zsh :
+
+# Pick a tmux session, project or zoxide directory and connect to it.
+# No --icons: the icon would end up in {} and break `sesh preview`.
+
+if ! command -v sesh >/dev/null 2>&1; then
+    echo "sesh-pick: sesh is not installed"
+    return 1
+fi
+
+local session
+session=$(FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS $SESH_FZF_OPTS" sesh list | fzf --ansi)
+
+[[ -z "$session" ]] && return 0
+
+sesh connect "$session"
