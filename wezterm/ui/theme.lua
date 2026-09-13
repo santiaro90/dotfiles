@@ -78,6 +78,10 @@ module.tabs = function(is_active, is_first)
 end
 
 module.status = {
+  session = {
+    background = palette.blue,
+    foreground = palette.crust,
+  },
   left = {
     background = palette.yellow,
     foreground = palette.crust,

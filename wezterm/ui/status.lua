@@ -11,13 +11,27 @@ local update_left_status = function(window, pane)
   end
 
   window:set_left_status(wezterm.format({
+    { Background = { Color = theme.session.background } },
+    { Foreground = { Color = theme.session.foreground } },
+    { Attribute = { Intensity = "Bold" } },
+    { Text = " " },
+    { Text = wezterm.nerdfonts.cod_layout_panel_right },
+    { Text = " " .. wezterm.mux.get_active_workspace() .. " " },
+    { Background = { Color = theme.session.background } },
+    { Foreground = { Color = theme.left.background } },
+    { Text = wezterm.nerdfonts.ple_lower_right_triangle },
     { Background = { Color = theme.left.background } },
     { Foreground = { Color = theme.left.foreground } },
     { Attribute = { Intensity = "Bold" } },
     { Text = " " },
     { Text = wezterm.nerdfonts.custom_folder_open },
     { Attribute = { Italic = true } },
-    { Text = " " .. cwd.file_path:gsub(os.getenv("HOME"), "~") .. " " },
+    { Text = " " .. cwd.file_path:gsub("(.)/$", "%1"):gsub(os.getenv("HOME"), "~") .. " " },
+    { Background = { Color = theme.left_separator.background } },
+    { Foreground = { Color = theme.left.background } },
+    { Text = wezterm.nerdfonts.ple_upper_left_triangle },
+    "ResetAttributes",
+    { Text = " " },
   }))
 end
 

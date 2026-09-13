@@ -1,8 +1,19 @@
+local wezterm = require("wezterm")
 local theme = require("ui.theme").window
 
 local module = {}
 
+local format_window_title = function(tab)
+  local workspace = wezterm.mux.get_active_workspace()
+  local cwd = tab.active_pane.current_working_dir
+  local dir = cwd and cwd.file_path:gsub(os.getenv("HOME"), "~") or ""
+
+  return workspace .. " — " .. dir
+end
+
 module.apply = function(config)
+  wezterm.on("format-window-title", format_window_title)
+
   -- Don't forward wheel scroll as arrow keys to alt-screen apps (tmux); tmux
   -- has mouse off, so there's nothing useful for it to do with them anyway.
   config.alternate_buffer_wheel_scroll_speed = 0
