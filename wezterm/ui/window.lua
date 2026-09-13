@@ -21,6 +21,10 @@ module.apply = function(config)
   -- Don't dim/desaturate unfocused panes; every pane should render identically
   config.inactive_pane_hsb = { hue = 1.0, saturation = 1.0, brightness = 1.0 }
 
+  -- Closing/quitting never prompts: panes live on the "main" mux domain,
+  -- so nothing is actually lost.
+  config.window_close_confirmation = "NeverPrompt"
+
   config.window_decorations = "RESIZE"
   config.window_padding = {
     left = "0.5cell",

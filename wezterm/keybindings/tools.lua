@@ -14,6 +14,9 @@ module.apply = function(config)
     { key = "Enter", mods = "LEADER", action = action.ActivateCopyMode },
     { key = "p", mods = "LEADER", action = action.PasteFrom("Clipboard") },
     { key = "R", mods = "LEADER", action = action.ReloadConfiguration },
+    -- Quits the GUI client only; workspaces live on the "main" mux domain
+    -- and keep running, so this is a tmux-style detach.
+    { key = "q", mods = "LEADER", action = action.QuitApplication },
   }
 
   utils.append_to_list(config.keys, keys)
