@@ -5,5 +5,6 @@ config.default_cwd = os.getenv("WEZTERM_START_DIR") or wezterm.home_dir
 
 require("ui").apply(config)
 require("keybindings").apply(config)
+require("domains").apply(config)
 
 return config

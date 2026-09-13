@@ -28,6 +28,20 @@ module.apply = function(config)
         end),
       }),
     },
+    {
+      key = "N",
+      mods = "LEADER",
+      action = action.PromptInputLine({
+        description = "Rename workspace",
+        action = wezterm.action_callback(function(_, _, line)
+          if not line or line == "" then
+            return
+          end
+
+          wezterm.mux.rename_workspace(wezterm.mux.get_active_workspace(), line)
+        end),
+      }),
+    },
   }
 
   utils.append_to_list(config.keys, keys)
