@@ -23,16 +23,3 @@ bindkey -M viins '^g' fzf-cd-widget
 bindkey -M viins '^t' fzf-file-widget
 bindkey -M viins '^ ' fzf-completion
 bindkey -M viins '^i' $fzf_default_completion
-
-# Sessions: pick a tmux session, project or zoxide dir and connect to it.
-function sesh-connect() {
-    # zle detaches the widget from the terminal; fzf needs it back.
-    exec </dev/tty
-    exec <&1
-
-    sesh-pick
-
-    zle reset-prompt >/dev/null 2>&1 || true
-}
-zle -N sesh-connect
-bindkey -M viins '^o' sesh-connect
