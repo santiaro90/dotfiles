@@ -1,44 +1,54 @@
 local wezterm = require("wezterm")
+local notify = require("ui.notify")
+local palette = require("ui.theme").palette
 
 local module = {}
 
-local get_tab_colours = function(is_active)
-  local theme = require("ui.theme").tabs
-
-  if is_active then
-    return {
-      title = theme.active_title,
-      separator = theme.active_separator,
-      number = theme.active_number,
-    }
+local format_tab_title = function(tab, tabs)
+  if tab.is_active then
+    notify.attention[tab.tab_id] = nil
   end
 
-  return {
-    title = theme.title,
-    separator = theme.separator,
-    number = theme.number,
-  }
-end
+  local tab_number = tab.tab_index + 1
+  local is_first = tab_number == 1
+  local is_last = tab_number == #tabs
 
-local format_tab_title = function(tab)
-  local colours = get_tab_colours(tab.is_active)
+  local colours = require("ui.theme").tabs(tab.is_active, is_first)
   local text_intensity = tab.is_active and "Bold" or "Half"
 
-  local tab_number = tab.tab_index + 1
-  local tab_title = tab.active_pane.title:gsub("Copy mode: ", "")
+  -- A manually-set title (leader ,) sticks; otherwise fall back to the
+  -- active pane's title, which changes with every command.
+  local tab_title = tab.tab_title ~= "" and tab.tab_title
+    or tab.active_pane.title:gsub("Copy mode: ", "")
 
-  return {
-    { Background = { Color = colours.separator.background } },
-    { Foreground = { Color = colours.separator.foreground } },
-    { Text = " " },
+  local elements = {
+    { Background = { Color = colours.separator_left.background } },
+    { Foreground = { Color = colours.separator_left.foreground } },
+    { Text = "" },
     { Attribute = { Intensity = text_intensity } },
     { Background = { Color = colours.number.background } },
     { Foreground = { Color = colours.number.foreground } },
     { Text = " " .. tostring(tab_number) .. " " },
+    { Background = { Color = colours.separator_right.background } },
+    { Foreground = { Color = colours.separator_right.foreground } },
+    { Text = " " },
+    { Attribute = { Italic = not tab.is_active } },
     { Background = { Color = colours.title.background } },
     { Foreground = { Color = colours.title.foreground } },
-    { Text = " " .. tab_title .. " " },
+    { Text = tab_title .. " " },
+    { Attribute = { Italic = false } },
+    { Background = { Color = palette.crust } },
+    { Foreground = { Color = colours.title.background } },
+    { Text = is_last and "" or "" },
   }
+
+  if notify.attention[tab.tab_id] then
+    table.insert(elements, { Background = { Color = colours.title.background } })
+    table.insert(elements, { Foreground = { Color = palette.yellow } })
+    table.insert(elements, { Text = "● " })
+  end
+
+  return elements
 end
 
 module.apply = function(config)
@@ -47,8 +57,6 @@ module.apply = function(config)
   config.use_fancy_tab_bar = false
   config.tab_bar_at_bottom = false
   config.show_new_tab_button_in_tab_bar = false
-  -- Tabs live in tmux now; keep the bar only for the left-status dir display
-  config.show_tabs_in_tab_bar = false
 end
 
 return module

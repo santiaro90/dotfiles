@@ -31,32 +31,51 @@ local palette = {
 }
 
 module.palette = palette
-module.tabs = {
-  number = {
-    background = palette.surface1,
-    foreground = palette.text,
-  },
-  title = {
-    background = palette.base,
-    foreground = palette.subtext1,
-  },
-  separator = {
-    background = palette.crust,
-    foreground = palette.surface0,
-  },
-  active_number = {
-    background = palette.red,
-    foreground = palette.crust,
-  },
-  active_title = {
-    background = palette.base,
-    foreground = palette.text,
-  },
-  active_separator = {
-    background = palette.crust,
-    foreground = palette.mauve,
-  },
-}
+module.tabs = function(is_active, is_first)
+  local theme = {
+    number = {
+      background = palette.surface1,
+      foreground = palette.text,
+    },
+    title = {
+      background = palette.base,
+      foreground = palette.overlay1,
+    },
+    separator_right = {
+      background = palette.base,
+      foreground = palette.surface1,
+    },
+    separator_left = {
+      background = palette.base,
+      foreground = palette.surface1,
+    },
+  }
+
+  if is_active then
+    theme.separator_left = {
+      background = palette.base,
+      foreground = palette.red,
+    }
+    theme.separator_right = {
+      background = palette.base,
+      foreground = palette.red,
+    }
+    theme.number = {
+      background = palette.red,
+      foreground = palette.crust,
+    }
+    theme.title = {
+      background = palette.base,
+      foreground = palette.text,
+    }
+  end
+
+  if is_first then
+    theme.separator_left.background = palette.crust
+  end
+
+  return theme
+end
 
 module.status = {
   left = {
