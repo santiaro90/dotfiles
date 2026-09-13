@@ -17,6 +17,18 @@ module.apply = function(config)
     -- Quits the GUI client only; workspaces live on the "main" mux domain
     -- and keep running, so this is a tmux-style detach.
     { key = "q", mods = "LEADER", action = action.QuitApplication },
+    -- Popup-style keybinding cheat sheet; closes on Escape/ctrl+[ (Escape),
+    -- Enter, or ctrl-c, same as any other fzf prompt.
+    {
+      key = "?",
+      mods = "LEADER",
+      action = action.SplitPane({
+        direction = "Down",
+        size = { Percent = 40 },
+        top_level = true,
+        command = { args = { "zsh", "-lic", "wezterm-keys" } },
+      }),
+    },
   }
 
   utils.append_to_list(config.keys, keys)

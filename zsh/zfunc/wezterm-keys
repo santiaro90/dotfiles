@@ -1,0 +1,19 @@
+# vim: set ft=zsh :
+
+# List wezterm keybindings (title -> binding), sorted and aligned, via fzf.
+
+wezterm show-keys | grep -F -- '->' | awk -F'->' '{
+    gsub(/^[ \t]+|[ \t]+$/, "", $1)
+    gsub(/[ \t]+/, " ", $1)
+    gsub(/^[ \t]+|[ \t]+$/, "", $2)
+    print $2"\t"$1
+}' | sort | awk -F'\t' -v cap=50 '{
+    t = $1
+    b = $2
+    if (length(t) > cap) t = substr(t, 1, cap - 1) "…"
+    tt[NR] = t
+    bb[NR] = b
+    if (length(t) > m) m = length(t)
+} END {
+    for (i = 1; i <= NR; i++) printf "%-" m "s -> %s\n", tt[i], bb[i]
+}' | fzf -i --prompt='⌨ keys> ' --header='⌨ WezTerm Keybindings' --border --border-label=' ⌨ Keybindings '
