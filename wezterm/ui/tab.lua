@@ -20,6 +20,7 @@ local format_tab_title = function(tab, tabs)
   -- active pane's title, which changes with every command.
   local tab_title = tab.tab_title ~= "" and tab.tab_title
     or tab.active_pane.title:gsub("Copy mode: ", "")
+  tab_title = wezterm.truncate_right(tab_title, 24)
 
   local elements = {
     { Background = { Color = colours.separator_left.background } },
@@ -57,6 +58,7 @@ module.apply = function(config)
   config.use_fancy_tab_bar = false
   config.tab_bar_at_bottom = false
   config.show_new_tab_button_in_tab_bar = false
+  config.tab_max_width = 32
 end
 
 return module
