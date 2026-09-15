@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "_comment": "Reference copy, NOT symlinked. Claude Code rewrites ~/.claude/settings.json at runtime (/model, /config, plugin toggles), so linking it would fight the app. This holds only the half that never changes on its own and that wires up the scripts in this repo. On a fresh machine, merge these keys by hand into ~/.claude/settings.json. Deliberately omitted: model, enabledPlugins, extraKnownMarketplaces - work marketplaces and whatever model is current.",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "rtk hook claude"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/notify.sh"
+          }
+        ]
+      }
+    ],
+    "Notification": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "~/.claude/notify.sh"
+          }
+        ]
+      }
+    ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "~/.claude/statusline.sh",
+    "padding": 2
+  },
+  "theme": "custom:catppuccin",
+  "tui": "fullscreen",
+  "editorMode": "normal",
+  "agentPushNotifEnabled": true,
+  "skipAutoPermissionPrompt": true
+}
