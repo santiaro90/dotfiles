@@ -1,5 +1,6 @@
 local wezterm = require("wezterm")
 local action = wezterm.action
+local notify = require("ui.notify")
 local utils = require("utils")
 local module = {}
 
@@ -7,6 +8,8 @@ module.apply = function(config)
   local keys = {
     -- Workspace picker, the wezterm-native equivalent of tmux.conf's sesh-pick
     { key = "o", mods = "LEADER", action = action.ShowLauncherArgs({ flags = "FUZZY|WORKSPACES" }) },
+    -- Jump to whatever rang next, across workspaces; see ui.notify
+    { key = "b", mods = "LEADER", action = wezterm.action_callback(notify.focus_next_pending) },
     {
       key = "n",
       mods = "LEADER",

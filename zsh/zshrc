@@ -17,6 +17,12 @@ HISTSIZE=10000
 SAVEHIST=10000
 WORDCHARS=${WORDCHARS//\/[&.;]/} # Don't consider certain characters part of the word
 
+# Stamp this pane with its wezterm cli pane id. wezterm's gui and its mux server
+# number panes in separate id spaces, and only this side knows the cli number, so
+# focus-pane.sh has no way to name a pane to the config without this bridge.
+[[ -n $WEZTERM_PANE ]] &&
+    printf '\033]1337;SetUserVar=wezterm-pane=%s\007' "$(printf '%s' "$WEZTERM_PANE" | base64)"
+
 # Init CLI tools that need it
 command -v zoxide >/dev/null 2>&1 && eval "$(zoxide init zsh)"
 command -v fnm >/dev/null 2>&1 && eval "$(fnm env --use-on-cd)"
