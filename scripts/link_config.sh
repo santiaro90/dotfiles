@@ -2,6 +2,8 @@
 
 bat_dir=$HOME/.config/bat
 claude_dir=$HOME/.claude
+claude_personal_dir=$HOME/.claude-personal
+claude_work_dir=$HOME/.claude-work
 claude_agents_dir=$HOME/.claude/agents
 claude_themes_dir=$HOME/.claude/themes
 dotfiles_dir=$HOME/.dotfiles
@@ -30,16 +32,20 @@ declare -A link_map
 
 link_map["$dotfiles_dir/bat/config"]="$bat_dir/config"
 link_map["$dotfiles_dir/bat/themes"]="$bat_dir/themes"
-# Claude files are linked one by one, never whole directories: work installs its
-# own agents and skills alongside these. settings.json is deliberately absent —
-# Claude Code rewrites it at runtime (/model, /config, plugin toggles) and it
-# holds work-only plugins and marketplaces.
-link_map["$dotfiles_dir/claude/CLAUDE.md"]="$claude_dir/CLAUDE.md"
+# Personal Claude config is this whole directory (pcl). Work config is the
+# untracked ~/.claude, also reachable as ~/.claude-work (wcl); only the shared
+# files are linked into it, one by one, since work plugins install into the same
+# tree. With CLAUDE_CONFIG_DIR set, Claude Code reads $CLAUDE_CONFIG_DIR/.claude.json
+# instead of ~/.claude.json, hence the last link, so wcl and plain claude share it.
+link_map["$dotfiles_dir/claude"]="$claude_personal_dir"
+link_map["$claude_dir"]="$claude_work_dir"
+link_map["$HOME/.claude.json"]="$claude_dir/.claude.json"
+link_map["$dotfiles_dir/claude/CLAUDE.md"]="$claude_dir/CLAUDE.shared.md"
 link_map["$dotfiles_dir/claude/RTK.md"]="$claude_dir/RTK.md"
 link_map["$dotfiles_dir/claude/agents/refactorer.md"]="$claude_agents_dir/refactorer.md"
 link_map["$dotfiles_dir/claude/notify.sh"]="$claude_dir/notify.sh"
 link_map["$dotfiles_dir/claude/statusline.sh"]="$claude_dir/statusline.sh"
-link_map["$dotfiles_dir/claude/theme.catppuccin.json"]="$claude_themes_dir/catppuccin.json"
+link_map["$dotfiles_dir/claude/themes/catppuccin.json"]="$claude_themes_dir/catppuccin.json"
 link_map["$dotfiles_dir/editorconfig"]="$HOME/.editorconfig"
 link_map["$dotfiles_dir/git/gitconfig"]="$HOME/.gitconfig"
 link_map["$dotfiles_dir/git/gitignore"]="$HOME/.gitignore"
@@ -57,6 +63,12 @@ link_map["$dotfiles_dir/zsh/zim.zsh"]="$zsh_dir/.zim.zsh"
 link_map["$dotfiles_dir/zsh/zimrc"]="$zsh_dir/.zimrc"
 link_map["$dotfiles_dir/zsh/zprofile"]="$zsh_dir/.zprofile"
 link_map["$dotfiles_dir/zsh/zshrc"]="$zsh_dir/.zshrc"
+
+# Work CLAUDE.md is untracked: it imports the shared one and adds work-only rules.
+[[ -f "$claude_dir/CLAUDE.md" && ! -L "$claude_dir/CLAUDE.md" ]] || {
+    rm -f "$claude_dir/CLAUDE.md"
+    echo "@CLAUDE.shared.md" >"$claude_dir/CLAUDE.md"
+}
 
 # Relink unless the symlink already points at this exact source, so renamed or
 # moved sources heal instead of leaving a stale link in place.

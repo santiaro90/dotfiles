@@ -2,8 +2,7 @@
 # Claude Code hook: signal that a session wants attention.
 #
 # Wired to Stop (Claude finished answering) and Notification (Claude is waiting
-# on a permission prompt) in ~/.claude/settings.json, which is not tracked here
-# because Claude Code rewrites it at runtime.
+# on a permission prompt) in settings.json.
 #
 # Two signals: an in-terminal marker that persists until you look at the session,
 # and a desktop toast titled with the session name carrying Claude's message.

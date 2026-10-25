@@ -92,3 +92,9 @@ alias pip="uv pip"
 
 alias rm="nocorrect rm -r"
 alias mk="mkdir -vp"
+
+# Claude Code: work and personal configs. Empty CLAUDE_SECURESTORAGE_CONFIG_DIR
+# keeps wcl on the same keychain login as plain claude; any CLAUDE_CONFIG_DIR
+# otherwise gets its own. pcl drops the work API key so it bills the personal login.
+alias wcl="CLAUDE_CONFIG_DIR=$HOME/.claude-work CLAUDE_SECURESTORAGE_CONFIG_DIR= claude"
+alias pcl="env -u ANTHROPIC_API_KEY CLAUDE_CONFIG_DIR=$HOME/.claude-personal claude"

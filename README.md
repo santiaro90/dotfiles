@@ -32,12 +32,21 @@ outside the repo, and you create them by hand:
 
 ## Claude Code
 
-Claude files are symlinked one by one, never as a directory, because work plugins
-install their own agents and skills into the same tree.
+Two configs, picked with `CLAUDE_CONFIG_DIR`:
 
-`~/.claude/settings.json` is **not** symlinked — Claude Code rewrites it at runtime.
-Copy the stable half out of `claude/settings.reference.json` by hand on a new
-machine; that is what wires up `statusline.sh`, `notify.sh` and the `rtk` hook.
+| Alias | Config dir | What |
+| --- | --- | --- |
+| `pcl` | `~/.claude-personal` -> `claude/` | Personal: tracked here, rtk + caveman only |
+| `wcl` | `~/.claude-work` -> `~/.claude` | Work: untracked, all work plugins |
+
+Plain `claude` is work, same login, memories and `~/.claude.json` as `wcl`.
+`claude/.gitignore` whitelists what is tracked: setup only, never memories or
+session data. `pcl` needs one `/login` with the personal account.
+
+Work gets the shared files (`CLAUDE.md`, `RTK.md`, scripts, theme, agent) linked one
+by one. Its `settings.json` is not linked: copy the hooks and `statusLine` from
+`claude/settings.json` by hand on a new machine, with `~/.claude-personal` paths
+changed to `~/.claude`.
 
 ## Notes
 

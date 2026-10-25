@@ -1,0 +1,11 @@
+# This directory is the personal CLAUDE_CONFIG_DIR, so Claude Code writes its
+# runtime state here. Track only what is listed.
+/*
+!/.gitignore
+!/CLAUDE.md
+!/RTK.md
+!/agents/
+!/notify.sh
+!/settings.json
+!/statusline.sh
+!/themes/
