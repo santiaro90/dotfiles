@@ -36,7 +36,7 @@ Two configs, picked with `CLAUDE_CONFIG_DIR`:
 
 | Alias | Config dir | What |
 | --- | --- | --- |
-| `pcl` | `~/.claude-personal` -> `claude/` | Personal: tracked here, caveman only |
+| `pcl` | `~/.claude-personal` -> `claude/` | Personal: tracked here, caveman + ponytail only |
 | `wcl` | `~/.claude-work` -> `~/.claude` | Work: untracked, all work plugins |
 
 Plain `claude` is work, same login, memories and `~/.claude.json` as `wcl`.

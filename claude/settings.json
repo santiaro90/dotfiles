@@ -29,13 +29,28 @@
     "padding": 2
   },
   "enabledPlugins": {
-    "caveman@caveman": true
+    "caveman@caveman": true,
+    "ponytail@ponytail": true
   },
   "extraKnownMarketplaces": {
     "caveman": {
       "source": {
         "source": "github",
         "repo": "JuliusBrussee/caveman"
+      }
+    },
+    "ponytail": {
+      "source": {
+        "source": "github",
+        "repo": "dietrichgebert/ponytail"
+      }
+    }
+  },
+  "pluginConfigs": {
+    "ponytail@ponytail": {
+      "options": {
+        "ledger": true,
+        "sendNames": true
       }
     }
   },
