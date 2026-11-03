@@ -1,5 +1,3 @@
-@RTK.md
-
 # How to work with me
 
 I am a human. My code is reviewed by humans, my tickets are challenged by humans.
@@ -20,7 +18,7 @@ Write only that.
 
 ## Session output
 
-rtk and caveman own this — leave them on. On top of them:
+caveman owns this — leave it on. On top of it:
 
 - Answer first, 1-5 lines. Expand only when asked.
 - No preamble, no recap of my question, no summary of what you just did.
