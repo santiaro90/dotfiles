@@ -38,6 +38,7 @@ local update_left_status = function(window, pane)
 end
 
 local update_right_status = function(window, pane)
+  notify.toast_new(window, pane)
   notify.mark_seen(pane)
 
   local key_table = window:active_key_table() or ""

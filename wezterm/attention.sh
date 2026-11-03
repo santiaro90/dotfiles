@@ -1,10 +1,11 @@
 #!/bin/bash
 # Flag a wezterm pane as wanting attention. Its workspace is then listed in the
 # status bar until you look at the pane. Takes a `wezterm cli` pane id,
-# defaulting to the calling pane's own.
+# defaulting to the calling pane's own, and optionally a toast title and body.
 #
 #   attention.sh           # flag the pane you are in
 #   attention.sh 12        # flag pane 12
+#   attention.sh 12 build "tests passed"   # and toast it
 #   long-build; attention.sh
 #
 # This is the in-terminal half of a notification; pair it with focus-pane.sh to
@@ -26,7 +27,8 @@ tty=$(wezterm cli list --format json 2>/dev/null |
 
 [ -n "$tty" ] && [ -w "$tty" ] || exit 0
 
-# A nonce, so raising the flag again on a pane you already dismissed counts as a
-# new request: wezterm drops a SetUserVar that repeats the pane's stored value.
-printf '\033]1337;SetUserVar=attention=%s\007' \
-    "$(printf '%s' "$RANDOM$$" | base64)" >"$tty"
+# Leads with a nonce, so raising the flag again on a pane you already dismissed
+# counts as a new request: wezterm drops a SetUserVar that repeats the pane's
+# stored value. Tabs separate the fields, so they cannot appear inside them.
+value=$(printf '%s\t%s\t%s' "$RANDOM$$" "${2//$'\t'/ }" "${3//$'\t'/ }" | base64)
+printf '\033]1337;SetUserVar=attention=%s\007' "$value" >"$tty"

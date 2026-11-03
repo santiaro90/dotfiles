@@ -43,6 +43,39 @@ module.mark_seen = function(pane)
   end
 end
 
+-- Toast each flag once, from here rather than the sender, because only
+-- toast_notification takes a timeout: once it lapses the toast leaves
+-- Notification Center too. The first scan after a config reload only records
+-- what is already raised, so a reload does not replay old toasts.
+local toasted
+local toast_timeout_ms = 10000
+
+module.toast_new = function(window, pane)
+  local primed = toasted ~= nil
+  toasted = toasted or {}
+
+  for _, mux_window in ipairs(wezterm.mux.all_windows()) do
+    for _, tab in ipairs(mux_window:tabs()) do
+      for _, mux_pane in ipairs(tab:panes()) do
+        local vars = mux_pane:get_user_vars()
+        local flag = vars and vars.attention
+        local id = mux_pane:pane_id()
+
+        if flag and flag ~= "" and toasted[id] ~= flag then
+          toasted[id] = flag
+
+          local title, body = flag:match("^[^\t]*\t([^\t]*)\t(.*)$")
+          local looking = window:is_focused() and id == pane:pane_id()
+
+          if primed and title and title ~= "" and not looking then
+            window:toast_notification(title, body, nil, toast_timeout_ms)
+          end
+        end
+      end
+    end
+  end
+end
+
 -- Every pane still waiting, in mux order.
 local pending_panes = function()
   local panes = {}
